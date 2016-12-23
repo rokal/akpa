@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript HTML App</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <!--<script src="./node_modules/react/react.js"></script>
+    <script src="./node_modules/react-dom/react-dom.js"></script>-->
+    <script data-main="dist/app" type="text/javascript" src="node_modules/require/require.js"></script>
+
+    <script>
+        require.config({
+            paths: {
+                "react": "../node_modules/react/dist/react",
+                "react-dom": "../node_modules/react-dom/dist/react-dom"
+            }
+        });
+
+        require(['react', 'react-intl'], function (React, ReactIntlMixin) {
+
+        });
+
+    </script>
+</head>
+<body>
+    <h1>TypeScript HTML2 App</h1>
+
+    <div id="content"></div>
+    <div id="example"></div>
+</body>
+</html>
