@@ -6,8 +6,6 @@ lib-cov
 *.out
 *.pid
 *.gz
-*.js
-*.js.map
 
 dist/**/*.map
 dist/**/*.js

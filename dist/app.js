@@ -13,5 +13,4 @@ define(["require", "exports", "react", "react-dom", "simulationNumberOfDays", "c
         ReactDOM.render(React.createElement(resultsDisplay_1.ResultsDisplay, { forecasts: s.Forecasts }), document.getElementById("example"));
     });
 });
-
 //# sourceMappingURL=app.js.map

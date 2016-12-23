@@ -11,5 +11,4 @@ define(["require", "exports"], function (require, exports) {
     }());
     exports.Percentile = Percentile;
 });
-
 //# sourceMappingURL=percentile.js.map

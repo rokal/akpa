@@ -20,5 +20,4 @@ define(["require", "exports", "forecast"], function (require, exports, forecast_
     }(forecast_1.Forecast));
     exports.ForecastDate = ForecastDate;
 });
-
 //# sourceMappingURL=forecastDate.js.map

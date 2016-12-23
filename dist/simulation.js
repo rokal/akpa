@@ -73,5 +73,4 @@ define(["require", "exports", "percentile", "simulationResult"], function (requi
     }());
     exports.Simulation = Simulation;
 });
-
-//# sourceMappingURL=simulation.js.map
+//# sourceMappingURL=Simulation.js.map

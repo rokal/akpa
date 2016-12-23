@@ -81,5 +81,4 @@ define(["require", "exports", "ForecastItems", "Simulation"], function (require,
     }(Simulation_1.Simulation));
     exports.SimulationNumberOfDays = SimulationNumberOfDays;
 });
-
 //# sourceMappingURL=simulationNumberOfDays.js.map

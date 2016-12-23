@@ -42,5 +42,4 @@ define(["require", "exports"], function (require, exports) {
     }());
     exports.SimulationResult = SimulationResult;
 });
-
 //# sourceMappingURL=simulationResult.js.map
