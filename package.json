@@ -1,0 +1,26 @@
+{
+  "name": "MonteCarlo-core",
+  "version": "1.0.0",
+  "description": "Web application to generate Monte Carlo simulations for Kanban",
+  "main": "index.html",
+  "dependencies": {
+    "@types/react": "^0.14.55",
+    "@types/react-dom": "^0.14.19",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.0.0-beta.17",
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-typescript": "^3.1.3",
+    "gulp-util": "^3.0.7",
+    "gulp-webserver": "^0.9.1",
+    "typescript": "^2.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Louis-Philippe Carignan",
+  "license": "ISC"
+}
