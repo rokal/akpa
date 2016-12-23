@@ -7,7 +7,8 @@ lib-cov
 *.pid
 *.gz
 
-dist
+dist/**/*.map
+dist/**/*.js
 pids
 logs
 results

@@ -13,7 +13,7 @@ gulp.task("compile", function() {
         .pipe(sourcemaps.init())     // This means sourcemaps will be generated
         .pipe(tsProject());
 
-     return tsResult   
+    return tsResult   
         .js
         .pipe(sourcemaps.write(".")) // Now the sourcemaps are added to the .js file
         .pipe(gulp.dest("dist"))
