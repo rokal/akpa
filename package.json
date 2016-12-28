@@ -1,8 +1,12 @@
 {
-  "name": "MonteCarlo-core",
+  "name": "Monte Carlo simulations",
   "version": "1.0.0",
   "description": "Web application to generate Monte Carlo simulations for Kanban",
   "main": "index.html",
+  "scripts": {
+    "jest": "node ./packages/jest-cli/bin/jest.js",
+    "test": "jest"
+  },
   "dependencies": {
     "@types/react": "^0.14.55",
     "@types/react-dom": "^0.14.19",
@@ -16,11 +20,10 @@
     "gulp-typescript": "^3.1.3",
     "gulp-util": "^3.0.7",
     "gulp-webserver": "^0.9.1",
+    "jest-cli": "^18.0.0",
     "requirejs": "^2.3.2",
+    "ts-jest": "^18.0.0",
     "typescript": "^2.1.4"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Louis-Philippe Carignan",
   "license": "ISC"

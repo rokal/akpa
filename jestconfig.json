@@ -1,0 +1,13 @@
+{
+  "collectCoverage": true,
+  "coverageDirectory":"<rootDir>/tests/Results",
+  "coverageReporters":["lcov", "text"],
+  "moduleFileExtensions": ["ts", "tsx", "js"],
+  "testPathIgnorePatterns":["<rootDir>/tests/Results"], 
+  "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
+    },
+    "testRegex": "./tests/.*\\.(ts|tsx|js)$"
+
+    
+}
