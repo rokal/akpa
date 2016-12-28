@@ -22,6 +22,25 @@
             "port": 9222,
             "url": "<url of the open browser tab to connect to>",
             "webRoot": "${workspaceRoot}/out"
+        },
+        {
+            "name": "Tests",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
+            "stopOnEntry": false,
+            "args": ["--runInBand", "-c jestconfig.json"],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "console": "externalTerminal",
+            "sourceMaps": false
         }
     ]
 }
