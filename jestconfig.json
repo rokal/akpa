@@ -3,7 +3,9 @@
   "coverageDirectory":"<rootDir>/tests/Results",
   "coverageReporters":["lcov", "text"],
   "moduleFileExtensions": ["ts", "tsx", "js"],
-  "testPathIgnorePatterns":["<rootDir>/tests/Results"], 
+  "testPathIgnorePatterns":[
+    "<rootDir>/tests/Results",
+    "<rootDir>/tests/JestTransform"], 
   "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
     },

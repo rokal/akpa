@@ -29,7 +29,9 @@
             "request": "launch",
             "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
             "stopOnEntry": false,
-            "args": ["--runInBand", "-c jestconfig.json"],
+            "args": [
+                "--debug",
+                "--runInBand"],
             "cwd": "${workspaceRoot}",
             "preLaunchTask": null,
             "runtimeExecutable": null,
@@ -39,8 +41,9 @@
             "env": {
                 "NODE_ENV": "development"
             },
-            "console": "externalTerminal",
-            "sourceMaps": false
+            "console": "internalConsole",
+            "sourceMaps": false,
+            "outDir": null
         }
     ]
 }

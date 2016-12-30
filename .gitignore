@@ -12,6 +12,7 @@ dist/**/*.js
 pids
 logs
 results
+JestTransform
 
 node_modules
 npm-debug.log
