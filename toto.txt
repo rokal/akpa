@@ -1,0 +1,516 @@
+======== Resolving module 'react' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/react-dom.d.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'react'
+Resolving module name 'react' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.d.ts' does not exist.
+Loading module 'react' from 'node_modules' folder.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/node_modules/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/node_modules/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/node_modules/@types/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/node_modules/@types/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/react-dom/node_modules/@types/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/node_modules/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/node_modules/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/node_modules/@types/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/node_modules/@types/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/typings/node_modules/@types/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts' exist - use it as a name resolution result.
+Resolving real path for 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts', result 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'
+======== Module name 'react' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'. ========
+======== Resolving module 'react' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/app.tsx'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'react'
+Resolving module name 'react' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.d.ts' does not exist.
+Loading module 'react' from 'node_modules' folder.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts' exist - use it as a name resolution result.
+Resolving real path for 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts', result 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'
+======== Module name 'react' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'. ========
+======== Resolving module 'react-dom' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/app.tsx'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'react-dom'
+Resolving module name 'react-dom' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom/index.d.ts' does not exist.
+Loading module 'react-dom' from 'node_modules' folder.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react-dom.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react-dom/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react-dom/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/package.json'.
+'package.json' has 'typings' field 'index.d.ts' that references 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts' exist - use it as a name resolution result.
+Resolving real path for 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts', result 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts'
+======== Module name 'react-dom' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts'. ========
+======== Resolving module 'percentile' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/app.tsx'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'percentile'
+Resolving module name 'percentile' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile.ts' exist - use it as a name resolution result.
+======== Module name 'percentile' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile.ts'. ========
+======== Resolving module 'simulationNumberOfDays' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/app.tsx'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'simulationNumberOfDays'
+Resolving module name 'simulationNumberOfDays' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationNumberOfDays'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationNumberOfDays'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationNumberOfDays.ts' exist - use it as a name resolution result.
+======== Module name 'simulationNumberOfDays' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationNumberOfDays.ts'. ========
+======== Resolving module 'components/resultsDisplay' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/app.tsx'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'components/resultsDisplay'
+Resolving module name 'components/resultsDisplay' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/resultsDisplay'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/resultsDisplay'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/resultsDisplay.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/resultsDisplay.tsx' exist - use it as a name resolution result.
+======== Module name 'components/resultsDisplay' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/resultsDisplay.tsx'. ========
+======== Resolving module 'react' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'react'
+Resolving module name 'react' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.d.ts' does not exist.
+Loading module 'react' from 'node_modules' folder.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/@types/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/@types/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/@types/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/@types/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/@types/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/@types/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts' exist - use it as a name resolution result.
+Resolving real path for 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts', result 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'
+======== Module name 'react' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'. ========
+======== Resolving module 'ForecastItems' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationNumberOfDays.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'ForecastItems'
+Resolving module name 'ForecastItems' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastItems'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastItems'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastItems.ts' exist - use it as a name resolution result.
+======== Module name 'ForecastItems' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastItems.ts'. ========
+======== Resolving module 'Percentile' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationNumberOfDays.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'Percentile'
+Resolving module name 'Percentile' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts' exist - use it as a name resolution result.
+======== Module name 'Percentile' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts'. ========
+======== Resolving module 'Simulation' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationNumberOfDays.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'Simulation'
+Resolving module name 'Simulation' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Simulation'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Simulation'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Simulation.ts' exist - use it as a name resolution result.
+======== Module name 'Simulation' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Simulation.ts'. ========
+======== Resolving module 'SimulationResult' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationNumberOfDays.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'SimulationResult'
+Resolving module name 'SimulationResult' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult.ts' exist - use it as a name resolution result.
+======== Module name 'SimulationResult' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult.ts'. ========
+======== Resolving module 'Percentile' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastItems.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'Percentile'
+Resolving module name 'Percentile' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts' exist - use it as a name resolution result.
+======== Module name 'Percentile' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts'. ========
+======== Resolving module './Forecast' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastItems.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Forecast'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Forecast.ts' exist - use it as a name resolution result.
+======== Module name './Forecast' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Forecast.ts'. ========
+======== Resolving module 'percentile' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Forecast.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'percentile'
+Resolving module name 'percentile' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile.ts' exist - use it as a name resolution result.
+======== Module name 'percentile' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile.ts'. ========
+======== Resolving module 'forecast' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Simulation.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'forecast'
+Resolving module name 'forecast' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast.ts' exist - use it as a name resolution result.
+======== Module name 'forecast' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast.ts'. ========
+======== Resolving module 'simulationResult' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Simulation.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'simulationResult'
+Resolving module name 'simulationResult' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationResult'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationResult'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationResult.ts' exist - use it as a name resolution result.
+======== Module name 'simulationResult' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationResult.ts'. ========
+======== Resolving module 'react' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/resultsDisplay.tsx'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'react'
+Resolving module name 'react' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.d.ts' does not exist.
+Loading module 'react' from 'node_modules' folder.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/@types/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/@types/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/@types/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts' exist - use it as a name resolution result.
+Resolving real path for 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts', result 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'
+======== Module name 'react' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'. ========
+======== Resolving module 'react-dom' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/resultsDisplay.tsx'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'react-dom'
+Resolving module name 'react-dom' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react-dom/index.d.ts' does not exist.
+Loading module 'react-dom' from 'node_modules' folder.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react-dom.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react-dom.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react-dom.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react-dom/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react-dom/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react-dom/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/react-dom/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/@types/react-dom.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/@types/react-dom/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/node_modules/@types/react-dom/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/react-dom/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react-dom.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react-dom/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/node_modules/@types/react-dom/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react-dom/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/package.json'.
+'package.json' has 'typings' field 'index.d.ts' that references 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts' exist - use it as a name resolution result.
+Resolving real path for 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts', result 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts'
+======== Module name 'react-dom' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts'. ========
+======== Resolving module 'forecast' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/components/resultsDisplay.tsx'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'forecast'
+Resolving module name 'forecast' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast.ts' exist - use it as a name resolution result.
+======== Module name 'forecast' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast.ts'. ========
+======== Resolving module 'Forecast' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastBuilder.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'Forecast'
+Resolving module name 'Forecast' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Forecast'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Forecast'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Forecast.ts' exist - use it as a name resolution result.
+======== Module name 'Forecast' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Forecast.ts'. ========
+======== Resolving module 'Percentile' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastBuilder.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'Percentile'
+Resolving module name 'Percentile' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts' exist - use it as a name resolution result.
+======== Module name 'Percentile' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts'. ========
+======== Resolving module 'SimulationResult' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastBuilder.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'SimulationResult'
+Resolving module name 'SimulationResult' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult.ts' exist - use it as a name resolution result.
+======== Module name 'SimulationResult' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult.ts'. ========
+======== Resolving module 'forecast' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastDate.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'forecast'
+Resolving module name 'forecast' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast.ts' exist - use it as a name resolution result.
+======== Module name 'forecast' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecast.ts'. ========
+======== Resolving module 'Percentile' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastDate.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'Percentile'
+Resolving module name 'Percentile' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts' exist - use it as a name resolution result.
+======== Module name 'Percentile' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts'. ========
+======== Resolving module 'ForecastBuilder' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastDateBuilder.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'ForecastBuilder'
+Resolving module name 'ForecastBuilder' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastBuilder'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastBuilder'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastBuilder.ts' exist - use it as a name resolution result.
+======== Module name 'ForecastBuilder' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastBuilder.ts'. ========
+======== Resolving module 'ForecastItems' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastDateBuilder.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'ForecastItems'
+Resolving module name 'ForecastItems' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastItems'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastItems'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastItems.ts' exist - use it as a name resolution result.
+======== Module name 'ForecastItems' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/ForecastItems.ts'. ========
+======== Resolving module 'Percentile' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastDateBuilder.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'Percentile'
+Resolving module name 'Percentile' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts' exist - use it as a name resolution result.
+======== Module name 'Percentile' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts'. ========
+======== Resolving module 'SimulationResult' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastDateBuilder.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'SimulationResult'
+Resolving module name 'SimulationResult' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult.ts' exist - use it as a name resolution result.
+======== Module name 'SimulationResult' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult.ts'. ========
+======== Resolving module '../src/Percentile' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/tests/forecastDateBuilder.test.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts' exist - use it as a name resolution result.
+======== Module name '../src/Percentile' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts'. ========
+======== Resolving module '../src/SimulationResult' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/tests/forecastDateBuilder.test.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult.ts' exist - use it as a name resolution result.
+======== Module name '../src/SimulationResult' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/SimulationResult.ts'. ========
+======== Resolving module '../src/forecastDateBuilder' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/tests/forecastDateBuilder.test.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastDateBuilder'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastDateBuilder.ts' exist - use it as a name resolution result.
+======== Module name '../src/forecastDateBuilder' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastDateBuilder.ts'. ========
+======== Resolving module '../src/forecastBuilder' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/tests/forecastDateBuilder.test.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastBuilder'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastBuilder.ts' exist - use it as a name resolution result.
+======== Module name '../src/forecastBuilder' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastBuilder.ts'. ========
+======== Resolving module '../src/Percentile' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/tests/forecastItems.test.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts' exist - use it as a name resolution result.
+======== Module name '../src/Percentile' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/Percentile.ts'. ========
+======== Resolving module '../src/forecastItems' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/tests/forecastItems.test.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastItems'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastItems.ts' exist - use it as a name resolution result.
+======== Module name '../src/forecastItems' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/forecastItems.ts'. ========
+======== Resolving module '../src/percentile' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/tests/percentile.test.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile.ts' exist - use it as a name resolution result.
+======== Module name '../src/percentile' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/percentile.ts'. ========
+======== Resolving module '../src/simulationResult' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/tests/simulationResult.test.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationResult'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationResult.ts' exist - use it as a name resolution result.
+======== Module name '../src/simulationResult' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/simulationResult.ts'. ========
+======== Resolving type reference directive 'react', containing file 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/__inferred type names__.ts', root directory 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types'. ========
+Resolving with primary search path 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types'
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts' exist - use it as a name resolution result.
+Resolving real path for 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts', result 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'
+======== Type reference directive 'react' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts', primary: true. ========
+======== Resolving type reference directive 'react-dom', containing file 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/__inferred type names__.ts', root directory 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types'. ========
+Resolving with primary search path 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types'
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/package.json'.
+'package.json' has 'typings' field 'index.d.ts' that references 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts' exist - use it as a name resolution result.
+Resolving real path for 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts', result 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts'
+======== Type reference directive 'react-dom' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts', primary: true. ========
+======== Resolving module 'react' from 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/index.d.ts'. ========
+Explicitly specified module resolution kind: 'NodeJs'.
+'baseUrl' option is set to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src', using this value to resolve non-relative module name 'react'
+Resolving module name 'react' relative to base url 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src' - 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react'.
+Loading module as file / folder, candidate module location 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react'.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/src/react/index.d.ts' does not exist.
+Loading module 'react' from 'node_modules' folder.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/@types/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/@types/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react-dom/node_modules/@types/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/@types/react.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/@types/react/package.json' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/node_modules/@types/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.tsx' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/react/index.d.ts' does not exist.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react.d.ts' does not exist.
+Found 'package.json' at 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/package.json'.
+'package.json' does not have a 'types' or 'main' field.
+File 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts' exist - use it as a name resolution result.
+Resolving real path for 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts', result 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'
+======== Module name 'react' was successfully resolved to 'C:/Users/lpcarignan/Documents/GitHub/montecarlo-simulations-typescript/node_modules/@types/react/index.d.ts'. ========

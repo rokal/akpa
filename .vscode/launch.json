@@ -30,20 +30,22 @@
             "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
             "stopOnEntry": false,
             "args": [
-                "--debug",
-                "--runInBand"],
+                "--runInBand",
+                "--no-cache"],
             "cwd": "${workspaceRoot}",
             "preLaunchTask": null,
             "runtimeExecutable": null,
             "runtimeArgs": [
-                "--nolazy"
+                "--nolazy",
+                "--harmony"
             ],
             "env": {
                 "NODE_ENV": "development"
             },
             "console": "internalConsole",
-            "sourceMaps": false,
-            "outDir": null
+            "sourceMaps": true,
+            "outDir": null,
+            "port": 9070
         }
     ]
 }

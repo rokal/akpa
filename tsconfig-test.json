@@ -1,7 +1,28 @@
 {
-  "compilerOptions": {
+    "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
-        "jsx": "preserve"
-  }
+        "noImplicitAny": true,
+        "removeComments": false,
+        "sourceMap": true,
+        "outDir": "./tests/JestTransform",
+        "sourceRoot": "/src",
+        "baseUrl": "src",
+        "strictNullChecks": true,
+        "jsx":"react",
+        "pretty":true,
+        "traceResolution": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    },
+    "exclude":[
+        "node_modules"
+    ],
+    "include":[
+      	"src/**/*.ts",
+        "src/**/*.tsx",
+        "tests/**/*.ts",
+    	"typings/*.d.ts"      
+    ]
 }

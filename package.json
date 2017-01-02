@@ -7,6 +7,19 @@
     "jest": "node ./packages/jest-cli/bin/jest.js",
     "test": "jest"
   },
+  "jest": {
+  "collectCoverage": true,
+  "coverageDirectory":"<rootDir>/tests/Results",
+  "coverageReporters":["lcov", "text"],
+  "moduleFileExtensions": ["ts", "tsx", "js"],
+  "testPathIgnorePatterns":[
+    "<rootDir>/tests/Results",
+    "<rootDir>/tests/JestTransform"], 
+  "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
+    },
+    "testRegex": "./tests/.*\\.(ts|tsx|js)$"
+  },
   "dependencies": {
     "@types/react": "^0.14.55",
     "@types/react-dom": "^0.14.19",

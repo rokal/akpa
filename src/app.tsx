@@ -15,13 +15,13 @@ require([], () => {
     var s = new SimulationNumberOfDays(30, 1000);
     s.HistoricalThroughput = [3, 2, 1, 0, 4, 2, 4, 1, 2, 0, 4, 2, 5];
     s.execute();
-    s.createForecast();
+    //s.createForecast();
     
     // Render the outputs with React component ResultsDisplay 
-    ReactDOM.render(
-        <ResultsDisplay forecasts={s.Forecasts} />,
-        document.getElementById("example")
-    );
+    // ReactDOM.render(
+    //     <ResultsDisplay forecasts={s.Forecasts} />,
+    //     document.getElementById("example")
+    // );
 
 });     
 
