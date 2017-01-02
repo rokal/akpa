@@ -3,6 +3,7 @@ var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
 var tsTestProject = ts.createProject("tsconfig-test.json");
 var sourcemaps = require('gulp-sourcemaps');
+var del = require('del');
 var webserver = require("gulp-webserver");
 var gutil = require("gulp-util");
 
@@ -34,10 +35,16 @@ gulp.task("compile-test", function() {
         .pipe(gulp.dest("tests/JestTransform"))
 });
 
+gulp.task("clean", function(){
+    return del([
+        "dist/**/*",
+        "tests/JestTransform/**/*",
+  ]);
+});
 
 // Start the webserver
 // Don't forget to launch Chrome with --remote-debugging-port=9222
-gulp.task('webserver', function() {
+gulp.task("webserver", function() {
   gulp.src("./")
     .pipe(webserver({
       host:             "localhost",

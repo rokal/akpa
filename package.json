@@ -4,25 +4,33 @@
   "description": "Web application to generate Monte Carlo simulations for Kanban",
   "main": "index.html",
   "scripts": {
+    "clean": "gulp clean",
+    "pretest": "gulp compile-test",
     "jest": "node ./packages/jest-cli/bin/jest.js",
     "test": "jest"
   },
   "jest": {
-  "collectCoverage": true,
-  "coverageDirectory":"<rootDir>/tests/Results",
-  "coverageReporters":["lcov", "text"],
-  "moduleFileExtensions": ["ts", "tsx", "js"],
-  "testPathIgnorePatterns":[
-    "<rootDir>/tests/Results",
-    "<rootDir>/tests/JestTransform"], 
-  "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
-    },
-    "testRegex": "./tests/.*\\.(ts|tsx|js)$"
+    "collectCoverage": true,
+    "coverageDirectory": "<rootDir>/tests/Results",
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ],
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "testPathDirs": [
+      "<rootDir>/tests/JestTransform/tests"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/tests/Results"
+    ],
+    "testRegex": "(<rootDir>/tests/JestTransform/tests/.*|(\\.|/)(test|spec))\\.jsx?$"
   },
   "dependencies": {
     "@types/react": "^0.14.55",
     "@types/react-dom": "^0.14.19",
+    "del": "^2.2.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
   },

@@ -1,5 +1,5 @@
 import {Forecast} from "Forecast";
-import {Percentile} from "Percentile";
+import {Percentile} from "percentile";
 import {SimulationResult} from "SimulationResult";
 
 export abstract class ForecastBuilder{

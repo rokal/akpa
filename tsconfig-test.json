@@ -9,7 +9,7 @@
         "sourceRoot": "/src",
         "baseUrl": "src",
         "strictNullChecks": true,
-        "jsx":"react",
+        "jsx":"preserve",
         "pretty":true,
         "traceResolution": false,
         "moduleResolution": "node",
@@ -23,6 +23,7 @@
       	"src/**/*.ts",
         "src/**/*.tsx",
         "tests/**/*.ts",
+        "tests/**/*.tsx",
     	"typings/*.d.ts"      
     ]
 }

@@ -1,5 +1,5 @@
-import {ForecastBuilder} from "ForecastBuilder";
-import {ForecastItems} from "ForecastItems";
+import {ForecastBuilder} from "./ForecastBuilder";
+import {ForecastItems} from "./ForecastItems";
 import {Percentile} from "Percentile";
 import {SimulationResult} from "SimulationResult";
 
