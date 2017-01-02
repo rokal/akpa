@@ -28,6 +28,9 @@ export abstract class Simulation {
         return Math.floor(Math.random() * this.historicalThroughput.length);
     }
 
+    public get SimulationResults(): Array<SimulationResult> {
+        return this.simulationResults;
+    }
     protected simulationResults: Array<SimulationResult>;
 
     constructor(numberOfSimulations : number) {

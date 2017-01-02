@@ -14,9 +14,11 @@ describe("ForecastDateBuilder test suite", () => {
 
     it("Contructor with null or empty simulation results", () => {
 
-        let forecastItemsBuilder = new ForecastDateBuilder(expectedSimulationResults, 1000, 30);
+    debugger;
+        let forecastDateBuilder = new ForecastDateBuilder(expectedSimulationResults, 1000, 30);
 
-        expect(forecastItemsBuilder.Forecasts).not.toBeNull();    
+        forecastDateBuilder.createForecast();
+        expect(forecastDateBuilder.Forecasts).not.toBeNull();    
 
     }); 
 
