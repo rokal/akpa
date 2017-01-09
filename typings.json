@@ -2,7 +2,5 @@
   "globalDependencies": {
     "jest": "registry:dt/jest#16.0.0+20161220121457"
   },
-  "devDependencies": {
-    "chart.js": "registry:npm/chart.js#2.1.4+20160615174920"
-  }
+  "devDependencies": {}
 }

@@ -1,11 +1,9 @@
 ﻿/// <reference path="../typings/require/require.d.ts" />
 /// <reference path="../typings/react/react.d.ts" />
 /// <reference path="../typings/react-dom/react-dom.d.ts" />
-/// <reference path="../typings/react-chartjs/react-chartjs.d.ts" />
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {BarChart} from "react-chartjs";
 
 import {Percentile} from "percentile";
 import {SimulationDate} from "simulationDate";
@@ -29,13 +27,20 @@ require([], () => {
         document.getElementById("example")
     );
 
-    // var MyComponent = React.createClass({
-//         const chartData: any = {};
-//   const chartOptions: any = {};
+    const chartData: any = {};
+    const chartOptions: any = {};
+
+    Chart.Bar()
+
+    // var MyComponent = React.    ({
     //     render: function() {
-    //     return <BarChart data={chartData} options={chartOptions} width="600" height="250"/>
+    //     return <Bar data={chartData} options={chartOptions} width="600" height="250"/>
     //     }
     // });
+
+    // ReactDOM.render(
+    //     <Bar data={chartData} options={chartOptions} width="600" height="250"/>, 
+    //     document.getElementById("example"));
 
 });     
 

@@ -3,6 +3,7 @@ var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
 var tsTestProject = ts.createProject("tsconfig-test.json");
 var sourcemaps = require('gulp-sourcemaps');
+var babel = require('gulp-babel');
 var del = require('del');
 var webserver = require("gulp-webserver");
 var gutil = require("gulp-util");
@@ -17,6 +18,9 @@ gulp.task("compile", function() {
 
     return tsResult   
         .js
+        .pipe(babel({
+            presets:["es2015"]        
+        }))
         .pipe(sourcemaps.write(".")) // Now the sourcemaps are added to the .js file
         .pipe(gulp.dest("dist"))
 });
