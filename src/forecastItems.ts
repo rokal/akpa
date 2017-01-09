@@ -1,13 +1,24 @@
-﻿import {Forecast} from "forecast";
-import {Percentile} from "Percentile";
+﻿import {Percentile} from "Percentile";
 
-export class ForecastItems extends Forecast {
-    constructor(percentile: Percentile, numberOfItemsCompleted: Number, numberOfDays: Number) {
+// The './' in the following line is extremely important.
+// While it doesn't affect our production code or help the
+// Typescript compiler, it is necessary when we run our tests.
+// The jest test framework somehow has a problem with resolving
+// the base class 'Forecast'. It doesn't do this for 'Percentile'
+// in the above statement but when it comes to base class, we
+// have to put the './' in front.
+import {Forecast} from "./Forecast";
+
+export class ForecastItems extends Forecast 
+{
+    constructor(percentile: Percentile, numberOfItemsCompleted: Number, numberOfDays: Number) 
+    {
         super(percentile, numberOfItemsCompleted, numberOfDays);
     }
 
     toString() : String {
-        return this.NumberOfItemsCompleted + " items completed with " + 
-        this.Percentile + "% confidence of completing in " + this.NumberOfDays + " days";
+        return `In ${this.NumberOfDays} days, ${this.Percentile} confirence ` +
+               `of completing ${this.NumberOfItemsCompleted} items`;
+
     }
 }

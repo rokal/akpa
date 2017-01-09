@@ -1,0 +1,11 @@
+{
+  "collectCoverage": true,
+  "coverageDirectory":"<rootDir>/tests/Results",
+  "coverageReporters":["lcov", "text"],
+  "moduleFileExtensions": ["js"],
+  "testPathDirs":["<rootDir>/tests/JestTransform/tests"],
+  "testPathIgnorePatterns":[
+    "<rootDir>/tests/Results"],
+  "testRegex": "(<rootDir>/tests/JestTransform/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
+  "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js"
+}
