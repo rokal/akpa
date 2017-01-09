@@ -16,7 +16,7 @@
             "webRoot": "${workspaceRoot}"
         },
         {
-            "name": "Attach to url with files served from ./out",
+            "name": "Attach to url with files served from ./dist",
             "type": "chrome",
             "request": "attach",
             "port": 9222,
@@ -24,26 +24,29 @@
             "webRoot": "${workspaceRoot}/out"
         },
         {
-            "name": "Tests",
+            "name": "Debug Jest Tests",
             "type": "node",
             "request": "launch",
             "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
             "stopOnEntry": false,
             "args": [
-                "--debug",
-                "--runInBand"],
+                "--runInBand",
+                "--no-cache",
+                "-c", 
+                "jestconfig.json"],
             "cwd": "${workspaceRoot}",
             "preLaunchTask": null,
             "runtimeExecutable": null,
             "runtimeArgs": [
-                "--nolazy"
+                "--harmony"
             ],
             "env": {
                 "NODE_ENV": "development"
             },
             "console": "internalConsole",
-            "sourceMaps": false,
-            "outDir": null
+            "sourceMaps": true,
+            "outDir": null,
+            "port": 9070
         }
     ]
 }

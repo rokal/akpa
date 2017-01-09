@@ -4,6 +4,8 @@ import {SimulationResult} from "../src/simulationResult";
 
 describe("SimulationResult test suite", () => {
 
+
+
     var expectedItems = 100;
     var expectedDays = 30; 
 

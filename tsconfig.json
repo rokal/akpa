@@ -9,7 +9,8 @@
         "sourceRoot": "/src",
         "traceResolution": false,
         "baseUrl": "src",
-        "jsx":"react"
+        "strictNullChecks": true,
+        "jsx":"preserve"
     },
     "exclude":[
         "node_modules"
