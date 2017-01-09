@@ -32,13 +32,13 @@ gulp.task("compile-test", function() {
     return tsResult   
         .js
         .pipe(sourcemaps.write(".")) // Now the sourcemaps are added to the .js file
-        .pipe(gulp.dest("tests/JestTransform"))
+        .pipe(gulp.dest("tests/JsOutput"))
 });
 
 gulp.task("clean", function(){
     return del([
         "dist/**/*",
-        "tests/JestTransform/**/*",
+        "tests/JsOutput/**/*",
   ]);
 });
 

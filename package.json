@@ -20,12 +20,12 @@
       "js"
     ],
     "testPathDirs": [
-      "<rootDir>/tests/JestTransform/tests"
+      "<rootDir>/tests/JsOutput/tests"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/tests/Results"
     ],
-    "testRegex": "(<rootDir>/tests/JestTransform/tests/.*|(\\.|/)(test|spec))\\.jsx?$"
+    "testRegex": "(<rootDir>/tests/JsOutput/tests/.*|(\\.|/)(test|spec))\\.jsx?$"
   },
   "dependencies": {
     "@types/react": "^0.14.55",
