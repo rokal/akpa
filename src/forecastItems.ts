@@ -17,7 +17,8 @@ export class ForecastItems extends Forecast
     }
 
     toString() : String {
-        return this.NumberOfItemsCompleted + " items completed with " + 
-        this.Percentile + "% confidence of completing in " + this.NumberOfDays + " days";
+        return `In ${this.NumberOfDays} days, ${this.Percentile} confirence ` +
+               `of completing ${this.NumberOfItemsCompleted} items`;
+
     }
 }
