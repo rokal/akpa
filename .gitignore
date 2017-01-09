@@ -9,11 +9,10 @@ lib-cov
 
 dist/**/*.map
 dist/**/*.js
-dist/**/*.jsx
 pids
 logs
 results
-tests/JsOutput
+JestTransform
 
 node_modules
 npm-debug.log
