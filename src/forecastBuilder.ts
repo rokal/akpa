@@ -18,9 +18,9 @@ export abstract class ForecastBuilder{
     protected simulationResults: Array<SimulationResult>;
     private percentiles: Array<Percentile>;
 
-    constructor(simulationResults:Array<SimulationResult>, numberOfSimulations:number){
+    constructor(simulationResults:Array<SimulationResult>){
         this.simulationResults = simulationResults;        
-        this.numberOfSimulations = numberOfSimulations;
+        this.countSimulations();
         this.forecasts = new Array<Forecast>(0);
 
         this.initial_percentiles = new Array<Percentile>(5);
@@ -60,5 +60,11 @@ export abstract class ForecastBuilder{
         });
 
         return sortedArray;
+    }
+
+    private countSimulations() : void {
+        this.numberOfSimulations = 0;
+        for (let i = 0; i < this.simulationResults.length; i++)
+            this.numberOfSimulations = this.numberOfSimulations + this.simulationResults[i].Occurences;
     }
 }

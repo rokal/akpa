@@ -1,5 +1,5 @@
 import {ForecastBuilder} from "./ForecastBuilder";
-import {ForecastItems} from "./ForecastItems";
+import {ForecastDate} from "./ForecastDate";
 import {Percentile} from "Percentile";
 import {SimulationResult} from "SimulationResult";
 
@@ -8,9 +8,8 @@ export class ForecastDateBuilder extends ForecastBuilder {
     private numberOfDays: number;
 
     constructor(simulationResults: Array<SimulationResult>,
-                numberOfSimulations: number,
                 numberOfDays: number){
-        super(simulationResults, numberOfSimulations);
+        super(simulationResults);
 
         this.numberOfDays = numberOfDays;
     }
@@ -29,7 +28,7 @@ export class ForecastDateBuilder extends ForecastBuilder {
             for (var result of orderedDescResults) {
                 counter += result.Occurences;
                 if (counter >= numberOfOccurences) {
-                    this.Forecasts.push(new ForecastItems(percentile, result.NumberOfItemsCompleted, this.numberOfDays));
+                    this.Forecasts.push(new ForecastDate(percentile, result.NumberOfItemsCompleted, this.numberOfDays));
                     break;
                 }                    
             }

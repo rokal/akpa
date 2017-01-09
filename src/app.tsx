@@ -6,18 +6,18 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import {Percentile} from "percentile";
-import {SimulationNumberOfDays} from "simulationNumberOfDays";
+import {SimulationDate} from "simulationDate";
 import {ResultsDisplay} from "components/resultsDisplay";
 import {ForecastDateBuilder} from "ForecastDateBuilder";
 
 require([], () => {
 
     // Run the Monte Carlo simulations
-    let s = new SimulationNumberOfDays(30, 1000);
+    let s = new SimulationDate(30, 1000);
     s.HistoricalThroughput = [3, 2, 1, 0, 4, 2, 4, 1, 2, 0, 4, 2, 5];
     s.execute();
 
-    let f = new ForecastDateBuilder(s.SimulationResults, s.NumberOfSimulations, 30);
+    let f = new ForecastDateBuilder(s.SimulationResults, 30);
     f.createForecast();
     
     // Render the outputs with React component ResultsDisplay 

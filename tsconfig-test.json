@@ -14,7 +14,8 @@
         "traceResolution": false,
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "allowJs": false
     },
     "exclude":[
         "node_modules"

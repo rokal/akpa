@@ -2,24 +2,26 @@
 
 import {Percentile} from "../src/Percentile";
 import {SimulationResult} from "../src/SimulationResult";
+import {ForecastItems} from "../src/forecastItems";
+import {ForecastDate} from "../src/forecastDate";
+import {Forecast} from "../src/forecast";
 import {ForecastDateBuilder} from "../src/forecastDateBuilder";
 import {ForecastBuilder} from "../src/forecastBuilder";
- 
+import {SimulationResultsGenerator} from "./SimulationResultsGenerator"; 
+
 describe("ForecastDateBuilder test suite", () => {
 
-    var expectedSimulationResults = [
-        new SimulationResult(40, 30),
-        new SimulationResult(45, 30)
-    ];
+    var simulationResultsGenerator = new SimulationResultsGenerator(1000);
+    var expectedSimulationResults;
 
-    it("Contructor with null or empty simulation results", () => {
+    it("Validate forecasts with default percentiles", () => {
 
-    debugger;
-        let forecastDateBuilder = new ForecastDateBuilder(expectedSimulationResults, 1000, 30);
+        expectedSimulationResults = simulationResultsGenerator.createSimulationResultsWithFixedDate(30);
+        let forecastDateBuilder = new ForecastDateBuilder(expectedSimulationResults, 30);
 
         forecastDateBuilder.createForecast();
+
         expect(forecastDateBuilder.Forecasts).not.toBeNull();    
-
+        expect(forecastDateBuilder.Forecasts.length).toBe(5);        
     }); 
-
 });

@@ -36,7 +36,7 @@ export abstract class Simulation {
     constructor(numberOfSimulations : number) {
 
         this.NumberOfSimulations = numberOfSimulations;
-        this.simulationResults = new Array<SimulationResult>(numberOfSimulations);
+        this.simulationResults = new Array<SimulationResult>();
 
         this.historicalThroughput = [2, 7, 3, 9, 0, 3, 6, 8, 3];
     }

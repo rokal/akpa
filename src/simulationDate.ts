@@ -3,7 +3,7 @@ import {Percentile} from "Percentile";
 import {Simulation} from "Simulation";
 import {SimulationResult} from "SimulationResult";
 
-export class SimulationNumberOfDays extends Simulation{
+export class SimulationDate extends Simulation{
 
     private numberOfDays: number;
 
