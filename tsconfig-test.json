@@ -5,7 +5,7 @@
         "noImplicitAny": true,
         "removeComments": false,
         "sourceMap": true,
-        "outDir": "./tests/JestTransform",
+        "outDir": "./tests/JsOutput",
         "sourceRoot": "/src",
         "baseUrl": "src",
         "strictNullChecks": true,

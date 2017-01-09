@@ -7,11 +7,14 @@ lib-cov
 *.pid
 *.gz
 
-dist
+dist/**/*.map
+dist/**/*.js
+dist/**/*.jsx
+
 pids
 logs
-results
-JestTransform
+tests/results
+tests/JsOutput
 
 node_modules
 npm-debug.log

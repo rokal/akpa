@@ -50,7 +50,7 @@ module.exports = {
       // Build the path. This is really badly made as we don't
       // have the root directory besides using the '.'
       let pathObject = pathLib.parse(fullPath);
-      let dirName = pathLib.join(".", "tests", "JestTransform");
+      let dirName = pathLib.join(".", "tests", "JsOutput");
       
       // Check the directory doesn't exists and if so, mkdir it
       if (!fs.existsSync(dirName))
