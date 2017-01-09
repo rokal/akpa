@@ -7,7 +7,7 @@
         "sourceMap": true,
         "outDir": "./dist/",
         "sourceRoot": "/src",
-        "traceResolution": false,
+        "traceResolution": true,
         "baseUrl": "src",
         "strictNullChecks": true,
         "jsx":"preserve"

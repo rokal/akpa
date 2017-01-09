@@ -1,14 +1,17 @@
 ﻿/// <reference path="../typings/require/require.d.ts" />
 /// <reference path="../typings/react/react.d.ts" />
 /// <reference path="../typings/react-dom/react-dom.d.ts" />
+/// <reference path="../typings/react-chartjs/react-chartjs.d.ts" />
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import {BarChart} from "react-chartjs";
 
 import {Percentile} from "percentile";
 import {SimulationDate} from "simulationDate";
 import {ResultsDisplay} from "components/resultsDisplay";
 import {ForecastDateBuilder} from "ForecastDateBuilder";
+
 
 require([], () => {
 
@@ -25,6 +28,14 @@ require([], () => {
         <ResultsDisplay forecasts={f.Forecasts} />,
         document.getElementById("example")
     );
+
+    // var MyComponent = React.createClass({
+//         const chartData: any = {};
+//   const chartOptions: any = {};
+    //     render: function() {
+    //     return <BarChart data={chartData} options={chartOptions} width="600" height="250"/>
+    //     }
+    // });
 
 });     
 
