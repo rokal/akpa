@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
     "jest": "registry:dt/jest#16.0.0+20161220121457"
-  }
+  },
+  "devDependencies": {}
 }
