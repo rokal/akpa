@@ -5,6 +5,9 @@ import {SimulationResult} from "./simulationResult";
 
 export class SimulationDate extends Simulation{
 
+    public get NumberOfDays() : number{
+        return this.numberOfDays;
+    }
     private numberOfDays: number;
 
     constructor(numberOfDays: number, numberOfSimulations: number) {  
