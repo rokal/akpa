@@ -1,16 +1,17 @@
 {
     "compilerOptions": {
-        "module": "amd",
+        "module": "commonjs",
         "target": "es5",
+        "jsx":"react",
         "noImplicitAny": true,
         "removeComments": false,
         "sourceMap": true,
-        "outDir": "./dist/",
-        "sourceRoot": "/src",
+        "sourceRoot": "./src",
+        "mapRoot":"./dist",
+        "baseUrl": "src",        
+        "outDir": "./dist/",        
         "traceResolution": true,
-        "baseUrl": "src",
-        "strictNullChecks": true,
-        "jsx":"preserve"
+        "strictNullChecks": true        
     },
     "exclude":[
         "node_modules"
@@ -18,6 +19,6 @@
     "include":[
     	"src/**/*.ts",
         "src/**/*.tsx",
-    	"typings/*.d.ts"      
+    	"typings/*.d.ts"
     ]
 }

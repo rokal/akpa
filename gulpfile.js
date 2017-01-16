@@ -2,11 +2,22 @@ var gulp = require("gulp");
 var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
 var tsTestProject = ts.createProject("tsconfig-test.json");
-var sourcemaps = require('gulp-sourcemaps');
-var babel = require('gulp-babel');
-var del = require('del');
+var sourcemaps = require("gulp-sourcemaps");
+var babel = require("gulp-babel");
+var del = require("del");
 var webserver = require("gulp-webserver");
-var gutil = require("gulp-util");
+var webpack = require("gulp-webpack");
+
+const sourceMapOptions = {
+        sourceRoot: "../"
+    };
+
+
+gulp.task("webpack", function() {
+    var result = gulp.src('src/**/*.*')
+        .pipe(webpack( require('./webpack.config.js') ))
+        .pipe(gulp.dest('./dist'));
+});
 
 // Compile Typescript project
 gulp.task("compile", function() {
@@ -21,7 +32,7 @@ gulp.task("compile", function() {
         .pipe(babel({
             presets:["es2015"]        
         }))
-        .pipe(sourcemaps.write(".")) // Now the sourcemaps are added to the .js file
+        .pipe(sourcemaps.write(".", sourceMapOptions)) // Now the sourcemaps are added to the .js file
         .pipe(gulp.dest("dist"))
 });
 

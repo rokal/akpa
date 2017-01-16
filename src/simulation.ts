@@ -1,5 +1,5 @@
-﻿import {Forecast} from "forecast";
-import {SimulationResult} from "simulationResult";
+﻿import {Forecast} from "./forecast";
+import {SimulationResult} from "./simulationResult";
 
 export abstract class Simulation {
 
@@ -43,7 +43,7 @@ export abstract class Simulation {
 
     abstract execute(): void;
 
-    protected addSimulationResult(numberOfItemsCompleted: Number, numberOfDays: Number): void {
+    protected addSimulationResult(numberOfItemsCompleted: number, numberOfDays: number): void {
 
         var list = this.simulationResults.filter(result => result.NumberOfItemsCompleted == numberOfItemsCompleted);
                          

@@ -1,7 +1,7 @@
-﻿import {ForecastItems} from "ForecastItems";
-import {Percentile} from "Percentile";
-import {Simulation} from "Simulation";
-import {SimulationResult} from "SimulationResult";
+﻿import {ForecastItems} from "./forecastItems";
+import {Percentile} from "./percentile";
+import {Simulation} from "./simulation";
+import {SimulationResult} from "./simulationResult";
 
 export class SimulationDate extends Simulation{
 

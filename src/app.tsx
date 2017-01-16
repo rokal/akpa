@@ -5,13 +5,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {Percentile} from "percentile";
-import {SimulationDate} from "simulationDate";
-import {ResultsDisplay} from "components/resultsDisplay";
-import {ForecastDateBuilder} from "ForecastDateBuilder";
+import {Percentile} from "./percentile";
+import {SimulationDate} from "./simulationDate";
+import {ResultsDisplay} from "./components/resultsDisplay";
+import {MyChart} from "./components/myChart";
+import {ForecastDateBuilder} from "./forecastDateBuilder";
+import {Coordinates} from "./components/coordinates";
 
-
-require([], () => {
+//require(["react-easy-chart"], () => {
 
     // Run the Monte Carlo simulations
     let s = new SimulationDate(30, 1000);
@@ -24,14 +25,13 @@ require([], () => {
     // Render the outputs with React component ResultsDisplay 
     ReactDOM.render(
         <ResultsDisplay forecasts={f.Forecasts} />,
-        document.getElementById("example")
+        document.getElementById("sim-summary")
     );
 
-    const chartData: any = {};
-    const chartOptions: any = {};
-
-    Chart.Bar()
-
+    ReactDOM.render(
+        <MyChart SimulationResults={s.SimulationResults}/>,
+        document.getElementById("sim-chart")
+    );
     // var MyComponent = React.    ({
     //     render: function() {
     //     return <Bar data={chartData} options={chartOptions} width="600" height="250"/>
@@ -42,6 +42,6 @@ require([], () => {
     //     <Bar data={chartData} options={chartOptions} width="600" height="250"/>, 
     //     document.getElementById("example"));
 
-});     
+//});     
 
       

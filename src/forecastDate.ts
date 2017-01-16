@@ -1,4 +1,4 @@
-﻿import {Percentile} from "Percentile";
+﻿import {Percentile} from "./percentile";
 
 // The './' in the following line is extremely important.
 // While it doesn't affect our production code or help the

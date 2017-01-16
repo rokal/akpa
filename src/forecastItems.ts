@@ -1,4 +1,4 @@
-﻿import {Percentile} from "Percentile";
+﻿import {Percentile} from "./percentile";
 
 // The './' in the following line is extremely important.
 // While it doesn't affect our production code or help the
@@ -7,7 +7,7 @@
 // the base class 'Forecast'. It doesn't do this for 'Percentile'
 // in the above statement but when it comes to base class, we
 // have to put the './' in front.
-import {Forecast} from "./Forecast";
+import {Forecast} from "./forecast";
 
 export class ForecastItems extends Forecast 
 {

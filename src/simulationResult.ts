@@ -1,20 +1,20 @@
 ﻿export class SimulationResult {
-    public get NumberOfItemsCompleted(): Number {
+    public get NumberOfItemsCompleted(): number {
         return this._numberOfItemsCompleted;
     }
-    private _numberOfItemsCompleted: Number;
+    private _numberOfItemsCompleted: number;
 
-    public get NumberOfDays(): Number {
+    public get NumberOfDays(): number {
         return this._numberOfDays;
     }
-    private _numberOfDays: Number;
+    private _numberOfDays: number;
 
     public get Occurences(): number {
         return this._occurences;
     }
     private _occurences: number;
 
-    constructor(numberOfItemsCompleted: Number, numberOfDays: Number) {
+    constructor(numberOfItemsCompleted: number, numberOfDays: number) {
         this._numberOfItemsCompleted = numberOfItemsCompleted;
         this._numberOfDays = numberOfDays;
         this._occurences = 1;

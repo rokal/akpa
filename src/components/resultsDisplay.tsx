@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {Forecast} from "forecast";
+import {Forecast} from "../forecast";
 
 export interface ResultsProps { forecasts: Forecast[]; }
 
@@ -9,13 +9,15 @@ export interface ResultsProps { forecasts: Forecast[]; }
 export class ResultsDisplay extends React.Component<ResultsProps, undefined> {
     render() {
 
+    // <h1>Forecasts for delivery 30 items (1000 simulations)</h1>
+
     var message = "<ul>";
     for (let f of this.props.forecasts)
         message += "<li>" + f.toString() + "</li>";
 
     const fc = this.props.forecasts;
     const listItems = fc.map((currentForecast, index, arr) =>
-        <li>{currentForecast.toString()}</li>
+        <li key={currentForecast.Percentile.value}>{currentForecast.toString()}</li>
     );
 
     return <ul>{listItems}</ul>;
