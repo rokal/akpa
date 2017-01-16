@@ -2,7 +2,7 @@ module.exports = {
     entry: "./src/app.tsx",
     output: {
         filename: "bundle.js",
-        path: "./dist",
+        path: "/dist",
         devtoolModuleFilenameTemplate: function(info){
             return "../" + info.resourcePath;
   }        

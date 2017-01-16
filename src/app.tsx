@@ -41,10 +41,10 @@ import {SimulationButton} from "./components/simulationButton";
         document.getElementById("sim-chart")
     );
     
-    ReactDOM.render(
-        <SimulationButton />,
-        document.getElementById('app')
-    );
+    // ReactDOM.render(
+    //     <SimulationButton />,
+    //     document.getElementById('app')
+    // );
 
 //});     
 
