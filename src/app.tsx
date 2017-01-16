@@ -5,12 +5,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+
 import {Percentile} from "./percentile";
 import {SimulationDate} from "./simulationDate";
-import {ResultsDisplay} from "./components/resultsDisplay";
-import {SimulationChart} from "./components/SimulationChart";
 import {ForecastDateBuilder} from "./forecastDateBuilder";
 
+import {ResultsDisplay} from "./components/resultsDisplay";
+import {SimulationChart} from "./components/SimulationChart";
+import {SimulationButton} from "./components/simulationButton";
 
 //require(["react-easy-chart"], () => {
 
@@ -38,8 +40,11 @@ import {ForecastDateBuilder} from "./forecastDateBuilder";
         <SimulationChart SimulationResults={s.SimulationResults}/>,
         document.getElementById("sim-chart")
     );
-
-
+    
+    ReactDOM.render(
+        <SimulationButton />,
+        document.getElementById('app')
+    );
 
 //});     
 
