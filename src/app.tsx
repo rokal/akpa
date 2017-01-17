@@ -5,14 +5,21 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-
 import {Percentile} from "./percentile";
 import {SimulationDate} from "./simulationDate";
 import {ForecastDateBuilder} from "./forecastDateBuilder";
 
 import {ResultsDisplay} from "./components/resultsDisplay";
 import {SimulationChart} from "./components/SimulationChart";
-import {SimulationButton} from "./components/simulationButton";
+import {Header} from "./components/header";
+import {NullComponent} from "./components/nullComponent";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import AppBar from "material-ui/AppBar";
+import Drawer from "material-ui/Drawer";
+import MenuItem from "material-ui/MenuItem";
+
+import injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 //require(["react-easy-chart"], () => {
 
@@ -25,26 +32,59 @@ import {SimulationButton} from "./components/simulationButton";
     let f = new ForecastDateBuilder(s.SimulationResults, 30);
     f.createForecast();
     
-    // Render the outputs with React component ResultsDisplay 
     ReactDOM.render(
-        <ResultsDisplay 
-            numberOfDays={s.NumberOfDays} 
-            numberOfItems={0} 
-            numberOfSimulations={s.NumberOfSimulations} 
-            forecasts={f.Forecasts} />,
-        document.getElementById("sim-summary")
+        <MuiThemeProvider>
+        <div>
+            <Header/>
+            <ResultsDisplay 
+                numberOfDays={s.NumberOfDays} 
+                numberOfItems={0} 
+                numberOfSimulations={s.NumberOfSimulations} 
+                forecasts={f.Forecasts} />
+            <SimulationChart SimulationResults={s.SimulationResults}/>
+        </div>        
+        </MuiThemeProvider>,
+        document.getElementById("app")
     );
 
+    // Render the outputs with React component ResultsDisplay 
+    // ReactDOM.render(
+            // <ResultsDisplay 
+            //     numberOfDays={s.NumberOfDays} 
+            //     numberOfItems={0} 
+            //     numberOfSimulations={s.NumberOfSimulations} 
+            //     forecasts={f.Forecasts} />        
+    //     document.getElementById("sim-summary")
+    // );
+
     // Render the simulation results in a bar chart
-    ReactDOM.render(
-        <SimulationChart SimulationResults={s.SimulationResults}/>,
-        document.getElementById("sim-chart")
-    );
+    // ReactDOM.render(
+    //     <SimulationChart SimulationResults={s.SimulationResults}/>,
+    //     document.getElementById("sim-chart")
+    // );
     
     // ReactDOM.render(
-    //     <SimulationButton />,
+    //     <Header />,
+    //     document.getElementById("app")
+    // );
+    // ReactDOM.render(
+    //    <MuiThemeProvider>
+    //         <AppBar
+    //             title="Monte Carlo simulations"
+    //             onLeftIconButtonTouchTap={callTheMenu} />
+    //     </MuiThemeProvider>,
     //     document.getElementById('app')
     // );
+
+    // function callTheMenu(event: Object) {
+    //     ReactDOM.render(
+    //         <Drawer open={this.state.open}>
+    //         <MenuItem>Menu Item</MenuItem>
+    //         <MenuItem>Menu Item 2</MenuItem>
+    //         </Drawer>,
+    //         document.getElementById("theDrawer")
+    //     );
+    // }
 
 //});     
 
