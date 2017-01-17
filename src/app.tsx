@@ -12,7 +12,6 @@ import {ForecastDateBuilder} from "./forecastDateBuilder";
 import {ResultsDisplay} from "./components/resultsDisplay";
 import {SimulationChart} from "./components/SimulationChart";
 import {Header} from "./components/header";
-import {NullComponent} from "./components/nullComponent";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
@@ -47,44 +46,6 @@ injectTapEventPlugin();
         document.getElementById("app")
     );
 
-    // Render the outputs with React component ResultsDisplay 
-    // ReactDOM.render(
-            // <ResultsDisplay 
-            //     numberOfDays={s.NumberOfDays} 
-            //     numberOfItems={0} 
-            //     numberOfSimulations={s.NumberOfSimulations} 
-            //     forecasts={f.Forecasts} />        
-    //     document.getElementById("sim-summary")
-    // );
-
-    // Render the simulation results in a bar chart
-    // ReactDOM.render(
-    //     <SimulationChart SimulationResults={s.SimulationResults}/>,
-    //     document.getElementById("sim-chart")
-    // );
-    
-    // ReactDOM.render(
-    //     <Header />,
-    //     document.getElementById("app")
-    // );
-    // ReactDOM.render(
-    //    <MuiThemeProvider>
-    //         <AppBar
-    //             title="Monte Carlo simulations"
-    //             onLeftIconButtonTouchTap={callTheMenu} />
-    //     </MuiThemeProvider>,
-    //     document.getElementById('app')
-    // );
-
-    // function callTheMenu(event: Object) {
-    //     ReactDOM.render(
-    //         <Drawer open={this.state.open}>
-    //         <MenuItem>Menu Item</MenuItem>
-    //         <MenuItem>Menu Item 2</MenuItem>
-    //         </Drawer>,
-    //         document.getElementById("theDrawer")
-    //     );
-    // }
 
 //});     
 

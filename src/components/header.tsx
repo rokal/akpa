@@ -15,19 +15,27 @@ export class Header extends React.Component<HeaderProps, HeaderState>{
         this.state = {open: false};
     }
     
-    render () {
+    render() {
         return <div> 
               <AppBar
                 title="Monte Carlo simulations"
                 onLeftIconButtonTouchTap={this.handleToggle.bind(this)} />               
-              <Drawer open={this.state.open}>
-                <MenuItem>Démarrage</MenuItem>
-                <MenuItem>En cours</MenuItem>
+              <Drawer 
+                open={this.state.open} 
+                onRequestChange={(open) => this.setState({open})}>
+                
+                <MenuItem onTouchTap={this.handleClose.bind(this)}>Démarrage</MenuItem>
+                <MenuItem onTouchTap={this.handleClose.bind(this)}>En cours</MenuItem>
+              
               </Drawer>
               </div>;
     }
 
-    handleToggle(){
+    handleClose(): void { 
+        this.setState({open: false}); 
+    }
+
+    handleToggle(): void{
         this.setState({open: !this.state.open});
     };
 
