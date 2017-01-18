@@ -20,13 +20,13 @@ import TextField from "material-ui/TextField";
 export interface NewProjectDialogProps {
     open:boolean;
     throughputFrequency:ThroughputFrequency;
-    cbCloseDialog:(shown:boolean, data: SimulationConfig) => void
+    cbCloseDialog:(shown:boolean, data: SimulationConfig | undefined) => void
 }
 
 export interface NewProjectDialogState {
     shown:boolean;
-    minValue?:number,
-    maxValue?:number,
+    minValue?:string | number | undefined,
+    maxValue?:string | number | undefined,
     throughputFrequency?:ThroughputFrequency;
     startDate?: Date,
     numberOfDays?: number;
@@ -52,10 +52,16 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
     
         const actions = [
         <FlatButton
+            label="Cancel"
+            primary={false}
+            keyboardFocused={false}
+            onTouchTap={this.handleBtnClose.bind(this)}
+        />,
+        <FlatButton
             label="Ok"
             primary={true}
             keyboardFocused={true}
-            onTouchTap={this.handleDialogClose.bind(this)}
+            onTouchTap={this.handleBtnOk.bind(this)}
         />,
         ];
 
@@ -63,8 +69,7 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
                 title="Build simulations for a new Kanban project"
                 actions={actions}
                 modal={true}
-                open={this.props.open}
-                onRequestClose={this.handleDialogClose}>
+                open={this.props.open}>
 
                 Between 
                 <TextField
@@ -97,7 +102,7 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
     }
 
     handleMinValueChange(e:any){
-        let value = e.target.value;
+        let output = Utilities.convertToInt(e.target.value);
         let state: NewProjectDialogState = {
             shown:true, 
             minValue: e.target.value, 
@@ -106,10 +111,28 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
             minValueErrorText: "",
             maxValueErrorText:""};
 
-        if (value == "")        
-            state.minValueErrorText = "Woops";
+        if (output.success)
+        {
+            if (output.value < 0){
+                state.minValueErrorText = "Please enter a value greater or equal to 0";    
+            } else if (output.value > 100){
+                state.minValueErrorText = "Please enter a value smaller than 100";    
+            } else if (output.value > this.state.maxValue){
+                state.minValueErrorText = "Please enter a value smaller than the maximum value";    
+            } else
+                state.minValueErrorText = "";
         
-        state.minValue = e.target.value;
+            state.minValue = output.value;
+        }
+        else
+        {
+            if (e.target.value.length == 0)
+                state.minValue = "";
+            else
+                state.minValue = output.value;
+            state.minValueErrorText = "Please enter a numeric value";
+        }
+        
         this.setState(state);
     }
 
@@ -119,7 +142,11 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
             throughputFrequency:value});
     }
 
-    handleDialogClose(): void{
+    handleBtnClose(event:any): void{
+        this.props.cbCloseDialog(false, undefined);
+    }
+    
+    handleBtnOk(event:any): void{
         // let data = new SimulationConfig(
         //     Utilities.generateHistoricalThroughput(this.state.minValue as number, this.state.maxValue as number, 10),
         //     this.state.throughputFrequency as ThroughputFrequency,

@@ -14,7 +14,7 @@ import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 
 export interface HeaderProps {
-    cbLaunchSimulation:(data:SimulationConfig) => void    
+    cbLaunchSimulation:(data:SimulationConfig | undefined) => void    
 }
 export interface HeaderState {
     open:boolean;
@@ -68,7 +68,8 @@ export class Header extends React.Component<HeaderProps, HeaderState>{
             dialogOpen: shown
         });
 
-        this.props.cbLaunchSimulation(data);
+        if (data)
+            this.props.cbLaunchSimulation(data);
     }
 
     handleExistingProject(): void{        

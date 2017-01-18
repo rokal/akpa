@@ -21,11 +21,11 @@ export module Utilities{
     /**
      * Returns 
      */
-    export function convertToInt(value: any): {output:number | null, success: boolean}
+    export function convertToInt(value: any): {value:number | undefined, success: boolean}
     {
         if (isNaN(value)) {
             return {
-                output: null,
+                value: undefined,
                 success:false};
         }
         else {
@@ -33,12 +33,12 @@ export module Utilities{
             if ((x | 0) === x)
             {
                 return {
-                    output: (x | 0),
+                    value: (x | 0),
                     success: (x | 0) === x};
             }
             else {
                 return {
-                    output: null,
+                    value: undefined,
                     success: false};
             }
         }
