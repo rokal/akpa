@@ -1,8 +1,8 @@
 module.exports = {
-    entry: "./src/app.tsx",
+    entry: "./src/main.tsx",
     output: {
         filename: "bundle.js",
-        path: "./dist",
+        path: "/dist",
         devtoolModuleFilenameTemplate: function(info){
             return "../" + info.resourcePath;
   }        
@@ -28,8 +28,8 @@ module.exports = {
     // assume a corresponding global variable exists and use that instead.
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
-    externals: {
-        "react": "React",
-        "react-dom": "ReactDOM",
-    },
+    // externals: {
+    //     "react": "React",
+    //     "react-dom": "ReactDOM",
+    // },
 };

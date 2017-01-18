@@ -6,7 +6,7 @@
     "isShellCommand": true,
     "tasks": [
         {
-            "taskName": "default",
+            "taskName": "webpack",
             "args": [],
             "isBuildCommand": true,
             "isWatching": false,
