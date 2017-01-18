@@ -9,7 +9,6 @@ import {ThroughputFrequency} from "../throughputFrequencyEnum";
 import {SimulationConfig} from "./simulationConfig";
 import {NewProjectDialog} from "./newProjectDialog";
 
-import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
@@ -28,7 +27,7 @@ export class Header extends React.Component<HeaderProps, HeaderState>{
         this.state = {open: false, dialogOpen: false};
     }
 
-    render() {
+    render(): JSX.Element {
     
         return <div> 
               <AppBar

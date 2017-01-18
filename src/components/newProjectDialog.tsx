@@ -46,7 +46,7 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
             errorText:""};
     }
 
-    render() :JSX.Element {
+    render(): JSX.Element {
     
         const actions = [
         <FlatButton

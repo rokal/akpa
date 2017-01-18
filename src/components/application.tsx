@@ -4,7 +4,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {Percentile} from "../percentile";
 import {SimulationDate} from "../simulationDate";
 import {ForecastDateBuilder} from "../forecastDateBuilder";
 
@@ -62,8 +61,3 @@ export class Application extends React.Component<AppProps, undefined>{
         this.setState(undefined);   
     }
 }
-
-
-
-
-      
