@@ -21,22 +21,25 @@ export module Utilities{
     /**
      * Returns 
      */
-    export function convertToInt(value: any, output:number | null): boolean
+    export function convertToInt(value: any): {output:number | null, success: boolean}
     {
         if (isNaN(value)) {
-            output = null;
-            return false;
+            return {
+                output: null,
+                success:false};
         }
         else {
             let x = parseFloat(value);
             if ((x | 0) === x)
             {
-                output = (x | 0);
-                return (x | 0) === x;
+                return {
+                    output: (x | 0),
+                    success: (x | 0) === x};
             }
             else {
-                output = null;
-                return false;
+                return {
+                    output: null,
+                    success: false};
             }
         }
     }        
