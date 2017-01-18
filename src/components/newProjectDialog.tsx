@@ -31,7 +31,8 @@ export interface NewProjectDialogState {
     startDate?: Date,
     numberOfDays?: number;
     numberOfItems?: number,
-    errorText?:String
+    minValueErrorText?:String,
+    maxValueErrorText?:String
 }
 
 export class NewProjectDialog extends React.Component<NewProjectDialogProps, NewProjectDialogState>{
@@ -43,7 +44,8 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
             minValue:0, 
             maxValue:10, 
             throughputFrequency: props.throughputFrequency,
-            errorText:""};
+            minValueErrorText:"",
+            maxValueErrorText:""};
     }
 
     render(): JSX.Element {
@@ -68,11 +70,15 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
                 <TextField
                     id="minValueTextField"
                     hintText="minimum value"
+                    value={this.state.minValue}
                     onChange={this.handleMinValueChange.bind(this)}
-                    errorText={this.state.errorText}
+                    errorText={this.state.minValueErrorText}
                 /> and <TextField
                     id="maxValueTextField"
                     hintText="maximum value"
+                    value={this.state.maxValue}
+                    onChange={this.handleMinValueChange.bind(this)}
+                    errorText={this.state.maxValueErrorText}
                 /> items per <SelectField
                     floatingLabelText="Frequency"
                     value={this.state.throughputFrequency}
@@ -97,10 +103,11 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
             minValue: e.target.value, 
             maxValue: this.state.maxValue, 
             throughputFrequency: this.state.throughputFrequency,
-            errorText: ""};
+            minValueErrorText: "",
+            maxValueErrorText:""};
 
         if (value == "")        
-            state.errorText = "Woops";
+            state.minValueErrorText = "Woops";
         
         state.minValue = e.target.value;
         this.setState(state);
