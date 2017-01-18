@@ -1,32 +1,24 @@
-﻿/// <reference path="../typings/require/require.d.ts" />
-/// <reference path="../typings/react/react.d.ts" />
-/// <reference path="../typings/react-dom/react-dom.d.ts" />
+﻿/// <reference path="../../typings/react/react.d.ts" />
+/// <reference path="../../typings/react-dom/react-dom.d.ts" />
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {Percentile} from "./percentile";
-//import {Simulation} from "./simulation";
-import {SimulationDate} from "./simulationDate";
-import {SimulationConfig} from "./components/simulationConfig";
-import {ForecastDateBuilder} from "./forecastDateBuilder";
+import {Percentile} from "../percentile";
+import {SimulationDate} from "../simulationDate";
+import {ForecastDateBuilder} from "../forecastDateBuilder";
 
-import {ResultsDisplay} from "./components/resultsDisplay";
-import {SimulationChart} from "./components/SimulationChart";
-import {Header} from "./components/header";
-
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import {Header} from "./header";
+import {ResultsDisplay} from "./resultsDisplay";
+import {SimulationConfig} from "./simulationConfig";
+import {SimulationChart} from "./SimulationChart";
 
 // This fix the touch tap event which is not currently supported
 // in the official React release. It will be removed one day when
 // React integrates it
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
-
-//require(["react-easy-chart"], () => {
-// function main()
-// {    
-//}
 
 export interface AppProps{}
 export class Application extends React.Component<AppProps, undefined>{
@@ -71,10 +63,6 @@ export class Application extends React.Component<AppProps, undefined>{
     }
 }
 
-    ReactDOM.render(
-        <Application/>,
-        document.getElementById("app")
-    );
 
 
 
