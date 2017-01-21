@@ -1,12 +1,14 @@
 {
   "globalDependencies": {
     "jest": "registry:dt/jest#16.0.0+20161220121457",
-    "moment-timezone": "registry:dt/moment-timezone#0.2.5+20161208060822"
+    "material-ui": "registry:dt/material-ui#0.16.0+20170118063755",
+    "moment": "registry:dt/moment#2.11.1+20161010105546",
+    "react-easy-chart": "registry:dt/react-easy-chart#0.1.12+20161121014224"
   },
   "devDependencies": {
     "react-test-renderer": "registry:dt/react-test-renderer#15.4.0+20170101233612"
   },
-  "globalDevDependencies": {
-    "material-ui": "registry:dt/material-ui#0.16.0+20161228203806"
+  "dependencies": {
+    "react-tap-event-plugin": "registry:dt/react-tap-event-plugin#0.0.0+20160726072212"
   }
 }
