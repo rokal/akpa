@@ -1,7 +1,7 @@
 /// <reference path="../../typings/react/react.d.ts" />
 /// <reference path="../../typings/react-dom/react-dom.d.ts" />
 /// <reference path="../../typings/globals/material-ui/index.d.ts" />
-/// <reference path="../../typings/globals/moment-timezone/index.d.ts" />
+/// <reference path="../../typings/globals/moment/index.d.ts" />
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -231,7 +231,6 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
     private handleBtnOk(event:any): void{
         let now = moment(new Date());
         let futur = moment(this.state.deliveryDate);
-        let diff = futur.subtract(now);
 
         let data = new SimulationConfig(
             Utilities.generateHistoricalThroughput(
