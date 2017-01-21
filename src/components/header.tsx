@@ -35,6 +35,7 @@ export class Header extends React.Component<HeaderProps, HeaderState>{
                 onLeftIconButtonTouchTap={this.handleDrawerToggle.bind(this)} />               
               <Drawer 
                 open={this.state.open} 
+                docked={false}
                 onRequestChange={(open, dialogOpen) => this.setState({
                     open:false, 
                     dialogOpen:false} )}>
@@ -51,33 +52,22 @@ export class Header extends React.Component<HeaderProps, HeaderState>{
             </div>;
     }
 
-                // <ul>
-                //   <li>To deliver for {<DatePicker hintText="delivery date" />}</li>
-                // </ul>Open a Date Picker dialog from within a dialog.
-
     handleNewProject(): void { 
-        //this.refs["newdialog"].state;
-        this.setState({
-            open: false, 
-            dialogOpen: true}); 
+        this.setState({open: false, dialogOpen: true});
     }
 
-    handleCloseNewProjectDialog(shown:boolean, data:SimulationConfig): void{
-        this.setState({
-            open:false,
-            dialogOpen: shown
-        });
+    handleExistingProject(): void{        
+        this.setState({open: false, dialogOpen: false});
+}
 
+    handleCloseNewProjectDialog(data:SimulationConfig): void{
+        this.setState({open: false, dialogOpen: false});
+        
         if (data)
             this.props.cbLaunchSimulation(data);
     }
 
-    handleExistingProject(): void{        
-    }
-
     handleDrawerToggle(): void{
-        this.setState({
-            open: !this.state.open,
-            dialogOpen:false});
+        this.setState({open: !this.state.open, dialogOpen:false});
     };    
 }

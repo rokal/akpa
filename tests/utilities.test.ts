@@ -8,43 +8,43 @@ describe("Utilities test suite", () => {
     it.only("convertToInt tests", () => {
 
         data = Utilities.convertToInt(42);
-        expect(data.success).toBeTruthy();
+        expect(data.isInteger).toBeTruthy();
         expect(data.value).toBe(42);
 
         data = Utilities.convertToInt("42");
-        expect(data.success).toBeTruthy();
+        expect(data.isInteger).toBeTruthy();
         expect(data.value).toBe(42);
 
         data = Utilities.convertToInt("42.0");
-        expect(data.success).toBeTruthy();
+        expect(data.isInteger).toBeTruthy();
         expect(data.value).toBe(42);
 
         data = Utilities.convertToInt(" 1 ");
-        expect(data.success).toBeTruthy();
+        expect(data.isInteger).toBeTruthy();
         expect(data.value).toBe(1);
 
         data = Utilities.convertToInt("42.1");
-        expect(data.success).toBeFalsy();
+        expect(data.isInteger).toBeFalsy();
         expect(data.value).toBeUndefined();
 
         data = Utilities.convertToInt("4e2a");
-        expect(data.success).toBeFalsy();
+        expect(data.isInteger).toBeFalsy();
         expect(data.value).toBeUndefined();
 
         data = Utilities.convertToInt("1a");
-        expect(data.success).toBeFalsy();
+        expect(data.isInteger).toBeFalsy();
         expect(data.value).toBeUndefined();
 
         data = Utilities.convertToInt(undefined);
-        expect(data.success).toBeFalsy();
+        expect(data.isInteger).toBeFalsy();
         expect(data.value).toBeUndefined();
 
         data = Utilities.convertToInt(null);
-        expect(data.success).toBeFalsy();
+        expect(data.isInteger).toBeFalsy();
         expect(data.value).toBeUndefined();
 
         data = Utilities.convertToInt(NaN);
-        expect(data.success).toBeFalsy();
+        expect(data.isInteger).toBeFalsy();
         expect(data.value).toBeUndefined();
     });
 });

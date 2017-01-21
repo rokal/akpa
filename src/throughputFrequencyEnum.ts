@@ -1,5 +1,5 @@
 export const enum ThroughputFrequency {
-    Hour = 1,
+    Hour = 0,
     Day,
     Week
 }
