@@ -8,5 +8,5 @@ import {Application} from "./components/application";
 
 ReactDOM.render(
     <Application/>,
-    document.body
+    document.getElementById("app")
 );

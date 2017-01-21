@@ -1,8 +1,11 @@
 {
   "globalDependencies": {
-    "jest": "registry:dt/jest#16.0.0+20161220121457"
+    "jest": "registry:dt/jest#16.0.0+20161220121457",
+    "moment-timezone": "registry:dt/moment-timezone#0.2.5+20161208060822"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "react-test-renderer": "registry:dt/react-test-renderer#15.4.0+20170101233612"
+  },
   "globalDevDependencies": {
     "material-ui": "registry:dt/material-ui#0.16.0+20161228203806"
   }

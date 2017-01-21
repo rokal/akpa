@@ -1,8 +1,9 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
+/// <reference path="../typings/modules/react-test-renderer/index.d.ts" />
 
 //import React from "react";
-const React = require("react");
-const renderer = require("react-test-renderer");
+import * as React from "react";
+import {create} from "react-test-renderer";
 
 import {Forecast} from "../src/Forecast";
 import {ForecastItems} from "../src/forecastItems";
@@ -23,8 +24,12 @@ describe("ResultsDisplay test suite", () => {
             expectedItems,
             expectedDays);
 
-        const component = renderer.create(
-            <ResultsDisplay forecasts={fc} />).toJSON();
+        const component = create(
+            <ResultsDisplay 
+                numberOfDays={expectedDays}
+                numberOfItems={expectedItems}
+                numberOfSimulations={1000}
+                forecasts={fc} />);
         
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();;

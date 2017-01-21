@@ -38,7 +38,7 @@ export class SimulationResultsGenerator {
         return this.simulationResults;
     }
 
-    private addSimulationResult(numberOfItemsCompleted: Number, numberOfDays: Number): void {
+    private addSimulationResult(numberOfItemsCompleted: number, numberOfDays: number): void {
 
         var list = this.simulationResults.filter(result => result.NumberOfItemsCompleted == numberOfItemsCompleted);
         

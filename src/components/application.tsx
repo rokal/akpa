@@ -54,7 +54,7 @@ export class Application extends React.Component<AppProps, undefined>{
         this.simulation.HistoricalThroughput = data.HistoricalThroughput;
         this.simulation.execute();
 
-        this.forecastDateBuilder = new ForecastDateBuilder(this.simulation.SimulationResults, 30);
+        this.forecastDateBuilder = new ForecastDateBuilder(this.simulation.SimulationResults, data.NumberOfDays);
         this.forecastDateBuilder.createForecast();
 
         this.simulationRan = true;
