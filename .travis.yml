@@ -20,8 +20,9 @@ before_script:
 
 script:
   - gulp webpack
-  - gulp compile-test
-  - jest -c ./jestconfig.json
+  
+  # This runs pretest, test (aka jest). The jestconfig.json config must match the one in package.json 
+  - npm test
 
 deploy:
 #  - skip_cleanup: true
