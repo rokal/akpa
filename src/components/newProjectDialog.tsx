@@ -238,7 +238,7 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
                 this.state.maxValue as number, 
                 10),
             this.state.throughputFrequency,
-            this.state.deliveryDate,
+            new Date(),
             futur.diff(now, 'days'),
             this.state.numberOfItems as number);
         

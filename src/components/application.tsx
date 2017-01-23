@@ -49,8 +49,10 @@ export class Application extends React.Component<AppProps, undefined>{
 
     cbLaunchSimulation(data:SimulationConfig): void{
         this.simulation = new SimulationDate(
+            data.StartDate,
             data.NumberOfDays, 
-            1000);
+            1000,
+            data.ThroughputFrequency);
         this.simulation.HistoricalThroughput = data.HistoricalThroughput;
         this.simulation.execute();
 
