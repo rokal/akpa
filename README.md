@@ -1,3 +1,5 @@
+https://travis-ci.org/lpcarignan/montecarlo-simulations-typescript.svg?branch=master
+
 # Monte Carlo simulations in Typescript
 
 A Typescript project running Monte Carlo simulations for Kanban 
