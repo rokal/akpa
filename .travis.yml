@@ -14,7 +14,7 @@ install:
 before_script:
 
 script:
-  - webpack webpack.config.js
+  - gulp webpack
 #  npm jest
 
 deploy:
