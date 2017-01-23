@@ -10,7 +10,7 @@ import {ForecastDateBuilder} from "../forecastDateBuilder";
 import {Header} from "./header";
 import {ResultsDisplay} from "./resultsDisplay";
 import {SimulationConfig} from "./simulationConfig";
-import {SimulationChart} from "./SimulationChart";
+import {SimulationChart} from "./simulationChart";
 
 // This fix the touch tap event which is not currently supported
 // in the official React release. It will be removed one day when
