@@ -1,7 +1,7 @@
 {
   "collectCoverage": true,
   "coverageDirectory":"<rootDir>/tests/Results",
-  "coverageReporters":["lcov", "text"],
+  "coverageReporters":["lcov", "text", "text-summary"],
   "moduleFileExtensions": ["js"],
   "testPathDirs":["<rootDir>/tests/JsOutput/tests"],
   "testPathIgnorePatterns":[

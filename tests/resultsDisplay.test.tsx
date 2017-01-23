@@ -5,9 +5,9 @@
 import * as React from "react";
 import {create} from "react-test-renderer";
 
-import {Forecast} from "../src/Forecast";
+import {Forecast} from "../src/forecast";
 import {ForecastItems} from "../src/forecastItems";
-import {Percentile} from "../src/Percentile";
+import {Percentile} from "../src/percentile";
 import {ResultsDisplay} from "../src/components/resultsDisplay";
 
 describe("ResultsDisplay test suite", () => {

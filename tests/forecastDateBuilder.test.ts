@@ -1,13 +1,13 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
-import {Percentile} from "../src/Percentile";
-import {SimulationResult} from "../src/SimulationResult";
+import {Percentile} from "../src/percentile";
+import {SimulationResult} from "../src/simulationResult";
 import {ForecastItems} from "../src/forecastItems";
 import {ForecastDate} from "../src/forecastDate";
 import {Forecast} from "../src/forecast";
 import {ForecastDateBuilder} from "../src/forecastDateBuilder";
 import {ForecastBuilder} from "../src/forecastBuilder";
-import {SimulationResultsGenerator} from "./SimulationResultsGenerator"; 
+import {SimulationResultsGenerator} from "./simulationResultsGenerator"; 
 
 describe("ForecastDateBuilder test suite", () => {
 
