@@ -20,6 +20,7 @@ before_script:
 
 script:
   - gulp webpack
+  - gulp compile-test
   - jest -c ./jestconfig.json
 
 deploy:
