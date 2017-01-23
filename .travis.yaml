@@ -1,0 +1,21 @@
+language: node_js
+  node_js: 6
+  branches: 
+    only:
+      master    
+  
+before_install:
+  
+install:
+  npm install
+  npm update
+
+before_script:
+
+script:
+  webpack webpack.config.js
+#  npm jest
+
+deploy:
+
+after_script:
