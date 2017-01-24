@@ -38,14 +38,12 @@ describe("SimulationExporter test suite", () => {
         let content;
 
         content = SimulationExporter.export(simulationConfig, simulation.SimulationResults);
-        console.info("CONTENT: " + content);
         expect(content).not.toBeNull();
     });
 
     it("Test createFilename()", () => {
         
         let filename = SimulationExporter.createFilename(simulationConfig);
-        console.info("FILENAME: " + filename)
         expect(filename.length).not.toEqual(0);
         expect(filename.startsWith("Forecasts_")).toBeTruthy();
     });

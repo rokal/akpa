@@ -30,7 +30,6 @@
     "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js"
   },
   "dependencies": {
-    "@types/es6-promise": "0.0.32",
     "@types/react": "^0.14.55",
     "@types/react-dom": "^0.14.19",
     "chart-library": "^1.1.0",

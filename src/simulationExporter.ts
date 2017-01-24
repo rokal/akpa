@@ -2,8 +2,6 @@
 import { SimulationConfig } from "./components/simulationConfig";
 import { SimulationResult } from "./simulationResult";
 
-import * as JSZip from "jszip";
-
 export class SimulationExporter {
 
     constructor() {
