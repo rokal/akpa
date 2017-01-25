@@ -26,7 +26,7 @@ before_install:
 #- gcloud version;
 
 # Here we use the decrypted service account credentials to authenticate the command line tool
-- gcloud auth activate-service-account --key-file deploy-app-engine.json
+# - gcloud auth activate-service-account --key-file deploy-app-engine.json
 
 install:
 - npm install
