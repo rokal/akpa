@@ -17,6 +17,7 @@ import {SimulationChart} from "./simulationChart";
 
 import IconButton from "material-ui/IconButton";
 import GetAppIcon from "material-ui/svg-icons/action/get-app";
+import FileDownload from "material-ui/svg-icons/file/file-download";
 
 // This fix the touch tap event which is not currently supported
 // in the official React release. It will be removed one day when
@@ -51,13 +52,6 @@ export class Application extends React.Component<AppProps, AppState>{
         return <MuiThemeProvider>
         <div>
             <Header cbLaunchSimulation={this.cbLaunchSimulation.bind(this)}/>
-            <IconButton 
-                tooltip="Download your forecasts"
-                onTouchTap={this.buildForecastContent.bind(this)}
-                touch={true}
-            >
-                <GetAppIcon/> 
-            </IconButton>
             {this.simulationRan && 
                 <ResultsDisplay 
                 numberOfDays={this.simulation.NumberOfDays} 
@@ -70,19 +64,19 @@ export class Application extends React.Component<AppProps, AppState>{
         </MuiThemeProvider>
     }
 
-    private buildForecastContent(e:any): void{
+    // private buildForecastContent(e:any): void{
         
-        let a = document.createElement('a');
-        a.href = SimulationExporter.export(this.state.simulationConfig, this.simulation.SimulationResults) as string;
-        a.target = '_blank';
-        a.download = SimulationExporter.createFilename(this.state.simulationConfig) as string;
+    //     let a = document.createElement('a');
+    //     a.href = SimulationExporter.export(this.state.simulationConfig, this.simulation.SimulationResults) as string;
+    //     a.target = '_blank';
+    //     a.download = SimulationExporter.createFilename(this.state.simulationConfig) as string;
 
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function() {
-            document.body.removeChild(a);  
-        }, 0);         
-    }
+    //     document.body.appendChild(a);
+    //     a.click();
+    //     setTimeout(function() {
+    //         document.body.removeChild(a);  
+    //     }, 0);         
+    // }
 
     private cbLaunchSimulation(data:SimulationConfig): void{
         this.simulation = new SimulationDate(
@@ -102,3 +96,12 @@ export class Application extends React.Component<AppProps, AppState>{
         this.setState(this.state);   
     }
 }
+
+            // <IconButton 
+            //     tooltip="Download your forecasts"
+            //     onTouchTap={this.buildForecastContent.bind(this)}
+            //     touch={true}
+            // >
+            //     <GetAppIcon/> 
+            //     <FileDownload/>
+            // </IconButton>

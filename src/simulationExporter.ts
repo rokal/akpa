@@ -5,7 +5,7 @@ import { SimulationResult } from "./simulationResult";
 export class SimulationExporter {
 
     constructor() {
-        throw new Error("Static class")
+        throw new Error("SimulationExporter: Static class. It cannot be instanciated")
     }
 
     static export(config: SimulationConfig, results: Array<SimulationResult>): String {
