@@ -15,15 +15,18 @@ cache:
         
 before_install:
 - openssl aes-256-cbc -k "ahduQu9ushou0Roh" -in deploy-app-engine.json.enc -out deploy-app-engine.json -d
-- gcloud version || true
-- if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then
-    rm -rf $HOME/google-cloud-sdk; 
-    export CLOUDSDK_CORE_DISABLE_PROMPTS=1; 
-    curl https://sdk.cloud.google.com | bash; 
-  fi
+#- gcloud version || true
+#- if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then
+#    rm -rf $HOME/google-cloud-sdk; 
+#    export CLOUDSDK_CORE_DISABLE_PROMPTS=1; 
+#    curl https://sdk.cloud.google.com | bash; 
+#  fi
 # Add gcloud to $PATH
-- source /home/travis/google-cloud-sdk/path.bash.inc;
-- gcloud version;
+#- source /home/travis/google-cloud-sdk/path.bash.inc;
+#- gcloud version;
+
+# Here we use the decrypted service account credentials to authenticate the command line tool
+- gcloud auth activate-service-account --key-file deploy-app-engine.json
 
 install:
 - npm install
@@ -36,7 +39,15 @@ script:
   - npm test
 
 deploy:
+  provider: gae
+  # Skip cleanup so api_key.py and vendored dependencies are still there
+  skip_cleanup: true
+  keyfile: deploy-app-engine.json
+  project: montecarlo-simluations
+  default: true
+  on: master
+
 #  - skip_cleanup: true
-#  - gcloud config set project `montecarlo-simluations`
+#- gcloud config set project `montecarlo-simluations`
 
 after_script:
