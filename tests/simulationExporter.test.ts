@@ -1,7 +1,7 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
 import { ForecastDateBuilder } from "../src/forecastDateBuilder";
-import { SimulationConfig } from "../src/components/SimulationConfig";
+import { SimulationConfig } from "../src/components/simulationConfig";
 import { SimulationDate } from "../src/simulationDate";
 import { SimulationExporter } from "../src/simulationExporter";
 import {SimulationImporter} from "../src/simulationImporter";
