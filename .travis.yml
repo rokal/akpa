@@ -36,8 +36,8 @@ script:
   - gulp webpack
   
   # This runs pretest, test (aka jest). The jestconfig.json config must match the one in package.json 
-  - npm test
-  - ls $TRAVIS_BUILD_DIR
+#  - npm test
+#  - ls $TRAVIS_BUILD_DIR
 deploy:
   provider: gae
   # Skip cleanup so api_key.py and vendored dependencies are still there
