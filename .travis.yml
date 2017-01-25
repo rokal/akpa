@@ -9,8 +9,7 @@ notifications:
     on_success: never
     on_failure: always
 before_install:
-- openssl aes-256-cbc -K $encrypted_6bb38241658d_key -iv $encrypted_6bb38241658d_iv
-  -in client-secret.json.enc -out client-secret.json -d
+- openssl aes-256-cbc -k "ahduQu9ushou0Roh" -in deploy-app-engine.json.enc -out deploy-app-engine.json -d
 install:
 - npm install
 - npm update
