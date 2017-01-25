@@ -1,29 +1,22 @@
 language: node_js
-node_js: 
-  - 6
-branches: 
+node_js:
+- 6
+branches:
   only:
-    - master    
-
+  - master
 notifications:
   email:
-    on_success: never # default: change
-    on_failure: always # default: always
-
+    on_success: never
+    on_failure: always
 before_install:
-  
+- openssl aes-256-cbc -K $encrypted_6bb38241658d_key -iv $encrypted_6bb38241658d_iv
+  -in client-secret.json.enc -out client-secret.json -d
 install:
-  - npm install
-  - npm update
-
-before_script:
-
+- npm install
+- npm update
+before_script: 
 script:
-  - gulp webpack
-  
-  # This runs pretest, test (aka jest). The jestconfig.json config must match the one in package.json 
-  - npm test
-
-deploy:
-#  - skip_cleanup: true
-after_script:
+- gulp webpack
+- npm test
+deploy: 
+after_script: 
