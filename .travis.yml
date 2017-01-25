@@ -16,7 +16,13 @@ install:
 - npm update
 before_script: 
 script:
-- gulp webpack
-- npm test
-deploy: 
-after_script: 
+  - gulp webpack
+  
+  # This runs pretest, test (aka jest). The jestconfig.json config must match the one in package.json 
+  - npm test
+
+deploy:
+#  - skip_cleanup: true
+#  - gcloud config set project `montecarlo-simluations`
+
+after_script:
