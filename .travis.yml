@@ -25,6 +25,6 @@ script:
   - npm test
 
 deploy:
-  - skip_cleanup: true
-  - gcloud config set project `montecarlo-simluations`
+#  - skip_cleanup: true
+#  - gcloud config set project `montecarlo-simluations`
 after_script:
