@@ -6,20 +6,21 @@
 # TODO: Enter your application id below. If you have signed up
 # using cloud.google.com/console use the "project id" for your application
 # id.
-runtime: python27
-api_version: 1
-threadsafe: yes
+runtime: nodejs
+env: flex
+# api_version: 1
+# threadsafe: yes
 
 # Handlers define how to route requests to your application.
-handlers:
+# handlers:
 
-- url: /(.+)
-  static_files: dist/\1
-  upload: dist/(.*)
+# - url: /
+#   static_files: /index.html
+#   upload: /index.html
 
-- url: /
-  static_files: /index.html
-  upload: /index.html
+#  - url: /(.*)
+#    static_files: /\1
+#    upload: /(.*)
   
 skip_files:
 - ^(.*/)?#.*#$
@@ -34,8 +35,8 @@ skip_files:
 - ^typings$
 - ^\..*$
 - ^README\..*
-- ^.*\.js
-- ^.*\.json
+# - ^.*\.js
+# - ^.*\.json
 
 # Third party libraries that are included in the App Engine SDK must be listed
 # here if you want to use them.  See

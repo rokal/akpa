@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "Web application to generate Monte Carlo simulations for Kanban",
   "main": "index.html",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "clean": "gulp clean",
     "pretest": "gulp compile-test",
     "jest": "node ./packages/jest-cli/bin/jest.js",
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js"
   },
   "jest": {
     "collectCoverage": true,
@@ -34,6 +38,7 @@
     "@types/react-dom": "^0.14.19",
     "chart-library": "^1.1.0",
     "del": "^2.2.2",
+    "express": "^4.14.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
   },
