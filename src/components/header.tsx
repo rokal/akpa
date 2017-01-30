@@ -31,7 +31,7 @@ export class Header extends React.Component<HeaderProps, HeaderState>{
     
         return <div> 
               <AppBar
-                title="Determining potential delivery dates"
+                title="Determining potential delivery dates"                
                 onLeftIconButtonTouchTap={this.handleDrawerToggle.bind(this)} />               
               <Drawer 
                 open={this.state.open} 
