@@ -33,7 +33,7 @@ install:
 before_script: 
 script:
   - gulp webpack
-  - gcloud app deploy --verbosity=info app.yaml
+  - gcloud app deploy --verbosity=info app.yaml -q
 #- gcloud config set project `montecarlo-simluations`
 
 # This runs pretest, test (aka jest). The jestconfig.json config must match the one in package.json 
