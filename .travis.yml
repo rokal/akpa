@@ -15,6 +15,7 @@ cache:
         
 before_install:
 - openssl aes-256-cbc -k "ahduQu9ushou0Roh" -in deploy-app-engine.json.enc -out deploy-app-engine.json -d
+- gcloud auth activate-service-account --key-file deploy-app-engine.json
 #- gcloud version || true
 #- if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then
 #    rm -rf $HOME/google-cloud-sdk; 
@@ -26,7 +27,6 @@ before_install:
 #- gcloud version;
 
 # Here we use the decrypted service account credentials to authenticate the command line tool
-# - gcloud auth activate-service-account --key-file deploy-app-engine.json
 
 install:
 - npm install
@@ -34,20 +34,20 @@ install:
 before_script: 
 script:
   - gulp webpack
-  
-  # This runs pretest, test (aka jest). The jestconfig.json config must match the one in package.json 
+  - gcloud app deploy --verbosity=info app.yaml
+#- gcloud config set project `montecarlo-simluations`
+
+# This runs pretest, test (aka jest). The jestconfig.json config must match the one in package.json 
 #  - npm test
 #  - ls $TRAVIS_BUILD_DIR
-deploy:
-  provider: gae
-  # Skip cleanup so api_key.py and vendored dependencies are still there
-  skip_cleanup: true
-  keyfile: deploy-app-engine.json
-  project: montecarlo-simluations
-  default: true
-  on: master
 
-#  - skip_cleanup: true
-#- gcloud config set project `montecarlo-simluations`
+deploy:
+#  provider: gae
+#  Skip cleanup so api_key.py and vendored dependencies are still there
+#  skip_cleanup: true
+#  keyfile: deploy-app-engine.json
+#  project: montecarlo-simluations
+#  default: true
+#  on: master
 
 after_script:
