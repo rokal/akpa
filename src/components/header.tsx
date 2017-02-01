@@ -5,69 +5,103 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {ThroughputFrequency} from "../throughputFrequencyEnum";
-import {SimulationConfig} from "./simulationConfig";
-import {NewProjectDialog} from "./newProjectDialog";
+import { ThroughputFrequency } from "../throughputFrequencyEnum";
+import { SimulationConfig } from "./simulationConfig";
+import { SimulationResult} from "../simulationResult";
+import { NewProjectDialog } from "./newProjectDialog";
+import { ExistingProjectDialog } from "./existingProjectDialog";
 
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 
 export interface HeaderProps {
-    cbLaunchSimulation:(data:SimulationConfig | undefined) => void    
+    cbLaunchSimulation: (data: SimulationConfig | undefined) => void
 }
 export interface HeaderState {
-    open:boolean;
-    dialogOpen:boolean;
+    drawerOpen: boolean;
+    newDialogOpen: boolean;
+    existingDialogOpen: boolean;
 }
 export class Header extends React.Component<HeaderProps, HeaderState>{
 
     constructor(props: HeaderProps) {
         super(props);
-        this.state = {open: false, dialogOpen: false};
+        this.setInitialState();
     }
 
     render(): JSX.Element {
-    
-        return <div> 
-              <AppBar
-                title="Determining potential delivery dates"                
-                onLeftIconButtonTouchTap={this.handleDrawerToggle.bind(this)} />               
-              <Drawer 
-                open={this.state.open} 
+
+        return <div>
+            <AppBar
+                title="Determining potential delivery dates"
+                onLeftIconButtonTouchTap={this.handleDrawerToggle.bind(this)} />
+            <Drawer
+                open={this.state.drawerOpen}
                 docked={false}
-                onRequestChange={(open, dialogOpen) => this.setState({
-                    open:false, 
-                    dialogOpen:false} )}>
-                                
-                <MenuItem onTouchTap={this.handleNewProject.bind(this)}>New project</MenuItem>
-                <MenuItem onTouchTap={this.handleExistingProject.bind(this)}>Existing project</MenuItem>
-              
-              </Drawer>
-              <NewProjectDialog ref="newdialog"
-                open={this.state.dialogOpen} 
+                onRequestChange={(open, newDialogOpen) => this.setState({
+                    existingDialogOpen: false,
+                    drawerOpen: false,
+                    newDialogOpen: false
+                })}>
+
+                <MenuItem onTouchTap={this.handleMnItemNewProject.bind(this)}>New project</MenuItem>
+                <MenuItem onTouchTap={this.handleMnItemExistingProject.bind(this)}>Existing project</MenuItem>
+
+            </Drawer>
+            <NewProjectDialog
+                open={this.state.newDialogOpen}
                 throughputFrequency={ThroughputFrequency.Week}
-                cbCloseDialog={this.handleCloseNewProjectDialog.bind(this)}
-                />                
-            </div>;
+                cbCloseDialog={this.cbCloseNewProjectDialog.bind(this)}
+            />
+            <ExistingProjectDialog
+                open={this.state.existingDialogOpen}
+                cbCloseDialog={this.cbCloseExistingProjectDialog.bind(this)}
+            />
+        </div>;
     }
 
-    handleNewProject(): void { 
-        this.setState({open: false, dialogOpen: true});
+    private handleMnItemNewProject(): void {
+        this.state.drawerOpen = false;
+        this.state.newDialogOpen = true;
+        this.state.existingDialogOpen = false;
+        this.setState(this.state);
     }
 
-    handleExistingProject(): void{        
-        this.setState({open: false, dialogOpen: false});
-}
+    private handleMnItemExistingProject(): void {
+        this.state.drawerOpen = false;
+        this.state.newDialogOpen = false;
+        this.state.existingDialogOpen = true;
+        this.setState(this.state);
+    }
 
-    handleCloseNewProjectDialog(data:SimulationConfig): void{
-        this.setState({open: false, dialogOpen: false});
-        
+    private cbCloseNewProjectDialog(data: SimulationConfig): void {
+        this.state.newDialogOpen = false;
+        this.setState(this.state);
+
         if (data)
             this.props.cbLaunchSimulation(data);
     }
 
-    handleDrawerToggle(): void{
-        this.setState({open: !this.state.open, dialogOpen:false});
-    };    
+    private cbCloseExistingProjectDialog(originalData: Array<SimulationResult>): void{
+        this.state.existingDialogOpen = false;
+        this.setState(this.state);
+
+        // Do some operations to show initial and new forecast with
+        // list of tasks to help user pick the right decision
+    }
+
+    private handleDrawerToggle(): void {
+        this.state.drawerOpen = !this.state.drawerOpen;
+        this.setState(this.state);
+    };
+
+    private setInitialState(): void {
+        this.state = {
+            drawerOpen: false,
+            newDialogOpen:false,
+            existingDialogOpen:false            
+        }
+    }
 }
+

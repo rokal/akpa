@@ -127,7 +127,7 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
                     errorStyle={this.state.numItemsErrorStyle}
                     underlineFocusStyle={this.styles.validStyle}
                 />
-            </Dialog>              
+            </Dialog>;              
     }
 
     private handleMinValueChange(e:any): void{
@@ -240,6 +240,7 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
             this.state.throughputFrequency,
             new Date(),
             futur.diff(now, 'days'),
+            futur.toDate(),
             this.state.numberOfItems as number);
         
         this.props.cbCloseDialog(data);

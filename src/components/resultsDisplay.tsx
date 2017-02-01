@@ -6,27 +6,58 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import {Forecast} from "../forecast";
+import {SimulationConfig} from "./simulationConfig";
+import * as moment from "moment";
 
 export interface ResultsProps { 
-    numberOfDays: number,
-    numberOfItems: number,    
     numberOfSimulations: number,
-    forecasts: Forecast[]; 
+    simulationConfig: SimulationConfig | undefined,
+    forecasts: Forecast[] | undefined; 
 }
 
-// 'ResultsProps' describes the shape of props.
-// State is never set so we use the 'undefined' type.
 export class ResultsDisplay extends React.Component<ResultsProps, undefined> {
+
     render(): JSX.Element {
 
-    let fc = this.props.forecasts;
-    const listItems = fc.map((currentForecast, index, arr) =>
-        <li key={currentForecast.Percentile.value}>{currentForecast.toString()}</li>
-    );
+        if (this.isForecastsEmpty())
+            return this.displayEmptyForecast();
+        else
+            return this.displayForecasts();
+    }
 
-    return <div>
-            <h1>Forecasts for delivering items in {this.props.numberOfDays} days ({this.props.numberOfSimulations} simulations)</h1>
-            <ul>{listItems}</ul> 
-           </div>;
+    private displayForecasts(): JSX.Element{
+
+        let forecasts = this.props.forecasts as Array<Forecast>;
+        let simulationConfig = this.props.simulationConfig as SimulationConfig;
+
+        const listItems = forecasts.map((currentForecast, index, arr) =>
+            <li key={currentForecast.Percentile.value}>{currentForecast.toString()}</li>
+        );
+
+        return <div>
+                <h2>Forecasts for delivering on {this.dateToString(simulationConfig.DeliveryDate)} ({simulationConfig.NumberOfDays} days)</h2>
+                <h3>({this.props.numberOfSimulations} simulations were ran)</h3>
+                <ul>{listItems}</ul> 
+            </div>;        
+    }
+
+    private displayEmptyForecast(): JSX.Element{
+        return <div>
+            <h2>No forecasts generated yet</h2>
+                </div>;
+    }
+
+    private isForecastsEmpty(): boolean{
+        if (this.props.forecasts == undefined ||
+            this.props.forecasts.length == 0){
+            return true;
+        }
+        else
+            return false;
+    }
+
+    private dateToString(dateToConvert:Date): string{
+        let now = moment(dateToConvert);
+        return now.format("dddd, MMMM Do YYYY");
     }
 }

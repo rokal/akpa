@@ -5,107 +5,117 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {SimulationResult} from "../simulationResult";
+import { SimulationResult } from "../simulationResult";
+import {ResultsDisplay} from "./resultsDisplay";
 
-import {Dialog} from "material-ui/Dialog";
-import {FlatButton} from "material-ui/FlatButton";
-import {Stepper, Step, StepButton} from "material-ui/Stepper";
-import {RaisedButton} from "material-ui/RaisedButton";
+import {Tabs, Tab} from "material-ui/Tabs";
+import FlatButton  from "material-ui/FlatButton";
+import {Stepper, Step, StepButton, StepLabel, StepContent} from "material-ui/Stepper";
+import RaisedButton  from "material-ui/RaisedButton";
 
-interface ExistingProjectDialogProps{
-    open:boolean;
-    cbCloseDialog:(originalData:Array<SimulationResult>) => void    
+export interface ExistingProjectDialogProps {
+    open: boolean;
+    cbCloseDialog: (originalData: Array<SimulationResult>) => void
 }
-interface ExistingProjectDialogState{
-    stepIndex:number
+export interface ExistingProjectDialogState {
+    stepIndex: number
 }
 
 export class ExistingProjectDialog extends React.Component<ExistingProjectDialogProps, ExistingProjectDialogState>{
 
-    constructor(props: ExistingProjectDialogProps){
-        super(props); 
-        this.setInitialState();       
+    constructor(props: ExistingProjectDialogProps) {
+        super(props);
+        this.setInitialState();
     }
 
-    render(): JSX.Element{
+    render(): JSX.Element {
 
-        const actions = [
-            <FlatButton
-                label="Cancel"
-                primary={false}
-                keyboardFocused={false}
-                onTouchTap={this.handleBtnClose.bind(this)}
-            />,
-            <FlatButton
-                label="Ok"
+        const stepIndex = this.state.stepIndex;
+
+        return <Tabs>
+            <Tab label="Input">
+                <Stepper 
+                    linear={false} 
+                    orientation="vertical"
+                    activeStep={this.state.stepIndex}>
+                    <Step>
+                        <StepButton onTouchTap={() => this.setState({stepIndex: 0})}>
+                            Load data from external tool
+                        </StepButton>
+                        <StepContent>
+
+                        {this.renderStepActions(0)}
+                        </StepContent>
+                    </Step>
+                    <Step>
+                        <StepButton onTouchTap={() => this.setState({stepIndex: 1})}>
+                            Load previous forecasts (optional)
+                        </StepButton>
+                        <StepContent>
+                        {this.renderStepActions(1)}
+                        </StepContent>
+                    </Step>
+                    <Step>
+                        <StepButton onTouchTap={() => this.setState({stepIndex: 2})}>
+                            Confirm forecasts generation
+                        </StepButton>
+                        <StepContent>
+
+                        {this.renderStepActions(2)}
+                        </StepContent>
+                    </Step>
+                </Stepper>            
+            </Tab>
+            <Tab label="Forecasts">
+                <ResultsDisplay 
+                    simulationConfig={undefined}
+                    numberOfSimulations={1000}
+                    forecasts={undefined}/>
+            </Tab>
+        </Tabs>;
+    }
+
+
+    private handleBtnBack(event: any): void {
+        let stepIndex = this.state.stepIndex;
+        if (stepIndex > 0)
+            this.setState({stepIndex: stepIndex -1 });
+    }
+
+    private handleBtnNext(event: any): void {
+        let stepIndex = this.state.stepIndex;
+        if (stepIndex < 2)
+            this.setState({stepIndex: stepIndex + 1});
+    }
+
+    private renderStepActions(step:number): JSX.Element {
+        const stepIndex = this.state.stepIndex
+
+        return (
+            <div style={{margin: '12px 0'}}>
+                <RaisedButton
+                label={stepIndex == 2 ? "Finish" : "Next"}
+                disableTouchRipple={true}
+                disableFocusRipple={true}
                 primary={true}
-                keyboardFocused={true}
-                onTouchTap={this.handleBtnOk.bind(this)}
-            />,
-            ];
-
-        // This variable is used to simplify reading the code below.
-        const stepIndex = this.state.stepIndex; 
-
-        return <div>
-                
-                    <Dialog
-                        open={false}>
-                        <Stepper linear={false} activeStep={this.state.stepIndex}>
-                        </Stepper> 
-                    </Dialog>
-                    <div>
-                        <p>{this.getStepContent(stepIndex)}</p>
-                        <div style={{marginTop: 12}}>
-                            <FlatButton
-                                label="Back"
-                                disabled={this.state.stepIndex === 0}
-                                onTouchTap={this.handleBtnBack}
-                                style={{marginRight: 12}}
-                            />
-                            <RaisedButton
-                                label="Next"
-                                disabled={stepIndex === 2}
-                                primary={true}
-                                onTouchTap={this.handleBtnNext}
-                            />
-                        </div>
-                    </div>      
-                </div>         
+                onTouchTap={this.handleBtnNext.bind(this)}
+                style={{marginRight: 12}}
+                />
+                {step > 0 && (
+                <FlatButton
+                    label="Back"
+                    disableTouchRipple={true}
+                    disableFocusRipple={true}
+                    onTouchTap={this.handleBtnBack.bind(this)}
+                />
+                )}
+            </div>
+            );
     }
 
-    private handleBtnBack(event:any): void{
-        
-    }
-
-    private handleBtnNext(event:any): void{
-
-    }
-
-    private getStepContent(stepIndex: number): string {
-        switch (stepIndex) {
-            case 0:
-                return 'Select campaign settings...';
-            case 1:
-                return 'What is an ad group anyways?';
-            case 2:
-                return 'This is the bit I really care about!';
-            default:
-                return 'You\'re a long way from home sonny jim!';
-        }
-    }
-
-    private handleBtnClose(event:any): void{
-        this.props.cbCloseDialog(new Array<SimulationResult>(0));
-    }
-    
-    private handleBtnOk(event:any): void{
-        this.props.cbCloseDialog(new Array<SimulationResult>(0));
-    }
-
-    private setInitialState(): void{
+    private setInitialState(): void {
         this.state = {
             stepIndex: 0
         };
-    }   
+    }
 }

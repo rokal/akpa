@@ -6,6 +6,7 @@ export class SimulationConfig{
         public readonly ThroughputFrequency: ThroughputFrequency,
         public readonly StartDate: Date,
         public readonly NumberOfDays: number,
+        public readonly DeliveryDate: Date,
         public readonly NumberOfItems: number){
         }
 }
