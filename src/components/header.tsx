@@ -48,7 +48,7 @@ export class Header extends React.Component<HeaderProps, HeaderState>{
                 open={this.state.dialogOpen} 
                 throughputFrequency={ThroughputFrequency.Week}
                 cbCloseDialog={this.handleCloseNewProjectDialog.bind(this)}
-                />
+                />                
             </div>;
     }
 
