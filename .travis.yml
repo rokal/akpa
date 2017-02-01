@@ -4,15 +4,19 @@ node_js:
 branches:
   only:
   - master
+
+# Notify people only when build status changes
 notifications:
   email:
     on_success: never
     on_failure: change
-    
+
+# Cache the Google Cloud SDK
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
         
+# Decrypt the authentication key with very visible key (should change that)        
 before_install:
 - openssl aes-256-cbc -k "ahduQu9ushou0Roh" -in deploy-app-engine.json.enc -out deploy-app-engine.json -d
 #- if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then
@@ -25,22 +29,28 @@ before_install:
 - gcloud version;
 - gcloud config set project montecarlo-simulations
 - gcloud auth activate-service-account --key-file deploy-app-engine.json
-# Here we use the decrypted service account credentials to authenticate the command line tool
 
 install:
+# Install and update the NodeJs modules requires by the application 
 - npm install
 - npm update
-before_script: 
-script:
-  - gulp webpack
-  - gcloud app deploy --verbosity=info app.yaml -q
-#- gcloud config set project `montecarlo-simluations`
 
-# This runs pretest, test (aka jest). The jestconfig.json config must match the one in package.json 
-#  - npm test
-#  - ls $TRAVIS_BUILD_DIR
+before_script: 
+
+script:
+  # Build the application to prepare it for production
+  - gulp webpack --config webpack.config.prod.js -p
+  
+  # Build and run the tests
+  - npm test
+  
+  # Deploy the application to Google App Engine. It is commented right now as we don't want to
+  # deploy the app everytime we build and the application
+  # - gcloud app deploy --verbosity=info app.yaml -q
 
 deploy:
+# We used to employ the Google App Engine provider by Travis but it was a bit cumbersome
+# We decided to switch to manual commands (see above) for more flexibility
 #  provider: gae
 #  Skip cleanup so api_key.py and vendored dependencies are still there
 #  skip_cleanup: true
