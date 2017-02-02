@@ -5,8 +5,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {Forecast} from "../forecast";
-import {SimulationConfig} from "./simulationConfig";
+import {Forecast} from "../model/forecast";
+import {SimulationConfig} from "../model/simulationConfig";
+
 import * as moment from "moment";
 
 export interface ResultsProps { 

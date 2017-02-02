@@ -4,15 +4,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { SimulationDate } from "../simulationDate";
-import { ForecastDateBuilder } from "../forecastDateBuilder";
-import { SimulationResult } from "../simulationResult";
-import { SimulationExporter } from "../simulationExporter";
-import { ThroughputFrequency } from "../throughputFrequencyEnum";
+import { SimulationDate } from "../model/simulationDate";
+import { ForecastDateBuilder } from "../model/forecastDateBuilder";
+import { SimulationResult } from "../model/simulationResult";
+import { SimulationExporter } from "../model/io/simulationExporter";
+import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
+import { SimulationConfig } from "../model/simulationConfig";
 
 import { Header } from "./header";
 import { ResultsDisplay } from "./resultsDisplay";
-import { SimulationConfig } from "./simulationConfig";
 import { SimulationChart } from "./simulationChart";
 
 import IconButton from "material-ui/IconButton";

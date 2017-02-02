@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { SimulationResult } from "../simulationResult";
+import { SimulationResult } from "../model/simulationResult";
 import {ResultsDisplay} from "./resultsDisplay";
 
 import {Tabs, Tab} from "material-ui/Tabs";

@@ -1,4 +1,4 @@
-﻿import {Percentile} from "./percentile";
+﻿import { Percentile } from "./percentile";
 
 // The './' in the following line is extremely important.
 // While it doesn't affect our production code or help the
@@ -7,7 +7,7 @@
 // the base class 'Forecast'. It doesn't do this for 'Percentile'
 // in the above statement but when it comes to base class, we
 // have to put the './' in front.
-import {Forecast} from "./forecast";
+import { Forecast } from "./forecast";
 
 export class ForecastDate extends Forecast {
     constructor(percentile: Percentile, numberOfItemsCompleted: Number, numberOfDays: Number) {
@@ -15,7 +15,7 @@ export class ForecastDate extends Forecast {
     }
 
     toString(): String {
-         return `${this.NumberOfItemsCompleted} items completed with ` +
-               `${this.Percentile} confidence of completing in ${this.NumberOfDays} days.`; 
+        return `${this.NumberOfItemsCompleted} items completed with ` +
+            `${this.Percentile} confidence of completing in ${this.NumberOfDays} days.`;
     }
 }

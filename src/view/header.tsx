@@ -5,9 +5,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { ThroughputFrequency } from "../throughputFrequencyEnum";
-import { SimulationConfig } from "./simulationConfig";
-import { SimulationResult} from "../simulationResult";
+import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
+import { SimulationConfig } from "../model/simulationConfig";
+import { SimulationResult} from "../model/simulationResult";
 import { NewProjectDialog } from "./newProjectDialog";
 import { ExistingProjectDialog } from "./existingProjectDialog";
 

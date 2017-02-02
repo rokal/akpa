@@ -1,4 +1,4 @@
-import {ThroughputFrequency} from "../throughputFrequencyEnum";
+import {ThroughputFrequency} from "./throughputFrequencyEnum";
 
 export class SimulationConfig{
     constructor(

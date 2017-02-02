@@ -1,6 +1,6 @@
 
-import { SimulationConfig } from "./components/simulationConfig";
-import { SimulationResult } from "./simulationResult";
+import { SimulationConfig } from "../simulationConfig";
+import { SimulationResult } from "../simulationResult";
 
 export class SimulationExporter {
 

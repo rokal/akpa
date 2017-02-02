@@ -1,13 +1,13 @@
-﻿import {Forecast} from "./forecast";
-import {SimulationResult} from "./simulationResult";
-import {ThroughputFrequency} from "./throughputFrequencyEnum";
+﻿import { Forecast } from "./forecast";
+import { SimulationResult } from "./simulationResult";
+import { ThroughputFrequency } from "./throughputFrequencyEnum";
 
 export abstract class Simulation {
 
     private initial_number_of_simulations = 10000;
 
-    public get NumberOfSimulations() :number {  
-        return this.numberOfSimulations; 
+    public get NumberOfSimulations(): number {
+        return this.numberOfSimulations;
     }
     public set NumberOfSimulations(number: number) {
         this.numberOfSimulations = number;
@@ -36,7 +36,7 @@ export abstract class Simulation {
     }
     protected simulationResults: Array<SimulationResult>;
 
-    constructor(numberOfSimulations : number, throughputFrequency: ThroughputFrequency) {
+    constructor(numberOfSimulations: number, throughputFrequency: ThroughputFrequency) {
 
         this.NumberOfSimulations = numberOfSimulations;
         this.throughputFrequency = throughputFrequency;
@@ -50,7 +50,7 @@ export abstract class Simulation {
     protected addSimulationResult(numberOfItemsCompleted: number, numberOfDays: number): void {
 
         var list = this.simulationResults.filter(result => result.NumberOfItemsCompleted == numberOfItemsCompleted);
-                         
+
         if (list.length == 0) {
             this.simulationResults.push(new SimulationResult(numberOfItemsCompleted, numberOfDays));
         }

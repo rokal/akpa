@@ -6,8 +6,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom"; 
 
-import {Forecast} from "../forecast";
-import {SimulationResult} from "../simulationResult";
+import {Forecast} from "../model/forecast";
+import {SimulationResult} from "../model/simulationResult";
 
 import {BarChart, BarData} from "react-easy-chart"; 
 

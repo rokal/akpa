@@ -1,4 +1,4 @@
-﻿import {Percentile} from "./percentile";
+﻿import { Percentile } from "./percentile";
 
 export abstract class Forecast {
     public Percentile: Percentile;

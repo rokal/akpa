@@ -1,8 +1,8 @@
-import {Forecast} from "./forecast";
-import {Percentile} from "./percentile";
-import {SimulationResult} from "./simulationResult";
+import { Forecast } from "./forecast";
+import { Percentile } from "./percentile";
+import { SimulationResult } from "./simulationResult";
 
-export abstract class ForecastBuilder{
+export abstract class ForecastBuilder {
 
     private initial_percentiles: Array<Percentile>;
 
@@ -18,8 +18,8 @@ export abstract class ForecastBuilder{
     protected simulationResults: Array<SimulationResult>;
     private percentiles: Array<Percentile>;
 
-    constructor(simulationResults:Array<SimulationResult>){
-        this.simulationResults = simulationResults;        
+    constructor(simulationResults: Array<SimulationResult>) {
+        this.simulationResults = simulationResults;
         this.countSimulations();
         this.forecasts = new Array<Forecast>(0);
 
@@ -28,7 +28,7 @@ export abstract class ForecastBuilder{
         this.initial_percentiles[1] = new Percentile(0.5);
         this.initial_percentiles[2] = new Percentile(0.7);
         this.initial_percentiles[3] = new Percentile(0.85);
-        this.initial_percentiles[4] = new Percentile(0.9);   
+        this.initial_percentiles[4] = new Percentile(0.9);
 
         this.percentiles = this.initial_percentiles;
     }
@@ -36,7 +36,7 @@ export abstract class ForecastBuilder{
     abstract createForecast(): void;
 
     protected orderSimulationResults(): Array<SimulationResult> {
-        var sortedArray: Array<SimulationResult> = this.simulationResults.sort((n1:SimulationResult, n2:SimulationResult) => {
+        var sortedArray: Array<SimulationResult> = this.simulationResults.sort((n1: SimulationResult, n2: SimulationResult) => {
             if (n1.NumberOfItemsCompleted > n2.NumberOfItemsCompleted)
                 return -1;
             else if (n1.NumberOfItemsCompleted < n2.NumberOfItemsCompleted)
@@ -50,7 +50,7 @@ export abstract class ForecastBuilder{
     }
 
     protected orderPercentiles(): Array<Percentile> {
-        var sortedArray: Array<Percentile> = this.percentiles.sort((n1:Percentile, n2:Percentile) => {
+        var sortedArray: Array<Percentile> = this.percentiles.sort((n1: Percentile, n2: Percentile) => {
             if (n1.value > n2.value)
                 return 1;
             else if (n1.value < n2.value)
@@ -62,7 +62,7 @@ export abstract class ForecastBuilder{
         return sortedArray;
     }
 
-    private countSimulations() : void {
+    private countSimulations(): void {
         this.numberOfSimulations = 0;
         for (let i = 0; i < this.simulationResults.length; i++)
             this.numberOfSimulations = this.numberOfSimulations + this.simulationResults[i].Occurences;
