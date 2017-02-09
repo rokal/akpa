@@ -23,6 +23,9 @@ module.exports = {
             { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
         ]
     },
+
+    // The following sections (node and externals) are meant for integrating
+    // correctly the JSZip library in XLS-JS module 
     node: {
         fs: 'empty'
     },
@@ -30,12 +33,4 @@ module.exports = {
         { './cptable': 'var cptable' },
         { './jszip': 'jszip' }
     ]
-    // When importing a module whose path matches one of the following, just
-    // assume a corresponding global variable exists and use that instead.
-    // This is important because it allows us to avoid bundling all of our
-    // dependencies, which allows browsers to cache those libraries between builds.
-    // externals: {
-    //     "react": "React",
-    //     "react-dom": "ReactDOM",
-    // },
 };
