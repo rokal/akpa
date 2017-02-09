@@ -30,6 +30,7 @@
             "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
             "stopOnEntry": false,
             "args": [
+                "./tests/jsoutput/tests/excelloader.test.js",
                 "--runInBand",
                 "--no-cache",
                 "-c", 
@@ -38,7 +39,7 @@
             "preLaunchTask": null,
             "runtimeExecutable": null,
             "runtimeArgs": [
-                "--harmony"
+                "--debug-brk"
             ],
             "env": {
                 "NODE_ENV": "development"

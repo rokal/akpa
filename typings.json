@@ -1,14 +1,18 @@
 {
   "globalDependencies": {
-    "jest": "registry:dt/jest#16.0.0+20161220121457",
-    "material-ui": "registry:dt/material-ui#0.16.0+20170118063755",
+    "jest": "registry:dt/jest#18.1.0+20170131225342",
+    "material-ui": "registry:dt/material-ui#0.16.0+20170204022542",
     "moment": "registry:dt/moment#2.11.1+20161010105546",
-    "react-easy-chart": "registry:dt/react-easy-chart#0.1.12+20161121014224"
+    "react-easy-chart": "registry:dt/react-easy-chart#0.1.12+20170123203653"
   },
   "devDependencies": {
-    "react-test-renderer": "registry:dt/react-test-renderer#15.4.0+20170101233612"
+    "react-test-renderer": "registry:dt/react-test-renderer#15.4.0+20170123203653"
   },
   "dependencies": {
-    "react-tap-event-plugin": "registry:dt/react-tap-event-plugin#0.0.0+20160726072212"
+    "react-tap-event-plugin": "registry:dt/react-tap-event-plugin#0.0.0+20160726072212",
+    "xlsx": "registry:dt/xlsx#0.0.0+20161122230850"
+  },
+  "globalDevDependencies": {
+    "node": "registry:dt/node#7.0.0+20170204020307"
   }
 }

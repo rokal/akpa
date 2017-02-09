@@ -3,9 +3,5 @@
   "coverageDirectory":"<rootDir>/tests/Results",
   "coverageReporters":["lcov", "text", "text-summary"],
   "moduleFileExtensions": ["js"],
-  "testPathDirs":["<rootDir>/tests/JsOutput/tests"],
-  "testPathIgnorePatterns":[
-    "<rootDir>/tests/Results"],
-  "testRegex": "(<rootDir>/tests/JsOutput/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
   "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js"
 }

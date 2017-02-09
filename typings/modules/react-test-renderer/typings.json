@@ -1,8 +1,8 @@
 {
   "resolution": "main",
   "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/3633866ea5079a65a958d49b97ac5c8e3dfd532d/react-test-renderer/index.d.ts",
-    "raw": "registry:dt/react-test-renderer#15.4.0+20170101233612",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/3633866ea5079a65a958d49b97ac5c8e3dfd532d/react-test-renderer/index.d.ts"
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/9b5329839558a78550bf078c3e5f323c2f0f3b86/react-test-renderer/index.d.ts",
+    "raw": "registry:dt/react-test-renderer#15.4.0+20170123203653",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/9b5329839558a78550bf078c3e5f323c2f0f3b86/react-test-renderer/index.d.ts"
   }
 }
