@@ -2,9 +2,9 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
 import fs = require("fs");
-import {ExcelLoader} from "../src/model/io/excelLoader";
+import {ExcelImporter} from "../src/model/io/excelImporter";
 
-describe.only("ExcelLoader test suite", () => {
+describe("ExcelImporter test suite", () => {
 
 
     it ("Loader Excel 2007 Xlsx file", () => {
@@ -14,13 +14,10 @@ describe.only("ExcelLoader test suite", () => {
         let attr = document.createAttribute("type");
         attr.value = "file";
         input.attributes.setNamedItem(attr);
-        input.addEventListener("onChange", )
+
         // let content = fs.readFileSync(filenameToTest, "hex");
         // console.log(content);
         
         // let blob = new File(new Array<string>(content), filenameToTest);
-        
-        let excelLoader = new ExcelLoader(filenameToTest, blob);
-        excelLoader.load();
     })    
 })

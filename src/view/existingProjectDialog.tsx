@@ -7,7 +7,7 @@ import * as ReactDOM from "react-dom";
 
 import { SimulationResult } from "../model/simulationResult";
 import { ResultsDisplay } from "./resultsDisplay";
-import { ExcelLoader} from "../model/io/excelLoader";
+import { ExcelImporter} from "../model/io/excelImporter";
 
 import { Tabs, Tab } from "material-ui/Tabs";
 import FlatButton from "material-ui/FlatButton";
@@ -24,22 +24,23 @@ export interface ExistingProjectDialogProps {
 }
 export interface ExistingProjectDialogState {
     stepIndex: number,
-    dataFilename: string,
+    excelFilename: string,
     columns:Array<string>,
     startColumn:string,
     endColumn:string,
-    forecastsFilename: string
+    jsonFilename: string
 }
 
-export class ExistingProjectDialog extends React.Component<ExistingProjectDialogProps, ExistingProjectDialogState>{
-
-    private static filename:string;
+export class ExistingProjectDialog extends React.Component<ExistingProjectDialogProps, ExistingProjectDialogState>{    
 
     private excelBlob:File;
     private excelHtmlInput:any;
+    private static excelFilename:string;
+    private excelImporter:ExcelImporter;
 
     private jsonBlob:File;
     private jsonHtmlInput:any
+    private static jsonFilename:string
 
     constructor(props: ExistingProjectDialogProps) {
         super(props);
@@ -70,7 +71,7 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
                     </RaisedButton>
                     <TextField
                         id="fileDataUploadTextField"
-                        value={this.state.dataFilename}
+                        value={this.state.excelFilename}
                         floatingLabelText="Excel file to upload"
                         disabled={true}
                         floatingLabelStyle={this.styles.textField}
@@ -96,7 +97,7 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
                     </RaisedButton>
                     <TextField
                         id="fileForecastsTextField"
-                        value={this.state.forecastsFilename}
+                        value={this.state.jsonFilename}
                         floatingLabelText="Previous forecasts to upload"
                         disabled={true}
                         floatingLabelStyle={this.styles.textField}
@@ -108,6 +109,7 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
                 <div>
                     <RaisedButton
                         label="Create forecasts"
+                        onTouchTap={this.handleBtnCreateForecast.bind(this)}
                         style={this.styles.button}
                         containerElement="label"/>                    
                 </div>
@@ -126,18 +128,23 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
         this.excelHtmlInput = eventInput.target;
 
         this.state.startColumn = this.state.endColumn = "";
-        this.state.dataFilename = this.excelBlob.name;
-        ExistingProjectDialog.filename = this.excelBlob.name;        
+        this.state.excelFilename = this.excelBlob.name;
+        ExistingProjectDialog.excelFilename = this.excelBlob.name;        
         
+        // Instanciate and configure the FileReader object
         let fileReader = new FileReader();
-        fileReader.onload = this.loadInternal;
-        fileReader.onloadstart = this.loadStart;
-        fileReader.onerror = this.loadError;        
-
+        fileReader.onload = (e:any) => {
+            this.excelImporter = new ExcelImporter(ExistingProjectDialog.excelFilename, e.target.result);
+            this.excelImporter.readHeaders();
+            e.target.columns = this.excelImporter.Headers;        
+        }
         fileReader.onloadend = (eventFileReader:any) => {
-            console.log(`File ${ExistingProjectDialog.filename} loaded successfully with ${eventFileReader.loaded} bytes`);
+            console.log(`File ${ExistingProjectDialog.excelFilename} loaded successfully with ${eventFileReader.loaded} bytes`);
             this.callbackExcelFileChange(eventInput, eventFileReader.target.columns);
         }
+        fileReader.onloadstart = (e:any) => {console.log(`File ${ExistingProjectDialog.excelFilename} being loaded`);}
+        fileReader.onerror = (e:any) => {console.log(`File ${ExistingProjectDialog.excelFilename} failed: Error ${e}`);};        
+
         fileReader.readAsBinaryString(this.excelBlob);  
 
         this.setState(this.state);
@@ -155,18 +162,20 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
         this.jsonHtmlInput = eventInput.target;
 
         this.state.startColumn = this.state.endColumn = "";
-        this.state.forecastsFilename = this.jsonBlob.name;
-        //ExistingProjectDialog.filename = this.jsonBlob.name;        
+        this.state.jsonFilename = this.jsonBlob.name;
+        ExistingProjectDialog.jsonFilename = this.jsonBlob.name;        
         
         let fileReader = new FileReader();
-        fileReader.onload = this.loadInternal;
-        fileReader.onloadstart = this.loadStart;
-        fileReader.onerror = this.loadError;        
+        fileReader.onload = (e:any) => {
 
+        }
         fileReader.onloadend = (eventFileReader:any) => {
-            console.log(`File ${ExistingProjectDialog.filename} loaded successfully with ${eventFileReader.loaded} bytes`);
+            console.log(`File ${ExistingProjectDialog.jsonFilename} loaded successfully with ${eventFileReader.loaded} bytes`);
             this.callbackJsonFileChange(eventInput, eventFileReader.target.columns);
         }
+        fileReader.onloadstart = (e:any) => {console.log(`File ${ExistingProjectDialog.jsonFilename} being loaded`);}
+        fileReader.onerror = (e:any) => {console.log(`File ${ExistingProjectDialog.jsonFilename} failed: Error ${e}`);};        
+
         fileReader.readAsBinaryString(this.excelBlob);  
 
         this.setState(this.state);
@@ -177,20 +186,6 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
         this.jsonHtmlInput.value = "";
     }
 
-    private loadInternal(e:any): void{
-        let el = new ExcelLoader(ExistingProjectDialog.filename, e.target.result);
-        el.load();
-        e.target.columns = el.Columns;        
-    }
-
-    private loadStart(e:any): void{
-        console.log(`File ${ExistingProjectDialog.filename} being loaded`);
-    }
-
-    private loadError(e:any): void{
-        console.log(`File ${ExistingProjectDialog.filename} failed: Error ${e}`);
-    }
-
     private handleChangeStartColumn(event:any, index:number, value:any): void {
         this.state.startColumn = value;
         this.setState(this.state);
@@ -199,6 +194,12 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
     private handleChangeEndColumn(event:any, index:number, value:any): void {
         this.state.endColumn = value;
         this.setState(this.state);
+    }
+
+    private handleBtnCreateForecast(): void{
+        this.excelImporter.readCompleteFile(
+            this.state.startColumn,
+            this.state.endColumn);
     }
 
     private buildSelector(title:String, 
@@ -231,17 +232,17 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
                 </SelectField>;
         }
         else
-            return <div>Error, could not load Excel file</div>;
+            return <div></div>;
     }
 
     private setInitialState(): void {
         this.state = {
             stepIndex: 0,
-            dataFilename: "",
+            excelFilename: "",
             columns: new Array<string>(0),
             startColumn: "",
             endColumn: "",
-            forecastsFilename: ""
+            jsonFilename: ""
         };
     }
 
