@@ -34,9 +34,9 @@ export class ExcelImporter{
         this.decodeHeaders();
     }
 
-    readCompleteFile(startColumn:string, endColumn:string):void{
+    readCompleteFile(startColumn:string, endColumn:string):Array<[DateRange, Array<string>]>{
         this.loadFile(false);
-        this.decodeEntireFile(startColumn, endColumn);
+        return this.decodeEntireFile(startColumn, endColumn);
     }
 
     private decodeHeaders(): void{

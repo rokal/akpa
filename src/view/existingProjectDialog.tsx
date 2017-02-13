@@ -6,8 +6,12 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { SimulationResult } from "../model/simulationResult";
+import {SimulationDate} from "../model/simulationDate";
 import { ResultsDisplay } from "./resultsDisplay";
 import { ExcelImporter} from "../model/io/excelImporter";
+import { DateRange} from "../model/dateRange";
+import { ThroughputBuilder} from "../model/throughputBuilder";
+import { ThroughputFrequency} from "../model/throughputFrequencyEnum";
 
 import { Tabs, Tab } from "material-ui/Tabs";
 import FlatButton from "material-ui/FlatButton";
@@ -197,9 +201,31 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
     }
 
     private handleBtnCreateForecast(): void{
-        this.excelImporter.readCompleteFile(
+        let items = this.excelImporter.readCompleteFile(
             this.state.startColumn,
             this.state.endColumn);
+
+        let errorMessages = new Array<[DateRange, Array<string>]>();
+        let dates = new Array<DateRange>();
+        for (let item of items){
+            if (item[1].length == 0)
+                dates.push(item[0]);
+            else
+                errorMessages.push(item);
+        }
+
+        // Put the error messages in Component
+
+        // Build the throughputs
+        let throughputs = ThroughputBuilder.build(dates);
+
+        // Run the simulations        
+        let simulation = new SimulationDate(new Date,
+                                            25,
+                                            1000,
+                                            ThroughputFrequency.Day);
+        simulation.HistoricalThroughput = throughputs;
+        simulation.execute();        
     }
 
     private buildSelector(title:String, 

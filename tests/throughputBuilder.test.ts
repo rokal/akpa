@@ -21,10 +21,9 @@ describe("ThroughputBuilder test suite", () => {
         throughputs = ThroughputBuilder.build(validDateRanges);
 
         expect(throughputs).not.toBeNull();
-        expect(throughputs.length).toEqual(3);
-        expect(throughputs[0]).toEqual(4);
-        expect(throughputs[1]).toEqual(7);
-        expect(throughputs[2]).toEqual(2);
+        expect(throughputs.length).toEqual(2);
+        expect(throughputs[0]).toEqual(2);
+        expect(throughputs[1]).toEqual(1);
     })
 
     test ("2 valid and 1 invalid date range", () => {
@@ -42,8 +41,8 @@ describe("ThroughputBuilder test suite", () => {
 
         expect(throughputs).not.toBeNull();
         expect(throughputs.length).toEqual(2);
-        expect(throughputs[0]).toEqual(4);
-        expect(throughputs[1]).toEqual(2);
+        expect(throughputs[0]).toEqual(1);
+        expect(throughputs[1]).toEqual(1);
     })
 
     test ("Ranges with end dates smaller", () => {
