@@ -1,4 +1,5 @@
 ﻿import { Forecast } from "./forecast";
+import { SimulationConfig } from "./simulationConfig";
 import { SimulationResult } from "./simulationResult";
 import { ThroughputFrequency } from "./throughputFrequencyEnum";
 
@@ -6,43 +7,48 @@ export abstract class Simulation {
 
     private initial_number_of_simulations = 10000;
 
+    public get StartDate(): Date{
+        return this.simulationConfig.StartDate;
+    }
+
+    public get NumberOfDays() : number{
+        return this.simulationConfig.NumberOfDays;
+    }
+
+    public get DeliveryDate() : Date{
+        return this.simulationConfig.DeliveryDate;
+    }
+
     public get NumberOfSimulations(): number {
-        return this.numberOfSimulations;
+        return this.simulationConfig.NumberOfSimulations
     }
-    public set NumberOfSimulations(number: number) {
-        this.numberOfSimulations = number;
+
+    public get ThroughputFrequency(): ThroughputFrequency {
+        return this.simulationConfig.ThroughputFrequency;
     }
-    private numberOfSimulations: number;
 
     public get HistoricalThroughput(): number[] {
         return this.historicalThroughput;
     }
-    public set HistoricalThroughput(throughputs: number[]) {
-        this.historicalThroughput = throughputs;
-    }
     private historicalThroughput: Array<number>;
-
-    public get RandomIndexGenerator(): number {
-        return Math.floor(Math.random() * this.historicalThroughput.length);
-    }
-
-    public get ThroughputFrequency(): ThroughputFrequency {
-        return this.throughputFrequency;
-    }
-    private throughputFrequency: ThroughputFrequency
 
     public get SimulationResults(): Array<SimulationResult> {
         return this.simulationResults;
     }
     protected simulationResults: Array<SimulationResult>;
 
-    constructor(numberOfSimulations: number, throughputFrequency: ThroughputFrequency) {
+    protected get RandomIndexGenerator(): number {
+        return Math.floor(Math.random() * this.historicalThroughput.length);
+    }
 
-        this.NumberOfSimulations = numberOfSimulations;
-        this.throughputFrequency = throughputFrequency;
+    protected simulationConfig: SimulationConfig;
+
+    constructor(config:SimulationConfig, 
+                historicalThroughput: Array<number>) {
+
+        this.simulationConfig = config;
+        this.historicalThroughput = historicalThroughput;
         this.simulationResults = new Array<SimulationResult>();
-
-        this.historicalThroughput = [2, 7, 3, 9, 0, 3, 6, 8, 3];
     }
 
     abstract execute(): void;

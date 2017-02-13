@@ -1,6 +1,7 @@
 /// <reference path="../../typings/globals/moment/index.d.ts" />
 
 import { DateRange } from "./dateRange";
+import {ExcelImportResult} from "./io/excelImportResult";
 import * as XLSX from "xlsx";
 import * as moment from "moment";
 
@@ -17,7 +18,7 @@ export class DateValidator {
         endColumnName: string,
         endColumnIndex: number,
         endCell: XLSX.IWorkSheetCell | undefined,
-        rowIndex: number): [DateRange, Array<string>] {
+        rowIndex: number): ExcelImportResult {
 
         let errorMessages = new Array<string>(0);
         let startDate = moment();
@@ -49,7 +50,9 @@ export class DateValidator {
             errorMessages.push(tempMessage);
         }
 
-        return [new DateRange(startDate.toDate(), endDate.toDate()), errorMessages];
+        return new ExcelImportResult(startDate.toDate(),
+                                     endDate.toDate(),
+                                     errorMessages);
     }
 
     private static MSG_CELL_UNDEFINED = "Cell in column {0}[Index:{1}] at row {2} is empty";

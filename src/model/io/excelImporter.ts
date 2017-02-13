@@ -2,6 +2,7 @@
 
 import {DateRange} from "../dateRange";
 import {DateValidator} from "../dateValidator";
+import {ExcelImportResult} from "./excelImportResult";
 import * as XLSX from "xlsx"; 
 
 export class ExcelImporter{
@@ -34,7 +35,7 @@ export class ExcelImporter{
         this.decodeHeaders();
     }
 
-    readCompleteFile(startColumn:string, endColumn:string):Array<[DateRange, Array<string>]>{
+    readCompleteFile(startColumn:string, endColumn:string):Array<ExcelImportResult>{
         this.loadFile(false);
         return this.decodeEntireFile(startColumn, endColumn);
     }
@@ -64,7 +65,7 @@ export class ExcelImporter{
         }
     }
 
-    private decodeEntireFile(startColumnName:string, endColumnName:string): Array<[DateRange, Array<string>]>{
+    private decodeEntireFile(startColumnName:string, endColumnName:string): Array<ExcelImportResult>{
         let rangeOfHeaders = this.firstSheet['!ref'] as any;
         var rangeNumeric = XLSX.utils.decode_range(rangeOfHeaders);
         
@@ -76,12 +77,12 @@ export class ExcelImporter{
         let startColumnIndex = this.getIndex(startColumnName);
         let endColumnIndex= this.getIndex(endColumnName);
 
-        let dates = new Array<[DateRange, Array<string>]>(0);
+        let dates = new Array<ExcelImportResult>(0);
         let startDate:Date | undefined;
         let startCell: XLSX.IWorkSheetCell;        
         let endDate:Date| undefined;
         let endCell: XLSX.IWorkSheetCell;        
-        let result:[DateRange, Array<string>];
+        let result:ExcelImportResult;
         
         for (; R < rangeNumeric.e.r; ++R){
             startCell = this.firstSheet[XLSX.utils.encode_cell({c:startColumnIndex, r:R})];

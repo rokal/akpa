@@ -1,44 +1,18 @@
-﻿import {ForecastItems} from "./forecastItems";
-import {Percentile} from "./percentile";
-import {Simulation} from "./simulation";
-import {SimulationResult} from "./simulationResult";
+﻿import {Simulation} from "./simulation";
+import {SimulationConfig} from "./simulationConfig";
 import {ThroughputFrequency} from "./throughputFrequencyEnum";
-
-import * as moment from "moment";
 
 export class SimulationDate extends Simulation{
 
-    public get StartDate(): Date{
-        return this.startDate;
-    }
-    private startDate: Date;
-
-    public get NumberOfDays() : number{
-        return this.numberOfDays;
-    }
-    private numberOfDays: number;
-
-    public get DeliveryDate() : Date{
-        return this.deliveryDate;
-    }
-    private deliveryDate: Date;
-
-    constructor(startDate: Date,
-                numberOfDays: number, 
-                numberOfSimulations: number, 
-                throughputFrequency: ThroughputFrequency) {  
-        super(numberOfSimulations, throughputFrequency)
-        this.startDate = startDate;
-        this.numberOfDays = numberOfDays;
-
-        let start = moment(this.startDate);
-        this.deliveryDate = start.add(this.numberOfDays, 'days').toDate();
+    constructor(config:SimulationConfig,
+                historicalThroughput:Array<number>) {  
+        super(config, historicalThroughput)
     }
 
     execute(): void{
 
         // Variables used in function
-        var throughputResults: number[] = new Array(this.numberOfDays);
+        var throughputResults: number[] = new Array(this.NumberOfDays);
         var simulatedNumberOfItemsCompleted: number;
 
         // Produce X simulations
@@ -49,7 +23,7 @@ export class SimulationDate extends Simulation{
 
             simulatedNumberOfItemsCompleted = this.addItems(throughputResults);
 
-            super.addSimulationResult(simulatedNumberOfItemsCompleted, this.numberOfDays);
+            super.addSimulationResult(simulatedNumberOfItemsCompleted, this.NumberOfDays);
         }
     }
 
@@ -58,8 +32,8 @@ export class SimulationDate extends Simulation{
         var throughputResults: number[];
         var randomIndex: number;
 
-        throughputResults = new Array(this.numberOfDays);
-        for (var j = 0; j < this.numberOfDays; j++) {
+        throughputResults = new Array(this.NumberOfDays);
+        for (var j = 0; j < this.NumberOfDays; j++) {
 
             randomIndex = this.RandomIndexGenerator;
 

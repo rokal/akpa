@@ -21,8 +21,8 @@ describe("ResultsDisplay test suite", () => {
         ThroughputFrequency.Week,
         new Date(),
         expectedDays,
-        new Date(),
-        expectedItems);
+        expectedItems,
+        1000);
 
     it("First test", () => {
 
@@ -35,7 +35,6 @@ describe("ResultsDisplay test suite", () => {
         const component = create(
             <ResultsDisplay 
                 simulationConfig={expectedConfig}
-                numberOfSimulations={1000}
                 forecasts={fc} />);
         
         let tree = component.toJSON();

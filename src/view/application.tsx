@@ -41,7 +41,7 @@ export class Application extends React.Component<AppProps, AppState>{
         super(props);
         this.simulationRan = false;
         this.state = {
-            simulationConfig: new SimulationConfig([5, 6, 7, 1, 5], ThroughputFrequency.Day, new Date(), 38, new Date(), 100),
+            simulationConfig: new SimulationConfig([], ThroughputFrequency.Day, new Date(), 38, 100, 1000),
             simulationDateResults: new Array<SimulationResult>(),
             simulationItemsResults: new Array<SimulationResult>()
         };
@@ -54,7 +54,6 @@ export class Application extends React.Component<AppProps, AppState>{
                 {this.simulationRan &&
                     <ResultsDisplay
                         simulationConfig={this.state.simulationConfig}
-                        numberOfSimulations={this.simulation.NumberOfSimulations}
                         forecasts={this.forecastDateBuilder.Forecasts} />}
                 {this.simulationRan &&
                     <SimulationChart SimulationResults={this.simulation.SimulationResults} />}
@@ -86,11 +85,8 @@ export class Application extends React.Component<AppProps, AppState>{
 
     private cbLaunchSimulation(data: SimulationConfig): void {
         this.simulation = new SimulationDate(
-            data.StartDate,
-            data.NumberOfDays,
-            1000,
-            data.ThroughputFrequency);
-        this.simulation.HistoricalThroughput = data.HistoricalThroughput;
+            data,
+            data.HistoricalThroughput);
         this.simulation.execute();
 
         this.forecastDateBuilder = new ForecastDateBuilder(this.simulation.SimulationResults, data.NumberOfDays);

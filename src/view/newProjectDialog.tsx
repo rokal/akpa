@@ -240,8 +240,8 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
             this.state.throughputFrequency,
             new Date(),
             futur.diff(now, 'days'),
-            futur.toDate(),
-            this.state.numberOfItems as number);
+            this.state.numberOfItems as number,
+            1000);
         
         this.props.cbCloseDialog(data);
     }

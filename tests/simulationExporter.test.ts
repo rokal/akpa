@@ -19,15 +19,12 @@ describe("SimulationExporter test suite", () => {
             ThroughputFrequency.Day,
             new Date(2017, 0, 20, 8, 30, 0, 0),
             38,
-            new Date(2017, 2, 3, 8, 30, 0, 0),
-            100);
+            100,
+            1000);
 
         simulation = new SimulationDate(
-            simulationConfig.StartDate,
-            simulationConfig.NumberOfDays,
-            20,
-            simulationConfig.ThroughputFrequency);
-        simulation.HistoricalThroughput = simulationConfig.HistoricalThroughput;
+            simulationConfig,
+            simulationConfig.HistoricalThroughput);
         simulation.execute();
     });
 

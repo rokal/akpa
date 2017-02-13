@@ -26,10 +26,10 @@ describe("DateValidator test suite", () => {
                                           endCellValid,
                                           rowIndex);
 
-        expect(actualValues[0].StartDate).toEqual(DateValidator.DEFAULT_DATE);
-        expect(actualValues[0].EndDate).not.toEqual(DateValidator.DEFAULT_DATE);
-        expect(actualValues[1]).not.toBeNull();
-        expect(actualValues[1].length).not.toEqual(0);
+        expect(actualValues.Range.StartDate).toEqual(DateValidator.DEFAULT_DATE);
+        expect(actualValues.Range.EndDate).not.toEqual(DateValidator.DEFAULT_DATE);
+        expect(actualValues.Messages).not.toBeNull();
+        expect(actualValues.Messages.length).not.toEqual(0);
     });
 
     test("Undefined end cell test", () => {
@@ -42,10 +42,10 @@ describe("DateValidator test suite", () => {
                                           undefined,
                                           rowIndex);
 
-        expect(actualValues[0].StartDate).not.toEqual(DateValidator.DEFAULT_DATE);
-        expect(actualValues[0].EndDate).toEqual(DateValidator.DEFAULT_DATE);
-        expect(actualValues[1]).not.toBeNull();
-        expect(actualValues[1].length).not.toEqual(0);
+        expect(actualValues.Range.StartDate).not.toEqual(DateValidator.DEFAULT_DATE);
+        expect(actualValues.Range.EndDate).toEqual(DateValidator.DEFAULT_DATE);
+        expect(actualValues.Messages).not.toBeNull();
+        expect(actualValues.Messages.length).not.toEqual(0);
     });
 
     test("Start greater than end test", () => {
@@ -58,10 +58,10 @@ describe("DateValidator test suite", () => {
                                           startCellValid,
                                           rowIndex);
         
-        expect(actualValues[0].StartDate).not.toEqual(DateValidator.DEFAULT_DATE);
-        expect(actualValues[0].EndDate).not.toEqual(DateValidator.DEFAULT_DATE);
-        expect(actualValues[1]).not.toBeNull();
-        expect(actualValues[1].length).not.toEqual(0);
+        expect(actualValues.Range.StartDate).not.toEqual(DateValidator.DEFAULT_DATE);
+        expect(actualValues.Range.EndDate).not.toEqual(DateValidator.DEFAULT_DATE);
+        expect(actualValues.Messages).not.toBeNull();
+        expect(actualValues.Messages.length).not.toEqual(0);
     });
 
     test.only("Invalid start cell test", () => {
@@ -74,9 +74,9 @@ describe("DateValidator test suite", () => {
                                           endCellValid,
                                           rowIndex);
         
-        expect(actualValues[0].StartDate).toEqual(DateValidator.DEFAULT_DATE);
-        expect(actualValues[0].EndDate).not.toEqual(DateValidator.DEFAULT_DATE);
-        expect(actualValues[1]).not.toBeNull();
-        expect(actualValues[1].length).not.toEqual(0);
+        expect(actualValues.Range.StartDate).toEqual(DateValidator.DEFAULT_DATE);
+        expect(actualValues.Range.EndDate).not.toEqual(DateValidator.DEFAULT_DATE);
+        expect(actualValues.Messages).not.toBeNull();
+        expect(actualValues.Messages.length).not.toEqual(0);
     });    
 });

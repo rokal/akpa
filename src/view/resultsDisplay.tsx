@@ -11,7 +11,6 @@ import {SimulationConfig} from "../model/simulationConfig";
 import * as moment from "moment";
 
 export interface ResultsProps { 
-    numberOfSimulations: number,
     simulationConfig: SimulationConfig | undefined,
     forecasts: Forecast[] | undefined; 
 }
@@ -37,7 +36,7 @@ export class ResultsDisplay extends React.Component<ResultsProps, undefined> {
 
         return <div>
                 <h2>Forecasts for delivering on {this.dateToString(simulationConfig.DeliveryDate)} ({simulationConfig.NumberOfDays} days)</h2>
-                <h3>({this.props.numberOfSimulations} simulations were ran)</h3>
+                <h3>({simulationConfig.NumberOfSimulations} simulations were ran)</h3>
                 <ul>{listItems}</ul> 
             </div>;        
     }
