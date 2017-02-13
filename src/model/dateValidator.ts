@@ -8,6 +8,9 @@ export class DateValidator {
 
     public static DEFAULT_DATE = new Date(0, 0, 0, 0, 0, 0, 0);
 
+    private constructor(){        
+    }
+
     static process(startColumnName: string,
         startColumnIndex: number,
         startCell: XLSX.IWorkSheetCell | undefined,
