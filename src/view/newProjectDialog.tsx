@@ -6,8 +6,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {ThroughputFrequency} from "../throughputFrequencyEnum";
-import {SimulationConfig} from "./simulationConfig";
+import {ThroughputFrequency} from "../model/throughputFrequencyEnum";
+import {SimulationConfig} from "../model/simulationConfig";
 import {Utilities} from "../utilities";
 
 import DatePicker from "material-ui/DatePicker";
@@ -127,7 +127,7 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
                     errorStyle={this.state.numItemsErrorStyle}
                     underlineFocusStyle={this.styles.validStyle}
                 />
-            </Dialog>              
+            </Dialog>;              
     }
 
     private handleMinValueChange(e:any): void{
@@ -240,7 +240,8 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
             this.state.throughputFrequency,
             new Date(),
             futur.diff(now, 'days'),
-            this.state.numberOfItems as number);
+            this.state.numberOfItems as number,
+            1000);
         
         this.props.cbCloseDialog(data);
     }

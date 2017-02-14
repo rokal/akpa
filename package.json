@@ -36,10 +36,12 @@
   "dependencies": {
     "@types/react": "^0.14.55",
     "@types/react-dom": "^0.14.19",
-    "chart-library": "^1.1.0",    
+    "chart-library": "^1.1.0",
     "express": "^4.14.0",
+    "material-ui-upload": "^1.0.0",
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "xlsx": "^0.8.2"
   },
   "devDependencies": {
     "@types/d3": "^4.4.0",

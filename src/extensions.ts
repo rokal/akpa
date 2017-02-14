@@ -6,6 +6,7 @@
 interface String
 {
    startsWith(str: string): boolean;
+   format(...restOfParameters:string[]): string;
 }
 
 /**

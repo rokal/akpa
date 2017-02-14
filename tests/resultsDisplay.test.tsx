@@ -1,20 +1,28 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 /// <reference path="../typings/modules/react-test-renderer/index.d.ts" />
 
-//import React from "react";
 import * as React from "react";
 import {create} from "react-test-renderer";
 
-import {Forecast} from "../src/forecast";
-import {ForecastItems} from "../src/forecastItems";
-import {Percentile} from "../src/percentile";
-import {ResultsDisplay} from "../src/components/resultsDisplay";
+import {Forecast} from "../src/model/forecast";
+import {ForecastItems} from "../src/model/forecastItems";
+import {Percentile} from "../src/model/percentile";
+import {SimulationConfig} from "../src/model/simulationConfig";
+import {ThroughputFrequency} from "../src/model/throughputFrequencyEnum";
+import {ResultsDisplay} from "../src/view/resultsDisplay";
 
 describe("ResultsDisplay test suite", () => {
     
     var expectedPercentile = new Percentile(0.5);
     var expectedItems = 100;
     var expectedDays = 30;
+    var expectedConfig = new SimulationConfig(
+        [6,7,1,6,2,4,6,0,2,1,5],
+        ThroughputFrequency.Week,
+        new Date(),
+        expectedDays,
+        expectedItems,
+        1000);
 
     it("First test", () => {
 
@@ -26,10 +34,9 @@ describe("ResultsDisplay test suite", () => {
 
         const component = create(
             <ResultsDisplay 
-                numberOfDays={expectedDays}
-                numberOfItems={expectedItems}
-                numberOfSimulations={1000}
-                forecasts={fc} />);
+                simulationConfig={expectedConfig}
+                forecasts={fc}
+                cbDaysChanged={() => {}} />);
         
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();;

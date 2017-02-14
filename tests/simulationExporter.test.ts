@@ -1,11 +1,11 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
-import { ForecastDateBuilder } from "../src/forecastDateBuilder";
-import { SimulationConfig } from "../src/components/simulationConfig";
-import { SimulationDate } from "../src/simulationDate";
-import { SimulationExporter } from "../src/simulationExporter";
-import {SimulationImporter} from "../src/simulationImporter";
-import { ThroughputFrequency } from "../src/throughputFrequencyEnum";
+import { ForecastDateBuilder } from "../src/model/forecastDateBuilder";
+import { SimulationConfig } from "../src/model/simulationConfig";
+import { SimulationDate } from "../src/model/simulationDate";
+import { ThroughputFrequency } from "../src/model/throughputFrequencyEnum";
+import { SimulationImporter } from "../src/model/io/SimulationImporter";
+import { SimulationExporter } from "../src/model/io/simulationExporter";
 
 describe("SimulationExporter test suite", () => {
 
@@ -19,14 +19,10 @@ describe("SimulationExporter test suite", () => {
             ThroughputFrequency.Day,
             new Date(2017, 0, 20, 8, 30, 0, 0),
             38,
-            100);
+            100,
+            1000);
 
-        simulation = new SimulationDate(
-            simulationConfig.StartDate,
-            simulationConfig.NumberOfDays,
-            20,
-            simulationConfig.ThroughputFrequency);
-        simulation.HistoricalThroughput = simulationConfig.HistoricalThroughput;
+        simulation = new SimulationDate(simulationConfig);
         simulation.execute();
     });
 

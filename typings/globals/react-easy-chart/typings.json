@@ -1,8 +1,8 @@
 {
   "resolution": "main",
   "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/2057acf55e2359a14a31a31b9a101ee8e1551074/react-easy-chart/index.d.ts",
-    "raw": "registry:dt/react-easy-chart#0.1.12+20161121014224",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/2057acf55e2359a14a31a31b9a101ee8e1551074/react-easy-chart/index.d.ts"
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/9b5329839558a78550bf078c3e5f323c2f0f3b86/react-easy-chart/index.d.ts",
+    "raw": "registry:dt/react-easy-chart#0.1.12+20170123203653",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/9b5329839558a78550bf078c3e5f323c2f0f3b86/react-easy-chart/index.d.ts"
   }
 }

@@ -1,14 +1,14 @@
-import {ForecastBuilder} from "./forecastBuilder";
-import {ForecastDate} from "./forecastDate";
-import {Percentile} from "./percentile";
-import {SimulationResult} from "./simulationResult";
+import { ForecastBuilder } from "./forecastBuilder";
+import { ForecastDate } from "./forecastDate";
+import { Percentile } from "./percentile";
+import { SimulationResult } from "./simulationResult";
 
 export class ForecastDateBuilder extends ForecastBuilder {
 
     private numberOfDays: number;
 
     constructor(simulationResults: Array<SimulationResult>,
-                numberOfDays: number){
+        numberOfDays: number) {
         super(simulationResults);
 
         this.numberOfDays = numberOfDays;
@@ -30,7 +30,7 @@ export class ForecastDateBuilder extends ForecastBuilder {
                 if (counter >= numberOfOccurences) {
                     this.Forecasts.push(new ForecastDate(percentile, result.NumberOfItemsCompleted, this.numberOfDays));
                     break;
-                }                    
+                }
             }
 
         }
