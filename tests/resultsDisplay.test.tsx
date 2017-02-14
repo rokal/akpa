@@ -35,7 +35,8 @@ describe("ResultsDisplay test suite", () => {
         const component = create(
             <ResultsDisplay 
                 simulationConfig={expectedConfig}
-                forecasts={fc} />);
+                forecasts={fc}
+                cbDaysChanged={() => {}} />);
         
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();;

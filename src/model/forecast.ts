@@ -1,17 +1,11 @@
 ﻿import { Percentile } from "./percentile";
 
 export abstract class Forecast {
-    public Percentile: Percentile;
 
-    public NumberOfItemsCompleted: Number;
-
-    public NumberOfDays: Number;
-
-    constructor(percentile: Percentile, numberOfItemsCompleted: Number, numberOfDays: Number) {
-        this.Percentile = percentile;
-        this.NumberOfItemsCompleted = numberOfItemsCompleted;
-        this.NumberOfDays = numberOfDays;
+    constructor(public readonly Percentile: Percentile,
+                public readonly NumberOfItemsCompleted: Number,
+                public readonly NumberOfDays: Number) {
     }
 
-    abstract toString(): String;
+    abstract toString(): string;
 }

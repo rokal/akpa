@@ -5,6 +5,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+import {Forecast} from "../model/forecast";
 import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
 import { SimulationConfig } from "../model/simulationConfig";
 import { SimulationResult} from "../model/simulationResult";

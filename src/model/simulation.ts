@@ -28,9 +28,8 @@ export abstract class Simulation {
     }
 
     public get HistoricalThroughput(): number[] {
-        return this.historicalThroughput;
+        return this.simulationConfig.HistoricalThroughput;
     }
-    private historicalThroughput: Array<number>;
 
     public get SimulationResults(): Array<SimulationResult> {
         return this.simulationResults;
@@ -38,16 +37,14 @@ export abstract class Simulation {
     protected simulationResults: Array<SimulationResult>;
 
     protected get RandomIndexGenerator(): number {
-        return Math.floor(Math.random() * this.historicalThroughput.length);
+        return Math.floor(Math.random() * this.simulationConfig.HistoricalThroughput.length);
     }
 
     protected simulationConfig: SimulationConfig;
 
-    constructor(config:SimulationConfig, 
-                historicalThroughput: Array<number>) {
+    constructor(config:SimulationConfig) {
 
         this.simulationConfig = config;
-        this.historicalThroughput = historicalThroughput;
         this.simulationResults = new Array<SimulationResult>();
     }
 

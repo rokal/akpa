@@ -22,9 +22,7 @@ describe("SimulationExporter test suite", () => {
             100,
             1000);
 
-        simulation = new SimulationDate(
-            simulationConfig,
-            simulationConfig.HistoricalThroughput);
+        simulation = new SimulationDate(simulationConfig);
         simulation.execute();
     });
 

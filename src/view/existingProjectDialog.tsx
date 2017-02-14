@@ -5,11 +5,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { SimulationResult } from "../model/simulationResult";
-import { ResultsDisplay } from "./resultsDisplay";
 import { ExcelImporter } from "../model/io/excelImporter";
 import { ExcelImportResult } from "../model/io/excelImportResult";
+import { Forecast } from "../model/Forecast";
+import { ResultsDisplay } from "./resultsDisplay";
+import { SimulationConfig } from "../model/simulationConfig";
 import { SimulationController } from "../model/simulationController";
+import { SimulationResult } from "../model/simulationResult";
+import { ThroughputFrequency} from "../model/throughputFrequencyEnum";
 
 import { Tabs, Tab } from "material-ui/Tabs";
 import FlatButton from "material-ui/FlatButton";
@@ -22,7 +25,7 @@ import { grey900 } from 'material-ui/styles/colors';
 
 export interface ExistingProjectDialogProps {
     open: boolean;
-    cbCloseDialog: (originalData: Array<SimulationResult>) => void
+    cbCloseDialog: (originalData: Array<SimulationResult>) => void;    
 }
 export interface ExistingProjectDialogState {
     stepIndex: number,
@@ -30,7 +33,9 @@ export interface ExistingProjectDialogState {
     columns: Array<string>,
     startColumn: string,
     endColumn: string,
-    jsonFilename: string
+    jsonFilename: string,
+    simulationConfig: SimulationConfig,
+    forecasts:Forecast[]
 }
 
 export class ExistingProjectDialog extends React.Component<ExistingProjectDialogProps, ExistingProjectDialogState>{
@@ -44,9 +49,12 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
     private jsonHtmlInput: any
     private static jsonFilename: string
 
+    private simController:SimulationController;
+
     constructor(props: ExistingProjectDialogProps) {
         super(props);
         this.setInitialState();
+        this.simController = new SimulationController();
     }
 
     render(): JSX.Element {
@@ -116,8 +124,10 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
                         containerElement="label" />
                 </div>
                 <ResultsDisplay 
-                    simulationConfig={undefined}
-                    forecasts={undefined} />
+                    simulationConfig={this.state.simulationConfig}
+                    forecasts={this.state.forecasts}          
+                    orderedAsc={false}          
+                    cbDaysChanged={this.cbDaysChanged.bind(this)} />
             </Tab>
             <Tab label="Forecasts">
             </Tab>
@@ -198,10 +208,23 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
     private handleBtnCreateForecast(): void {
         let items = this.excelImporter.readCompleteFile(
             this.state.startColumn,
-            this.state.endColumn);
+            this.state.endColumn);        
 
-        let simController = new SimulationController();
-        simController.createDateSimulationForExistingProject(items);
+        this.simController.setResults(items)        
+        this.executeSimulations();
+    }
+
+    private cbDaysChanged(numberOfDays:number): void{
+        this.simController.NumberOfDays = numberOfDays;
+        this.executeSimulations();
+    }
+
+    private executeSimulations():void{
+        this.state.simulationConfig.StartDate = this.simController.StartDate;
+        this.state.simulationConfig.NumberOfDays = this.simController.NumberOfDays;
+        this.state.forecasts = this.simController.createDateSimulationForExistingProject();
+        
+        this.setState(this.state);
     }
 
     private buildSelector(title: String,
@@ -244,7 +267,9 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
             columns: new Array<string>(0),
             startColumn: "",
             endColumn: "",
-            jsonFilename: ""
+            jsonFilename: "",
+            simulationConfig: SimulationConfig.Empty,
+            forecasts: new Array<Forecast>(0)
         };
     }
 

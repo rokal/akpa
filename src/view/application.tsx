@@ -54,7 +54,9 @@ export class Application extends React.Component<AppProps, AppState>{
                 {this.simulationRan &&
                     <ResultsDisplay
                         simulationConfig={this.state.simulationConfig}
-                        forecasts={this.forecastDateBuilder.Forecasts} />}
+                        forecasts={this.forecastDateBuilder.Forecasts}
+                        orderedAsc={false}
+                        cbDaysChanged={(data:number) => {}} />}
                 {this.simulationRan &&
                     <SimulationChart SimulationResults={this.simulation.SimulationResults} />}
                 {this.simulationRan &&             
@@ -83,16 +85,14 @@ export class Application extends React.Component<AppProps, AppState>{
         }, 0);         
     }
 
-    private cbLaunchSimulation(data: SimulationConfig): void {
-        this.simulation = new SimulationDate(
-            data,
-            data.HistoricalThroughput);
+    private cbLaunchSimulation(config: SimulationConfig): void {
+        this.simulation = new SimulationDate(config);
         this.simulation.execute();
 
-        this.forecastDateBuilder = new ForecastDateBuilder(this.simulation.SimulationResults, data.NumberOfDays);
+        this.forecastDateBuilder = new ForecastDateBuilder(this.simulation.SimulationResults, config.NumberOfDays);
         this.forecastDateBuilder.createForecast();
 
-        this.state.simulationConfig = data;
+        this.state.simulationConfig = config;
         this.state.simulationDateResults = this.simulation.SimulationResults;
         this.simulationRan = true;
         this.setState(this.state);

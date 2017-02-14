@@ -4,9 +4,8 @@ import {ThroughputFrequency} from "./throughputFrequencyEnum";
 
 export class SimulationDate extends Simulation{
 
-    constructor(config:SimulationConfig,
-                historicalThroughput:Array<number>) {  
-        super(config, historicalThroughput)
+    constructor(config:SimulationConfig) {  
+        super(config)
     }
 
     execute(): void{
