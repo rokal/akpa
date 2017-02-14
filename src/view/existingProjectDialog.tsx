@@ -7,7 +7,7 @@ import * as ReactDOM from "react-dom";
 
 import { ExcelImporter } from "../model/io/excelImporter";
 import { ExcelImportResult } from "../model/io/excelImportResult";
-import { Forecast } from "../model/Forecast";
+import { Forecast } from "../model/forecast";
 import { ResultsDisplay } from "./resultsDisplay";
 import { SimulationConfig } from "../model/simulationConfig";
 import { SimulationController } from "../model/simulationController";
