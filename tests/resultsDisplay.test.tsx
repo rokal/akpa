@@ -36,6 +36,7 @@ describe("ResultsDisplay test suite", () => {
             <ResultsDisplay 
                 simulationConfig={expectedConfig}
                 forecasts={fc}
+                orderedAsc={false}
                 cbDaysChanged={() => {}} />);
         
         let tree = component.toJSON();
