@@ -1,15 +1,15 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
-import {SimulationResult} from "../src/model/simulationResult";
+import { SimulationResult } from "../src/model/simulationResult";
 
 describe("SimulationResult test suite", () => {
 
     var expectedItems = 100;
-    var expectedDays = 30; 
+    var expectedDays = 30;
 
-    it("Constructor test", () => {
+    test("Constructor test", () => {
         let testSimulationResult = new SimulationResult(
-            expectedItems, 
+            expectedItems,
             expectedDays);
 
         expect(testSimulationResult.NumberOfItemsCompleted).toEqual(expectedItems);
@@ -17,7 +17,7 @@ describe("SimulationResult test suite", () => {
         expect(testSimulationResult.Occurences).toEqual(1);
     });
 
-    it("Verify IncrementOccurence", () => {
+    test("Verify IncrementOccurence", () => {
         let testSimulationResult = new SimulationResult(
             expectedItems,
             expectedDays);
@@ -26,12 +26,12 @@ describe("SimulationResult test suite", () => {
 
         testSimulationResult.incrementOccurences();
 
-        expect(testSimulationResult.Occurences).toEqual(2);    
+        expect(testSimulationResult.Occurences).toEqual(2);
     });
 
-    it ("Call toString() with loose validation", () => {
+    test("Call toString() with loose validation", () => {
         let testSimulationResult = new SimulationResult(
-            expectedItems, 
+            expectedItems,
             expectedDays);
 
         expect(testSimulationResult.toString()).not.toBeUndefined();

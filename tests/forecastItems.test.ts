@@ -9,7 +9,7 @@ describe("ForecastItems test suite", () => {
     var expectedNumberItems = 100;
     var expectedDays = 40;
 
-    it("Accepts standard values to properties", () => {       
+    test("Accepts standard values to properties", () => {       
         let testForecast = new ForecastItems(
             expectedPercentile,
             expectedNumberItems,
@@ -20,7 +20,7 @@ describe("ForecastItems test suite", () => {
         expect(testForecast.NumberOfDays).toEqual(expectedDays);
     });
 
-    it("Call toString() with loose validation", () => {
+    test("Call toString() with loose validation", () => {
         let testForecast = new ForecastItems(
             expectedPercentile,
             expectedNumberItems,
