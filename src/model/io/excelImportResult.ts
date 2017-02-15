@@ -9,6 +9,7 @@ export class ExcelImportResult{
 
     constructor(startDate:Date,
                 endDate:Date,
+                public readonly RowIndex:number,
                 public readonly Messages:Array<string>){        
         this.range = new DateRange(startDate,endDate);
     }

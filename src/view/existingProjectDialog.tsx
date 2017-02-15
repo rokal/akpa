@@ -146,8 +146,7 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
         let fileReader = new FileReader();
         fileReader.onload = (e: any) => {
             this.excelImporter = new ExcelImporter(ExistingProjectDialog.excelFilename, e.target.result);
-            this.excelImporter.readHeaders();
-            e.target.columns = this.excelImporter.Headers;
+            e.target.columns = this.excelImporter.readHeaders();
         }
         fileReader.onloadend = (eventFileReader: any) => {
             console.log(`File ${ExistingProjectDialog.excelFilename} loaded successfully with ${eventFileReader.loaded} bytes`);

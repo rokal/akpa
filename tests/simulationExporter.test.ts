@@ -4,7 +4,7 @@ import { ForecastDateBuilder } from "../src/model/forecastDateBuilder";
 import { SimulationConfig } from "../src/model/simulationConfig";
 import { SimulationDate } from "../src/model/simulationDate";
 import { ThroughputFrequency } from "../src/model/throughputFrequencyEnum";
-import { SimulationImporter } from "../src/model/io/SimulationImporter";
+import { SimulationImporter } from "../src/model/io/simulationImporter";
 import { SimulationExporter } from "../src/model/io/simulationExporter";
 
 describe("SimulationExporter test suite", () => {

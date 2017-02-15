@@ -26,13 +26,7 @@ export class SimulationController {
     private simulationConfig:SimulationConfig;        
 
     constructor(){
-        this.simulationConfig = new SimulationConfig(
-            new Array<number>(0),
-            ThroughputFrequency.Day,
-            new Date(),
-            25,
-            100,
-            1000);
+        this.simulationConfig = SimulationConfig.Empty;
     }
 
     setResults(results: ExcelImportResult[]):void{

@@ -52,6 +52,7 @@ export class DateValidator {
 
         return new ExcelImportResult(startDate.toDate(),
                                      endDate.toDate(),
+                                     rowIndex,
                                      errorMessages);
     }
 
@@ -92,7 +93,8 @@ export class DateValidator {
             stringToParse = cell.w;
 
         let validDate = moment(stringToParse, this.DEFAULT_FORMATS);
-        if (!validDate.isValid()){
+        if (!validDate.isValid() || 
+            validDate.year() > 2030){
             let tempMessage = this.format(this.MSG_INVALID_DATE, stringToParse, columnName, columnIndex, rowIndex)
             errorMessages.push(tempMessage);
             return moment(this.DEFAULT_DATE);

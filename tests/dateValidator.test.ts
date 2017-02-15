@@ -1,4 +1,5 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
+/// <reference path="../typings/modules/xlsx/index.d.ts" />
 
 import {DateValidator} from "../src/model/dateValidator";
 import * as XLSX from "xlsx"; 
@@ -64,7 +65,7 @@ describe("DateValidator test suite", () => {
         expect(actualValues.Messages.length).not.toEqual(0);
     });
 
-    test.only("Invalid start cell test", () => {
+    test("Invalid start cell test", () => {
 
         let actualValues = DateValidator.process(startColumnName,
                                           startColumnIndex,

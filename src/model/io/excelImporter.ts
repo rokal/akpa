@@ -12,13 +12,10 @@ export class ExcelImporter{
     }
     private errorMessage: string;
 
-    public get Headers(): Array<string>{
-        let toto = this.headers.map((header, index, arr) => {
-            return header[1];}
-        );
-        return toto;
-    }
     private headers: Array<[number, string]>;
+
+    private fileRead:boolean;
+    private exportResults:Array<ExcelImportResult>;
 
     private blob:Blob;
     private workbook: XLSX.IWorkBook;
@@ -28,16 +25,30 @@ export class ExcelImporter{
         this.headers = new Array<[number, string]>(0);
         this.errorMessage = "";
         this.blob = data;
+        this.fileRead = false;
+        this.exportResults = new Array<ExcelImportResult>(0);
     }
 
-    readHeaders():void{
+    readHeaders():Array<string>{
         this.loadFile(true);
         this.decodeHeaders();
+
+        let headersName = this.headers.map((header, index, arr) => {
+            return header[1];}
+        );
+        return headersName;        
     }
 
     readCompleteFile(startColumn:string, endColumn:string):Array<ExcelImportResult>{
+        
+        if (this.fileRead)
+            return this.exportResults;
+
         this.loadFile(false);
-        return this.decodeEntireFile(startColumn, endColumn);
+        this.exportResults = this.decodeEntireFile(startColumn, endColumn);
+        this.fileRead = true;
+        
+        return this.exportResults;
     }
 
     private decodeHeaders(): void{
