@@ -14,6 +14,8 @@ export class ExcelImporter{
 
     private headers: Array<[number, string]>;
 
+    private startColumnName:string;
+    private endColumnName:string;
     private fileRead:boolean;
     private exportResults:Array<ExcelImportResult>;
 
@@ -26,6 +28,8 @@ export class ExcelImporter{
         this.errorMessage = "";
         this.blob = data;
         this.fileRead = false;
+        this.startColumnName = "";
+        this.endColumnName = "";
         this.exportResults = new Array<ExcelImportResult>(0);
     }
 
@@ -41,7 +45,7 @@ export class ExcelImporter{
 
     readCompleteFile(startColumn:string, endColumn:string):Array<ExcelImportResult>{
         
-        if (this.fileRead)
+        if (this.isReadingSameThing(startColumn, endColumn))
             return this.exportResults;
 
         this.loadFile(false);
@@ -85,6 +89,8 @@ export class ExcelImporter{
         let R = rangeNumeric.s.r as number;
         let C = rangeNumeric.s.c as number; 
 
+        this.startColumnName = startColumnName;
+        this.endColumnName = endColumnName;
         let startColumnIndex = this.getIndex(startColumnName);
         let endColumnIndex= this.getIndex(endColumnName);
 
@@ -96,9 +102,12 @@ export class ExcelImporter{
         let result:ExcelImportResult;
         
         for (; R < rangeNumeric.e.r; ++R){
+
             startCell = this.firstSheet[XLSX.utils.encode_cell({c:startColumnIndex, r:R})];
             endCell = this.firstSheet[XLSX.utils.encode_cell({c:endColumnIndex, r:R})];
-            console.log("Row: " + R);
+
+            if (R == rangeNumeric.s.r)
+                continue;
 
             result = DateValidator.process(
                 startColumnName,
@@ -134,6 +143,15 @@ export class ExcelImporter{
         // Grab the name of the first work sheet and assign it to a data member
         let first_sheet_name = this.workbook.SheetNames[0];        
         this.firstSheet = this.workbook.Sheets[first_sheet_name];        
+    }
+
+    private isReadingSameThing(startColumn:string, endColumn: string): boolean{
+        if (this.fileRead &&
+            this.startColumnName == startColumn &&
+            this.endColumnName == endColumn)
+            return true;
+        else
+            return false;
     }
 
     private cleanupImporter(errorMessage: string): void{

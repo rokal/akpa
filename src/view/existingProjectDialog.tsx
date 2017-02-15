@@ -7,12 +7,13 @@ import * as ReactDOM from "react-dom";
 
 import { ExcelImporter } from "../model/io/excelImporter";
 import { ExcelImportResult } from "../model/io/excelImportResult";
+import { ExcelImportErrorList } from "./excelImportErrorList";
 import { Forecast } from "../model/forecast";
 import { ResultsDisplay } from "./resultsDisplay";
 import { SimulationConfig } from "../model/simulationConfig";
 import { SimulationController } from "../model/simulationController";
 import { SimulationResult } from "../model/simulationResult";
-import { ThroughputFrequency} from "../model/throughputFrequencyEnum";
+import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
 
 import { Tabs, Tab } from "material-ui/Tabs";
 import FlatButton from "material-ui/FlatButton";
@@ -25,7 +26,7 @@ import { grey900 } from 'material-ui/styles/colors';
 
 export interface ExistingProjectDialogProps {
     open: boolean;
-    cbCloseDialog: (originalData: Array<SimulationResult>) => void;    
+    cbCloseDialog: (originalData: Array<SimulationResult>) => void;
 }
 export interface ExistingProjectDialogState {
     stepIndex: number,
@@ -34,8 +35,9 @@ export interface ExistingProjectDialogState {
     startColumn: string,
     endColumn: string,
     jsonFilename: string,
+    importErrors: Array<ExcelImportResult>,
     simulationConfig: SimulationConfig,
-    forecasts:Forecast[]
+    forecasts: Forecast[]
 }
 
 export class ExistingProjectDialog extends React.Component<ExistingProjectDialogProps, ExistingProjectDialogState>{
@@ -49,7 +51,7 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
     private jsonHtmlInput: any
     private static jsonFilename: string
 
-    private simController:SimulationController;
+    private simController: SimulationController;
 
     constructor(props: ExistingProjectDialogProps) {
         super(props);
@@ -64,74 +66,73 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
         const startSelector = this.buildSelector("Start", (value: string) => { this.state.startColumn = value; }, () => { return this.state.startColumn }, this.handleChangeStartColumn);
         const endSelector = this.buildSelector("End", (value: string) => { this.state.endColumn = value; }, () => { return this.state.endColumn }, this.handleChangeEndColumn);
 
-        return <Tabs>
-            <Tab label="Input">
-                <div>Load data from external tool</div>
-                <div>
-                    <RaisedButton
-                        label="Select an Excel file"
-                        style={this.styles.button}
-                        containerElement="label"
-                    >
-                        <input
-                            type="file"
-                            onChange={this.handleExcelFileChange.bind(this)}
-                            style={this.styles.input}
-                        />
-                    </RaisedButton>
-                    <TextField
-                        id="fileDataUploadTextField"
-                        value={this.state.excelFilename}
-                        floatingLabelText="Excel file to upload"
-                        disabled={true}
-                        floatingLabelStyle={this.styles.textField}
-                        inputStyle={this.styles.textField}
-                        underlineStyle={this.styles.textField}
+        return <div>
+            <div>Load data from external tool</div>
+            <div>
+                <RaisedButton
+                    label="Select an Excel file"
+                    style={this.styles.button}
+                    containerElement="label"
+                >
+                    <input
+                        type="file"
+                        onChange={this.handleExcelFileChange.bind(this)}
+                        style={this.styles.input}
                     />
-                    <div>
-                        {startSelector}
-                        {endSelector}
-                    </div>
-                </div>
-                <div>Load previous forecasts (optional)<div>
-                    <RaisedButton
-                        label="Select a .json file"
-                        style={this.styles.button}
-                        containerElement="label"
-                    >
-                        <input
-                            type="file"
-                            onChange={this.handleJsonFileChange.bind(this)}
-                            style={this.styles.input}
-                        />
-                    </RaisedButton>
-                    <TextField
-                        id="fileForecastsTextField"
-                        value={this.state.jsonFilename}
-                        floatingLabelText="Previous forecasts to upload"
-                        disabled={true}
-                        floatingLabelStyle={this.styles.textField}
-                        inputStyle={this.styles.textField}
-                        underlineStyle={this.styles.textField}
-                    />
-                </div>
-                </div>
+                </RaisedButton>
+                <TextField
+                    id="fileDataUploadTextField"
+                    value={this.state.excelFilename}
+                    floatingLabelText="Excel file to upload"
+                    disabled={true}
+                    floatingLabelStyle={this.styles.textField}
+                    inputStyle={this.styles.textField}
+                    underlineStyle={this.styles.textField}
+                />
                 <div>
-                    <RaisedButton
-                        label="Create forecasts"
-                        onTouchTap={this.handleBtnCreateForecast.bind(this)}
-                        style={this.styles.button}
-                        containerElement="label" />
+                    {startSelector}
+                    {endSelector}
                 </div>
-                <ResultsDisplay 
-                    simulationConfig={this.state.simulationConfig}
-                    forecasts={this.state.forecasts}          
-                    orderedAsc={false}          
-                    cbDaysChanged={this.cbDaysChanged.bind(this)} />
-            </Tab>
-            <Tab label="Forecasts">
-            </Tab>
-        </Tabs>;
+            </div>
+            <div>Load previous forecasts (optional)<div>
+                <RaisedButton
+                    label="Select a .json file"
+                    style={this.styles.button}
+                    containerElement="label"
+                >
+                    <input
+                        type="file"
+                        onChange={this.handleJsonFileChange.bind(this)}
+                        style={this.styles.input}
+                    />
+                </RaisedButton>
+                <TextField
+                    id="fileForecastsTextField"
+                    value={this.state.jsonFilename}
+                    floatingLabelText="Previous forecasts to upload"
+                    disabled={true}
+                    floatingLabelStyle={this.styles.textField}
+                    inputStyle={this.styles.textField}
+                    underlineStyle={this.styles.textField}
+                />
+            </div>
+            </div>
+            <div>
+                <RaisedButton
+                    label="Create forecasts"
+                    onTouchTap={this.handleBtnCreateForecast.bind(this)}
+                    style={this.styles.button}
+                    containerElement="label" />
+            </div>
+            <ResultsDisplay
+                simulationConfig={this.state.simulationConfig}
+                forecasts={this.state.forecasts}
+                orderedAsc={false}
+                cbDaysChanged={this.cbDaysChanged.bind(this)} />
+            <ExcelImportErrorList
+                importResults={this.state.importErrors}
+            />
+        </div>
     }
 
     private handleExcelFileChange(eventInput: any): void {
@@ -205,24 +206,26 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
     }
 
     private handleBtnCreateForecast(): void {
-        let items = this.excelImporter.readCompleteFile(
+        let importResults = this.excelImporter.readCompleteFile(
             this.state.startColumn,
-            this.state.endColumn);        
+            this.state.endColumn);
 
-        this.simController.setResults(items)        
+        this.simController.buildValidDates(importResults)
+        this.simController.buildThroughputs();
+        this.state.importErrors = this.simController.getImportErrors();
         this.executeSimulations();
     }
 
-    private cbDaysChanged(numberOfDays:number): void{
+    private cbDaysChanged(numberOfDays: number): void {
         this.simController.NumberOfDays = numberOfDays;
         this.executeSimulations();
     }
 
-    private executeSimulations():void{
+    private executeSimulations(): void {
         this.state.simulationConfig.StartDate = this.simController.StartDate;
         this.state.simulationConfig.NumberOfDays = this.simController.NumberOfDays;
         this.state.forecasts = this.simController.createDateSimulationForExistingProject();
-        
+
         this.setState(this.state);
     }
 
@@ -267,6 +270,7 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
             startColumn: "",
             endColumn: "",
             jsonFilename: "",
+            importErrors: Array<ExcelImportResult>(0),
             simulationConfig: SimulationConfig.Empty,
             forecasts: new Array<Forecast>(0)
         };

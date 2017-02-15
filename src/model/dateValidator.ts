@@ -28,7 +28,7 @@ export class DateValidator {
 
         if (startCell === undefined) {
             startDate = moment(this.DEFAULT_DATE);
-            tempMessage = this.format(this.MSG_CELL_UNDEFINED, startColumnName, startColumnIndex.toString(), rowIndex.toString());
+            tempMessage = this.format(this.MSG_CELL_UNDEFINED, startColumnName, startColumnIndex, rowIndex + 1);
             errorMessages.push(tempMessage);
             isBothCellsAreNotEmpty = false;
         }
@@ -37,7 +37,7 @@ export class DateValidator {
 
         if (endCell === undefined) {
             endDate = moment(this.DEFAULT_DATE);
-            tempMessage = this.format(this.MSG_CELL_UNDEFINED, endColumnName, endColumnIndex.toString(), rowIndex.toString());
+            tempMessage = this.format(this.MSG_CELL_UNDEFINED, endColumnName, endColumnIndex, rowIndex + 1);
             errorMessages.push(tempMessage);
             isBothCellsAreNotEmpty = false;
         }
@@ -46,7 +46,7 @@ export class DateValidator {
 
         if (isBothCellsAreNotEmpty &&
             startDate > endDate) {
-            tempMessage = this.format(this.MSG_START_GREATER_END, startDate.toISOString(), endDate.toISOString(), rowIndex);
+            tempMessage = this.format(this.MSG_START_GREATER_END, startDate.toISOString(), endDate.toISOString(), rowIndex + 1);
             errorMessages.push(tempMessage);
         }
 
@@ -56,9 +56,9 @@ export class DateValidator {
                                      errorMessages);
     }
 
-    private static MSG_CELL_UNDEFINED = "Cell in column {0}[Index:{1}] at row {2} is empty";
-    private static MSG_INVALID_DATE = "Value is invalid [{0}] at column {1}[Index{2]} on row {3}]"
-    private static MSG_START_GREATER_END = "Start date[{0}] greater than end date[{1}] on row {2}";
+    private static MSG_CELL_UNDEFINED = "Row {2}: Cell in column {0}[Index:{1}] is empty";
+    private static MSG_INVALID_DATE = "Row {3}: Value is invalid [{0}] at column {1}[Index{2}]"
+    private static MSG_START_GREATER_END = "Row {2}: Start date[{0}] greater than end date[{1}]";
     private static UNFORMATTED_FORMATS = ["MM{0}DD{0}YYYY", "DD{0}MM{0}YYYY", "YYYY{0}MM{0}DD", "YYYY{0}DD{0}MM"];
     private static DEFAULT_FORMATS = DateValidator.buildFormats();
 
@@ -95,7 +95,7 @@ export class DateValidator {
         let validDate = moment(stringToParse, this.DEFAULT_FORMATS);
         if (!validDate.isValid() || 
             validDate.year() > 2030){
-            let tempMessage = this.format(this.MSG_INVALID_DATE, stringToParse, columnName, columnIndex, rowIndex)
+            let tempMessage = this.format(this.MSG_INVALID_DATE, stringToParse, columnName, columnIndex, rowIndex + 1)
             errorMessages.push(tempMessage);
             return moment(this.DEFAULT_DATE);
         }       
