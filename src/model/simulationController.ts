@@ -23,27 +23,36 @@ export class SimulationController {
         return this.simulationConfig.StartDate;
     }
 
+    private validDates:Array<DateRange>;
+    private errorResults:Array<ExcelImportResult>;
+
     private simulationConfig:SimulationConfig;        
 
     constructor(){
+        this.validDates = new Array<DateRange>(0);
+        this.errorResults = new Array<ExcelImportResult>(0);
         this.simulationConfig = SimulationConfig.Empty;
     }
 
-    setResults(results: ExcelImportResult[]):void{
-        let errorMessages = new Array<string>();
-        let dates = new Array<DateRange>();
+    buildValidDates(results: ExcelImportResult[]):void{
+        this.errorResults = new Array<ExcelImportResult>(0);
+        this.validDates = new Array<DateRange>(0);
         for (let item of results) {
 
             if (item.Messages.length == 0)
-                dates.push(item.Range);
+                this.validDates.push(item.Range);
             else
-                errorMessages.concat(item.Messages);
+                this.errorResults.push(item);
         }
+    }
 
+    getImportErrors():Array<ExcelImportResult>{
+        return this.errorResults;
+    }
+
+    buildThroughputs():void{
         // Build the throughputs
-        this.simulationConfig.HistoricalThroughput = ThroughputBuilder.build(dates);
-
-        // Return something for the error messages in Component
+        this.simulationConfig.HistoricalThroughput = ThroughputBuilder.build(this.validDates);
     }
 
     createDateSimulationForExistingProject(): Forecast[] {

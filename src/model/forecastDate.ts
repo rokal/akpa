@@ -7,8 +7,8 @@ export class ForecastDate extends Forecast {
     }
 
     toString(): string {
-        return `${this.NumberOfItemsCompleted} items completed with
-                ${this.Percentile} confidence in 
-                ${this.NumberOfDays} days.`;
+        return `${this.NumberOfItemsCompleted} items completed in
+                ${this.NumberOfDays} days with
+                ${this.Percentile} confidence`;
     }
 }
