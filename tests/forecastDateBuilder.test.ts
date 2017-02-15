@@ -15,7 +15,7 @@ describe("ForecastDateBuilder test suite", () => {
     var simulationResultsGenerator = new SimulationResultsGenerator(1000);
     var expectedSimulationResults;
 
-    it("Validate forecasts with default percentiles", () => {
+    test("Validate forecasts with default percentiles", () => {
 
         expectedSimulationResults = simulationResultsGenerator.createSimulationResultsWithFixedDate(30);
         let forecastDateBuilder = new ForecastDateBuilder(expectedSimulationResults, 30);

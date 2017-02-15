@@ -24,7 +24,7 @@ describe("ResultsDisplay test suite", () => {
         expectedItems,
         1000);
 
-    it("First test", () => {
+    test("First test", () => {
 
         let fc = new Array<Forecast>(1);
         fc[0] = new ForecastItems(

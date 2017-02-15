@@ -5,7 +5,7 @@ import {Utilities} from "../src/utilities";
 describe("Utilities test suite", () => {
 
     let data;
-    it.only("convertToInt tests", () => {
+    test("convertToInt tests", () => {
 
         data = Utilities.convertToInt(42);
         expect(data.isInteger).toBeTruthy();

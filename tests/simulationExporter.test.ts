@@ -26,7 +26,7 @@ describe("SimulationExporter test suite", () => {
         simulation.execute();
     });
 
-    it("Test export() in normal case", () => {
+    test("Test export() in normal case", () => {
 
         let content;
 
