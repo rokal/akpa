@@ -34,7 +34,9 @@ export class SimulationConfig {
         public NumberOfItems: number,
         public NumberOfSimulations: number) {
         this.startDate = startDate;
-        this.NumberOfDays = numberOfDays;
+        this.numberOfDays = numberOfDays;
+
+        this.calculateDeliveryDate();
     }
 
     private calculateDeliveryDate():void{
@@ -45,7 +47,7 @@ export class SimulationConfig {
     public static Empty = new SimulationConfig(
         new Array<number>(0),
         ThroughputFrequency.Day,
-        new Date(),
+        new Date(1900, 0, 1),
         25,
         100,
         1000);
