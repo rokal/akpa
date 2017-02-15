@@ -146,8 +146,8 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
         // Instanciate and configure the FileReader object
         let fileReader = new FileReader();
         fileReader.onload = (e: any) => {
-            this.excelImporter = new ExcelImporter(ExistingProjectDialog.excelFilename, e.target.result);
-            e.target.columns = this.excelImporter.readHeaders();
+            this.excelImporter = new ExcelImporter(ExistingProjectDialog.excelFilename);
+            e.target.columns = this.excelImporter.readHeaders(e.target.result);
         }
         fileReader.onloadend = (eventFileReader: any) => {
             console.log(`File ${ExistingProjectDialog.excelFilename} loaded successfully with ${eventFileReader.loaded} bytes`);
@@ -163,7 +163,7 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
 
     private callbackExcelFileChange(eventInput: any, columns: any) {
         this.excelHtmlInput.value = "";
-        this.state.columns = columns;
+        this.state.columns = (columns == undefined ? []: columns);
         this.setState(this.state);
     }
 

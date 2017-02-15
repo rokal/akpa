@@ -7,17 +7,53 @@ import {ExcelImporter} from "../src/model/io/excelImporter";
 describe("ExcelImporter test suite", () => {
 
 
-    it ("Loader Excel 2007 Xlsx file", () => {
-        let filenameToTest = "./tests/Excel_2007_Xlsx_TestSheet.xlsx"; 
+    test ("Read headers of Excel spreadsheets", () => {
+        let filenameToTest = "./tests/data/Excel_2007_Xlsx_TestSheet.xlsx"; 
 
-        let input = document.createElement("input");
-        let attr = document.createAttribute("type");
-        attr.value = "file";
-        input.attributes.setNamedItem(attr);
+        let excelImporter = new ExcelImporter(filenameToTest);
+        let columns = excelImporter.readHeaders();
 
-        // let content = fs.readFileSync(filenameToTest, "hex");
-        // console.log(content);
-        
-        // let blob = new File(new Array<string>(content), filenameToTest);
-    })    
+        expect(columns).not.toBeNull();
+        expect(columns.length).toEqual(11);
+    })   
+
+    test("Read file of Excel spreadsheets", () => {
+
+        let filenameToTest = "./tests/data/Excel_2010_Xlsx_TestSheet.xlsx"; 
+
+        let excelImporter = new ExcelImporter(filenameToTest);
+        let columns = excelImporter.readHeaders();
+        let results = excelImporter.readCompleteFile(columns[0], columns[columns.length-1]);
+
+        expect(results).not.toBeNull();
+        expect(results.length).not.toEqual(0);        
+    }) 
+
+    test ("Empty Excel spreadsheets", () => {
+
+        let filesToTest = [
+            "./tests/data/Excel_97_Empty.xls",
+            "./tests/data/Excel_2007_Empty.xlsx"]; 
+
+        for(let filename of filesToTest){
+            let excelImporter = new ExcelImporter(filename);
+            let columns = excelImporter.readHeaders();
+
+            expect(columns).not.toBeNull();
+            expect(columns.length).toEqual(0);
+            
+            let results = excelImporter.readCompleteFile("column1", "column2");
+            expect(results).not.toBeNull();
+            expect(results.length).toEqual(0);
+        }        
+    })
+
+    test ("Check Filename property", () => {
+
+        let expectedFilename = "toto";
+
+        let excelImporter = new ExcelImporter(expectedFilename);
+
+        expect(excelImporter.Filename).toEqual(expectedFilename);
+    })
 })
