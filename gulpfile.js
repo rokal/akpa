@@ -13,7 +13,7 @@ const sourceMapOptions = {
 
 gulp.task("webpack", function() {
     var result = gulp.src('src/**/*.*')
-        .pipe(webpack( require('./webpack.config.js') ))
+        .pipe(webpack( require('./configs/deploy/webpack.config.js') ))
         .pipe(gulp.dest('./dist'));
 });
 
