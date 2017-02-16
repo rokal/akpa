@@ -2,6 +2,6 @@
   "collectCoverage": true,
   "coverageDirectory":"<rootDir>/tests/Results",
   "coverageReporters":["lcov", "text", "text-summary"],
-  "moduleFileExtensions": ["js"],
-  "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js"
+  "moduleFileExtensions": ["js", "jsx", "json", "ts", "tsx"],
+  "testRegex":"\/tests\/JsOutput\/tests\/.*\\.test\\.jsx?$"
 }
