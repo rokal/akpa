@@ -1,4 +1,5 @@
 path = require('path');
+const webpack = require('webpack');
 
 /** 
  *  A note on two variables in Webpack
