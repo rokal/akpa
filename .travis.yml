@@ -18,7 +18,7 @@ cache:
         
 # Decrypt the authentication key with very visible key (should change that)        
 before_install:
-- openssl aes-256-cbc -k "ahduQu9ushou0Roh" -in deploy-app-engine.json.enc -out deploy-app-engine.json -d
+- openssl aes-256-cbc -k "ahduQu9ushou0Roh" -in ./configs/deploy/deploy-app-engine.json.enc -out ./configs/deploy/deploy-app-engine.json -d
 #- if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then
 #    rm -rf $HOME/google-cloud-sdk; 
 #    export CLOUDSDK_CORE_DISABLE_PROMPTS=1; 
@@ -28,7 +28,7 @@ before_install:
 - source /home/travis/google-cloud-sdk/path.bash.inc;
 - gcloud version;
 - gcloud config set project montecarlo-simulations
-- gcloud auth activate-service-account --key-file deploy-app-engine.json
+- gcloud auth activate-service-account --key-file .configs/deploy/deploy-app-engine.json
 
 install:
 # Install and update the NodeJs modules requires by the application 
@@ -39,7 +39,7 @@ before_script:
 
 script:
   # Build the application to prepare it for production
-  - gulp webpack --config webpack.config.prod.js -p
+  - gulp webpack --config ./configs/deploy/webpack.config.prod.js -p
   
   # Build and run the tests
   - npm test

@@ -1,7 +1,5 @@
 var gulp = require("gulp");
 var ts = require("gulp-typescript");
-var tsProject = ts.createProject("tsconfig.json");
-var tsTestProject = ts.createProject("tsconfig-test.json");
 var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");
 var del = require("del");
@@ -21,7 +19,8 @@ gulp.task("webpack", function() {
 
 // Compile Typescript project
 gulp.task("compile", function() {
-    
+
+    var tsProject = ts.createProject("./configs/build/tsconfig.json");    
     var tsResult = tsProject
         .src()
         .pipe(sourcemaps.init())     // This means sourcemaps will be generated
@@ -39,6 +38,7 @@ gulp.task("compile", function() {
 // Compile Typescript project
 gulp.task("compile-test", function() {
     
+    var tsTestProject = ts.createProject("./configs/build/tsconfig-test.json");
     var tsResult = tsTestProject
         .src()
         .pipe(sourcemaps.init())     // This means sourcemaps will be generated
