@@ -12,6 +12,8 @@ export class ExcelImporter {
     }
     private errorMessage: string;
 
+    private blob: File;
+
     private headers: Array<[number, string]>;
 
     private startColumnName: string;
@@ -24,6 +26,7 @@ export class ExcelImporter {
 
     constructor(public readonly Filename: string, ) {
         this.headers = new Array<[number, string]>(0);
+        this.blob = new File([], this.Filename);
         this.errorMessage = "";
         this.fileRead = false;
         this.startColumnName = "";
@@ -31,27 +34,30 @@ export class ExcelImporter {
         this.exportResults = new Array<ExcelImportResult>(0);
     }
 
-    readHeaders(data?: Blob): Array<string> {
+    readHeaders(data?: File): Array<string> {
         if (data == undefined)
             this.loadFile(true);
-        else
+        else{
+            this.blob = data;
             this.loadBlob(data, true);
-
+        }
         this.decodeHeaders();
 
-        let headersName = this.headers.map((header, index, arr) => {
-            return header[1];
-        }
-        );
+        let headersName = this.headers.map((header, index, arr) => {return header[1];});
+
         return headersName;
     }
 
     readCompleteFile(startColumn: string, endColumn: string): Array<ExcelImportResult> {
 
-        if (this.isReadingSameThing(startColumn, endColumn))
+        if (this.isReadingSameData(startColumn, endColumn))
             return this.exportResults;
 
-        this.loadFile(false);
+        if (this.blob == undefined)
+            this.loadFile(false);            
+        else
+            this.loadBlob(this.blob, false);
+
         this.exportResults = this.decodeEntireFile(startColumn, endColumn);
         this.fileRead = true;
 
@@ -172,7 +178,7 @@ export class ExcelImporter {
         this.firstSheet = this.workbook.Sheets[first_sheet_name];
     }
 
-    private isReadingSameThing(startColumn: string, endColumn: string): boolean {
+    private isReadingSameData(startColumn: string, endColumn: string): boolean {
         if (this.fileRead &&
             this.startColumnName == startColumn &&
             this.endColumnName == endColumn)

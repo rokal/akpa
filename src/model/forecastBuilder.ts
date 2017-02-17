@@ -35,7 +35,8 @@ export abstract class ForecastBuilder {
 
     abstract createForecast(): void;
 
-    protected orderSimulationResults(): Array<SimulationResult> {
+    protected orderSimulationResultsByItems(): Array<SimulationResult> {
+        
         return this.simulationResults.sort((n1: SimulationResult, n2: SimulationResult) => {
             if (n1.NumberOfItemsCompleted > n2.NumberOfItemsCompleted)
                 return -1;
@@ -46,6 +47,18 @@ export abstract class ForecastBuilder {
         });
     }
 
+    protected orderSimulationResultsByDate(): Array<SimulationResult> {
+        
+        return this.simulationResults.sort((n1: SimulationResult, n2: SimulationResult) => {
+            if (n1.NumberOfDays < n2.NumberOfDays)
+                return -1;
+            else if (n1.NumberOfDays > n2.NumberOfDays)
+                return 1;
+            else
+                return 0;
+        });
+    }
+    
     protected orderPercentiles(): Array<Percentile> {
         return this.percentiles.sort((n1: Percentile, n2: Percentile) => {
             if (n1.value > n2.value)

@@ -1,5 +1,4 @@
 path = require('path');
-const webpack = require('webpack');
 
 /** 
  *  A note on two variables in Webpack
@@ -21,7 +20,30 @@ module.exports = {
         filename: "bundle.js",
         path: path.join(process.cwd(), "dist"),
         devtoolModuleFilenameTemplate: function (info) {
-            return "../" + info.resourcePath;
+            if (info.resourcePath.match(".ts"+"$")==".ts" ||
+                info.resourcePath.match(".tsx"+"$")==".tsx"){
+
+                var parts = info.resourcePath.split("/");
+                var goodParts = new Array();
+                for (var i = parts.length - 1; i >= 0; i--){
+                    if (parts[i] != "src")
+                        goodParts.push(parts[i]);
+                    else{
+                        goodParts.push(parts[i]);
+                        break;
+                    }
+                }
+                goodParts.reverse();
+                var thePath = "../";
+                goodParts.forEach((element, index) => {
+                    thePath = path.join(thePath, element);
+                })                 
+                //console.log("Path: " + thePath);
+                return thePath;
+            }
+            else{
+                return info.resourcePath;
+            }
         }
     },
 
@@ -47,14 +69,6 @@ module.exports = {
             }
         ]
     },
-
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('dev')
-            }
-        })
-    ],
 
     // The following sections (node and externals) are meant for integrating
     // correctly the JSZip library in XLS-JS module 

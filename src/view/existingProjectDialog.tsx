@@ -8,7 +8,8 @@ import * as ReactDOM from "react-dom";
 import { ExcelImporter } from "../model/io/excelImporter";
 import { ExcelImportResult } from "../model/io/excelImportResult";
 import { ExcelImportErrorList } from "./excelImportErrorList";
-import { Forecast } from "../model/forecast";
+import { ForecastDate } from "../model/forecastDate";
+import { ForecastItems } from "../model/forecastItems";
 import { ResultsDisplay } from "./resultsDisplay";
 import { SimulationConfig } from "../model/simulationConfig";
 import { SimulationController } from "../model/simulationController";
@@ -37,7 +38,8 @@ export interface ExistingProjectDialogState {
     jsonFilename: string,
     importErrors: Array<ExcelImportResult>,
     simulationConfig: SimulationConfig,
-    forecasts: Forecast[]
+    forecastsDate: ForecastDate[],
+    forecastsItems: ForecastItems[]
 }
 
 export class ExistingProjectDialog extends React.Component<ExistingProjectDialogProps, ExistingProjectDialogState>{
@@ -126,9 +128,12 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
             </div>
             <ResultsDisplay
                 simulationConfig={this.state.simulationConfig}
-                forecasts={this.state.forecasts}
+                dateForecasts={this.state.forecastsDate}
+                itemsForecasts={this.state.forecastsItems}
                 orderedAsc={false}
-                cbDaysChanged={this.cbDaysChanged.bind(this)} />
+                cbDaysChanged={this.cbDaysChanged.bind(this)} 
+                cbItemsChanged={this.cbItemsChanged.bind(this)}
+                />
             <ExcelImportErrorList
                 importResults={this.state.importErrors}
             />
@@ -210,22 +215,28 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
             this.state.startColumn,
             this.state.endColumn);
 
+        this.simController.StartDate = new Date();
         this.simController.buildValidDates(importResults)
         this.simController.buildThroughputs();
         this.state.importErrors = this.simController.getImportErrors();
-        this.executeSimulations();
+
+        this.state.forecastsDate = this.simController.createDateSimulationForExistingProject();
+        this.state.forecastsItems = this.simController.createItemsSimulationForExistingProject();
+        this.setState(this.state);
     }
 
     private cbDaysChanged(numberOfDays: number): void {
         this.simController.NumberOfDays = numberOfDays;
-        this.executeSimulations();
-    }
-
-    private executeSimulations(): void {
         this.state.simulationConfig.StartDate = this.simController.StartDate;
         this.state.simulationConfig.NumberOfDays = this.simController.NumberOfDays;
-        this.state.forecasts = this.simController.createDateSimulationForExistingProject();
+        this.state.forecastsDate = this.simController.createDateSimulationForExistingProject();
+        this.setState(this.state);
+    }
 
+    private cbItemsChanged(numberOfItems: number): void {
+        this.simController.NumberOfItems = numberOfItems;
+        this.state.simulationConfig.NumberOfItems = numberOfItems;
+        this.state.forecastsItems = this.simController.createItemsSimulationForExistingProject();
         this.setState(this.state);
     }
 
@@ -272,7 +283,8 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
             jsonFilename: "",
             importErrors: Array<ExcelImportResult>(0),
             simulationConfig: SimulationConfig.Empty,
-            forecasts: new Array<Forecast>(0)
+            forecastsDate: new Array<ForecastDate>(0),
+            forecastsItems: new Array<ForecastItems>(0)
         };
     }
 

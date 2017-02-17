@@ -6,6 +6,7 @@ import * as ReactDOM from "react-dom";
 
 import { SimulationDate } from "../model/simulationDate";
 import { ForecastDateBuilder } from "../model/forecastDateBuilder";
+import { ForecastItems } from "../model/forecastitems";
 import { SimulationResult } from "../model/simulationResult";
 import { SimulationExporter } from "../model/io/simulationExporter";
 import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
@@ -54,9 +55,12 @@ export class Application extends React.Component<AppProps, AppState>{
                 {this.simulationRan &&
                     <ResultsDisplay
                         simulationConfig={this.state.simulationConfig}
-                        forecasts={this.forecastDateBuilder.Forecasts}
+                        dateForecasts={this.forecastDateBuilder.Forecasts}
+                        itemsForecasts={new Array<ForecastItems>(0)}
                         orderedAsc={false}
-                        cbDaysChanged={(data:number) => {}} />}
+                        cbDaysChanged={(data:number) => {}}
+                        cbItemsChanged={() => {}}
+                         />}
                 {this.simulationRan &&
                     <SimulationChart SimulationResults={this.simulation.SimulationResults} />}
                 {this.simulationRan &&             
