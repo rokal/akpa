@@ -46,7 +46,7 @@ script:
   
   # Deploy the application to Google App Engine. It is commented right now as we don't want to
   # deploy the app everytime we build and the application
-  # - gcloud app deploy --verbosity=info app.yaml -q
+  - gcloud app deploy --verbosity=info app.yaml -q
 
 deploy:
 # We used to employ the Google App Engine provider by Travis but it was a bit cumbersome
