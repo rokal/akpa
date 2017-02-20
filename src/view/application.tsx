@@ -4,8 +4,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { ForecastDate } from "../model/forecastdate";
-import { ForecastItems } from "../model/forecastitems";
+import { ForecastDate } from "../model/forecastDate";
+import { ForecastItems } from "../model/forecastItems";
 import { SimulationConfig} from "../model/simulationConfig";
 import { SimulationController } from "../model/simulationController";
 import { SimulationResult } from "../model/simulationResult";
