@@ -8,7 +8,7 @@ export class ForecastItems extends Forecast {
 
     toString(): string {
         return `In ${this.NumberOfDays} days, 
-                ${this.Percentile} confidence of completing 
+                ${this.Percentile} confidence of completing at least 
                 ${this.NumberOfItemsCompleted} items`;
     }
 }

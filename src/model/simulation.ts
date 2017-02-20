@@ -15,6 +15,10 @@ export abstract class Simulation {
         return this.simulationConfig.NumberOfDays;
     }
 
+    public get NumberOfItems(): number{
+        return this.simulationConfig.NumberOfItems;
+    }
+
     public get DeliveryDate() : Date{
         return this.simulationConfig.DeliveryDate;
     }
@@ -50,9 +54,11 @@ export abstract class Simulation {
 
     abstract execute(): void;
 
-    protected addSimulationResult(numberOfItemsCompleted: number, numberOfDays: number): void {
+    protected addSimulationResult(numberOfItemsCompleted: number, 
+                                  numberOfDays: number,
+                                  filterCondition: (result:SimulationResult) => boolean): void {
 
-        var list = this.simulationResults.filter(result => result.NumberOfItemsCompleted == numberOfItemsCompleted);
+        let list = this.simulationResults.filter(result => filterCondition(result));
 
         if (list.length == 0) {
             this.simulationResults.push(new SimulationResult(numberOfItemsCompleted, numberOfDays));

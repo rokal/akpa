@@ -15,7 +15,7 @@ export class ForecastDateBuilder extends ForecastBuilder {
     }
 
     createForecast(): void {
-        var orderedDescResults = super.orderSimulationResults();
+        var orderedDescResults = super.orderSimulationResultsByItems();
         var orderedAscPercentiles = super.orderPercentiles();
 
         var counter = 0;
@@ -32,7 +32,6 @@ export class ForecastDateBuilder extends ForecastBuilder {
                     break;
                 }
             }
-
         }
     }
 }

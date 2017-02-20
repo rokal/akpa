@@ -1,4 +1,4 @@
-/// <reference path="../../typings/react/react.d.ts" />
+/*/// <reference path="../../typings/react/react.d.ts" />
 /// <reference path="../../typings/react-dom/react-dom.d.ts" />
 /// <reference path="../../typings/globals/material-ui/index.d.ts" />
 
@@ -34,30 +34,12 @@ export class Header extends React.Component<HeaderProps, HeaderState>{
     render(): JSX.Element {
 
         return <div>
-            <AppBar
-                title="Determining potential delivery dates"
-                onLeftIconButtonTouchTap={this.handleDrawerToggle.bind(this)} />
-            <Drawer
-                open={this.state.drawerOpen}
-                docked={false}
-                onRequestChange={(open, newDialogOpen) => this.setState({
-                    existingDialogOpen: false,
-                    drawerOpen: false,
-                    newDialogOpen: false
-                })}>
-
-                <MenuItem onTouchTap={this.handleMnItemNewProject.bind(this)}>New project</MenuItem>
-                <MenuItem onTouchTap={this.handleMnItemExistingProject.bind(this)}>Existing project</MenuItem>
-
-            </Drawer>
             <NewProjectDialog
-                open={this.state.newDialogOpen}
+                visible={this.state.newDialogOpen}
                 throughputFrequency={ThroughputFrequency.Week}
-                cbCloseDialog={this.cbCloseNewProjectDialog.bind(this)}
             />
             <ExistingProjectDialog
-                open={this.state.existingDialogOpen}
-                cbCloseDialog={this.cbCloseExistingProjectDialog.bind(this)}
+                visible={this.state.existingDialogOpen}
             />
         </div>;
     }
@@ -105,4 +87,4 @@ export class Header extends React.Component<HeaderProps, HeaderState>{
         }
     }
 }
-
+*/

@@ -2,16 +2,15 @@ var gulp = require("gulp");
 var ts = require("gulp-typescript");
 var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");
-var del = require("del");
-var webserver = require("gulp-webserver");
-var webpack = require("gulp-webpack");
+
 
 const sourceMapOptions = {
         sourceRoot: "../"
     };
 
-
 gulp.task("webpack", function() {
+
+    var webpack = require("gulp-webpack");
     var result = gulp.src('src/**/*.*')
         .pipe(webpack( require('./configs/deploy/webpack.config.js') ))
         .pipe(gulp.dest('./dist'));
@@ -51,6 +50,7 @@ gulp.task("compile-test", function() {
 });
 
 gulp.task("clean", function(){
+    var del = require("del");
     return del([
         "dist/**/*",
         "tests/JsOutput/**/*",
@@ -60,6 +60,8 @@ gulp.task("clean", function(){
 // Start the webserver
 // Don't forget to launch Chrome with --remote-debugging-port=9222
 gulp.task("webserver", function() {
+  
+  var webserver = require("gulp-webserver");
   gulp.src("./")
     .pipe(webserver({
       host:             "localhost",

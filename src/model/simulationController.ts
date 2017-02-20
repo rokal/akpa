@@ -1,9 +1,12 @@
 import { DateRange } from "./dateRange"
 import { ExcelImportResult } from "./io/excelImportResult";
-import { Forecast} from "./forecast";
+import { ForecastDate} from "./forecastDate";
 import { ForecastDateBuilder } from "./forecastDateBuilder";
+import { ForecastItems} from "./forecastItems";
+import { ForecastItemsBuilder } from "./forecastItemsBuilder";
 import { SimulationConfig } from "./simulationConfig";
 import { SimulationDate } from "./simulationDate";
+import { SimulationItems } from "./simulationItems";
 import { ThroughputBuilder } from "./throughputBuilder";
 import { ThroughputFrequency } from "./throughputFrequencyEnum";
 
@@ -23,9 +26,16 @@ export class SimulationController {
         return this.simulationConfig.StartDate;
     }
 
+    public set NumberOfItems(value:number){
+        this.simulationConfig.NumberOfItems = value;
+    }
+
     private validDates:Array<DateRange>;
     private errorResults:Array<ExcelImportResult>;
 
+    public set SimulationConfig(config:SimulationConfig){
+        this.simulationConfig = config;
+    }
     private simulationConfig:SimulationConfig;        
 
     constructor(){
@@ -55,9 +65,9 @@ export class SimulationController {
         this.simulationConfig.HistoricalThroughput = ThroughputBuilder.build(this.validDates);
     }
 
-    createDateSimulationForExistingProject(): Forecast[] {
+    createDateSimulationForExistingProject(): ForecastDate[] {
 
-        // Run the simulations   ;
+        // Run the simulations
         let simulation = new SimulationDate(this.simulationConfig);
         simulation.execute();
 
@@ -65,4 +75,15 @@ export class SimulationController {
         forecastBuilder.createForecast();
         return forecastBuilder.Forecasts;
     }
+
+    createItemsSimulationForExistingProject(): ForecastItems[] {
+
+        // Run the simulations
+        let simulation = new SimulationItems(this.simulationConfig);
+        simulation.execute();
+
+        let forecastBuilder = new ForecastItemsBuilder(simulation.SimulationResults, simulation.NumberOfItems);
+        forecastBuilder.createForecast();
+        return forecastBuilder.Forecasts;
+    }    
 }
