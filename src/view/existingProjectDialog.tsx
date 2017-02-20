@@ -145,6 +145,10 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
     private callbackExcelFileChange(eventInput: any, columns: any) {
         this.excelHtmlInput.value = "";
         this.state.columns = (columns == undefined ? [] : columns);
+        if (this.state.columns.length > 0) {
+            this.state.startColumn = this.state.columns[0];
+            this.state.endColumn = this.state.columns[this.state.columns.length - 1];
+        }
         this.setState(this.state);
     }
 
@@ -218,8 +222,9 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
         return <p><SelectField
             floatingLabelText={title}
             value={getStateVariable()}
+            disabled={this.state.columns.length == 0}
             onChange={handler.bind(this)}>
-            {menuItems}
+            {menuItems}            
         </SelectField></p>;
     }
 
