@@ -55,10 +55,14 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ["", ".ts", ".tsx", ".js"]
+        extensions: ["", ".ts", ".tsx", ".js"],
+        alias: {
+            jszip: "xlsx/jszip.js"
+        }        
     },
 
     module: {
+        noParse: [/jszip.js$/],
         loaders: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
             { 
@@ -73,8 +77,8 @@ module.exports = {
 
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
+            "process.env": {
+                "NODE_ENV": JSON.stringify("production")
             }
         })
     ],
@@ -82,10 +86,10 @@ module.exports = {
     // The following sections (node and externals) are meant for integrating
     // correctly the JSZip library in XLS-JS module 
     node: {
-        fs: 'empty'
+        fs: "empty"
     },
     externals: [
-        { './cptable': 'var cptable' },
-        { './jszip': 'jszip' }
+        { "./cptable": "var cptable" },
+        { "./jszip": "jszip" }
     ]
 };
