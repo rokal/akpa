@@ -33,6 +33,9 @@ export class SimulationController {
     private validDates:Array<DateRange>;
     private errorResults:Array<ExcelImportResult>;
 
+    public set SimulationConfig(config:SimulationConfig){
+        this.simulationConfig = config;
+    }
     private simulationConfig:SimulationConfig;        
 
     constructor(){

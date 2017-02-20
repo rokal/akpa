@@ -5,3 +5,39 @@
 span {
     font-style: italic;
 }
+
+div.buttons {
+    margin: auto;
+    text-align:center;
+    width: 100%;
+    padding: 10px;
+}
+
+div.result {
+    color: #9E9E9E;
+    border: 1px solid #757575;
+    font-size:18px;
+    padding-left:2px;
+    }
+
+p.result {
+    margin:0
+    }
+
+p.resultConfidence {
+    color: #9E9E9E;
+    font-size:14px;
+    margin:0;
+    }
+
+.percentileNumber {
+    font:"normal bolder 20px";
+}
+
+.variableNumber {
+    font:normal #00BCD4
+}
+
+.forecastButton {
+    margin:12;
+}

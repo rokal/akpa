@@ -11,7 +11,9 @@ import { ForecastItems } from "../model/forecastItems";
 import { SimulationConfig } from "../model/simulationConfig";
 
 import Slider from "material-ui/Slider";
+import { cyan500, green600, amber800, red800} from "material-ui/styles/colors";
 import * as moment from "moment";
+import { Percentile } from "../model/percentile";
 
 export interface ResultsProps {
     simulationConfig: SimulationConfig,
@@ -41,12 +43,55 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
             return this.displayForecasts();
     }
 
-    private createSection(forecasts:Array<Forecast>): JSX.Element[]{
+    private createDateSection(forecasts:Array<Forecast>): JSX.Element{
         let orderedForecasts = this.orderForecasts(forecasts);
 
-        return orderedForecasts.map((currentForecast, index, arr) =>
-            <li key={currentForecast.Percentile.value}>{currentForecast.toString()}</li>
-        );
+        const items = orderedForecasts.map((forecast, index, arr) => {
+            return <div className="result" key={index}>
+                <p className="result"><span className="percentileNumber" style={this.pickColor(forecast.Percentile)}>{forecast.NumberOfItemsCompleted}</span> items</p>
+                <p className="resultConfidence">{forecast.Percentile.toString()} confidence</p>
+            </div>
+            });
+
+        return <div>
+                {items}                                                  
+               </div>
+    }
+
+    private pickColor(percentile:Percentile):any{
+        if (percentile.value >= 0.8)
+            return this.styles.percentile.green;
+        else if (percentile.value >= 0.5 && percentile.value < 0.8)
+        return this.styles.percentile.yellow;
+            else
+            return this.styles.percentile.red;
+    }
+
+    readonly styles = {
+        percentile:{            
+            green:{color:green600},
+            yellow:{color:amber800},
+            red:{color:red800}
+        },
+        slider:{
+            margin:"2px",
+            width:"350px"
+        }        
+    }
+
+    private createItemsSection(forecasts:Array<Forecast>): JSX.Element{
+        let orderedForecasts = this.orderForecasts(forecasts);
+
+        const items = orderedForecasts.map((forecast, index, arr) => {
+            return <div key={index} className="result">
+                <p className="result"><span className="percentileNumber" style={this.pickColor(forecast.Percentile)}>{forecast.NumberOfDays}</span> days</p>
+                <p className="resultConfidence">{forecast.Percentile.toString()} confidence</p>
+            </div>
+            });
+
+        return <div>
+                {items}                                                  
+               </div>
     }
 
     private displayForecasts(): JSX.Element {
@@ -54,37 +99,36 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         // This is just here to make code easier to read
         let simulationConfig = this.props.simulationConfig;
 
-        const dateSection = this.createSection(this.props.dateForecasts);
-        const itemsSection = this.createSection(this.props.itemsForecasts);
+        const dateSection = this.createDateSection(this.props.dateForecasts);
+        const itemsSection = this.createItemsSection(this.props.itemsForecasts);
 
         return <div>
-            <h2>Forecasts for delivering on {this.dateToString(simulationConfig.DeliveryDate)} ({simulationConfig.NumberOfDays} days)</h2>
-            <h3>({simulationConfig.NumberOfSimulations} simulations were ran)</h3>
-            <ul>{dateSection}</ul>
-            <div>Set the number of days
+            <h1>Forecasts</h1>
+            <h2>Delivery date on {this.dateToString(simulationConfig.DeliveryDate)}</h2>
+            <div>Number of days: <span className="variableNumber">{this.state.numberOfDays}</span>
                     <Slider
+                    sliderStyle={this.styles.slider}
                     min={10}
                     defaultValue={this.props.simulationConfig.NumberOfDays}
                     value={this.state.numberOfDays}
                     step={1}
                     onChange={this.handleDaysSlider.bind(this)}
-                    style={{ width: 350 }}
                     max={100}
                 />
+            <div>{dateSection}</div>                
             </div>
-            <h2>Forecasts for delivering {simulationConfig.NumberOfItems} items</h2>
-            <h3>({simulationConfig.NumberOfSimulations} simulations were ran)</h3>
-            <ul>{itemsSection}</ul>
-            <div>Set the number of items
+            <h2>Delivering the next {simulationConfig.NumberOfItems} items from your backlog</h2>            
+            <div>Number of items: <span className="variableNumber">{this.state.numberOfItems}</span>
                     <Slider
+                    sliderStyle={this.styles.slider}
                     min={10}
                     defaultValue={this.props.simulationConfig.NumberOfItems}
                     value={this.state.numberOfItems}
                     step={1}
                     onChange={this.handleItemsSlider.bind(this)}
-                    style={{ width: 350 }}
                     max={200}
                 />
+            <div>{itemsSection}</div>                
             </div>
 
         </div>;

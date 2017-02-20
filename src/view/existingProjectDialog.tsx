@@ -1,33 +1,22 @@
 /// <reference path="../../typings/react/react.d.ts" />
-/// <reference path="../../typings/react-dom/react-dom.d.ts" />
 /// <reference path="../../typings/globals/material-ui/index.d.ts" />
 
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 import { ExcelImporter } from "../model/io/excelImporter";
 import { ExcelImportResult } from "../model/io/excelImportResult";
-import { ExcelImportErrorList } from "./excelImportErrorList";
-import { ForecastDate } from "../model/forecastDate";
-import { ForecastItems } from "../model/forecastItems";
-import { ResultsDisplay } from "./resultsDisplay";
-import { SimulationConfig } from "../model/simulationConfig";
-import { SimulationController } from "../model/simulationController";
-import { SimulationResult } from "../model/simulationResult";
-import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
+import { ProjectEvent, ExistingProjectEvent } from "./projectEvents";
 
-import { Tabs, Tab } from "material-ui/Tabs";
 import FlatButton from "material-ui/FlatButton";
-import { Stepper, Step, StepButton, StepLabel, StepContent } from "material-ui/Stepper";
 import RaisedButton from "material-ui/RaisedButton";
-import TextField from "material-ui/TextField";
 import MenuItem from "material-ui/MenuItem";
+import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import { grey900 } from 'material-ui/styles/colors';
 
 export interface ExistingProjectDialogProps {
-    open: boolean;
-    cbCloseDialog: (originalData: Array<SimulationResult>) => void;
+    visible: boolean;
+    cbHandleConfiguration: (event: ProjectEvent) => void;
 }
 export interface ExistingProjectDialogState {
     stepIndex: number,
@@ -37,9 +26,6 @@ export interface ExistingProjectDialogState {
     endColumn: string,
     jsonFilename: string,
     importErrors: Array<ExcelImportResult>,
-    simulationConfig: SimulationConfig,
-    forecastsDate: ForecastDate[],
-    forecastsItems: ForecastItems[]
 }
 
 export class ExistingProjectDialog extends React.Component<ExistingProjectDialogProps, ExistingProjectDialogState>{
@@ -53,15 +39,15 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
     private jsonHtmlInput: any
     private static jsonFilename: string
 
-    private simController: SimulationController;
-
     constructor(props: ExistingProjectDialogProps) {
         super(props);
         this.setInitialState();
-        this.simController = new SimulationController();
     }
 
     render(): JSX.Element {
+
+        if (!this.props.visible)
+            return <div></div>
 
         // This block of code builds the 2 selectors that will show up under
         // the Excel file upload. It will contain the columns of the spreadsheet
@@ -69,11 +55,11 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
         const endSelector = this.buildSelector("End", (value: string) => { this.state.endColumn = value; }, () => { return this.state.endColumn }, this.handleChangeEndColumn);
 
         return <div>
-            <div>Load data from external tool</div>
+            <p>Load data from your external tool</p>
             <div>
                 <RaisedButton
+                    className="forecastsButton"
                     label="Select an Excel file"
-                    style={this.styles.button}
                     containerElement="label"
                 >
                     <input
@@ -85,21 +71,23 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
                 <TextField
                     id="fileDataUploadTextField"
                     value={this.state.excelFilename}
-                    floatingLabelText="Excel file to upload"
+                    floatingLabelText="Excel file uploaded"
                     disabled={true}
                     floatingLabelStyle={this.styles.textField}
                     inputStyle={this.styles.textField}
                     underlineStyle={this.styles.textField}
                 />
                 <div>
+                    <p>Select the columns from which we read the dates:</p> 
                     {startSelector}
                     {endSelector}
                 </div>
             </div>
-            <div>Load previous forecasts (optional)<div>
+            <div>
+                <p>Load previous forecasts (optional)</p>
                 <RaisedButton
+                    className="forecastsButton"
                     label="Select a .json file"
-                    style={this.styles.button}
                     containerElement="label"
                 >
                     <input
@@ -118,26 +106,14 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
                     underlineStyle={this.styles.textField}
                 />
             </div>
-            </div>
-            <div>
+            <div className="buttons">
                 <RaisedButton
+                    className="forecastsButton"
                     label="Create forecasts"
                     onTouchTap={this.handleBtnCreateForecast.bind(this)}
-                    style={this.styles.button}
                     containerElement="label" />
             </div>
-            <ResultsDisplay
-                simulationConfig={this.state.simulationConfig}
-                dateForecasts={this.state.forecastsDate}
-                itemsForecasts={this.state.forecastsItems}
-                orderedAsc={false}
-                cbDaysChanged={this.cbDaysChanged.bind(this)} 
-                cbItemsChanged={this.cbItemsChanged.bind(this)}
-                />
-            <ExcelImportErrorList
-                importResults={this.state.importErrors}
-            />
-        </div>
+        </div>;
     }
 
     private handleExcelFileChange(eventInput: any): void {
@@ -168,7 +144,7 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
 
     private callbackExcelFileChange(eventInput: any, columns: any) {
         this.excelHtmlInput.value = "";
-        this.state.columns = (columns == undefined ? []: columns);
+        this.state.columns = (columns == undefined ? [] : columns);
         this.setState(this.state);
     }
 
@@ -215,29 +191,8 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
             this.state.startColumn,
             this.state.endColumn);
 
-        this.simController.StartDate = new Date();
-        this.simController.buildValidDates(importResults)
-        this.simController.buildThroughputs();
-        this.state.importErrors = this.simController.getImportErrors();
-
-        this.state.forecastsDate = this.simController.createDateSimulationForExistingProject();
-        this.state.forecastsItems = this.simController.createItemsSimulationForExistingProject();
-        this.setState(this.state);
-    }
-
-    private cbDaysChanged(numberOfDays: number): void {
-        this.simController.NumberOfDays = numberOfDays;
-        this.state.simulationConfig.StartDate = this.simController.StartDate;
-        this.state.simulationConfig.NumberOfDays = this.simController.NumberOfDays;
-        this.state.forecastsDate = this.simController.createDateSimulationForExistingProject();
-        this.setState(this.state);
-    }
-
-    private cbItemsChanged(numberOfItems: number): void {
-        this.simController.NumberOfItems = numberOfItems;
-        this.state.simulationConfig.NumberOfItems = numberOfItems;
-        this.state.forecastsItems = this.simController.createItemsSimulationForExistingProject();
-        this.setState(this.state);
+        if (this.props.cbHandleConfiguration != undefined)
+            this.props.cbHandleConfiguration(new ExistingProjectEvent(importResults));
     }
 
     private buildSelector(title: String,
@@ -245,32 +200,27 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
         getStateVariable: () => string,
         handler: (event: any, index: number, value: any) => void): JSX.Element {
 
-        if (this.state.columns.length > 0) {
-
-            let value = this.state.columns[0];
-            if (getStateVariable() == "")
-                setStateVariable(value);
-            else
-                setStateVariable(getStateVariable());
-
-            const menuItems = new Array<JSX.Element>(0);
-            for (let column of this.state.columns)
-                menuItems.push(
-                    <MenuItem
-                        value={column}
-                        key={title + "." + column}
-                        primaryText={column} />
-                );
-
-            return <SelectField
-                floatingLabelText={title}
-                value={getStateVariable()}
-                onChange={handler.bind(this)}>
-                {menuItems}
-            </SelectField>;
-        }
+        let value = this.state.columns[0];
+        if (getStateVariable() == "")
+            setStateVariable(value);
         else
-            return <div></div>;
+            setStateVariable(getStateVariable());
+
+        const menuItems = new Array<JSX.Element>(0);
+        for (let column of this.state.columns)
+            menuItems.push(
+                <MenuItem
+                    value={column}
+                    key={title + "." + column}
+                    primaryText={column} />
+            );
+
+        return <p><SelectField
+            floatingLabelText={title}
+            value={getStateVariable()}
+            onChange={handler.bind(this)}>
+            {menuItems}
+        </SelectField></p>;
     }
 
     private setInitialState(): void {
@@ -281,10 +231,7 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
             startColumn: "",
             endColumn: "",
             jsonFilename: "",
-            importErrors: Array<ExcelImportResult>(0),
-            simulationConfig: SimulationConfig.Empty,
-            forecastsDate: new Array<ForecastDate>(0),
-            forecastsItems: new Array<ForecastItems>(0)
+            importErrors: Array<ExcelImportResult>(0)
         };
     }
 
@@ -292,9 +239,6 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
         textField: {
             color: grey900,
             cursor: 'cursor',
-        },
-        button: {
-            margin: 12,
         },
         input: {
             cursor: 'pointer',

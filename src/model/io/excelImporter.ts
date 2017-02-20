@@ -37,13 +37,13 @@ export class ExcelImporter {
     readHeaders(data?: File): Array<string> {
         if (data == undefined)
             this.loadFile(true);
-        else{
+        else {
             this.blob = data;
             this.loadBlob(data, true);
         }
         this.decodeHeaders();
 
-        let headersName = this.headers.map((header, index, arr) => {return header[1];});
+        let headersName = this.headers.map((header, index, arr) => { return header[1]; });
 
         return headersName;
     }
@@ -53,8 +53,8 @@ export class ExcelImporter {
         if (this.isReadingSameData(startColumn, endColumn))
             return this.exportResults;
 
-        if (this.blob == undefined)
-            this.loadFile(false);            
+        if (this.isBlobEmpty())
+            this.loadFile(false);
         else
             this.loadBlob(this.blob, false);
 
@@ -190,6 +190,10 @@ export class ExcelImporter {
     private cleanupImporter(errorMessage: string): void {
         this.headers = new Array<[number, string]>(0);
         this.errorMessage = errorMessage;
+    }
+
+    private isBlobEmpty(): boolean {
+        return this.blob.size == 0;
     }
 
     private getIndex(columnName: string): number {
