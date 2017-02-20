@@ -22,7 +22,30 @@ module.exports = {
         path: path.join(process.cwd(), "dist"),
         publicPath: "static",
         devtoolModuleFilenameTemplate: function (info) {
-            return "../" + info.resourcePath;
+            if (info.resourcePath.match(".ts"+"$")==".ts" ||
+                info.resourcePath.match(".tsx"+"$")==".tsx"){
+
+                var parts = info.resourcePath.split("/");
+                var goodParts = new Array();
+                for (var i = parts.length - 1; i >= 0; i--){
+                    if (parts[i] != "src")
+                        goodParts.push(parts[i]);
+                    else{
+                        goodParts.push(parts[i]);
+                        break;
+                    }
+                }
+                goodParts.reverse();
+                var thePath = "../";
+                goodParts.forEach((element, index) => {
+                    thePath = path.join(thePath, element);
+                })                 
+                //console.log("Path: " + thePath);
+                return thePath;
+            }
+            else{
+                return info.resourcePath;
+            }
         }
     },
 
