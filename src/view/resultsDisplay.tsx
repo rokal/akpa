@@ -32,7 +32,9 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
 
     constructor(props: ResultsProps) {
         super(props);
-        this.state = { numberOfDays: 25, numberOfItems: 100 };
+        this.state = { 
+            numberOfDays: props.simulationConfig.NumberOfDays, 
+            numberOfItems: props.simulationConfig.NumberOfItems };
     }
 
     render(): JSX.Element {
@@ -43,61 +45,12 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
             return this.displayForecasts();
     }
 
-    private createDateSection(forecasts:Array<Forecast>): JSX.Element{
-        let orderedForecasts = this.orderForecasts(forecasts);
-
-        const items = orderedForecasts.map((forecast, index, arr) => {
-            return <div className="result" key={index}>
-                <p className="result"><span className="percentileNumber" style={this.pickColor(forecast.Percentile)}>{forecast.NumberOfItemsCompleted}</span> items</p>
-                <p className="resultConfidence">{forecast.Percentile.toString()} confidence</p>
-            </div>
-            });
-
-        return <div>
-                {items}                                                  
-               </div>
-    }
-
-    private pickColor(percentile:Percentile):any{
-        if (percentile.value >= 0.8)
-            return this.styles.percentile.green;
-        else if (percentile.value >= 0.5 && percentile.value < 0.8)
-        return this.styles.percentile.yellow;
-            else
-            return this.styles.percentile.red;
-    }
-
-    readonly styles = {
-        percentile:{            
-            green:{color:green600},
-            yellow:{color:amber800},
-            red:{color:red800}
-        },
-        slider:{
-            margin:"2px",
-            width:"350px"
-        }        
-    }
-
-    private createItemsSection(forecasts:Array<Forecast>): JSX.Element{
-        let orderedForecasts = this.orderForecasts(forecasts);
-
-        const items = orderedForecasts.map((forecast, index, arr) => {
-            return <div key={index} className="result">
-                <p className="result"><span className="percentileNumber" style={this.pickColor(forecast.Percentile)}>{forecast.NumberOfDays}</span> days</p>
-                <p className="resultConfidence">{forecast.Percentile.toString()} confidence</p>
-            </div>
-            });
-
-        return <div>
-                {items}                                                  
-               </div>
-    }
-
     private displayForecasts(): JSX.Element {
 
         // This is just here to make code easier to read
         let simulationConfig = this.props.simulationConfig;
+        this.state.numberOfDays = simulationConfig.NumberOfDays;
+        this.state.numberOfItems = simulationConfig.NumberOfItems;
 
         const dateSection = this.createDateSection(this.props.dateForecasts);
         const itemsSection = this.createItemsSection(this.props.itemsForecasts);
@@ -134,6 +87,45 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         </div>;
     }
 
+    private createDateSection(forecasts:Array<Forecast>): JSX.Element{
+        let orderedForecasts = this.orderForecasts(forecasts);
+
+        const items = orderedForecasts.map((forecast, index, arr) => {
+            return <div className="result" key={index}>
+                <p className="result"><span className="percentileNumber" style={this.pickColor(forecast.Percentile)}>{forecast.NumberOfItemsCompleted}</span> items</p>
+                <p className="resultConfidence">{forecast.Percentile.toString()} confidence</p>
+            </div>
+            });
+
+        return <div>
+                {items}                                                  
+               </div>
+    }
+
+    private createItemsSection(forecasts:Array<Forecast>): JSX.Element{
+        let orderedForecasts = this.orderForecasts(forecasts);
+
+        const items = orderedForecasts.map((forecast, index, arr) => {
+            return <div key={index} className="result">
+                <p className="result"><span className="percentileNumber" style={this.pickColor(forecast.Percentile)}>{forecast.NumberOfDays}</span> days</p>
+                <p className="resultConfidence">{forecast.Percentile.toString()} confidence</p>
+            </div>
+            });
+
+        return <div>
+                {items}                                                  
+               </div>
+    }
+
+    private pickColor(percentile:Percentile):any{
+        if (percentile.value >= 0.8)
+            return this.styles.percentile.green;
+        else if (percentile.value >= 0.5 && percentile.value < 0.8)
+        return this.styles.percentile.yellow;
+            else
+            return this.styles.percentile.red;
+    }
+
     private displayEmptyForecast(): JSX.Element {
         return <div><h2>No forecasts generated yet</h2></div>;
     }
@@ -144,12 +136,10 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
     }
 
     private handleDaysSlider(event: any, value: any): void {
-        this.state.numberOfDays = value;
         this.props.cbDaysChanged(value);
     }
 
     private handleItemsSlider(event: any, value: any): void {
-        this.state.numberOfItems = value;
         this.props.cbItemsChanged(value);
     }
 
@@ -182,4 +172,16 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         cbDaysChanged: (numberOfDays: number) => { },
         cbItemsChanged: (numberOfItems: number) => { },
     };
+
+    readonly styles = {
+        percentile:{            
+            green:{color:green600},
+            yellow:{color:amber800},
+            red:{color:red800}
+        },
+        slider:{
+            margin:"2px",
+            width:"350px"
+        }        
+    }
 }

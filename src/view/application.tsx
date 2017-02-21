@@ -99,7 +99,7 @@ export class Application extends React.Component<AppProps, AppState>{
         if (this.state.applicationState){
             // Cast & assign the configuration from the new project panel
             let newProjectEvent = event as NewProjectEvent;
-            this.simController.SimulationConfig = newProjectEvent.Config;
+            this.state.simulationConfig = this.simController.SimulationConfig = newProjectEvent.Config;
         }
         else{
             // Cast and build the configuration object
