@@ -36,6 +36,10 @@ export class SimulationController {
     public set SimulationConfig(config:SimulationConfig){
         this.simulationConfig = config;
     }
+    public get SimulationConfig(): SimulationConfig{
+        return this.simulationConfig;
+    }
+    
     private simulationConfig:SimulationConfig;        
 
     constructor(){

@@ -104,9 +104,11 @@ export class Application extends React.Component<AppProps, AppState>{
         else{
             // Cast and build the configuration object
             let existingProjectEvent = event as ExistingProjectEvent;
+            this.simController.SimulationConfig = this.state.simulationConfig;
             this.simController.StartDate = new Date();
             this.simController.buildValidDates(existingProjectEvent.Results)
             this.simController.buildThroughputs();
+            this.state.simulationConfig = this.simController.SimulationConfig;
             //this.state.imporErrors = this.simController.getImportErrors();
         }
     
