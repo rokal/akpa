@@ -219,13 +219,13 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
                     primaryText={column} />
             );
 
-        return <p><SelectField
+        return <SelectField
             floatingLabelText={title}
             value={getStateVariable()}
             disabled={this.state.columns.length == 0}
             onChange={handler.bind(this)}>
             {menuItems}            
-        </SelectField></p>;
+        </SelectField>;
     }
 
     private setInitialState(): void {

@@ -69,7 +69,7 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
             </div>
             <div>
                 <p>Enter the minimal and maximal number of features your team will do per {this.convertThroughput()}</p>
-                <p><TextField
+                <TextField
                     id="minValueTextField"
                     value={this.state.minValue}
                     onChange={this.handleMinValueChange.bind(this)}
@@ -79,8 +79,8 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
                     errorText={this.state.minValueErrorText}
                     errorStyle={this.state.minValueErrorStyle}
                     underlineFocusStyle={this.styles.validStyle}
-                /></p>
-                <p><TextField
+                />
+                <TextField
                     id="maxValueTextField"
                     value={this.state.maxValue}
                     onChange={this.handleMaxValueChange.bind(this)}
@@ -89,7 +89,7 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
                     hintText="Enter a value smaller than 100"
                     errorText={this.state.maxValueErrorText}
                     errorStyle={this.state.maxValueErrorStyle}
-                /></p>
+                />
             </div>                
             <Divider />
             <div>
