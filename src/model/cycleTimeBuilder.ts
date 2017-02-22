@@ -2,7 +2,6 @@ import { CycleTime } from "./cycleTime";
 import { DateRange } from "./dateRange";
 import * as moment from "moment";
 
-
 export class CycleTimeBuilder {
 
     //private static elements: Map;
