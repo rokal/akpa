@@ -55,14 +55,10 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ["", ".ts", ".tsx", ".js"],
-        alias: {
-            jszip: "xlsx/jszip.js"
-        }        
+        extensions: ["", ".ts", ".tsx", ".js"],       
     },
 
     module: {
-        noParse: [/jszip.js$/],
         loaders: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
             { 
