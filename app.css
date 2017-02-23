@@ -32,6 +32,10 @@ div.spacer {
     margin-bottom: 0.5em;
 }
 
+.importFileButton {
+    margin-right:12px;
+}
+
 div.result {
     color: #9E9E9E;
     border: 1px solid #757575;
@@ -57,6 +61,3 @@ p.resultConfidence {
     font:normal #00BCD4
 }
 
-.importFileButton {
-    margin:12;
-}

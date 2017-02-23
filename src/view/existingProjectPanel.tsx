@@ -12,7 +12,6 @@ import RaisedButton from "material-ui/RaisedButton";
 import MenuItem from "material-ui/MenuItem";
 import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
-import { grey900 } from 'material-ui/styles/colors';
 
 export interface ExistingProjectPanelProps {
     visible: boolean;
@@ -55,8 +54,7 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
         const endSelector = this.buildSelector("End", (value: string) => { this.state.endColumn = value; }, () => { return this.state.endColumn }, this.handleChangeEndColumn);
 
         return <div>
-            <p>Load data from your external tool</p>
-            <div>
+            <p>Load data from your external tool:</p>
                 <RaisedButton
                     className="importFileButton"
                     label="Select an Excel file"
@@ -71,20 +69,17 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
                 <TextField
                     id="fileDataUploadTextField"
                     value={this.state.excelFilename}
-                    floatingLabelText="Excel file uploaded"
-                    disabled={true}
-                    floatingLabelStyle={this.styles.textField}
-                    inputStyle={this.styles.textField}
-                    underlineStyle={this.styles.textField}
+                    floatingLabelText={this.setText()}
+                    disabled={true}                    
+                    inputStyle={this.styles.importTextField}
+                    floatingLabelStyle={this.styles.importTextField}
                 />
-                <div>
-                    <p>Select the columns from which we read the dates:</p> 
-                    {startSelector}
-                    {endSelector}
-                </div>
-            </div>
+                <p>Select the columns from which to read the dates:</p> 
+                {startSelector}
+                <div className="spacer"></div>
+                {endSelector}
             <div>
-                <p>Load previous forecasts (optional)</p>
+                <p>Load previous forecasts (optional):</p>
                 <RaisedButton
                     className="importFileButton"
                     label="Select a .json file"
@@ -101,9 +96,9 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
                     value={this.state.jsonFilename}
                     floatingLabelText="Previous forecasts to upload"
                     disabled={true}
-                    floatingLabelStyle={this.styles.textField}
-                    inputStyle={this.styles.textField}
-                    underlineStyle={this.styles.textField}
+                    floatingLabelStyle={this.styles.importTextField}
+                    inputStyle={this.styles.importTextField}
+                    underlineStyle={this.styles.importTextField}
                 />
             </div>
             <div className="forecastButton">
@@ -203,23 +198,26 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
         getStateVariable: () => string,
         handler: (event: any, index: number, value: any) => void): JSX.Element {
 
-        let value = this.state.columns[0];
-        if (getStateVariable() == "")
-            setStateVariable(value);
-        else
-            setStateVariable(getStateVariable());
-
         const menuItems = new Array<JSX.Element>(0);
-        for (let column of this.state.columns)
-            menuItems.push(
-                <MenuItem
-                    value={column}
-                    key={title + "." + column}
-                    primaryText={column} />
-            );
+        if (this.state.columns.length > 0){
+            let value = this.state.columns[0];
+            if (getStateVariable() == "")
+                setStateVariable(value);
+            else
+                setStateVariable(getStateVariable());
+    
+            for (let column of this.state.columns)
+                menuItems.push(
+                    <MenuItem
+                        value={column}
+                        key={title + "." + column}
+                        primaryText={column} />
+                );  
+        }
 
         return <SelectField
-            floatingLabelText={title}
+            floatingLabelText={this.state.columns.length != 0 ? title : undefined}
+            hintText={this.state.columns.length == 0 ? title : undefined}
             value={getStateVariable()}
             disabled={this.state.columns.length == 0}
             onChange={handler.bind(this)}>
@@ -239,9 +237,19 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
         };
     }
 
+    private setText(){
+        if (this.state.excelFilename)
+            return "Excel file uploaded";
+        else
+            return "Excel file to load";
+    }
+
     readonly styles = {
-        textField: {
-            color: grey900,
+        importTextField: {
+            color: "FF0000",            
+            cursor: 'cursor',
+        },
+        columnTextField:{
             cursor: 'cursor',
         },
         input: {
@@ -253,6 +261,7 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
             left: 0,
             width: '100%',
             opacity: 0,
+            margin:0,
         }
     }
 }

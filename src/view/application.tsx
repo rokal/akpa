@@ -156,7 +156,7 @@ export class Application extends React.Component<AppProps, AppState>{
 
     private setInitialValues(): void {
         this.state = {
-            applicationState: true,
+            applicationState: false,
             simulationConfig: SimulationConfig.Empty,
             dateForecasts: new Array<ForecastDate>(0),
             itemsForecasts: new Array<ForecastItems>(0),

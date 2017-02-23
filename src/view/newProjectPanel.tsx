@@ -91,7 +91,7 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
                     value={this.state.deliveryDate}
                     minDate={this.tomorrow()}
                     onChange={this.handleDateChange.bind(this)}
-                    hintText="Choose a date"
+                    hintText="Click here to choose a date"
                 />
                 <p>Select the number of items remaining in your backlog:</p>
                 <TextField
