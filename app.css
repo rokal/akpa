@@ -2,15 +2,42 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
+/* Pour espacer les boutons : New project */
+
+/* Pour mettre un d'air sur les côtés de la section principale */
+.section-principale {
+padding: 1.5em 3em;
+}
+
+/* Pour ajouter un style sur un bouton actif */
+.btn-actif {
+/* 
+* tu ne gardes que la couleur qui te convient, tu as le choix entre un bleu foncé, un orange et un rouge, toutes trois des couleurs complémentaires à la couleur originale 
+* il faut ajouter dynamiquement au bouton qui est actif
+*/
+background-color: #006775 !important; /* bleu foncé */
+background-color: #FF1300 !important; /* rouge */
+background-color: #FF7A00 !important; /* orange */
+}
+
+div p, 
+#minValueTextField {
+    margin-bottom: 0 !important;
+}
+
 span {
     font-style: italic;
 }
 
 div.buttons {
-    margin: auto;
+    margin: 0 .75em;
     text-align:center;
     width: 100%;
     padding: 10px;
+}
+
+div.spacer {
+    margin-bottom: 0.5em;
 }
 
 div.result {
@@ -19,6 +46,7 @@ div.result {
     font-size:18px;
     padding-left:2px;
     }
+
 
 p.result {
     margin:0

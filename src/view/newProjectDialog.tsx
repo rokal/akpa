@@ -57,7 +57,6 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
             <div>
                 <p>Select the throughput frequency of your team:</p>
                 <SelectField
-                    floatingLabelText="Rate of delivering features is per"
                     value={this.state.throughputFrequency}
                     autoWidth={true}
                     onChange={this.handleChangeFrequency.bind(this)}
@@ -68,34 +67,30 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
                 </SelectField>
             </div>
             <div>
-                <p>Enter the minimal and maximal number of features your team will do per {this.convertThroughput()}</p>
+                <p style={this.styles.no_margin}>Enter the minimal and maximal number of features your team will do per {this.convertThroughput()}:</p>
                 <TextField
                     id="minValueTextField"
                     value={this.state.minValue}
                     onChange={this.handleMinValueChange.bind(this)}
-                    floatingLabelFocusStyle={this.styles.validStyle}
-                    floatingLabelText="Minimal number of features"
                     hintText="Enter a value greater than 0"
                     errorText={this.state.minValueErrorText}
                     errorStyle={this.state.minValueErrorStyle}
                     underlineFocusStyle={this.styles.validStyle}
                 />
+                <div className="spacer"></div>
                 <TextField
                     id="maxValueTextField"
                     value={this.state.maxValue}
                     onChange={this.handleMaxValueChange.bind(this)}
-                    floatingLabelFocusStyle={this.styles.validStyle}
-                    floatingLabelText="Maximal number of features"
                     hintText="Enter a value smaller than 100"
                     errorText={this.state.maxValueErrorText}
                     errorStyle={this.state.maxValueErrorStyle}
+                    underlineFocusStyle={this.styles.validStyle}
                 />
             </div>                
-            <Divider />
             <div>
                 <p>Select the expected delivery date:</p>
                 <DatePicker
-                    floatingLabelText="Expected delivery date by customer"
                     defaultDate={new Date()}
                     minDate={this.tomorrow()}
                     onChange={this.handleDateChange.bind(this)}
@@ -105,8 +100,6 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
                     id="numItems"
                     value={this.state.numberOfItems}
                     onChange={this.handleNumItemsChange.bind(this)}
-                    floatingLabelFocusStyle={this.styles.validStyle}
-                    floatingLabelText="Remaining features to deliver"
                     hintText="Enter a value greater than 0"
                     errorText={this.state.numItemsErrorText}
                     errorStyle={this.state.numItemsErrorStyle}
@@ -273,10 +266,14 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
         },
         errorStyle: {
             color: red500
+        },
+        no_margin:{
+            margin:{
+                top:0}
         }
     }
 
     readonly DEFAULT_MIN_VALUE_TEXTFIELD = "The minimal features produced per ";
     readonly DEFAULT_MAX_VALUE_TEXTFIELD = "The maximum features produced per ";
-    readonly DEFAULT_NUM_ITEMS_TEXTFIELD = "How many features do you have to deliver?";
+    readonly DEFAULT_NUM_ITEMS_TEXTFIELD = "The number of items you have to deliver";
 }
