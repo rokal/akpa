@@ -25,6 +25,7 @@ import Divider from "material-ui/Divider";
 // in the official React release. It will be removed one day when
 // React integrates it
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import getMuiTheme from "material-ui/styles/getMuiTheme";
 import injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
@@ -52,28 +53,34 @@ export class Application extends React.Component<AppProps, AppState>{
                 <AppBar
                     showMenuIconButton={false}
                     title="Determining potential delivery dates of your software project" />
-                <div className="buttons">
+                <div className="headerButtons">
                     <RaisedButton
-                        primary={true}
                         onTouchTap={this.handleBtnNewProject.bind(this)}
                         label="New Project"
+                        labelColor="#FFFFFF"
+                        backgroundColor={this.selectButtonBackground("N")}
+                        style={this.styles.margins}
                     />
                     <RaisedButton
-                        primary={true}
                         onTouchTap={this.handleBtnExistingProject.bind(this)}
                         label="Existing Project"
+                        labelColor="#FFFFFF"
+                        backgroundColor={this.selectButtonBackground("E")}
+                        style={this.styles.margins}
                     />                
                 </div>
                 <Divider/>
-                <NewProjectPanel 
-                    visible={this.state.applicationState}
-                    throughputFrequency={ThroughputFrequency.Day}
-                    cbHandleConfiguration={this.handleBtnCreateForecasts.bind(this)}
+                <div className="mainSection">
+                    <NewProjectPanel 
+                        visible={this.state.applicationState}
+                        throughputFrequency={ThroughputFrequency.Day}
+                        cbHandleConfiguration={this.handleBtnCreateForecasts.bind(this)}
+                        />
+                    <ExistingProjectPanel 
+                        visible={!this.state.applicationState}
+                        cbHandleConfiguration={this.handleBtnCreateForecasts.bind(this)}
                     />
-                <ExistingProjectPanel 
-                    visible={!this.state.applicationState}
-                    cbHandleConfiguration={this.handleBtnCreateForecasts.bind(this)}
-                />
+                </div>
                 <Divider/>
                 <ResultsDisplay
                     simulationConfig={this.state.simulationConfig}
@@ -128,7 +135,7 @@ export class Application extends React.Component<AppProps, AppState>{
         this.state.itemsForecasts = this.simController.createItemsSimulationForExistingProject();
         this.setState(this.state);
     }
-
+    
     private handleBtnNewProject(e:any):void {
         this.state.applicationState = true;
         this.setState(this.state);
@@ -137,6 +144,14 @@ export class Application extends React.Component<AppProps, AppState>{
     private handleBtnExistingProject(e:any):void {
         this.state.applicationState = false;
         this.setState(this.state);
+    }
+
+    private selectButtonBackground(target:string):string{            
+        if (( this.state.applicationState && target == "N") ||
+            (!this.state.applicationState && target == "E"))
+            return this.ACTIVE_BUTTON_BACKGROUND_COLOR;
+        else    
+            return this.INACTIVE_BUTTON_BACKGROUND_COLOR;
     }
 
     private setInitialValues(): void {
@@ -148,4 +163,14 @@ export class Application extends React.Component<AppProps, AppState>{
             cycleTimes: new Array<CycleTime>(0)
         };
     }
+
+    private readonly styles ={
+        margins:{
+            margin: 6,
+        },
+    }
+
+    readonly ACTIVE_BUTTON_BACKGROUND_COLOR = "#FF7A00";
+    readonly INACTIVE_BUTTON_BACKGROUND_COLOR = "#00BCD4";
+    
 }
