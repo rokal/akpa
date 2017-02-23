@@ -38,8 +38,8 @@ install:
 before_script: 
 
 script:
-  # Build the application to prepare it for production
-  - webpack --config ./configs/deploy/webpack.config.js
+  # Build the application to prepare it for production.
+  - webpack --config ./configs/deploy/webpack.config.prod.js -p
   
   # Build and run the tests
   - npm test
