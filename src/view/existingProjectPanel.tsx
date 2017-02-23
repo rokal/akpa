@@ -58,7 +58,7 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
             <p>Load data from your external tool</p>
             <div>
                 <RaisedButton
-                    className="forecastsButton"
+                    className="importFileButton"
                     label="Select an Excel file"
                     containerElement="label"
                 >
@@ -86,7 +86,7 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
             <div>
                 <p>Load previous forecasts (optional)</p>
                 <RaisedButton
-                    className="forecastsButton"
+                    className="importFileButton"
                     label="Select a .json file"
                     containerElement="label"
                 >
@@ -106,9 +106,8 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
                     underlineStyle={this.styles.textField}
                 />
             </div>
-            <div className="buttons">
+            <div className="forecastButton">
                 <RaisedButton
-                    className="forecastsButton"
                     label="Create forecasts"
                     onTouchTap={this.handleBtnCreateForecast.bind(this)}
                     containerElement="label" />

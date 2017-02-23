@@ -104,9 +104,8 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
                     underlineFocusStyle={this.styles.validStyle}
                 />
             </div>
-            <div className="buttons">
+            <div className="forecastButton">
                 <RaisedButton
-                    className="forecastButton"
                     label="Create forecasts"
                     onTouchTap={this.handleBtnCreateForecast.bind(this)}
                     containerElement="label" />
