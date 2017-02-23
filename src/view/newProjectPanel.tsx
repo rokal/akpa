@@ -10,23 +10,20 @@ import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
 import { Utilities } from "../utilities";
 
 import DatePicker from "material-ui/DatePicker";
-import Divider from 'material-ui/Divider';
 import RaisedButton from "material-ui/RaisedButton";
-import FlatButton from "material-ui/FlatButton";
 import MenuItem from "material-ui/MenuItem";
 import SelectField from "material-ui/SelectField";
 import TextField from "material-ui/TextField";
-import { cyan500, lightBlue500, red500 } from 'material-ui/styles/colors';
+import { cyan500, red500 } from 'material-ui/styles/colors';
 import * as moment from "moment";
 
-export interface NewProjectDialogProps {
+export interface NewProjectPanelProps {
     visible: boolean;
     throughputFrequency: ThroughputFrequency;
     cbHandleConfiguration: (event: ProjectEvent) => void;
 }
 
-export interface NewProjectDialogState {
-    shown: boolean;
+export interface NewProjectPanelState {
     minValue?: string | number | undefined,
     maxValue?: string | number | undefined,
     throughputFrequency: ThroughputFrequency;
@@ -41,9 +38,9 @@ export interface NewProjectDialogState {
     numItemsErrorStyle: { color: String }
 }
 
-export class NewProjectDialog extends React.Component<NewProjectDialogProps, NewProjectDialogState>{
+export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewProjectPanelState>{
 
-    constructor(props: NewProjectDialogProps) {
+    constructor(props: NewProjectPanelProps) {
         super(props);
         this.setInitialState();
     }
@@ -241,7 +238,6 @@ export class NewProjectDialog extends React.Component<NewProjectDialogProps, New
 
     private setInitialState(): void {
         this.state = {
-            shown: this.props.visible,
             minValue: undefined,
             maxValue: undefined,
             throughputFrequency: this.props.throughputFrequency,

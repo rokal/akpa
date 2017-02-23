@@ -14,11 +14,11 @@ import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import { grey900 } from 'material-ui/styles/colors';
 
-export interface ExistingProjectDialogProps {
+export interface ExistingProjectPanelProps {
     visible: boolean;
     cbHandleConfiguration: (event: ProjectEvent) => void;
 }
-export interface ExistingProjectDialogState {
+export interface ExistingProjectPanelState {
     stepIndex: number,
     excelFilename: string,
     columns: Array<string>,
@@ -28,7 +28,7 @@ export interface ExistingProjectDialogState {
     importErrors: Array<ExcelImportResult>,
 }
 
-export class ExistingProjectDialog extends React.Component<ExistingProjectDialogProps, ExistingProjectDialogState>{
+export class ExistingProjectPanel extends React.Component<ExistingProjectPanelProps, ExistingProjectPanelState>{
 
     private excelBlob: File;
     private excelHtmlInput: any;
@@ -39,7 +39,7 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
     private jsonHtmlInput: any
     private static jsonFilename: string
 
-    constructor(props: ExistingProjectDialogProps) {
+    constructor(props: ExistingProjectPanelProps) {
         super(props);
         this.setInitialState();
     }
@@ -122,20 +122,20 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
 
         this.state.startColumn = this.state.endColumn = "";
         this.state.excelFilename = this.excelBlob.name;
-        ExistingProjectDialog.excelFilename = this.excelBlob.name;
+        ExistingProjectPanel.excelFilename = this.excelBlob.name;
 
         // Instanciate and configure the FileReader object
         let fileReader = new FileReader();
         fileReader.onload = (e: any) => {
-            this.excelImporter = new ExcelImporter(ExistingProjectDialog.excelFilename);
+            this.excelImporter = new ExcelImporter(ExistingProjectPanel.excelFilename);
             e.target.columns = this.excelImporter.readHeaders(e.target.result);
         }
         fileReader.onloadend = (eventFileReader: any) => {
-            console.log(`File ${ExistingProjectDialog.excelFilename} loaded successfully with ${eventFileReader.loaded} bytes`);
+            console.log(`File ${ExistingProjectPanel.excelFilename} loaded successfully with ${eventFileReader.loaded} bytes`);
             this.callbackExcelFileChange(eventInput, eventFileReader.target.columns);
         }
-        fileReader.onloadstart = (e: any) => { console.log(`File ${ExistingProjectDialog.excelFilename} being loaded`); }
-        fileReader.onerror = (e: any) => { console.log(`File ${ExistingProjectDialog.excelFilename} failed: Error ${e}`); };
+        fileReader.onloadstart = (e: any) => { console.log(`File ${ExistingProjectPanel.excelFilename} being loaded`); }
+        fileReader.onerror = (e: any) => { console.log(`File ${ExistingProjectPanel.excelFilename} failed: Error ${e}`); };
 
         fileReader.readAsBinaryString(this.excelBlob);
 
@@ -158,18 +158,18 @@ export class ExistingProjectDialog extends React.Component<ExistingProjectDialog
 
         this.state.startColumn = this.state.endColumn = "";
         this.state.jsonFilename = this.jsonBlob.name;
-        ExistingProjectDialog.jsonFilename = this.jsonBlob.name;
+        ExistingProjectPanel.jsonFilename = this.jsonBlob.name;
 
         let fileReader = new FileReader();
         fileReader.onload = (e: any) => {
 
         }
         fileReader.onloadend = (eventFileReader: any) => {
-            console.log(`File ${ExistingProjectDialog.jsonFilename} loaded successfully with ${eventFileReader.loaded} bytes`);
+            console.log(`File ${ExistingProjectPanel.jsonFilename} loaded successfully with ${eventFileReader.loaded} bytes`);
             this.callbackJsonFileChange(eventInput, eventFileReader.target.columns);
         }
-        fileReader.onloadstart = (e: any) => { console.log(`File ${ExistingProjectDialog.jsonFilename} being loaded`); }
-        fileReader.onerror = (e: any) => { console.log(`File ${ExistingProjectDialog.jsonFilename} failed: Error ${e}`); };
+        fileReader.onloadstart = (e: any) => { console.log(`File ${ExistingProjectPanel.jsonFilename} being loaded`); }
+        fileReader.onerror = (e: any) => { console.log(`File ${ExistingProjectPanel.jsonFilename} failed: Error ${e}`); };
 
         fileReader.readAsBinaryString(this.excelBlob);
 

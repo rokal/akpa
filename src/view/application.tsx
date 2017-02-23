@@ -13,8 +13,8 @@ import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
 import { ProjectEvent, ExistingProjectEvent, NewProjectEvent} from "./projectEvents";
 
 import { CycleTimeChart} from "./cycleTimeChart";
-import { NewProjectDialog } from "./newProjectDialog";
-import { ExistingProjectDialog } from "./existingProjectDialog";
+import { NewProjectPanel } from "./newProjectPanel";
+import { ExistingProjectPanel } from "./existingProjectPanel";
 import { ResultsDisplay } from "./resultsDisplay";
 
 import AppBar from "material-ui/AppBar";
@@ -65,12 +65,12 @@ export class Application extends React.Component<AppProps, AppState>{
                     />                
                 </div>
                 <Divider/>
-                <NewProjectDialog 
+                <NewProjectPanel 
                     visible={this.state.applicationState}
                     throughputFrequency={ThroughputFrequency.Day}
                     cbHandleConfiguration={this.handleBtnCreateForecasts.bind(this)}
                     />
-                <ExistingProjectDialog 
+                <ExistingProjectPanel 
                     visible={!this.state.applicationState}
                     cbHandleConfiguration={this.handleBtnCreateForecasts.bind(this)}
                 />
