@@ -24,14 +24,14 @@ export interface NewProjectPanelProps {
 }
 
 export interface NewProjectPanelState {
-    minValue?: string | number | undefined,
-    maxValue?: string | number | undefined,
+    minValue: string | number | undefined,
+    maxValue: string | number | undefined,
     throughputFrequency: ThroughputFrequency;
     minValueErrorText: String,
     minValueErrorStyle: { color: String },
     maxValueErrorText: String,
     maxValueErrorStyle: { color: String },
-    deliveryDate: Date,
+    deliveryDate: Date | undefined,
     numberOfDays: number;
     numberOfItems?: string | number | undefined,
     numItemsErrorText: String,
@@ -88,9 +88,10 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
             <div>
                 <p>Select the expected delivery date:</p>
                 <DatePicker
-                    defaultDate={new Date()}
+                    value={this.state.deliveryDate}
                     minDate={this.tomorrow()}
                     onChange={this.handleDateChange.bind(this)}
+                    hintText="Choose a date"
                 />
                 <p>Select the number of items remaining in your backlog:</p>
                 <TextField
@@ -204,7 +205,7 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
 
     private handleBtnCreateForecast(event: any): void {
         let now = moment(new Date());
-        let futur = moment(this.state.deliveryDate);
+        let futur = moment(this.state.deliveryDate as Date);
 
         let config = new SimulationConfig(
             Utilities.generateHistoricalThroughput(
@@ -245,9 +246,9 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
             minValueErrorStyle: this.styles.validStyle,
             maxValueErrorText: "",
             maxValueErrorStyle: this.styles.validStyle,
-            deliveryDate: new Date(),
+            deliveryDate: undefined,
             numberOfDays: 30,
-            numberOfItems: 100,
+            numberOfItems: undefined,
             numItemsErrorText: this.DEFAULT_NUM_ITEMS_TEXTFIELD,
             numItemsErrorStyle: this.styles.validStyle
         };
@@ -266,7 +267,7 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
         no_margin:{
             margin:{
                 top:0}
-        }
+        },
     }
 
     readonly DEFAULT_MIN_VALUE_TEXTFIELD = "The minimal features produced per ";
