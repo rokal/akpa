@@ -4,14 +4,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+import { CycleTime } from "../model/cycleTime";
 import { ForecastDate } from "../model/forecastDate";
 import { ForecastItems } from "../model/forecastItems";
 import { SimulationConfig} from "../model/simulationConfig";
 import { SimulationController } from "../model/simulationController";
-import { SimulationResult } from "../model/simulationResult";
 import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
 import { ProjectEvent, ExistingProjectEvent, NewProjectEvent} from "./projectEvents";
 
+import { CycleTimeChart} from "./cycleTimeChart";
 import { NewProjectDialog } from "./newProjectDialog";
 import { ExistingProjectDialog } from "./existingProjectDialog";
 import { ResultsDisplay } from "./resultsDisplay";
@@ -19,8 +20,6 @@ import { ResultsDisplay } from "./resultsDisplay";
 import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import Divider from "material-ui/Divider";
-import IconButton from "material-ui/IconButton";
-import GetAppIcon from "material-ui/svg-icons/action/get-app";
 
 // This fix the touch tap event which is not currently supported
 // in the official React release. It will be removed one day when
@@ -33,10 +32,9 @@ export interface AppProps { }
 interface AppState {
     applicationState: boolean,
     simulationConfig: SimulationConfig,
-    simulationDateResults: Array<SimulationResult>,
-    simulationItemsResults?: Array<SimulationResult>,
     dateForecasts:Array<ForecastDate>,
-    itemsForecasts:Array<ForecastItems>    
+    itemsForecasts:Array<ForecastItems>,
+    cycleTimes:Array<CycleTime>
 }
 export class Application extends React.Component<AppProps, AppState>{
 
@@ -76,11 +74,6 @@ export class Application extends React.Component<AppProps, AppState>{
                     visible={!this.state.applicationState}
                     cbHandleConfiguration={this.handleBtnCreateForecasts.bind(this)}
                 />
-                {/*<RaisedButton
-                    label="Create forecasts"
-                    onTouchTap={this.handleBtnCreateForecasts.bind(this)}
-                    containerElement="label"                
-                />*/}
                 <Divider/>
                 <ResultsDisplay
                     simulationConfig={this.state.simulationConfig}
@@ -89,7 +82,8 @@ export class Application extends React.Component<AppProps, AppState>{
                     orderedAsc={false}
                     cbDaysChanged={this.cbDaysChanged.bind(this)}
                     cbItemsChanged={this.cbItemsChanged.bind(this)}
-                    />                                    
+                    /> 
+                    <CycleTimeChart cycleTimes={this.state.cycleTimes}/>                                   
             </div>
         </MuiThemeProvider>
     }
@@ -109,12 +103,14 @@ export class Application extends React.Component<AppProps, AppState>{
             this.simController.buildValidDates(existingProjectEvent.Results)
             this.simController.buildThroughputs();
             this.state.simulationConfig = this.simController.SimulationConfig;
+            this.state.cycleTimes = this.simController.buildCycleTimes();
             //this.state.imporErrors = this.simController.getImportErrors();
         }
     
         // Call the two simulation object (Date & Items)
         this.state.dateForecasts = this.simController.createDateSimulationForExistingProject();
         this.state.itemsForecasts = this.simController.createItemsSimulationForExistingProject();
+        
         this.setState(this.state);
     }
 
@@ -147,10 +143,9 @@ export class Application extends React.Component<AppProps, AppState>{
         this.state = {
             applicationState: true,
             simulationConfig: SimulationConfig.Empty,
-            simulationDateResults: new Array<SimulationResult>(0),
-            simulationItemsResults: new Array<SimulationResult>(0),
             dateForecasts: new Array<ForecastDate>(0),
-            itemsForecasts: new Array<ForecastItems>(0)
+            itemsForecasts: new Array<ForecastItems>(0),
+            cycleTimes: new Array<CycleTime>(0)
         };
     }
 }

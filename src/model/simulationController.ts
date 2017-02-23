@@ -1,3 +1,5 @@
+import { CycleTime } from "./cycleTime";
+import { CycleTimeBuilder } from "./cycleTimeBuilder";
 import { DateRange } from "./dateRange"
 import { ExcelImportResult } from "./io/excelImportResult";
 import { ForecastDate} from "./forecastDate";
@@ -30,17 +32,16 @@ export class SimulationController {
         this.simulationConfig.NumberOfItems = value;
     }
 
-    private validDates:Array<DateRange>;
-    private errorResults:Array<ExcelImportResult>;
-
     public set SimulationConfig(config:SimulationConfig){
         this.simulationConfig = config;
     }
     public get SimulationConfig(): SimulationConfig{
         return this.simulationConfig;
-    }
-    
+    }    
     private simulationConfig:SimulationConfig;        
+
+    private validDates:Array<DateRange>;
+    private errorResults:Array<ExcelImportResult>;
 
     constructor(){
         this.validDates = new Array<DateRange>(0);
@@ -67,6 +68,11 @@ export class SimulationController {
     buildThroughputs():void{
         // Build the throughputs
         this.simulationConfig.HistoricalThroughput = ThroughputBuilder.build(this.validDates);
+    }
+
+    buildCycleTimes():Array<CycleTime>{
+        // Build the cycle time
+        return CycleTimeBuilder.build(this.validDates);
     }
 
     createDateSimulationForExistingProject(): ForecastDate[] {
