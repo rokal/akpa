@@ -14,7 +14,7 @@ notifications:
 # Cache the Google Cloud SDK
 cache:
   directories:
-    - "$HOME/google-cloud-sdk/"
+#    - "$HOME/google-cloud-sdk/"
         
 # Decrypt the authentication key with very visible key (should change that)        
 before_install:
