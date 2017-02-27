@@ -23,7 +23,7 @@ export class ForecastItemsBuilder extends ForecastBuilder {
 
         for (var percentile of orderedAscPercentiles) {
             counter = 0;
-            numberOfOccurences = Math.round(percentile.value * this.numberOfSimulations);
+            numberOfOccurences = Math.round(percentile.Value * this.numberOfSimulations);
 
             for (var result of orderedAscResults) {
                 counter += result.Occurences;

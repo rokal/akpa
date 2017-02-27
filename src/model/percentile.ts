@@ -1,5 +1,9 @@
 ﻿export class Percentile {
-    value: number;
+    public get Value(): number{
+        return this.value;
+    }
+    private value:number;
+
     constructor(percentile: number) {
         if (percentile < 0)
             throw new RangeError("Percentile cannot be negative (" + percentile + ")");
@@ -10,6 +14,6 @@
     }        
 
     toString() : String {
-        return (this.value * 100).toString() + "%";
+        return `${this.value * 100}%`;
     }
 }

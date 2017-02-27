@@ -9,7 +9,7 @@ describe("Percentile test suite", () => {
     test ("Accepts 0.5 as 50%", () => {
         let testPercentile = new Percentile(expected50Value);
 
-        expect(testPercentile.value).toBe(expected50Value);
+        expect(testPercentile.Value).toBe(expected50Value);
         expect(testPercentile.toString()).toBe("50%");
     });
 
@@ -17,7 +17,7 @@ describe("Percentile test suite", () => {
         let expectedZeroValue = 0;
         let testPercentile = new Percentile(expectedZeroValue);
 
-        expect(testPercentile.value).toEqual(expectedZeroValue);
+        expect(testPercentile.Value).toEqual(expectedZeroValue);
     });
 
     test("Throws error on negative value", () => {

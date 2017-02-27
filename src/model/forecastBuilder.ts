@@ -61,9 +61,9 @@ export abstract class ForecastBuilder {
     
     protected orderPercentiles(): Array<Percentile> {
         return this.percentiles.sort((n1: Percentile, n2: Percentile) => {
-            if (n1.value > n2.value)
+            if (n1.Value > n2.Value)
                 return 1;
-            else if (n1.value < n2.value)
+            else if (n1.Value < n2.Value)
                 return -1;
             else
                 return 0;

@@ -154,9 +154,9 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
     }
 
     private pickColor(percentile: Percentile): string {
-        if (percentile.value >= 0.8)
+        if (percentile.Value >= 0.8)
             return this.COLOR_GREEN;
-        else if (percentile.value >= 0.5 && percentile.value < 0.8)
+        else if (percentile.Value >= 0.5 && percentile.Value < 0.8)
             return this.COLOR_YELLOW;
         else
             return this.COLOR_RED;
@@ -190,8 +190,8 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
     }
 
     private orderForecasts(forecasts: Array<Forecast>): Array<Forecast> {
-        let checkOne = (f1: Forecast, f2: Forecast) => { return f1.Percentile.value > f2.Percentile.value };
-        let checkTwo = (f1: Forecast, f2: Forecast) => { return f1.Percentile.value < f2.Percentile.value };
+        let checkOne = (f1: Forecast, f2: Forecast) => { return f1.Percentile.Value > f2.Percentile.Value };
+        let checkTwo = (f1: Forecast, f2: Forecast) => { return f1.Percentile.Value < f2.Percentile.Value };
 
         let conditionOne = this.props.orderedAsc ? checkTwo : checkOne;
         let conditionTwo = this.props.orderedAsc ? checkOne : checkTwo;
