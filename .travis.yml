@@ -27,7 +27,7 @@ before_install:
 # Add gcloud to $PATH
 - source /home/travis/google-cloud-sdk/path.bash.inc;
 - gcloud version;
-- gcloud config set project montecarlo-simulations
+- gcloud config set project akpa
 - gcloud auth activate-service-account --key-file ./configs/deploy/deploy-app-engine.json
 
 install:
@@ -55,7 +55,7 @@ deploy:
 #  Skip cleanup so api_key.py and vendored dependencies are still there
 #  skip_cleanup: true
 #  keyfile: deploy-app-engine.json
-#  project: montecarlo-simluations
+#  project: akpa
 #  default: true
 #  on: master
 
