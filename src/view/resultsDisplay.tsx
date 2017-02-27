@@ -1,19 +1,16 @@
 /// <reference path="../../typings/react/react.d.ts" />
-/// <reference path="../../typings/react-dom/react-dom.d.ts" />
 /// <reference path="../../typings/globals/material-ui/index.d.ts" />
 
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 import { Forecast } from "../model/forecast";
 import { ForecastDate } from "../model/forecastDate";
 import { ForecastItems } from "../model/forecastItems";
+import { Percentile } from "../model/percentile";
 import { SimulationConfig } from "../model/simulationConfig";
 
 import Slider from "material-ui/Slider";
-import { cyan500, green600, amber800, red800} from "material-ui/styles/colors";
 import * as moment from "moment";
-import { Percentile } from "../model/percentile";
 
 export interface ResultsProps {
     simulationConfig: SimulationConfig,
@@ -32,9 +29,10 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
 
     constructor(props: ResultsProps) {
         super(props);
-        this.state = { 
-            numberOfDays: props.simulationConfig.NumberOfDays, 
-            numberOfItems: props.simulationConfig.NumberOfItems };
+        this.state = {
+            numberOfDays: props.simulationConfig.NumberOfDays,
+            numberOfItems: props.simulationConfig.NumberOfItems
+        };
     }
 
     render(): JSX.Element {
@@ -52,15 +50,17 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         this.state.numberOfDays = simulationConfig.NumberOfDays;
         this.state.numberOfItems = simulationConfig.NumberOfItems;
 
+        const forecastsTitle = this.FORECASTS_TITLE;
+        const clearFixDiv = this.CLEAR_FIX_DIV;
         const dateSection = this.createDateSection(this.props.dateForecasts);
         const itemsSection = this.createItemsSection(this.props.itemsForecasts);
 
         return <div>
-            <h1>Forecasts</h1>
-            <h2>Delivery date on {this.dateToString(simulationConfig.DeliveryDate)}</h2>
-            <div>Number of days: <span className="variableNumber">{this.state.numberOfDays}</span>
-                    <Slider
-                    sliderStyle={this.styles.slider}
+            {forecastsTitle}
+            <h3>Delivery date on {this.dateToString(simulationConfig.DeliveryDate)}</h3>
+            <div>
+                <Slider
+                    sliderStyle={this.sliderStyle}
                     min={10}
                     defaultValue={this.props.simulationConfig.NumberOfDays}
                     value={this.state.numberOfDays}
@@ -68,12 +68,16 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
                     onChange={this.handleDaysSlider.bind(this)}
                     max={100}
                 />
-            <div>{dateSection}</div>                
+                <div className="floatLeft">Number of days:
+                    <span className="variableNumber">{this.state.numberOfDays}</span>
+                </div>
+                {clearFixDiv}
+                <div>{dateSection}</div>
             </div>
-            <h2>Delivering the next {simulationConfig.NumberOfItems} items from your backlog</h2>            
-            <div>Number of items: <span className="variableNumber">{this.state.numberOfItems}</span>
-                    <Slider
-                    sliderStyle={this.styles.slider}
+            <h3>Delivering the next {simulationConfig.NumberOfItems} items from your backlog</h3>
+            <div>
+                <Slider
+                    sliderStyle={this.sliderStyle}
                     min={10}
                     defaultValue={this.props.simulationConfig.NumberOfItems}
                     value={this.state.numberOfItems}
@@ -81,58 +85,96 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
                     onChange={this.handleItemsSlider.bind(this)}
                     max={200}
                 />
-            <div>{itemsSection}</div>                
+                <div className="floatLeft">Number of items:
+                    <span className="variableNumber">{this.state.numberOfItems}</span>
+                </div>
+                {clearFixDiv}
+                <div>{itemsSection}</div>
             </div>
 
         </div>;
     }
 
-    private createDateSection(forecasts:Array<Forecast>): JSX.Element{
+    private createDateSection(forecasts: Array<Forecast>): JSX.Element {
         let orderedForecasts = this.orderForecasts(forecasts);
 
+        const clearFixDiv = this.CLEAR_FIX_DIV;
         const items = orderedForecasts.map((forecast, index, arr) => {
             return <div className="result" key={index}>
-                <p className="result"><span className="percentileNumber" style={this.pickColor(forecast.Percentile)}>{forecast.NumberOfItemsCompleted}</span> items</p>
-                <p className="resultConfidence">{forecast.Percentile.toString()} confidence</p>
+                <p style={this.getBorderStyle(forecast.Percentile)}>
+                    <span className="percentileNumber" style={this.getLabelColor(forecast.Percentile)}>{forecast.NumberOfItemsCompleted}</span>
+                    <span className="items"> items</span>
+                    <span className="resultConfidence">{forecast.Percentile.toString()} confidence</span>
+                </p>
+                {clearFixDiv}
             </div>
-            });
+        });
 
         return <div>
-                {items}                                                  
-               </div>
+            {items}
+        </div>
     }
 
-    private createItemsSection(forecasts:Array<Forecast>): JSX.Element{
+    private createItemsSection(forecasts: Array<Forecast>): JSX.Element {
         let orderedForecasts = this.orderForecasts(forecasts);
 
+        const clearFixDiv = this.CLEAR_FIX_DIV;
         const items = orderedForecasts.map((forecast, index, arr) => {
-            return <div key={index} className="result">
-                <p className="result"><span className="percentileNumber" style={this.pickColor(forecast.Percentile)}>{forecast.NumberOfDays}</span> days</p>
-                <p className="resultConfidence">{forecast.Percentile.toString()} confidence</p>
+            return <div className="result" key={index}>
+                <p style={this.getBorderStyle(forecast.Percentile)}>
+                    <span className="percentileNumber" style={this.getLabelColor(forecast.Percentile)}>{forecast.NumberOfDays}</span>
+                    <span className="items"> days</span>
+                    <span className="resultConfidence">{forecast.Percentile.toString()} confidence</span>
+                </p>
+                {clearFixDiv}
             </div>
-            });
+        });
 
         return <div>
-                {items}                                                  
-               </div>
+            {items}
+        </div>
     }
 
-    private pickColor(percentile:Percentile):any{
+    private getBorderStyle(percentile: Percentile): React.CSSProperties {
+        let value: React.CSSProperties = {
+            float:this.borderLeft.float,
+            borderLeftStyle:this.borderLeft.borderLeftStyle,
+            borderLeftWidth:this.borderLeft.borderLeftWidth,
+            borderLeftColor:this.pickColor(percentile)
+        };
+        
+        return value;
+    }
+
+    private getLabelColor(percentile: Percentile): React.CSSProperties {
+        let value: React.CSSProperties = {
+            color: this.pickColor(percentile)};
+
+        return value;
+    }
+
+    private pickColor(percentile: Percentile): string {
         if (percentile.value >= 0.8)
-            return this.styles.percentile.green;
+            return this.COLOR_GREEN;
         else if (percentile.value >= 0.5 && percentile.value < 0.8)
-        return this.styles.percentile.yellow;
-            else
-            return this.styles.percentile.red;
+            return this.COLOR_YELLOW;
+        else
+            return this.COLOR_RED;
     }
 
     private displayEmptyForecast(): JSX.Element {
-        return <div><h2>No forecasts generated yet</h2></div>;
+
+        const forecastsTitle = this.FORECASTS_TITLE;
+
+        return <div>
+            {forecastsTitle}
+            <h3>No forecasts generated yet</h3>
+        </div>;
     }
 
     private isForecastsEmpty(): boolean {
         return (this.props.dateForecasts.length == 0 &&
-                this.props.itemsForecasts.length == 0)
+            this.props.itemsForecasts.length == 0)
     }
 
     private handleDaysSlider(event: any, value: any): void {
@@ -144,10 +186,10 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
     }
 
     private dateToString(dateToConvert: Date): string {
-        return moment(dateToConvert).format("dddd, MMMM Do YYYY");
+        return moment(dateToConvert).format(this.DISPLAY_DATE_FORMAT);
     }
 
-    private orderForecasts(forecasts:Array<Forecast>): Array<Forecast> {
+    private orderForecasts(forecasts: Array<Forecast>): Array<Forecast> {
         let checkOne = (f1: Forecast, f2: Forecast) => { return f1.Percentile.value > f2.Percentile.value };
         let checkTwo = (f1: Forecast, f2: Forecast) => { return f1.Percentile.value < f2.Percentile.value };
 
@@ -173,15 +215,24 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         cbItemsChanged: (numberOfItems: number) => { },
     };
 
-    readonly styles = {
-        percentile:{            
-            green:{color:green600},
-            yellow:{color:amber800},
-            red:{color:red800}
-        },
-        slider:{
-            margin:"2px",
-            width:"350px"
-        }        
+    private readonly borderLeft: React.CSSProperties = {
+        float: "left",
+        borderLeftStyle: "solid",
+        borderLeftWidth: "1em"
+    };
+
+    private readonly sliderStyle: React.CSSProperties = {
+        float: "left",
+        marginTop: "1em",
+        marginBottom: "1em",
+        marginRight: "1em",
+        width: "350px"
     }
+
+    private readonly COLOR_RED = "#c62828";
+    private readonly COLOR_GREEN = "#43a047";
+    private readonly COLOR_YELLOW = "#ff8f00";
+    private readonly FORECASTS_TITLE = <h1>Forecasts</h1>;
+    private readonly CLEAR_FIX_DIV = <div className="clearfix"></div>;
+    private readonly DISPLAY_DATE_FORMAT = "dddd, MMMM Do YYYY";
 }

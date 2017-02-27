@@ -1,43 +1,85 @@
-﻿body {
-    font-family: 'Segoe UI', sans-serif;
+﻿html, body {
+    font-family: 'Roboto';
+    height: 100%;
+    min-height: 100%;
 }
 
-span {
-    font-style: italic;
+h1 {
+	color: rgb(0, 188, 212);
 }
 
-div.buttons {
-    margin: auto;
+.floatLeft {
+	float: left;
+}
+.headerButtons {
+    margin: 0 .75em;
     text-align:center;
     width: 100%;
     padding: 10px;
 }
 
-div.result {
-    color: #9E9E9E;
-    border: 1px solid #757575;
-    font-size:18px;
-    padding-left:2px;
-    }
+.forecastButton {
+    margin: 0 .75em;
+    text-align:center;
+    width: 100%;
+    padding: 10px;
+}
 
-p.result {
-    margin:0
-    }
+/* Pour mettre un d'air sur les côtés de la section principale */
+.mainSection {
+    padding: 1.5em 3em;
+}
 
-p.resultConfidence {
-    color: #9E9E9E;
-    font-size:14px;
-    margin:0;
-    }
+div p, 
+#minValueTextField {
+    margin-bottom: 0 !important;
+}
 
-.percentileNumber {
-    font:"normal bolder 20px";
+div.spacer {
+    margin-bottom: 0.5em;
+}
+
+.importFileButton {
+    margin-right:12px;
+}
+
+.result {
+	margin-bottom: .75em;
+}
+.result p {
+	margin: 0;
+}
+
+span.percentileNumber {
+	display: block;
+	width: auto;
+	padding: 0 0 0 0.5em;
+    font-size:32px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+span.items { 
+	display: block; 
+	padding: 0 0 0 1em;
+    text-align: center;
+}
+
+span.resultConfidence {
+    background: #fff none repeat scroll 0 0;
+    color: #ccc;
+    float: left;
+    font-size: 14px;
+    margin-left: 1em !important;
+    padding: 0 0 0 1em;
 }
 
 .variableNumber {
     font:normal #00BCD4
 }
 
-.forecastButton {
-    margin:12;
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
