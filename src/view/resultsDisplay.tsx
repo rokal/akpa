@@ -57,9 +57,9 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
 
         return <div>
             <h1>Forecasts</h1>
-            <h2>Delivery date on {this.dateToString(simulationConfig.DeliveryDate)}</h2>
-            <div>Number of days: <span className="variableNumber">{this.state.numberOfDays}</span>
-                    <Slider
+            <h3>Delivery date on {this.dateToString(simulationConfig.DeliveryDate)}</h3>
+            <div className="">
+                <Slider
                     sliderStyle={this.styles.slider}
                     min={10}
                     defaultValue={this.props.simulationConfig.NumberOfDays}
@@ -68,11 +68,14 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
                     onChange={this.handleDaysSlider.bind(this)}
                     max={100}
                 />
+                <div className="remyFloatLeft">Number of days: 
+                    <span className="variableNumber">{this.state.numberOfDays}</span>
+                </div>                
             <div>{dateSection}</div>                
             </div>
-            <h2>Delivering the next {simulationConfig.NumberOfItems} items from your backlog</h2>            
-            <div>Number of items: <span className="variableNumber">{this.state.numberOfItems}</span>
-                    <Slider
+            <h3>Delivering the next {simulationConfig.NumberOfItems} items from your backlog</h3>            
+            <div className="">
+                <Slider
                     sliderStyle={this.styles.slider}
                     min={10}
                     defaultValue={this.props.simulationConfig.NumberOfItems}
@@ -81,6 +84,9 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
                     onChange={this.handleItemsSlider.bind(this)}
                     max={200}
                 />
+                <div className="remyFloatLeft">Number of items:
+                    <span className="variableNumber">{this.state.numberOfItems}</span>                
+                </div>
             <div>{itemsSection}</div>                
             </div>
 
@@ -91,9 +97,14 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         let orderedForecasts = this.orderForecasts(forecasts);
 
         const items = orderedForecasts.map((forecast, index, arr) => {
-            return <div className="result" key={index}>
-                <p className="result"><span className="percentileNumber" style={this.pickColor(forecast.Percentile)}>{forecast.NumberOfItemsCompleted}</span> items</p>
-                <p className="resultConfidence">{forecast.Percentile.toString()} confidence</p>
+            return <div className="remyResult" key={index}>
+                <p style={this.getBorder(forecast.Percentile)}>
+                    <span className="percentileNumber" style={this.getLabel(forecast.Percentile)}>{forecast.NumberOfItemsCompleted}</span>
+                    <span className="remyItems"> items</span> 
+                    <span className="resultConfidence">{forecast.Percentile.toString()} confidence</span>
+                </p>
+                <div className="remyClearfix">
+                </div>
             </div>
             });
 
@@ -106,9 +117,14 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         let orderedForecasts = this.orderForecasts(forecasts);
 
         const items = orderedForecasts.map((forecast, index, arr) => {
-            return <div key={index} className="result">
-                <p className="result"><span className="percentileNumber" style={this.pickColor(forecast.Percentile)}>{forecast.NumberOfDays}</span> days</p>
-                <p className="resultConfidence">{forecast.Percentile.toString()} confidence</p>
+            return <div className="remyResult" key={index}>
+                <p className="remyFloatLeft">
+                    <span className="percentileNumber" style={this.getLabel(forecast.Percentile)}>{forecast.NumberOfDays}</span>
+                    <span className="remyItems"> days</span>
+                    <span className="resultConfidence">{forecast.Percentile.toString()} confidence</span>
+                </p>
+                <div className="remyClearfix">
+                </div>                
             </div>
             });
 
@@ -117,13 +133,30 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
                </div>
     }
 
-    private pickColor(percentile:Percentile):any{
+    private getBorder(percentile:Percentile):React.CSSProperties{
+        let value:React.CSSProperties = {
+            float:"left",
+            borderLeftColor: this.pickColor(percentile),
+            borderLeftStyle: "solid",
+            borderLeftWidth: "1em"};
+        
+        return value;
+    }
+
+    private getLabel(percentile:Percentile):React.CSSProperties{
+        let value: React.CSSProperties = {
+            color:this.pickColor(percentile)};
+
+        return value;
+    }
+
+    private pickColor(percentile:Percentile):string{
         if (percentile.value >= 0.8)
-            return this.styles.percentile.green;
+            return this.COLOR_GREEN;
         else if (percentile.value >= 0.5 && percentile.value < 0.8)
-        return this.styles.percentile.yellow;
-            else
-            return this.styles.percentile.red;
+            return this.COLOR_YELLOW;
+        else
+            return this.COLOR_RED;
     }
 
     private displayEmptyForecast(): JSX.Element {
@@ -173,12 +206,11 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         cbItemsChanged: (numberOfItems: number) => { },
     };
 
+    readonly COLOR_RED = "#c62828";
+    readonly COLOR_GREEN = "#43a047";
+    readonly COLOR_YELLOW = "#ff8f00";
+
     readonly styles = {
-        percentile:{            
-            green:{color:green600},
-            yellow:{color:amber800},
-            red:{color:red800}
-        },
         slider:{
             margin:"2px",
             width:"350px"

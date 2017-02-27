@@ -106,6 +106,7 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
             </div>
             <div className="forecastButton">
                 <RaisedButton
+                    className="btnForecast"
                     label="Create forecasts"
                     onTouchTap={this.handleBtnCreateForecast.bind(this)}
                     containerElement="label" />

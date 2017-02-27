@@ -82,6 +82,7 @@ export class Application extends React.Component<AppProps, AppState>{
                     />
                 </div>
                 <Divider/>
+                <div className="mainSection">
                 <ResultsDisplay
                     simulationConfig={this.state.simulationConfig}
                     dateForecasts={this.state.dateForecasts}
@@ -90,7 +91,8 @@ export class Application extends React.Component<AppProps, AppState>{
                     cbDaysChanged={this.cbDaysChanged.bind(this)}
                     cbItemsChanged={this.cbItemsChanged.bind(this)}
                     /> 
-                    <CycleTimeChart cycleTimes={this.state.cycleTimes}/>                                   
+                    {/*<CycleTimeChart cycleTimes={this.state.cycleTimes}/>                                   */}
+                </div>                    
             </div>
         </MuiThemeProvider>
     }

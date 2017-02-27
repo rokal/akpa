@@ -4,6 +4,10 @@
     min-height: 100%;
 }
 
+h1 {
+	color: rgb(0, 188, 212);
+}
+
 .headerButtons {
     margin: 0 .75em;
     text-align:center;
@@ -16,6 +20,11 @@
     text-align:center;
     width: 100%;
     padding: 10px;
+}
+
+.btnForecast {
+    background-color: #079107;
+    color: #fff;
 }
 
 /* Pour mettre un d'air sur les côtés de la section principale */
@@ -36,28 +45,85 @@ div.spacer {
     margin-right:12px;
 }
 
-div.result {
-    color: #9E9E9E;
-    border: 1px solid #757575;
-    font-size:18px;
-    padding-left:2px;
-    }
+span.percentileNumber {
+	display: block;
+	width: auto;
+	padding: 0 0 0 0.5em;
+    font-size:32px;
+    font-weight: bolder;
+    text-align: center;
+}
 
-p.result {
-    margin:0
-    }
+span.remyItems { 
+	display: block; 
+	padding: 0 0 0 1em;
+    text-align: center;
+}
 
-p.resultConfidence {
-    color: #9E9E9E;
-    font-size:14px;
-    margin:0;
-    }
-
-.percentileNumber {
-    font:"normal bolder 20px";
+span.resultConfidence {
+    background: #fff none repeat scroll 0 0;
+    color: #ccc;
+    float: left;
+    font-size: 14px;
+    margin-left: 1em !important;
+    padding: 0 0 0 1em;
 }
 
 .variableNumber {
     font:normal #00BCD4
 }
 
+.remyClearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.remyFloatRight {
+	float: right;
+}
+.remyFloatLeft {
+	float: left;
+}
+.remyPadding {
+	padding : 1.5em;
+}
+.remyMarginTop {
+	margin-top: 1.5em;
+}
+.remyMarginRight {
+	margin-right: 1.5em;
+}
+.remyMarginBottom {
+	margin-bottom: 1.5em;
+}
+.remyMarginleft {
+	margin-left: 1.5em;
+}
+.remyResult {
+	margin-bottom: .75em;
+}
+.remyResult p {
+	margin: 0;
+}
+.remyRouge {
+	background: #f00808;
+	color: #fff;
+}
+.remyVert {
+	background: #079107;
+	color: #fff;
+}
+.remyOrange {
+	background: #ffa700;
+	color: #fff;
+}
+
+.remyBorderLeftRouge {
+	border-left: 1em solid rgb(198, 40, 40);
+}
+.remyBorderLeftVert {
+	border-left: 1em solid rgb(67, 160, 71);
+}
+.remyBorderLeftOrange {
+	border-left: 1em solid rgb(255, 143, 0);
+}
