@@ -25,11 +25,6 @@ h1 {
     padding: 10px;
 }
 
-.btnForecast {
-    background-color: #079107;
-    color: #fff;
-}
-
 /* Pour mettre un d'air sur les côtés de la section principale */
 .mainSection {
     padding: 1.5em 3em;
@@ -83,3 +78,8 @@ span.resultConfidence {
     font:normal #00BCD4
 }
 
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

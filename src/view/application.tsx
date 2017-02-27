@@ -59,14 +59,14 @@ export class Application extends React.Component<AppProps, AppState>{
                         label="New Project"
                         labelColor="#FFFFFF"
                         backgroundColor={this.selectButtonBackground("N")}
-                        style={this.styles.margins}
+                        style={this.marginStyle}                        
                     />
                     <RaisedButton
                         onTouchTap={this.handleBtnExistingProject.bind(this)}
                         label="Existing Project"
                         labelColor="#FFFFFF"
                         backgroundColor={this.selectButtonBackground("E")}
-                        style={this.styles.margins}
+                        style={this.marginStyle}
                     />                
                 </div>
                 <Divider/>
@@ -158,7 +158,7 @@ export class Application extends React.Component<AppProps, AppState>{
 
     private setInitialValues(): void {
         this.state = {
-            applicationState: false,
+            applicationState: true,
             simulationConfig: SimulationConfig.Empty,
             dateForecasts: new Array<ForecastDate>(0),
             itemsForecasts: new Array<ForecastItems>(0),
@@ -166,13 +166,11 @@ export class Application extends React.Component<AppProps, AppState>{
         };
     }
 
-    private readonly styles ={
-        margins:{
-            margin: 6,
-        },
-    }
+    private readonly marginStyle: React.CSSProperties = {
+        margin: "6px"
+        }
 
-    readonly ACTIVE_BUTTON_BACKGROUND_COLOR = "#FF7A00";
-    readonly INACTIVE_BUTTON_BACKGROUND_COLOR = "#00BCD4";
+    private readonly ACTIVE_BUTTON_BACKGROUND_COLOR = "#FF7A00";
+    private readonly INACTIVE_BUTTON_BACKGROUND_COLOR = "#00BCD4";
     
 }

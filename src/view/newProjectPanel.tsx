@@ -28,14 +28,14 @@ export interface NewProjectPanelState {
     maxValue: string | number | undefined,
     throughputFrequency: ThroughputFrequency;
     minValueErrorText: String,
-    minValueErrorStyle: { color: String },
+    minValueErrorStyle: React.CSSProperties,
     maxValueErrorText: String,
-    maxValueErrorStyle: { color: String },
+    maxValueErrorStyle: React.CSSProperties,
     deliveryDate: Date | undefined,
     numberOfDays: number;
     numberOfItems?: string | number | undefined,
     numItemsErrorText: String,
-    numItemsErrorStyle: { color: String }
+    numItemsErrorStyle: React.CSSProperties
 }
 
 export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewProjectPanelState>{
@@ -64,7 +64,7 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
                 </SelectField>
             </div>
             <div>
-                <p style={this.styles.no_margin}>Enter the minimal and maximal number of features your team will do per {this.convertThroughput()}:</p>
+                <p style={this.styleNoMargin}>Enter the minimal and maximal number of features your team will do per {this.convertThroughput()}:</p>
                 <TextField
                     id="minValueTextField"
                     value={this.state.minValue}
@@ -72,7 +72,7 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
                     hintText="Enter a value greater than 0"
                     errorText={this.state.minValueErrorText}
                     errorStyle={this.state.minValueErrorStyle}
-                    underlineFocusStyle={this.styles.validStyle}
+                    underlineFocusStyle={this.styleValid}
                 />
                 <div className="spacer"></div>
                 <TextField
@@ -82,7 +82,7 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
                     hintText="Enter a value smaller than 100"
                     errorText={this.state.maxValueErrorText}
                     errorStyle={this.state.maxValueErrorStyle}
-                    underlineFocusStyle={this.styles.validStyle}
+                    underlineFocusStyle={this.styleValid}
                 />
             </div>                
             <div>
@@ -101,15 +101,16 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
                     hintText="Enter a value greater than 0"
                     errorText={this.state.numItemsErrorText}
                     errorStyle={this.state.numItemsErrorStyle}
-                    underlineFocusStyle={this.styles.validStyle}
+                    underlineFocusStyle={this.styleValid}
                 />
             </div>
             <div className="forecastButton">
                 <RaisedButton
-                    className="btnForecast"
+                    buttonStyle={this.styleBtnBoxForecast}
+                    labelStyle={this.styleBtnLabelForecast}
                     label="Create forecasts"
-                    onTouchTap={this.handleBtnCreateForecast.bind(this)}
-                    containerElement="label" />
+                    onTouchTap={this.handleBtnCreateForecast.bind(this)} 
+                />
             </div>
             
         </div>;
@@ -122,17 +123,17 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
             let range = Utilities.validateInRange(0, 0, output.value as number, this.state.maxValue as number, 100);
             this.state.minValue = output.value;
             this.state.minValueErrorText = range.isInRange ? this.DEFAULT_MIN_VALUE_TEXTFIELD + this.convertThroughput() : range.errorMessage;
-            this.state.minValueErrorStyle = range.isInRange ? this.styles.validStyle : this.styles.errorStyle;
+            this.state.minValueErrorStyle = range.isInRange ? this.styleValid : this.styleError;
         }
         else {
             this.state.minValue = e.target.value;
             if (e.target.value.length == 0) {
                 this.state.minValueErrorText = this.DEFAULT_MIN_VALUE_TEXTFIELD + this.convertThroughput();
-                this.state.minValueErrorStyle = this.styles.validStyle;
+                this.state.minValueErrorStyle = this.styleValid;
             }
             else {
                 this.state.minValueErrorText = "Please enter a numeric value";
-                this.state.minValueErrorStyle = this.styles.errorStyle;
+                this.state.minValueErrorStyle = this.styleError;
             }
         }
 
@@ -146,17 +147,17 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
             let range = Utilities.validateInRange(0, this.state.minValue as number, output.value as number, 100, 100);
             this.state.maxValue = output.value;
             this.state.maxValueErrorText = range.isInRange ? this.DEFAULT_MAX_VALUE_TEXTFIELD + this.convertThroughput() : range.errorMessage;
-            this.state.maxValueErrorStyle = range.isInRange ? this.styles.validStyle : this.styles.errorStyle;
+            this.state.maxValueErrorStyle = range.isInRange ? this.styleValid : this.styleError;
         }
         else {
             this.state.maxValue = e.target.value;
             if (e.target.value.length == 0) {
                 this.state.maxValueErrorText = this.DEFAULT_MAX_VALUE_TEXTFIELD + this.convertThroughput();
-                this.state.maxValueErrorStyle = this.styles.validStyle;
+                this.state.maxValueErrorStyle = this.styleValid;
             }
             else {
                 this.state.minValueErrorText = "Please enter a numeric value";
-                this.state.minValueErrorStyle = this.styles.errorStyle;
+                this.state.minValueErrorStyle = this.styleError;
             }
         }
 
@@ -165,10 +166,10 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
 
     private handleChangeFrequency(event: any, key: number, value: any): void {
         this.state.throughputFrequency = value;
-        if (this.state.minValueErrorStyle != this.styles.errorStyle)
+        if (this.state.minValueErrorStyle != this.styleError)
             this.state.minValueErrorText = this.DEFAULT_MIN_VALUE_TEXTFIELD + this.convertThroughput();
 
-        if (this.state.maxValueErrorStyle != this.styles.errorStyle)
+        if (this.state.maxValueErrorStyle != this.styleError)
             this.state.maxValueErrorText = this.DEFAULT_MAX_VALUE_TEXTFIELD + this.convertThroughput();
 
         this.setState(this.state);
@@ -186,17 +187,17 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
             let range = Utilities.validateInRange(0, 0, output.value as number, 1000, 1000);
             this.state.numberOfItems = output.value;
             this.state.numItemsErrorText = range.isInRange ? this.DEFAULT_NUM_ITEMS_TEXTFIELD : range.errorMessage;
-            this.state.numItemsErrorStyle = range.isInRange ? this.styles.validStyle : this.styles.errorStyle;
+            this.state.numItemsErrorStyle = range.isInRange ? this.styleValid : this.styleError;
         }
         else {
             this.state.numberOfItems = e.target.value;
             if (e.target.value.length == 0) {
                 this.state.numItemsErrorText = this.DEFAULT_NUM_ITEMS_TEXTFIELD;
-                this.state.numItemsErrorStyle = this.styles.validStyle;
+                this.state.numItemsErrorStyle = this.styleValid;
             }
             else {
                 this.state.numItemsErrorText = "Please enter a numeric value";
-                this.state.numItemsErrorStyle = this.styles.errorStyle;
+                this.state.numItemsErrorStyle = this.styleError;
             }
         }
 
@@ -243,34 +244,41 @@ export class NewProjectPanel extends React.Component<NewProjectPanelProps, NewPr
             maxValue: undefined,
             throughputFrequency: this.props.throughputFrequency,
             minValueErrorText: "",
-            minValueErrorStyle: this.styles.validStyle,
+            minValueErrorStyle: this.styleValid,
             maxValueErrorText: "",
-            maxValueErrorStyle: this.styles.validStyle,
+            maxValueErrorStyle: this.styleValid,
             deliveryDate: undefined,
             numberOfDays: 30,
             numberOfItems: undefined,
             numItemsErrorText: this.DEFAULT_NUM_ITEMS_TEXTFIELD,
-            numItemsErrorStyle: this.styles.validStyle
+            numItemsErrorStyle: this.styleValid
         };
 
         this.state.maxValueErrorText = this.DEFAULT_MAX_VALUE_TEXTFIELD + this.convertThroughput();
         this.state.minValueErrorText = this.DEFAULT_MIN_VALUE_TEXTFIELD + this.convertThroughput();
     }
 
-    readonly styles = {
-        validStyle: {
-            color: cyan500
-        },
-        errorStyle: {
-            color: red500
-        },
-        no_margin:{
-            margin:{
-                top:0}
-        },
+    private readonly styleNoMargin: React.CSSProperties = {
+        marginTop:"0em"
     }
 
-    readonly DEFAULT_MIN_VALUE_TEXTFIELD = "The minimal features produced per ";
-    readonly DEFAULT_MAX_VALUE_TEXTFIELD = "The maximum features produced per ";
-    readonly DEFAULT_NUM_ITEMS_TEXTFIELD = "The number of items you have to deliver";
+    private readonly styleValid: React.CSSProperties = {
+        color:cyan500
+    }
+
+    private readonly styleError:React.CSSProperties = {
+        color:red500
+    }
+
+    private readonly styleBtnBoxForecast: React.CSSProperties = {
+        backgroundColor: "#079107",
+    }
+
+    private readonly styleBtnLabelForecast: React.CSSProperties = {
+        color: "#FFFFFF"
+    }
+
+    private readonly DEFAULT_MIN_VALUE_TEXTFIELD = "The minimal features produced per ";
+    private readonly DEFAULT_MAX_VALUE_TEXTFIELD = "The maximum features produced per ";
+    private readonly DEFAULT_NUM_ITEMS_TEXTFIELD = "The number of items you have to deliver";
 }

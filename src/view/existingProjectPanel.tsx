@@ -103,9 +103,11 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
             </div>
             <div className="forecastButton">
                 <RaisedButton
+                    buttonStyle={this.styleBtnBoxForecast}
+                    labelStyle={this.styleBtnLabelForecast}
                     label="Create forecasts"
-                    onTouchTap={this.handleBtnCreateForecast.bind(this)}
-                    containerElement="label" />
+                    onTouchTap={this.handleBtnCreateForecast.bind(this)} 
+                />
             </div>
         </div>;
     }
@@ -244,6 +246,14 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
             return "Excel file to load";
     }
 
+    readonly styleBtnBoxForecast: React.CSSProperties = {
+        backgroundColor: "#079107",
+    }
+
+    readonly styleBtnLabelForecast: React.CSSProperties = {
+        color: "#FFFFFF"
+    }
+
     readonly styles = {
         importTextField: {
             color: "FF0000",            
@@ -264,4 +274,4 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
             margin:0,
         }
     }
-}
+}   

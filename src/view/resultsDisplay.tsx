@@ -215,13 +215,13 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         cbItemsChanged: (numberOfItems: number) => { },
     };
 
-    readonly borderLeft: React.CSSProperties = {
+    private readonly borderLeft: React.CSSProperties = {
         float: "left",
         borderLeftStyle: "solid",
         borderLeftWidth: "1em"
     };
 
-    readonly sliderStyle: React.CSSProperties = {
+    private readonly sliderStyle: React.CSSProperties = {
         float: "left",
         marginTop: "1em",
         marginBottom: "1em",
@@ -229,10 +229,10 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         width: "350px"
     }
 
-    readonly COLOR_RED = "#c62828";
-    readonly COLOR_GREEN = "#43a047";
-    readonly COLOR_YELLOW = "#ff8f00";
-    readonly FORECASTS_TITLE = <h1>Forecasts</h1>;
-    readonly CLEAR_FIX_DIV = <div className="remyClearfix"></div>;
-    readonly DISPLAY_DATE_FORMAT = "dddd, MMMM Do YYYY";
+    private readonly COLOR_RED = "#c62828";
+    private readonly COLOR_GREEN = "#43a047";
+    private readonly COLOR_YELLOW = "#ff8f00";
+    private readonly FORECASTS_TITLE = <h1>Forecasts</h1>;
+    private readonly CLEAR_FIX_DIV = <div className="clearfix"></div>;
+    private readonly DISPLAY_DATE_FORMAT = "dddd, MMMM Do YYYY";
 }
