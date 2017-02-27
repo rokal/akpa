@@ -1,7 +1,7 @@
 {
-  "name": "Monte-Carlo-simulations",
+  "name": "Agile/Kanban Planning Application (AKPA)",
   "version": "1.0.0",
-  "description": "Web application to generate Monte Carlo simulations for Kanban",
+  "description": "Web application to better plan Agile/Kanban projects",
   "main": "index.html",
   "engines": {
     "node": ">=6"
