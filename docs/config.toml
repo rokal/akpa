@@ -2,7 +2,6 @@ baseURL = "https://lpcarignan.github.io/akpa"
 title = "PaceMaker, your Agile/Kanban Planning Application"
 theme = "hugo-universal-theme"
 languageCode = "en-us"
-publishDir: "docs"
 
 # Enable comments by entering your Disqus shortname
 Author = "Louis-Philippe Carignan"
