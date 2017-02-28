@@ -77,6 +77,6 @@ module.exports = {
     },
     externals: [
         { './cptable': 'var cptable' },
-        { './jszip': 'jszip' }
+        { './node_modules/xlsx/jszip': 'jszip' }
     ]
 };
