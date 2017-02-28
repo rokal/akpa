@@ -1,4 +1,4 @@
-baseURL = "https://lpcarignan.github.io/akpa"
+baseURL = "https://lpcarignan.github.io/"
 title = "PaceMaker, your Agile/Kanban Planning Application"
 theme = "hugo-universal-theme"
 languageCode = "en-us"
