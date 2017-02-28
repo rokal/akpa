@@ -93,7 +93,8 @@ export class Application extends React.Component<AppProps, AppState>{
                     /> 
                     {/*<CycleTimeChart cycleTimes={this.state.cycleTimes}/>                                   */}
                 </div>                    
-            </div>
+            <div className="copyright">February 2017 - Version 0.1 - Copyright 2017 - All rights reserved</div>
+            </div>            
         </MuiThemeProvider>
     }
 
@@ -171,6 +172,5 @@ export class Application extends React.Component<AppProps, AppState>{
         }
 
     private readonly ACTIVE_BUTTON_BACKGROUND_COLOR = "#FF7A00";
-    private readonly INACTIVE_BUTTON_BACKGROUND_COLOR = "#00BCD4";
-    
+    private readonly INACTIVE_BUTTON_BACKGROUND_COLOR = "#00BCD4";    
 }
