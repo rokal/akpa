@@ -1,0 +1,100 @@
+baseURL = "https://lpcarignan.github.io/akpa"
+title = "PaceMaker, your Agile/Kanban Planning Application"
+theme = "hugo-universal-theme"
+languageCode = "en-us"
+publishDir: "docs"
+
+# Enable comments by entering your Disqus shortname
+Author = "Louis-Philippe Carignan"
+disqusShortname = "lpcarignan"
+# Enable Google Analytics by entering your tracking code
+googleAnalytics = ""
+
+# Define the number of posts per page
+paginate = 10
+
+
+[params]
+    viewMorePostLink = "/blog/"
+    author = "Louis-Philippe Carignan"
+
+
+    email = "lpcarignan@gmail.com"
+
+    about_us = "<p>We are a team of passionate Agilists building great software for great DevOps teams.</p>"
+    copyright = "Copyright (c) 2016 - 2017, PaceMaker; all rights reserved."
+
+    # Format dates with Go's time formatting
+    date_format = "January 2, 2006"
+
+    logo = "img/logo.png"
+
+[Permalinks]
+    blog = "/blog/:year/:month/:day/:filename/"
+
+[[params.menu]]
+    name = "Home"
+    url  = "/"
+    weight = 1
+
+[[params.menu]]
+    name = "Tutorials"
+    url  = "/tutorials/"
+    weight = 2
+
+[[params.menu]]
+    name = "Blog"
+    url  = "/blog/"
+    weight = 3
+
+[[params.menu]]
+    name = "Contact"
+    url  = "/contact/"
+    weight = 4
+
+# Enable and disable widgets for the right sidebar
+[params.widgets]
+    categories = true
+    tags = true
+    search = true
+
+[params.carousel]
+    enable = true
+    # All carousel items are defined in their own files. You can find example items
+    # at 'exampleSite/data/carousel'.
+    # For more informtion take a look at the README.
+
+[params.features]
+    enable = true
+    # All features are defined in their own files. You can find example items
+    # at 'exampleSite/data/features'.
+    # For more informtion take a look at the README.
+
+[params.testimonials]
+    enable = false
+    # All testimonials are defined in their own files. You can find example items
+    # at 'exampleSite/data/testimonials'.
+    # For more informtion take a look at the README.
+    title = "Testimonials"
+    subtitle = "We have worked with many clients and we always like to hear they come out from the cooperation happy and satisfied. Have a look what our clients said about us."
+
+[params.see_more]
+    enable = true
+    icon = "fa fa-rocket"
+    title = "Want to try it out?"
+    subtitle = "We have a trial version available just for you."
+    link_url = "http://montecarlo-simulations.appspot.com/"
+    link_text = "Predict your projects now!"
+
+[params.clients]
+    enable = false
+    # All clients are defined in their own files. You can find example items
+    # at 'exampleSite/data/clients'.
+    # For more informtion take a look at the README.
+    title = "Our Clients"
+    subtitle = ""
+
+[params.recent_posts]
+    enable = true
+    title = "From our blog"
+    subtitle = "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
