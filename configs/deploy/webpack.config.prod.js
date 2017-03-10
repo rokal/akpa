@@ -18,7 +18,7 @@ module.exports = {
     context: path.join(process.cwd(), "src"),
     entry: "./main.tsx",
     output: {
-        filename: "bundle.js",
+        filename: "akpa.js",
         path: path.join(process.cwd(), "dist"),
         publicPath: "static",
         devtoolModuleFilenameTemplate: function (info) {
