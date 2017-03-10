@@ -10,25 +10,9 @@ notifications:
   email:
     on_success: never
     on_failure: change
-
-# Cache the Google Cloud SDK
-cache:
-  directories:
-#    - "$HOME/google-cloud-sdk/"
         
 # Decrypt the authentication key with very visible key (should change that)        
 before_install:
-- openssl aes-256-cbc -k "ahduQu9ushou0Roh" -in ./configs/deploy/deploy-app-engine.json.enc -out ./configs/deploy/deploy-app-engine.json -d
-#- if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then
-- rm -rf $HOME/google-cloud-sdk; 
-- export CLOUDSDK_CORE_DISABLE_PROMPTS=1; 
-- curl https://sdk.cloud.google.com | bash; 
-#  fi
-# Add gcloud to $PATH
-- source /home/travis/google-cloud-sdk/path.bash.inc;
-- gcloud version;
-- gcloud config set project akpa
-- gcloud auth activate-service-account --key-file ./configs/deploy/deploy-app-engine.json
 
 install:
 # Install and update the NodeJs modules requires by the application 
@@ -44,19 +28,6 @@ script:
   # Build and run the tests
   - npm test
   
-  # Deploy the application to Google App Engine. It is commented right now as we don't want to
-  # deploy the app everytime we build and the application
-  # - gcloud app deploy --verbosity=info app.yaml -q
-
 deploy:
-# We used to employ the Google App Engine provider by Travis but it was a bit cumbersome
-# We decided to switch to manual commands (see above) for more flexibility
-#  provider: gae
-#  Skip cleanup so api_key.py and vendored dependencies are still there
-#  skip_cleanup: true
-#  keyfile: deploy-app-engine.json
-#  project: akpa
-#  default: true
-#  on: master
 
 after_script:
