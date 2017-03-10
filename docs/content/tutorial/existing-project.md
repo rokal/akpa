@@ -14,7 +14,7 @@ Start by exporting your work items (e.g stories, features, requests, bugs, etc) 
 
 In the following image, we see that the spreadsheet has 8 columns. The first 7 columns contains dates while the last one points to the type of work item.
 
-![Throughput frequency](/img/ep-excel-example.png)
+![Throughput frequency](/img/tutorials/ep-excel-example.png)
 
 PaceMaker does not differentiate between the types of each column. At this time, it reads all of the columns and let's you pick the right one for the forecasts to be correctly generated.
 
@@ -25,25 +25,25 @@ To get you going, here is a sample Excel 2010 file if you want to copy/paste you
 
 Once your data has been exported from your planning tool, you can load it into PaceMaker. To do so, click on the 'Select an Excel file' button. It will pop up a dialog window where you choose your Excel spreadsheet. 
 
-![Load Excel file](/img/ep-load-excel.png)
+![Load Excel file](/img/tutorials/ep-load-excel.png)
 
 Once loaded, you will see your file being shown on the right of the button.
 
-![Load Excel file](/img/ep-load-excel-done.png)
+![Load Excel file](/img/tutorials/ep-load-excel-done.png)
 
 ## Choosing your columns
 
 By loading your Excel spreadsheet, PaceMaker puts the title of your columns into two drop downs named **Start column** and **End column**. 
 
-![Start and end columns](/img/ep-columns.png)
+![Start and end columns](/img/tutorials/ep-columns.png)
 
 For example, using the sample Spreadsheet provided in this tutorial, you can pick **Staging** as your start column and **Done** as your end column. 
 
-## Creating forecasts
+## Creating the forecasts
 
 Finally, click the green **Create forecasts** button to generate your forecasts. PaceMaker will read through every line of your spreadsheet  
 
-![Start and end columns](/img/create-forecasts-btn.png)
+![Create the forecasts](/img/tutorials/create-forecasts-btn.png)
 
 Your forecasts are generated instantly below in the result panel. 
 
