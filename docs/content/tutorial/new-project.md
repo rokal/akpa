@@ -1,8 +1,12 @@
 +++
 title = "Forecasting a new project"
+banner = "img/banners/tutorial-list-new-project.jpg"
+type = "tutorial"
 +++
 
-This tutorial guides you on how to use PaceMaker to forecasts potential delivery dates as well as the potential number of features.
+In this tutorial, you learn on how to use PaceMaker to forecasts potential delivery dates as well as the potential number of features for a new project. In 5 minutes, you will learned the basic parameters to configure your simulations which will render your forecasts.
+
+<!--more--> 
 
 ## Configurating your forecasts
 

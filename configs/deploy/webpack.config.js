@@ -54,7 +54,6 @@ module.exports = {
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: ["", ".ts", ".tsx", ".js"],
-   
  },
 
     module: {
@@ -67,16 +66,15 @@ module.exports = {
                     configFileName : path.join(__dirname, "configs", "build", "tsconfig.json")
                 },    
             }
-        ]
+        ],
     },
 
     // The following sections (node and externals) are meant for integrating
     // correctly the JSZip library in XLS-JS module 
-    node: {
-        fs: 'empty'
-    },
+    node: { fs: 'empty'},
+
     externals: [
         { './cptable': 'var cptable' },
-        { './node_modules/xlsx/jszip': 'jszip' }
+        {'./node_modules/xlsx/jszip': 'jszip'}
     ]
 };

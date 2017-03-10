@@ -1,4 +1,4 @@
-baseURL = "https://lpcarignan.github.io/akpa/"
+baseURL = "https://d1ij1pbfyzw6yr.cloudfront.net/"
 title = "PaceMaker, your Agile/Kanban Planning Application"
 theme = "hugo-universal-theme"
 languageCode = "en-us"
@@ -38,7 +38,7 @@ paginate = 10
 
 [[params.menu]]
     name = "Tutorials"
-    url  = "/tutorials/"
+    url  = "/tutorial/"
     weight = 2
 
 [[params.menu]]
@@ -82,7 +82,7 @@ paginate = 10
     icon = "fa fa-rocket"
     title = "Want to try it out?"
     subtitle = "We have a trial version available just for you."
-    link_url = "http://montecarlo-simulations.appspot.com/"
+    link_url = "http://aws-website-akpa-app-ne0hs.s3-website-us-east-1.amazonaws.com/"
     link_text = "Predict your projects now!"
 
 [params.clients]
@@ -96,4 +96,4 @@ paginate = 10
 [params.recent_posts]
     enable = true
     title = "From our blog"
-    subtitle = "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+    subtitle = "Come back frequently as we post news about features, tutorials or new content about Kanban."
