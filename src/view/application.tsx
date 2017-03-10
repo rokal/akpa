@@ -1,5 +1,6 @@
 ﻿/// <reference path="../../typings/react/react.d.ts" />
 /// <reference path="../../typings/react-dom/react-dom.d.ts" />
+/// <reference path="../../node_modules/@types/google.analytics/index.d.ts" />
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -56,6 +57,7 @@ export class Application extends React.Component<AppProps, AppState>{
                 <div className="headerButtons">
                     <RaisedButton
                         onTouchTap={this.handleBtnNewProject.bind(this)}
+                        className="toto"
                         label="New Project"
                         labelColor="#FFFFFF"
                         backgroundColor={this.selectButtonBackground("N")}
@@ -99,6 +101,7 @@ export class Application extends React.Component<AppProps, AppState>{
     }
 
     private handleBtnCreateForecasts(event:ProjectEvent): void {
+        ga("send", "event", "Button", "Click create forecasts");
 
         if (this.state.applicationState){
             // Cast & assign the configuration from the new project panel
@@ -140,11 +143,15 @@ export class Application extends React.Component<AppProps, AppState>{
     }
     
     private handleBtnNewProject(e:any):void {
+        ga("send", "event", "Button", "Clicked new project");
+
         this.state.applicationState = true;
         this.setState(this.state);
     }
 
     private handleBtnExistingProject(e:any):void {
+        ga("send", "event", "Button", "Clicked existing project");
+        
         this.state.applicationState = false;
         this.setState(this.state);
     }
