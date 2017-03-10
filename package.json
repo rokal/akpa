@@ -14,13 +14,24 @@
     "start": "node server.js"
   },
   "jest": {
-  "collectCoverage": true,
-  "coverageDirectory":"<rootDir>/tests/Results",
-  "coverageReporters":["lcov", "text", "text-summary"],
-  "moduleFileExtensions": ["js", "jsx", "json", "ts", "tsx"],
-  "testRegex":"\/tests\/JsOutput\/tests\/.*\\.test\\.jsx?$"
+    "collectCoverage": true,
+    "coverageDirectory": "<rootDir>/tests/Results",
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "ts",
+      "tsx"
+    ],
+    "testRegex": "/tests/JsOutput/tests/.*\\.test\\.jsx?$"
   },
   "dependencies": {
+    "@types/google.analytics": "0.0.29",
     "@types/react": "^0.14.55",
     "@types/react-dom": "^0.14.19",
     "chart-library": "^1.1.0",
