@@ -47,4 +47,4 @@ Finally, click the green **Create forecasts** button to generate your forecasts.
 
 Your forecasts are generated instantly below in the result panel. 
 
-It is now time to [read the generated forecasts tutorial](/understand-forecasts/) to understand them.
+It is now time to [read the generated forecasts tutorial](/tutorial/understand-forecasts/) to understand them.

@@ -62,4 +62,4 @@ We've completed setting up our inputs for PaceMaker. It will run its simulations
 
 ![Create the forecasts](/img/tutorials/create-forecasts-btn.png)
 
-Your forecasts are generated instantly in the result panel under the **Create forecasts** button. To understand them, head to the [next tutorial](/understand-forecasts/) which explains how to read the forecasts.
+Your forecasts are generated instantly in the result panel under the **Create forecasts** button. To understand them, head to the [next tutorial](/tutorial/understand-forecasts/) which explains how to read the forecasts.

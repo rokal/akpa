@@ -1,4 +1,4 @@
-baseURL = "https://d1ij1pbfyzw6yr.cloudfront.net/"
+baseURL = "http://aws-website-akpa-mkt-tuy4k.s3-website-us-east-1.amazonaws.com/"
 title = "PaceMaker, your Agile/Kanban Planning Application"
 theme = "hugo-universal-theme"
 languageCode = "en-us"
