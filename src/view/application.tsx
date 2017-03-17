@@ -95,7 +95,7 @@ export class Application extends React.Component<AppProps, AppState>{
                     /> 
                     {/*<CycleTimeChart cycleTimes={this.state.cycleTimes}/>                                   */}
                 </div>                    
-            <div className="copyright">February 2017 - Version 0.1 - Copyright 2017 - All rights reserved</div>
+            <div className="copyright">March 2017 - Version 0.2 - Copyright 2017 - All rights reserved</div>
             </div>            
         </MuiThemeProvider>
     }
