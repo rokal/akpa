@@ -102,7 +102,7 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         const items = orderedForecasts.map((forecast, index, arr) => {
             return <div className="result" key={index}>
                 <p style={this.getBorderStyle(forecast.Percentile)}>
-                    <span className="percentileNumber" style={this.getLabelColor(forecast.Percentile)}>{forecast.NumberOfItemsCompleted}</span>
+                    <span className="percentileNumberDates" style={this.getLabelColor(forecast.Percentile)}>{forecast.NumberOfItemsCompleted}</span>
                     <span className="items"> items</span>
                     <span className="resultConfidence">{forecast.Percentile.toString()} confidence</span>
                 </p>
@@ -122,8 +122,8 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         const items = orderedForecasts.map((forecast, index, arr) => {
             return <div className="result" key={index}>
                 <p style={this.getBorderStyle(forecast.Percentile)}>
-                    <span className="percentileNumber" style={this.getLabelColor(forecast.Percentile)}>{forecast.NumberOfDays}</span>
-                    <span className="items"> days</span>
+                    <span className="percentileNumberItems" style={this.getLabelColor(forecast.Percentile)}>{this.toDate(forecast.NumberOfDays)}</span>
+                    <span className="items">{forecast.NumberOfDays} days</span>
                     <span className="resultConfidence">{forecast.Percentile.toString()} confidence</span>
                 </p>
                 {clearFixDiv}
@@ -133,6 +133,13 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
         return <div>
             {items}
         </div>
+    }
+
+    private toDate(numberOfDays:number):string{
+        let startDate = moment(this.props.simulationConfig.StartDate)
+        startDate.add(numberOfDays, "days");
+
+        return startDate.format(this.DISPLAY_SHORT_DATE_FORMAT)
     }
 
     private getBorderStyle(percentile: Percentile): React.CSSProperties {
@@ -235,4 +242,5 @@ export class ResultsDisplay extends React.Component<ResultsProps, ResultsState> 
     private readonly FORECASTS_TITLE = <h1>Forecasts</h1>;
     private readonly CLEAR_FIX_DIV = <div className="clearfix"></div>;
     private readonly DISPLAY_DATE_FORMAT = "dddd, MMMM Do YYYY";
+    private readonly DISPLAY_SHORT_DATE_FORMAT = "ddd, MMM Do";
 }

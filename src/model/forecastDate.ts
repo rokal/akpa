@@ -2,7 +2,7 @@
 import { Forecast } from "./forecast";
 
 export class ForecastDate extends Forecast {
-    constructor(percentile: Percentile, numberOfItemsCompleted: Number, numberOfDays: Number) {
+    constructor(percentile: Percentile, numberOfItemsCompleted: number, numberOfDays: number) {
         super(percentile, numberOfItemsCompleted, numberOfDays);
     }
 

@@ -1,6 +1,7 @@
 ﻿import {Simulation} from "./simulation";
 import {SimulationConfig} from "./simulationConfig";
 import {ThroughputFrequency} from "./throughputFrequencyEnum";
+import {Utilities} from "../utilities";
 
 export class SimulationDate extends Simulation{
 
@@ -18,7 +19,7 @@ export class SimulationDate extends Simulation{
         for (let i = 0; i < this.NumberOfSimulations; i++) {
 
             // At each simulation, generate random throughputs based on the historical values
-            throughputResults = this.generateRandomThroughputs();
+            throughputResults = this.generateThroughputs();
 
             simulatedNumberOfItemsCompleted = this.addItems(throughputResults);
 
@@ -28,22 +29,21 @@ export class SimulationDate extends Simulation{
         }
     }
 
-    private generateRandomThroughputs(): Array<number>{
+    private generateThroughputs(): Array<number>{
 
         let throughputResults: number[];
         let randomIndex: number;
 
-        throughputResults = new Array(this.NumberOfDays);
-        for (let j = 0; j < this.NumberOfDays; j++) {
+        let counter = this.NumberOfDays;
+        if (this.ThroughputFrequency == ThroughputFrequency.Week) {
+            counter = Math.floor(this.NumberOfDays / 7);
+        }
+
+        throughputResults = new Array(counter);
+        for (let j = 0; j < counter; j++) {
 
             randomIndex = this.RandomIndexGenerator;
-
-            if (this.ThroughputFrequency == ThroughputFrequency.Day) {
-                throughputResults[j] = this.HistoricalThroughput[randomIndex];
-            }       
-            else if (this.ThroughputFrequency == ThroughputFrequency.Week){
-                throughputResults[j] = this.HistoricalThroughput[randomIndex] / 5;
-            }
+            throughputResults[j] = this.HistoricalThroughput[randomIndex];
         }
 
         return throughputResults;

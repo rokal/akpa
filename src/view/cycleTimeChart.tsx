@@ -27,8 +27,8 @@ export class CycleTimeChart extends React.Component<CycleTimeChartProps, undefin
             margin={{top: 10, right: 10, bottom: 25, left: 60}} 
             axes={true}
             axisLabels={{ x: "Completion Date", y: "Cycle Time" }}
-            xType="text"
-            yType="linear"
+            xType={"time"}
+            yType={"linear"}
             xDomainRange={[info.minDate, info.maxDate]}            
             yDomainRange={[0, info.maxCycleTime]}
         />

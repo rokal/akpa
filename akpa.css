@@ -55,7 +55,7 @@ div.spacer {
 	margin: 0;
 }
 
-span.percentileNumber {
+span.percentileNumberDates {
 	display: block;
 	width: auto;
 	padding: 0 0 0 0.5em;
@@ -63,6 +63,16 @@ span.percentileNumber {
     font-weight: bolder;
     text-align: center;
 }
+
+span.percentileNumberItems {
+	display: block;
+	width: auto;
+	padding: 0 0 0 0.5em;
+    font-size:26px;
+    font-weight: bolder;
+    text-align: center;
+}
+
 
 span.items { 
 	display: block; 
@@ -73,8 +83,9 @@ span.items {
 span.resultConfidence {
     background: #fff none repeat scroll 0 0;
     color: #ccc;
-    float: left;
+    display:block;
     font-size: 14px;
+    text-align: center;
     margin-left: 1em !important;
     padding: 0 0 0 1em;
 }

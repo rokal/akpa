@@ -40,7 +40,10 @@ export class SimulationItems extends Simulation{
             randomIndex = this.RandomIndexGenerator;
             simulatedNumberOfItems = this.HistoricalThroughput[randomIndex] + simulatedNumberOfItems;
 
-            numberOfDays = numberOfDays + 1;
+            if (this.ThroughputFrequency == ThroughputFrequency.Day)
+                numberOfDays = numberOfDays + 1;
+            else if (this.ThroughputFrequency == ThroughputFrequency.Week)
+                numberOfDays = numberOfDays + 7;
 
             // This if condition is there in case we didn't have enough historical
             // data to produce a simulation. This shouldn't really happen but you...
