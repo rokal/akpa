@@ -1,3 +1,5 @@
+/// <reference path="../../typings/globals/moment/index.d.ts" />
+
 import * as moment from "moment";
 
 export class HistoricalThroughputs {
@@ -46,15 +48,22 @@ export class HistoricalThroughputs {
     spread():Array<number>{
 
         let throughputs = new Array(0);
-        if (this.Count > 1){
+        if (this.minDate.isBefore(this.maxDate)){
+            console.log("inside");
             let key: string;
             let currentDate = this.minDate;
-            for (let i = 0; currentDate < this.maxDate; i++, currentDate.add("days", 1)){
+            console.log("Start: " + currentDate.format(this.KEY_FORMAT));
+            for (let i = 0; currentDate.isBefore(this.maxDate); i++, currentDate.add(1, "days")){
                 key = currentDate.format(this.KEY_FORMAT);
-                if (this.elements.has(key))
+                
+                if (this.elements.has(key)){
+                    console.log("PUSHING: " + this.elements.get(key));
                     throughputs.push(this.elements.get(key));
-                else
+                    }
+                else{
+                    console.log("PUSHING: 0");
                     throughputs.push(0);
+                }
             }
         }
         else if (this.Count == 1)
