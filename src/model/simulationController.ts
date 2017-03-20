@@ -9,7 +9,7 @@ import { ForecastItemsBuilder } from "./forecastItemsBuilder";
 import { SimulationConfig } from "./simulationConfig";
 import { SimulationDate } from "./simulationDate";
 import { SimulationItems } from "./simulationItems";
-import { ThroughputBuilder } from "./throughputBuilder";
+import { HistoricalThroughputBuilder } from "./historicalThroughputBuilder";
 import { ThroughputFrequency } from "./throughputFrequencyEnum";
 
 export class SimulationController {
@@ -67,7 +67,8 @@ export class SimulationController {
 
     buildThroughputs():void{
         // Build the throughputs
-        this.simulationConfig.HistoricalThroughput = ThroughputBuilder.build(this.validDates);
+        let history = HistoricalThroughputBuilder.build(this.validDates);
+        this.simulationConfig.HistoricalThroughput = history.spread();
     }
 
     buildCycleTimes():Array<CycleTime>{
