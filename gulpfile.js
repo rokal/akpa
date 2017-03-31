@@ -2,7 +2,7 @@ var gulp = require("gulp");
 var ts = require("gulp-typescript");
 var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");
-
+var server = require('gulp-express');
 
 const sourceMapOptions = {
         sourceRoot: "../"
@@ -69,6 +69,17 @@ gulp.task("clean", function(){
         "dist/**/*",
         "tests/JsOutput/**/*",
   ]);
+});
+
+gulp.task("server", function() {
+
+    // Start the server
+    server.run(['./dist/server/server.js']);
+
+    // Watch for file change and restart the server
+    gulp.watch([
+        "./dist/server/server.js", 
+        "./dist/server/server/routes/**/*.js"], [server.run]);
 });
 
 // Start the webserver

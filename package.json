@@ -11,7 +11,8 @@
     "pretest": "gulp compile-test",
     "jest": "node ./packages/jest-cli/bin/jest.js",
     "test": "jest",
-    "start": "node server.js"
+    "preserver": "gulp compile-server",
+    "server": "node ./dist/server/server.js"
   },
   "jest": {
     "collectCoverage": true,
