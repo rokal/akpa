@@ -15,16 +15,19 @@
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "allowJs": false
+        "allowJs": false,
+        "typeRoots" : ["./typings"]
     },
     "exclude":[
         "../../node_modules"
     ],
     "include":[
-      	"../../src/**/*.ts",
-        "../../src/**/*.tsx",
-        "../../tests/**/*.ts",
-        "../../tests/**/*.tsx",
-    	"../../typings/*.d.ts"      
+    	"../../src/model/*.ts",
+        "../../src/model/io/*.ts",
+        "../../src/view/*.ts",
+        "../../src/*.ts",
+        "../../src/*.tsx",
+        "../../tests/*.ts",
+        "../../tests/*.tsx"
     ]
 }

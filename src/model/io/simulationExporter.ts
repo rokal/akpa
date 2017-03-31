@@ -1,4 +1,3 @@
-
 import { SimulationConfig } from "../simulationConfig";
 import { SimulationResult } from "../simulationResult";
 

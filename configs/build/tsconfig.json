@@ -11,14 +11,17 @@
         "baseUrl": "./src",        
         "outDir": "./dist/",        
         "traceResolution": true,
-        "strictNullChecks": true        
+        "strictNullChecks": true,
+        "typeRoots" : ["./typings"]       
     },
     "exclude":[
         "../../node_modules"
     ],
     "include":[
-    	"../../src/**/*.ts",
-        "../../src/**/*.tsx",
-    	"../../typings/*.d.ts"
+    	"../../src/model/*.ts",
+        "../../src/model/io/*.ts",
+        "../../src/view/*.ts",
+        "../../src/*.ts",
+        "../../src/*.tsx"
     ]
 }

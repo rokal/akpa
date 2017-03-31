@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "jsx":"react",
+        "noImplicitAny": true,
+        "removeComments": false,
+        "sourceMap": true,
+        "baseUrl": "./src/server",        
+        "outDir": "./dist/server",        
+        "traceResolution": true,
+        "strictNullChecks": true,
+        "typeRoots" : ["../../node_modules/@types"]                  
+    },
+    "exclude":[
+        "../../node_modules"   
+    ],
+    "include":[
+        "../../src/server/**/*.ts"
+    ]
+}

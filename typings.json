@@ -9,6 +9,7 @@
     "react-test-renderer": "registry:dt/react-test-renderer#15.4.0+20170123203653"
   },
   "dependencies": {
+    "body-parser": "registry:npm/body-parser#1.15.2+20161116154925",
     "react-tap-event-plugin": "registry:dt/react-tap-event-plugin#0.0.0+20160726072212",
     "xlsx": "registry:dt/xlsx#0.0.0+20161122230850"
   },

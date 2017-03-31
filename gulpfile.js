@@ -34,7 +34,7 @@ gulp.task("compile", function() {
         .pipe(gulp.dest("dist"))
 });
 
-// Compile Typescript project
+// Compile Typescript project with tests
 gulp.task("compile-test", function() {
     
     var tsTestProject = ts.createProject("./configs/build/tsconfig-test.json");
@@ -48,6 +48,20 @@ gulp.task("compile-test", function() {
         .pipe(sourcemaps.write(".")) // Now the sourcemaps are added to the .js file
         .pipe(gulp.dest("tests/JsOutput"))
 });
+
+// Compile server side project
+gulp.task("compile-server", function() {
+    
+    var tsTestProject = ts.createProject("./configs/build/tsconfig-server.json");
+    var tsResult = tsTestProject
+        .src()
+        .pipe(tsTestProject());
+
+    return tsResult   
+        .js
+        .pipe(gulp.dest("dist/server"))
+});
+
 
 gulp.task("clean", function(){
     var del = require("del");
