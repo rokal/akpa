@@ -6,6 +6,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { CycleTime } from "../model/cycleTime";
+import { ExcelImportResult } from "../model/io/excelImportResult";
 import { ForecastDate } from "../model/forecastDate";
 import { ForecastItems } from "../model/forecastItems";
 import { SimulationConfig} from "../model/simulationConfig";
@@ -17,6 +18,7 @@ import { CycleTimeChart} from "./cycleTimeChart";
 import { NewProjectPanel } from "./newProjectPanel";
 import { ExistingProjectPanel } from "./existingProjectPanel";
 import { ResultsDisplay } from "./resultsDisplay";
+import { ExcelImportErrorList } from "./excelImportErrorList";
 
 import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
@@ -36,7 +38,8 @@ interface AppState {
     simulationConfig: SimulationConfig,
     dateForecasts:Array<ForecastDate>,
     itemsForecasts:Array<ForecastItems>,
-    cycleTimes:Array<CycleTime>
+    cycleTimes:Array<CycleTime>,
+    importResults:Array<ExcelImportResult>
 }
 export class Application extends React.Component<AppProps, AppState>{
 
@@ -94,6 +97,7 @@ export class Application extends React.Component<AppProps, AppState>{
                     cbItemsChanged={this.cbItemsChanged.bind(this)}
                     /> 
                     {/*<CycleTimeChart cycleTimes={this.state.cycleTimes}/>                                   */}
+                <ExcelImportErrorList importResults={this.state.importResults} />
                 </div>                    
             <div className="copyright">March 2017 - Version 0.2 - Copyright 2017 - All rights reserved</div>
             </div>            
@@ -112,11 +116,13 @@ export class Application extends React.Component<AppProps, AppState>{
             // Cast and build the configuration object
             let existingProjectEvent = event as ExistingProjectEvent;
             this.simController.SimulationConfig = this.state.simulationConfig;
+            this.simController.SimulationConfig.ThroughputFrequency = ThroughputFrequency.Day;
             this.simController.StartDate = new Date();
             this.simController.buildValidDates(existingProjectEvent.Results)
             this.simController.buildThroughputs();
             this.state.simulationConfig = this.simController.SimulationConfig;
             this.state.cycleTimes = this.simController.buildCycleTimes();
+            this.state.importResults = this.simController.getImportErrors();
             //this.state.imporErrors = this.simController.getImportErrors();
         }
     
@@ -170,7 +176,8 @@ export class Application extends React.Component<AppProps, AppState>{
             simulationConfig: SimulationConfig.Empty,
             dateForecasts: new Array<ForecastDate>(0),
             itemsForecasts: new Array<ForecastItems>(0),
-            cycleTimes: new Array<CycleTime>(0)
+            cycleTimes: new Array<CycleTime>(0),
+            importResults: new Array<ExcelImportResult>(0)
         };
     }
 

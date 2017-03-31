@@ -59,7 +59,10 @@ export class DateValidator {
     private static MSG_CELL_UNDEFINED = "Row {2}: Cell in column {0}[Index:{1}] is empty";
     private static MSG_INVALID_DATE = "Row {3}: Value is invalid [{0}] at column {1}[Index{2}]"
     private static MSG_START_GREATER_END = "Row {2}: Start date[{0}] greater than end date[{1}]";
-    private static UNFORMATTED_FORMATS = ["MM{0}DD{0}YYYY", "DD{0}MM{0}YYYY", "YYYY{0}MM{0}DD", "YYYY{0}DD{0}MM"];
+    private static UNFORMATTED_FORMATS = ["MM{0}DD{0}YYYY", 
+                                          "DD{0}MM{0}YYYY", 
+                                          "YYYY{0}MM{0}DD", 
+                                          "YYYY{0}DD{0}MM"];
 
     private static buildFormats(): Array<string> {
         let formats = new Array<string>(0);
@@ -73,6 +76,8 @@ export class DateValidator {
 
         for (let item of temp)
             formats.push(item);
+
+        formats.push("MMM DD YYYY");
 
         return formats;
     }
