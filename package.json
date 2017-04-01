@@ -11,6 +11,8 @@
     "pretest": "gulp compile-test",
     "jest": "node ./packages/jest-cli/bin/jest.js",
     "test": "jest",
+    "preclient": "gulp webpack",
+    "client": "gulp webserver",
     "preserver": "gulp compile-server",
     "server": "node ./dist/server/server.js"
   },

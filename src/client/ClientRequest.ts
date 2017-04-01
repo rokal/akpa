@@ -11,7 +11,10 @@ export class ClientRequest{
         formData.append("text_unput", "Hello");
 
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3030/api/v1/js-zip', true);
+        xhr.open('POST', "http://localhost:3030/api/v1/xlsxjs", true);
+        xhr.setRequestHeader("Access-Control-Request-Headers", "*");
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");                
         xhr.send(formData);
         // let formData = {
         //     // Pass a simple key-value pair 

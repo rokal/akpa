@@ -7,6 +7,7 @@ import * as express from "express";
 import * as path from "path";
 
 import { XlsxJsRoutes } from "./xlsxJsRoutes"
+import {RequestHandler, Request, Response, NextFunction}  from "express";
 
 export class Server {
    
@@ -32,7 +33,8 @@ export class Server {
   }
 
   private config():void{
-    
+
+    this.app.use(this.middleCORSFunction);
   }
 
   private routes():void{
@@ -52,6 +54,12 @@ export class Server {
   private api():void{
 
   }
+
+  private middleCORSFunction(req: Request, res: Response, next: NextFunction): any{
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+    }
 
   private PORT = process.env.PORT || 3030;
 
