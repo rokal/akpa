@@ -22,6 +22,7 @@
         "../../node_modules"
     ],
     "include":[
+        "../../src/client/*.ts",        
     	"../../src/model/*.ts",
         "../../src/model/io/*.ts",
         "../../src/view/*.ts",

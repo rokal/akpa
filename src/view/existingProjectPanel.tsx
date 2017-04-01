@@ -3,6 +3,7 @@
 
 import * as React from "react";
 
+import { ClientRequest } from "../client/ClientRequest";
 import { ExcelImporter } from "../model/io/excelImporter";
 import { ExcelImportResult } from "../model/io/excelImportResult";
 import { ProjectEvent, ExistingProjectEvent } from "./projectEvents";
@@ -125,6 +126,8 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
         fileReader.onload = (e: any) => {
             this.excelImporter = new ExcelImporter(ExistingProjectPanel.excelFilename);
             e.target.columns = this.excelImporter.readHeaders(e.target.result);
+            let c = new ClientRequest();
+            c.launch(e.target.result);
         }
         fileReader.onloadend = (eventFileReader: any) => {
             console.log(`File ${ExistingProjectPanel.excelFilename} loaded successfully with ${eventFileReader.loaded} bytes`);

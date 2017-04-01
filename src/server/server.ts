@@ -6,7 +6,7 @@ import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as path from "path";
 
-import { JsZipRoutes } from "./routes/jsZipRoutes"
+import { XlsxJsRoutes } from "./xlsxJsRoutes"
 
 export class Server {
    
@@ -32,7 +32,7 @@ export class Server {
   }
 
   private config():void{
-
+    
   }
 
   private routes():void{
@@ -46,7 +46,7 @@ export class Server {
     });
 
     this.app.use("/", router);
-    this.app.use("/api/v1/js-zip", new JsZipRoutes().init());
+    this.app.use("/api/v1/xlsxjs", new XlsxJsRoutes().init());
   }
 
   private api():void{

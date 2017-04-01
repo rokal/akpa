@@ -4,10 +4,6 @@ var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");
 var server = require('gulp-express');
 
-const sourceMapOptions = {
-        sourceRoot: "../"
-    };
-
 gulp.task("webpack", function() {
 
     var webpack = require("gulp-webpack");
@@ -30,7 +26,7 @@ gulp.task("compile", function() {
         .pipe(babel({
             presets:["es2015"]        
         }))
-        .pipe(sourcemaps.write(".", sourceMapOptions)) // Now the sourcemaps are added to the .js file
+        .pipe(sourcemaps.write(".", {sourceRoot: "../"})) // Now the sourcemaps are added to the .js file
         .pipe(gulp.dest("dist"))
 });
 
@@ -52,14 +48,22 @@ gulp.task("compile-test", function() {
 // Compile server side project
 gulp.task("compile-server", function() {
     
-    var tsTestProject = ts.createProject("./configs/build/tsconfig-server.json");
-    var tsResult = tsTestProject
+    var tsServerProject = ts.createProject("./configs/build/tsconfig-server.json");
+    var tsResult = tsServerProject
         .src()
-        .pipe(tsTestProject());
+        .pipe(sourcemaps.init())     // This means sourcemaps will be generated        
+        .pipe(tsServerProject());
 
     return tsResult   
         .js
-        .pipe(gulp.dest("dist/server"))
+        .pipe(sourcemaps.mapSources(function(sourcePath, file){
+            // Gulp SourceMap is stupid. It appends extra '../' on each .ts file  
+            // that we put in the .js.map. The 'substring(6)' removes these extra
+            // characters until we find a logic behind this behaviour.
+            return sourcePath.substring(6);  
+        }))
+        .pipe(sourcemaps.write(".")) 
+        .pipe(gulp.dest("dist/server/"))
 });
 
 
@@ -78,8 +82,7 @@ gulp.task("server", function() {
 
     // Watch for file change and restart the server
     gulp.watch([
-        "./dist/server/server.js", 
-        "./dist/server/server/routes/**/*.js"], [server.run]);
+        "./src/server/**"], ["compile-server"]);
 });
 
 // Start the webserver

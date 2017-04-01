@@ -4,29 +4,48 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.1.0",
     "configurations": [
-        
+         {
+            "type": "node",
+            "request": "launch",
+            "name": "Node - Launch server",
+            "preLaunchTask": "compile-server",
+            "program": "${workspaceRoot}/src/server/server.ts",
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": null,
+            "console": "internalConsole",
+            "sourceMaps": true,
+            "stopOnEntry": false, 
+            //"trace" : "all",          
+            "outFiles": ["${workspaceRoot}/dist/server/**/*"]
+        },
         {
-            "name": "Attach with sourcemaps",
+            "type": "node",
+            "request": "attach",
+            "name": "Node - Attach to server",
+            "port": 5858
+        },
+        {
             "type": "chrome",
             "request": "attach",
+            "name": "Browser - Attach with sourcemaps",
             "port": 9222,
             "sourceMaps": true,
             "url": "http://localhost:9001/index.html",
-            "diagnosticLogging": true,
+            "trace": true,
             "webRoot": "${workspaceRoot}"
         },
-        {
-            "name": "Attach to url with files served from ./dist",
+        {            
             "type": "chrome",
             "request": "attach",
+            "name": "Browser - Attach to url with files served from ./dist",            
             "port": 9222,
             "url": "<url of the open browser tab to connect to>",
             "webRoot": "${workspaceRoot}/out"
         },
         {
-            "name": "Debug Jest Tests",
             "type": "node",
             "request": "launch",
+            "name": "Debug Jest Tests",            
             "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
             "stopOnEntry": false,
             "args": [
@@ -46,7 +65,7 @@
             },
             "console": "internalConsole",
             "sourceMaps": true,
-            "outDir": null,
+            "outFiles": null,
             "port": 9070
         }
     ]

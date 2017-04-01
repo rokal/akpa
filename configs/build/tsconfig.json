@@ -18,7 +18,8 @@
         "../../node_modules"
     ],
     "include":[
-    	"../../src/model/*.ts",
+    	"../../src/client/*.ts",
+        "../../src/model/*.ts",
         "../../src/model/io/*.ts",
         "../../src/view/*.ts",
         "../../src/*.ts",
