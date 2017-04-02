@@ -1,9 +1,11 @@
 /// <reference path="../../node_modules/@types/express/index.d.ts" />
 /// <reference path="../../node_modules/@types/node/index.d.ts" />
 /// <reference path="../../typings/modules/body-parser/index.d.ts" />
+/// <reference path="../../typings/modules/express-formidable/index.d.ts" />
 
-import * as bodyParser from "body-parser";
 import * as express from "express";
+import * as bodyParser from "body-parser";
+const ExpressFormidable = require("express-formidable");
 import * as path from "path";
 
 import { XlsxJsRoutes } from "./xlsxJsRoutes"
@@ -14,6 +16,7 @@ export class Server {
     private app: express.Application;
 
     constructor() {
+
     //create expressjs application
     this.app = express();
     
@@ -35,6 +38,13 @@ export class Server {
   private config():void{
 
     this.app.use(this.middleCORSFunction);
+
+    this.app.use(bodyParser.json({limit: '500mb'}));
+    this.app.use(bodyParser.urlencoded({extended: true}));
+    this.app.use(ExpressFormidable({
+      uploadDir: path.join(__dirname, "uploads"),
+      multiples: false
+    }));
   }
 
   private routes():void{
@@ -48,7 +58,7 @@ export class Server {
     });
 
     this.app.use("/", router);
-    this.app.use("/api/v1/xlsxjs", new XlsxJsRoutes().init());
+    this.app.use(XlsxJsRoutes.RouteName, new XlsxJsRoutes().init());
   }
 
   private api():void{
