@@ -61,11 +61,14 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
                     label="Select an Excel file"
                     containerElement="label"
                 >
+                <form id="toto">
                     <input
                         type="file"
+                        name="xlsFile"                                            
                         onChange={this.handleExcelFileChange.bind(this)}
                         style={this.styles.input}
                     />
+                </form>
                 </RaisedButton>
                 <TextField
                     id="fileDataUploadTextField"
@@ -127,7 +130,7 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
             this.excelImporter = new ExcelImporter(ExistingProjectPanel.excelFilename);
             e.target.columns = this.excelImporter.readHeaders(e.target.result);
             let c = new ClientRequest();
-            c.launch(e.target.result);
+            c.launch(this.excelBlob.name, e.target.result);
         }
         fileReader.onloadend = (eventFileReader: any) => {
             console.log(`File ${ExistingProjectPanel.excelFilename} loaded successfully with ${eventFileReader.loaded} bytes`);

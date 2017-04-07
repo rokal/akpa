@@ -1,6 +1,7 @@
 /// <reference path="../../typings/globals/moment/index.d.ts" />
 
-import {ExcelImportResult} from "./excelImportResult";
+import { DateRange } from "./dateRange";
+import {ExcelImportResult} from "./io/excelImportResult";
 import * as XLSX from "xlsx";
 import * as moment from "moment";
 
@@ -11,8 +12,11 @@ export class DateValidator {
     private constructor(){        
     }
 
-    static process(
+    static process(startColumnName: string,
+        startColumnIndex: number,
         startCell: XLSX.IWorkSheetCell | undefined,
+        endColumnName: string,
+        endColumnIndex: number,
         endCell: XLSX.IWorkSheetCell | undefined,
         rowIndex: number): ExcelImportResult {
 
@@ -24,21 +28,21 @@ export class DateValidator {
 
         if (startCell === undefined) {
             startDate = moment(this.DEFAULT_DATE);
-            tempMessage = this.format(this.MSG_CELL_UNDEFINED, "ColumnName", "ColumnIndex", rowIndex + 1);
+            tempMessage = this.format(this.MSG_CELL_UNDEFINED, startColumnName, startColumnIndex, rowIndex + 1);
             errorMessages.push(tempMessage);
             isBothCellsAreNotEmpty = false;
         }
         else
-            startDate = this.parseCell(startCell, "ColumnName", 0, rowIndex, errorMessages);
+            startDate = this.parseCell(startCell, startColumnName, startColumnIndex, rowIndex, errorMessages);
 
         if (endCell === undefined) {
             endDate = moment(this.DEFAULT_DATE);
-            tempMessage = this.format(this.MSG_CELL_UNDEFINED, "ColumnName", "ColumnIndex", rowIndex + 1);
+            tempMessage = this.format(this.MSG_CELL_UNDEFINED, endColumnName, endColumnIndex, rowIndex + 1);
             errorMessages.push(tempMessage);
             isBothCellsAreNotEmpty = false;
         }
         else
-            endDate = this.parseCell(endCell, "ColumnName", 1, rowIndex, errorMessages)        
+            endDate = this.parseCell(endCell, endColumnName, endColumnIndex, rowIndex, errorMessages)        
 
         if (isBothCellsAreNotEmpty &&
             startDate > endDate) {
@@ -46,7 +50,8 @@ export class DateValidator {
             errorMessages.push(tempMessage);
         }
 
-        return new ExcelImportResult([startDate.toDate(), endDate.toDate()],
+        return new ExcelImportResult(startDate.toDate(),
+                                     endDate.toDate(),
                                      rowIndex,
                                      errorMessages);
     }

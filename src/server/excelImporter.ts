@@ -1,11 +1,12 @@
 /// <reference path="../../typings/modules/xlsx/index.d.ts" />
 
-import { DateRange } from "./dateRange";
 import { DateValidator } from "./dateValidator";
 import { ExcelImportResult } from "./excelImportResult";
 import * as XLSX from "xlsx";
 
 export class ExcelImporter {
+
+    
 
     public get ErrorMessage(): string {
         return this.errorMessage;
@@ -24,44 +25,14 @@ export class ExcelImporter {
     private workbook: XLSX.IWorkBook;
     private firstSheet: XLSX.IWorkSheet;
 
-    constructor(public readonly Filename: string, ) {
+    constructor(public readonly Filename: string) {
         this.headers = new Array<[number, string]>(0);
-        this.blob = new File([], this.Filename);
+        //this.blob = new File([], this.Filename);
         this.errorMessage = "";
         this.fileRead = false;
         this.startColumnName = "";
         this.endColumnName = "";
         this.exportResults = new Array<ExcelImportResult>(0);
-    }
-
-    readHeaders(data?: File): Array<string> {
-        if (data == undefined)
-            this.loadFile(true);
-        else {
-            this.blob = data;
-            this.loadBlob(data, true);
-        }
-        this.decodeHeaders();
-
-        let headersName = this.headers.map((header, index, arr) => { return header[1]; });
-
-        return headersName;
-    }
-
-    readCompleteFile(startColumn: string, endColumn: string): Array<ExcelImportResult> {
-
-        if (this.isReadingSameData(startColumn, endColumn))
-            return this.exportResults;
-
-        if (this.isBlobEmpty())
-            this.loadFile(false);
-        else
-            this.loadBlob(this.blob, false);
-
-        this.exportResults = this.decodeEntireFile(startColumn, endColumn);
-        this.fileRead = true;
-
-        return this.exportResults;
     }
 
     private decodeHeaders(): void {
@@ -92,7 +63,7 @@ export class ExcelImporter {
         }
     }
 
-    private decodeEntireFile(startColumnName: string, endColumnName: string): Array<ExcelImportResult> {
+    private decodeEntireFile(): Array<ExcelImportResult> {
         let rangeOfHeaders = this.firstSheet['!ref'] as any;
         if (rangeOfHeaders == undefined)
             return new Array<ExcelImportResult>(0);
@@ -104,10 +75,8 @@ export class ExcelImporter {
         let R = rangeNumeric.s.r as number;
         let C = rangeNumeric.s.c as number;
 
-        this.startColumnName = startColumnName;
-        this.endColumnName = endColumnName;
-        let startColumnIndex = this.getIndex(startColumnName);
-        let endColumnIndex = this.getIndex(endColumnName);
+        let startColumnIndex = R; //this.getIndex(startColumnName);
+        let endColumnIndex = C; //this.getIndex(endColumnName);
 
         let importResult = new Array<ExcelImportResult>(0);
         let startDate: Date | undefined;
@@ -118,18 +87,14 @@ export class ExcelImporter {
 
         for (; R < rangeNumeric.e.r; ++R) {
 
-            startCell = this.firstSheet[XLSX.utils.encode_cell({ c: startColumnIndex, r: R })];
-            endCell = this.firstSheet[XLSX.utils.encode_cell({ c: endColumnIndex, r: R })];
+            startCell = this.firstSheet[XLSX.utils.encode_cell({ c: 0, r: R })];
+            endCell = this.firstSheet[XLSX.utils.encode_cell({ c: 1, r: R })];
 
             if (R == rangeNumeric.s.r)
                 continue;
 
             result = DateValidator.process(
-                startColumnName,
-                startColumnIndex,
                 startCell,
-                endColumnName,
-                endColumnIndex,
                 endCell,
                 R)
 
@@ -139,28 +104,31 @@ export class ExcelImporter {
         return importResult;
     }
 
-    private loadBlob(data: Blob, onlyColumnHeaders: boolean): void {
+    //public loadBlob(): Array<ExcelImportResult> {
+    public loadBlob(data: Blob): void {
         this.workbook = XLSX.read(
             data,
             {
                 type: "binary",
                 cellDates: true,
-                sheetRows: onlyColumnHeaders ? 1 : 0,
+                sheetRows: 0,
             });
 
         this.load();
     }
 
-    private loadFile(onlyColumnHeaders: boolean): void {
+    //public loadFile(): Array<ExcelImportResult> {
+    public loadFile(filename:string): void {
         this.workbook = XLSX.readFile(
-            this.Filename,
+            filename,
             {
                 type: "binary",
                 cellDates: true,
-                sheetRows: onlyColumnHeaders ? 1 : 0,
-            });
+                sheetRows: 0,
+            });        
 
         this.load();
+        this.decodeEntireFile();
     }
 
     private load(): void {
@@ -174,8 +142,17 @@ export class ExcelImporter {
         }
 
         // Grab the name of the first work sheet and assign it to a data member
-        let first_sheet_name = this.workbook.SheetNames[0];
+        let first_sheet_name = this.workbook.SheetNames[0];        
         this.firstSheet = this.workbook.Sheets[first_sheet_name];
+    }
+
+    // https://github.com/SheetJS/js-xlsx#json
+    public getJson():{}[]{
+        return XLSX.utils.sheet_to_json(this.firstSheet,{
+            raw:false,
+            range: this.firstSheet['!ref'],
+            header:"A"            
+        }); 
     }
 
     private isReadingSameData(startColumn: string, endColumn: string): boolean {

@@ -6,7 +6,10 @@ import { Router, Request, Response, NextFunction } from "express";
 import * as formidable from "formidable";
 import * as fs from "fs";
 import * as path from "path";
+
 import { FileUploadInfo } from "./fileUploadInfo";
+import { ExcelImporter } from "./excelImporter";
+import { log } from "util";
 
 export class XlsxJsRoutes {
 
@@ -17,6 +20,11 @@ export class XlsxJsRoutes {
     public init(): Router {
         this.router.get('/', this.getAll);
         this.router.post('/', this.decodeExcelFile);
+
+        let form = new formidable.IncomingForm();
+        form.multiples = true;
+        form.uploadDir = path.join(__dirname, 'uploads');
+
         return this.router;
     }
 
@@ -29,38 +37,46 @@ export class XlsxJsRoutes {
 
     public decodeExcelFile(req: any, res: Response, next: NextFunction): void {
 
-        //Formidable uploads to operating systems tmp dir by default
-        // var form = new formidable.IncomingForm();
-        // form.uploadDir = path.join(__dirname, "/uploads");       //set upload directory
-        // form.keepExtensions = true;     //keep file extension
-        // form.multiples = true;
+        let excelImporter = new ExcelImporter("");
+        let xlsFile = req.files[FileUploadInfo.FIELD_FILE];
+        if (xlsFile) {            
+            excelImporter.loadFile(xlsFile.path);
+            console.log("Got File");
+            let t = excelImporter.getJson();
+            res.send(t).end();
 
-        let xlsFile = req.files[FileUploadInfo.FIELD_FILE];                
-        if (!xlsFile) {
+            fs.unlink(xlsFile.path, function(err: NodeJS.ErrnoException){
+                if (err)
+                    log(err.message);
+            });
+        }
+        else if (req.fields.xlsFile) {            
+            xlsFile = req.fields.xlsFile;
+            //excelImporter.loadBlob(xlsFile);            
+            console.log("Got BLOB");
+        }
+        else {
 
-            xlsFile = req.fields.myfile
-            if (!xlsFile){
-                console.log("not working");
-                res.end();    
-                return;            
-            }
-            // console.log("decodeExcelFile");
-            // let full = path.join(__dirname, "/uploads/", myFile.name);
-            // fs.rename(myFile.path, full, function (err) {
-            //     if (err)
-            //         throw err;
-            //     console.log('renamed complete');
+            // let form = new formidable.IncomingForm();
+            // form.parse(req, function (err, fields, files) {
+            //     console.log("parsing");
             // });
+
+            // form.on('file', function (name: any, file: any) {
+            //     console.log(name);
+            // });
+
+            // form.on('error', function (err: any) {
+            //     console.log('Error occurred during processing - ' + err);
+            // });
+
+            // // Invoked when all the fields have been processed.
+            // form.on('end', function () {
+            //     console.log('All the request fields have been processed.');
+            // });        
         }
 
-        console.log("Got something");
-        
-        res.end();      
         return;
-    }
-
-    private importFile(filename:string):void{
-        console.log("Going to import Excel");
     }
 
     static get RouteName(): string {
@@ -68,6 +84,6 @@ export class XlsxJsRoutes {
     }
 
     router: Router;
-    
+
 }
 

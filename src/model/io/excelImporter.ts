@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/modules/xlsx/index.d.ts" />
 
+import { DateRange } from "../dateRange";
 import { DateValidator } from "../dateValidator";
 import { ExcelImportResult } from "./excelImportResult";
 import * as XLSX from "xlsx";
