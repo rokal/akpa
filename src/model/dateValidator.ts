@@ -56,6 +56,48 @@ export class DateValidator {
                                      errorMessages);
     }
 
+    static process2(startColumnName: string,
+        startCell: string | undefined,
+        endColumnName: string,
+        endCell: string | undefined,
+        rowIndex: number): ExcelImportResult {
+
+        let errorMessages = new Array<string>(0);
+        let startDate = moment();
+        let endDate = moment();
+        let tempMessage: string;
+        let isBothCellsAreNotEmpty = true;
+
+        if (startCell === undefined) {
+            startDate = moment(this.DEFAULT_DATE);
+            tempMessage = this.format(this.MSG_CELL_UNDEFINED, startColumnName, rowIndex + 1);
+            errorMessages.push(tempMessage);
+            isBothCellsAreNotEmpty = false;
+        }
+        else
+            startDate = this.parseCell2(startCell, startColumnName, -1, rowIndex, errorMessages);
+
+        if (endCell === undefined) {
+            endDate = moment(this.DEFAULT_DATE);
+            tempMessage = this.format(this.MSG_CELL_UNDEFINED, endColumnName, rowIndex + 1);
+            errorMessages.push(tempMessage);
+            isBothCellsAreNotEmpty = false;
+        }
+        else
+            endDate = this.parseCell2(endCell, endColumnName, -1, rowIndex, errorMessages)        
+
+        if (isBothCellsAreNotEmpty &&
+            startDate > endDate) {
+            tempMessage = this.format(this.MSG_START_GREATER_END, startDate.toISOString(), endDate.toISOString(), rowIndex + 1);
+            errorMessages.push(tempMessage);
+        }
+
+        return new ExcelImportResult(startDate.toDate(),
+                                     endDate.toDate(),
+                                     rowIndex,
+                                     errorMessages);
+    }
+
     private static MSG_CELL_UNDEFINED = "Row {2}: Cell in column {0}[Index:{1}] is empty";
     private static MSG_INVALID_DATE = "Row {3}: Value is invalid [{0}] at column {1}[Index{2}]"
     private static MSG_START_GREATER_END = "Row {2}: Start date[{0}] greater than end date[{1}]";
@@ -97,6 +139,23 @@ export class DateValidator {
         }
         else
             stringToParse = cell.w;
+
+        let validDate = moment(stringToParse, this.DEFAULT_FORMATS);
+        if (!validDate.isValid() || 
+            validDate.year() > 2030){
+            let tempMessage = this.format(this.MSG_INVALID_DATE, stringToParse, columnName, columnIndex, rowIndex + 1)
+            errorMessages.push(tempMessage);
+            return moment(this.DEFAULT_DATE);
+        }       
+        else
+            return validDate;
+    }
+
+    private static parseCell2(stringToParse: string,
+            columnName:string,
+            columnIndex:number,
+            rowIndex:number,
+            errorMessages: Array<string>): any {
 
         let validDate = moment(stringToParse, this.DEFAULT_FORMATS);
         if (!validDate.isValid() || 

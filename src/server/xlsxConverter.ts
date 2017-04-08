@@ -1,11 +1,15 @@
 /// <reference path="../../typings/modules/xlsx/index.d.ts" />
+/// <reference path="../../node_modules/@types/node/index.d.ts" />
 
 import * as XLSX from "xlsx";
+import * as fs from "fs";
 
 export class XlsxConverter {
 
     private workbook: XLSX.IWorkBook;
     private firstSheet: XLSX.IWorkSheet;
+
+    private EMPTY_JSON = [];
 
     constructor() {
     }
@@ -13,9 +17,11 @@ export class XlsxConverter {
     // https://github.com/SheetJS/js-xlsx#json
     public getJson(filename:string):{}[]{
 
-        if (filename == "" ||
-            filename == undefined)
-            return [{}];
+        if (this.isValidParameter(filename))
+            return this.EMPTY_JSON;
+
+        if (!fs.existsSync(filename))
+            return this.EMPTY_JSON
 
         this.workbook = XLSX.readFile(
             filename,
@@ -26,10 +32,9 @@ export class XlsxConverter {
             });        
 
         // Check the number of work sheets in the Excel file.
-        // If there isn't any, clean up the importer and put
-        // and error message in the property ErrorMessage.
+        // If there isn't any, return an empty JSON
         if (this.workbook.SheetNames.length == 0) {
-            return [{x:1}];
+            return this.EMPTY_JSON;
         }
 
         // Grab the name of the first work sheet and assign it to a data member
@@ -43,4 +48,7 @@ export class XlsxConverter {
         }); 
     }
 
+    private isValidParameter(filename:string):boolean{
+         return ( filename == "" || filename == undefined)
+    }
 }

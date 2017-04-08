@@ -13,9 +13,6 @@ describe("XlsxConverter test suite", () => {
         
         let json = xlsxConverter.getJson("./tests/data/Analytics-data.xls"); 
 
-        // let json = fs.readFileSync("./tests/data/json/jsonFromXlsFile.json", "utf-8");
-        // let obj = JSON.parse(json);
-
         expect(json).not.toBeNull();
         expect(json.length).not.toEqual(0);
     })
@@ -28,7 +25,7 @@ describe("XlsxConverter test suite", () => {
         expect(json.length).not.toEqual(0);
     })    
 
-    it("Pass empty string", () => {
+    it("Convert with empty string as filename", () => {
         
         let json = xlsxConverter.getJson(""); 
 
@@ -36,4 +33,11 @@ describe("XlsxConverter test suite", () => {
         expect(json.length).toEqual(0);
     })    
 
+    it("Convert with non-existing file", () => {
+        
+        let json = xlsxConverter.getJson("./tests2/gazou.xlsx"); 
+
+        expect(json).not.toBeNull();
+        expect(json.length).toEqual(0);
+    })
 })

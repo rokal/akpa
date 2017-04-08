@@ -1,11 +1,8 @@
 /// <reference path="../../node_modules/@types/express/index.d.ts" />
 /// <reference path="../../node_modules/@types/node/index.d.ts" />
-/// <reference path="../../typings/modules/formidable/index.d.ts" />
 
 import { Router, Request, Response, NextFunction } from "express";
-import * as formidable from "formidable";
 import * as fs from "fs";
-import * as path from "path";
 
 import { FileUploadInfo } from "./fileUploadInfo";
 import { XlsxConverter } from "./xlsxConverter";
@@ -47,24 +44,6 @@ export class XlsxJsRoutes {
             console.log("File deleted");
         }
         else {
-
-            // let form = new formidable.IncomingForm();
-            // form.parse(req, function (err, fields, files) {
-            //     console.log("parsing");
-            // });
-
-            // form.on('file', function (name: any, file: any) {
-            //     console.log(name);
-            // });
-
-            // form.on('error', function (err: any) {
-            //     console.log('Error occurred during processing - ' + err);
-            // });
-
-            // // Invoked when all the fields have been processed.
-            // form.on('end', function () {
-            //     console.log('All the request fields have been processed.');
-            // });        
         }
 
         return;
@@ -75,6 +54,5 @@ export class XlsxJsRoutes {
     }
 
     router: Router;
-
 }
 

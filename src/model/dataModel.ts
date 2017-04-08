@@ -1,28 +1,56 @@
+import {DateValidator} from "./dateValidator";
+import {ExcelImportResult} from "./io/ExcelImportResult";
+
 export class DataModel {
 
     private jsonModel: Array<DataItem>
     
     private headers:DataItem;
     private titles: Array<string>;
+    private translationMap: StringArray;
 
     constructor(data:string) {
         this.jsonModel = JSON.parse(data, this.transform);
         this.titles = new Array<string>(0);
+        this.translationMap = {};
 
         if (!this.modelIsEmpty()) {
 
             this.headers = this.jsonModel[0];            
             
-            for (let title in this.headers.Items){                
-                let val = this.headers.Items[title];
+            for (let columnIndex in this.headers.Items){                
+                let title = this.headers.Items[columnIndex];
                 this.titles.push(title);
 
+                this.translationMap[title] = columnIndex;
             }
         }
     }
 
     getTitles(): Array<string> {
         return this.titles;
+    }
+
+    createResults(startColumnName:string, endColumnName:string):Array<ExcelImportResult>{
+
+        let results = new Array<ExcelImportResult>();
+        let dataItem:DataItem;
+        let result:ExcelImportResult;
+
+        let start = this.translationMap[startColumnName];
+        let end = this.translationMap[endColumnName];
+        for (let i = 1; i < this.jsonModel.length; i++){
+            dataItem = this.jsonModel[i];
+            
+            result = DateValidator.process2(startColumnName, 
+                                            dataItem.Items[start],
+                                            endColumnName,
+                                            dataItem.Items[end],
+                                            i)
+            results.push(result);
+        }
+
+        return results;
     }
 
     private modelIsEmpty(): boolean {

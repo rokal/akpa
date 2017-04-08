@@ -17,7 +17,6 @@ describe("DataModel test suite", () => {
 
         expect(titles).not.toBeNull();
         expect(titles.length).toEqual(11);
-
     })
 
 })
