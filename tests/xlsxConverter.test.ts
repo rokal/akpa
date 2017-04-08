@@ -7,11 +7,33 @@ import { XlsxConverter } from "../src/server/xlsxConverter";
 
 describe("XlsxConverter test suite", () => {
 
-    it("Convert file", () => {
+    let xlsxConverter = new XlsxConverter();
 
-        let json = fs.readFileSync("./tests/data/json/jsonFromXlsFile.json", "utf-8");
-        let obj = JSON.parse(json);
+    it("Convert Xls file to JSON", () => {
+        
+        let json = xlsxConverter.getJson("./tests/data/Analytics-data.xls"); 
 
-        expect(obj).not.toBeNull();
+        // let json = fs.readFileSync("./tests/data/json/jsonFromXlsFile.json", "utf-8");
+        // let obj = JSON.parse(json);
+
+        expect(json).not.toBeNull();
+        expect(json.length).not.toEqual(0);
     })
+
+    it("Convert Xlsx file to JSON", () => {
+        
+        let json = xlsxConverter.getJson("./tests/data/Excel_2007_Xlsx_TestSheet.xlsx"); 
+
+        expect(json).not.toBeNull();
+        expect(json.length).not.toEqual(0);
+    })    
+
+    it("Pass empty string", () => {
+        
+        let json = xlsxConverter.getJson(""); 
+
+        expect(json).not.toBeNull();
+        expect(json.length).toEqual(0);
+    })    
+
 })

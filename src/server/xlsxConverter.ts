@@ -13,6 +13,10 @@ export class XlsxConverter {
     // https://github.com/SheetJS/js-xlsx#json
     public getJson(filename:string):{}[]{
 
+        if (filename == "" ||
+            filename == undefined)
+            return [{}];
+
         this.workbook = XLSX.readFile(
             filename,
             {
