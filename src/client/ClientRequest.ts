@@ -1,27 +1,31 @@
-import {FileUploadInfo} from "../server/fileUploadInfo";
+import { FileUploadInfo } from "../server/fileUploadInfo";
 
 export class ClientRequest {
 
     constructor() {
     }
 
-    public launch(filename: string,file: File): void {
+    public launch(filename: string, file: File): void {
 
         var formData = new FormData(document.getElementById("toto") as HTMLFormElement);
         //formData.append(FileUploadInfo.FIELD_FILE, file);
-        
+
         console.log("FIELD: " + FileUploadInfo.FIELD_FILE);
 
         var xhr = new XMLHttpRequest();
         xhr.upload.addEventListener("progress", this.updateProgress);
-        xhr.upload.addEventListener("load", this.transferComplete);
+        xhr.addEventListener("load", function () {                    
+                    var i =xhr.getResponseHeader('header');
+                }, false);
+        // xhr.upload.addEventListener("load", (event:Event) => {
+        //     if (xhr.readyState == 4){
+        //         let t = xhr.response;
+        //     }
+        // });
         xhr.upload.addEventListener("error", this.transferFailed);
         xhr.upload.addEventListener("abort", this.transferCanceled);
 
         xhr.open('POST', "http://localhost:3030" + FileUploadInfo.ROUTE_XLSJS, true);
-        //xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //xhr.setRequestHeader("Content-type", "multipart/form-data");        
-        //xhr.setRequestHeader("Access-Control-Request-Headers", "*");
         xhr.send(formData);
     }
 
@@ -29,7 +33,7 @@ export class ClientRequest {
 
     }
 
-    private transferComplete(event: any) {
+    private transferComplete(event: Event) {
         console.log("The transfer is complete.");
     }
 

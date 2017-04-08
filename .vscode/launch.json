@@ -49,24 +49,18 @@
             "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
             "stopOnEntry": false,
             "args": [
-                "./tests/jsoutput/tests/excelloader.test.js",
+                "./tests/JsOutput/tests/xlsxConverter.test.js",
                 "--runInBand",
                 "--no-cache",
                 "-c", 
-                "jestconfig.json"],
+                "./configs/test/jestconfig.json"],
             "cwd": "${workspaceRoot}",
             "preLaunchTask": null,
             "runtimeExecutable": null,
-            "runtimeArgs": [
-                "--debug-brk"
-            ],
-            "env": {
-                "NODE_ENV": "development"
-            },
+            "runtimeArgs": ["--no-lazy"],
+            "env": {"NODE_ENV": "development"},
             "console": "internalConsole",
-            "sourceMaps": true,
-            "outFiles": null,
-            "port": 9070
+            "sourceMaps": true
         }
     ]
 }

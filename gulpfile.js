@@ -83,6 +83,9 @@ gulp.task("server", function() {
     // Watch for file change and restart the server
     gulp.watch([
         "./src/server/**"], ["compile-server"]);
+
+    // curl -F xlsFile=@"./tests/data/Analytics-data.xls" http://localhost:3030/api/v1/xlsxjs
+    // curl -F xlsFile=@"./tests/data/Excel_2007_Xlsx_TestSheet.xlsx" http://localhost:3030/api/v1/xlsxjs    
 });
 
 // Start the webserver

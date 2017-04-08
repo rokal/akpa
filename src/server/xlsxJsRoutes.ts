@@ -8,7 +8,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 import { FileUploadInfo } from "./fileUploadInfo";
-import { ExcelImporter } from "./excelImporter";
+import { XlsxConverter } from "./xlsxConverter";
 import { log } from "util";
 
 export class XlsxJsRoutes {
@@ -21,10 +21,6 @@ export class XlsxJsRoutes {
         this.router.get('/', this.getAll);
         this.router.post('/', this.decodeExcelFile);
 
-        let form = new formidable.IncomingForm();
-        form.multiples = true;
-        form.uploadDir = path.join(__dirname, 'uploads');
-
         return this.router;
     }
 
@@ -36,24 +32,19 @@ export class XlsxJsRoutes {
     }
 
     public decodeExcelFile(req: any, res: Response, next: NextFunction): void {
-
-        let excelImporter = new ExcelImporter("");
+        
         let xlsFile = req.files[FileUploadInfo.FIELD_FILE];
         if (xlsFile) {            
-            excelImporter.loadFile(xlsFile.path);
-            console.log("Got File");
-            let t = excelImporter.getJson();
+            let converter = new XlsxConverter();
+            console.log("Got File: " + xlsFile.path);
+            let t = converter.getJson(xlsFile.path);
             res.send(t).end();
-
+            console.log("File sent");
             fs.unlink(xlsFile.path, function(err: NodeJS.ErrnoException){
                 if (err)
-                    log(err.message);
+                    console.log(err.message);
             });
-        }
-        else if (req.fields.xlsFile) {            
-            xlsFile = req.fields.xlsFile;
-            //excelImporter.loadBlob(xlsFile);            
-            console.log("Got BLOB");
+            console.log("File deleted");
         }
         else {
 
