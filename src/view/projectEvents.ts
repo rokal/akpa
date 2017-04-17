@@ -1,4 +1,4 @@
-import { ExcelImportResult } from "../model/io/excelImportResult";
+import { ExcelImportResult } from "../model/excelImportResult";
 import { SimulationConfig } from "../model/simulationConfig";
 
 export abstract class ProjectEvent{

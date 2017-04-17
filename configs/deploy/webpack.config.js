@@ -68,13 +68,4 @@ module.exports = {
             }
         ],
     },
-
-    // The following sections (node and externals) are meant for integrating
-    // correctly the JSZip library in XLS-JS module 
-    node: { fs: 'empty'},
-
-    externals: [
-        { './cptable': 'var cptable' },
-        {'./node_modules/xlsx/jszip': 'jszip'}
-    ]
 };

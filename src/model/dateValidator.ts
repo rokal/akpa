@@ -1,8 +1,7 @@
 /// <reference path="../../typings/globals/moment/index.d.ts" />
 
 import { DateRange } from "./dateRange";
-import {ExcelImportResult} from "./io/excelImportResult";
-import * as XLSX from "xlsx";
+import {ExcelImportResult} from "./excelImportResult";
 import * as moment from "moment";
 
 export class DateValidator {
@@ -12,51 +11,51 @@ export class DateValidator {
     private constructor(){        
     }
 
+    // static process(startColumnName: string,
+    //     startColumnIndex: number,
+    //     startCell: XLSX.IWorkSheetCell | undefined,
+    //     endColumnName: string,
+    //     endColumnIndex: number,
+    //     endCell: XLSX.IWorkSheetCell | undefined,
+    //     rowIndex: number): ExcelImportResult {
+
+    //     let errorMessages = new Array<string>(0);
+    //     let startDate = moment();
+    //     let endDate = moment();
+    //     let tempMessage: string;
+    //     let isBothCellsAreNotEmpty = true;
+
+    //     if (startCell === undefined) {
+    //         startDate = moment(this.DEFAULT_DATE);
+    //         tempMessage = this.format(this.MSG_CELL_UNDEFINED, startColumnName, startColumnIndex, rowIndex + 1);
+    //         errorMessages.push(tempMessage);
+    //         isBothCellsAreNotEmpty = false;
+    //     }
+    //     else
+    //         startDate = this.parseCell(startCell, startColumnName, startColumnIndex, rowIndex, errorMessages);
+
+    //     if (endCell === undefined) {
+    //         endDate = moment(this.DEFAULT_DATE);
+    //         tempMessage = this.format(this.MSG_CELL_UNDEFINED, endColumnName, endColumnIndex, rowIndex + 1);
+    //         errorMessages.push(tempMessage);
+    //         isBothCellsAreNotEmpty = false;
+    //     }
+    //     else
+    //         endDate = this.parseCell(endCell, endColumnName, endColumnIndex, rowIndex, errorMessages)        
+
+    //     if (isBothCellsAreNotEmpty &&
+    //         startDate > endDate) {
+    //         tempMessage = this.format(this.MSG_START_GREATER_END, startDate.toISOString(), endDate.toISOString(), rowIndex + 1);
+    //         errorMessages.push(tempMessage);
+    //     }
+
+    //     return new ExcelImportResult(startDate.toDate(),
+    //                                  endDate.toDate(),
+    //                                  rowIndex,
+    //                                  errorMessages);
+    // }
+
     static process(startColumnName: string,
-        startColumnIndex: number,
-        startCell: XLSX.IWorkSheetCell | undefined,
-        endColumnName: string,
-        endColumnIndex: number,
-        endCell: XLSX.IWorkSheetCell | undefined,
-        rowIndex: number): ExcelImportResult {
-
-        let errorMessages = new Array<string>(0);
-        let startDate = moment();
-        let endDate = moment();
-        let tempMessage: string;
-        let isBothCellsAreNotEmpty = true;
-
-        if (startCell === undefined) {
-            startDate = moment(this.DEFAULT_DATE);
-            tempMessage = this.format(this.MSG_CELL_UNDEFINED, startColumnName, startColumnIndex, rowIndex + 1);
-            errorMessages.push(tempMessage);
-            isBothCellsAreNotEmpty = false;
-        }
-        else
-            startDate = this.parseCell(startCell, startColumnName, startColumnIndex, rowIndex, errorMessages);
-
-        if (endCell === undefined) {
-            endDate = moment(this.DEFAULT_DATE);
-            tempMessage = this.format(this.MSG_CELL_UNDEFINED, endColumnName, endColumnIndex, rowIndex + 1);
-            errorMessages.push(tempMessage);
-            isBothCellsAreNotEmpty = false;
-        }
-        else
-            endDate = this.parseCell(endCell, endColumnName, endColumnIndex, rowIndex, errorMessages)        
-
-        if (isBothCellsAreNotEmpty &&
-            startDate > endDate) {
-            tempMessage = this.format(this.MSG_START_GREATER_END, startDate.toISOString(), endDate.toISOString(), rowIndex + 1);
-            errorMessages.push(tempMessage);
-        }
-
-        return new ExcelImportResult(startDate.toDate(),
-                                     endDate.toDate(),
-                                     rowIndex,
-                                     errorMessages);
-    }
-
-    static process2(startColumnName: string,
         startCell: string | undefined,
         endColumnName: string,
         endCell: string | undefined,
@@ -75,7 +74,7 @@ export class DateValidator {
             isBothCellsAreNotEmpty = false;
         }
         else
-            startDate = this.parseCell2(startCell, startColumnName, -1, rowIndex, errorMessages);
+            startDate = this.parseCell(startCell, startColumnName, -1, rowIndex, errorMessages);
 
         if (endCell === undefined) {
             endDate = moment(this.DEFAULT_DATE);
@@ -84,7 +83,7 @@ export class DateValidator {
             isBothCellsAreNotEmpty = false;
         }
         else
-            endDate = this.parseCell2(endCell, endColumnName, -1, rowIndex, errorMessages)        
+            endDate = this.parseCell(endCell, endColumnName, -1, rowIndex, errorMessages)        
 
         if (isBothCellsAreNotEmpty &&
             startDate > endDate) {
@@ -126,32 +125,32 @@ export class DateValidator {
 
     private static DEFAULT_FORMATS = DateValidator.buildFormats();
 
-    private static parseCell(cell: XLSX.IWorkSheetCell,
-            columnName:string,
-            columnIndex:number,
-            rowIndex:number,
-            errorMessages: Array<string>): any {
-        let stringToParse: string;
-        if (cell.w === undefined ||
-            cell.w == "") {
-            // The formatted text is empty
-            stringToParse = cell.v;
-        }
-        else
-            stringToParse = cell.w;
+    // private static parseCell(cell: XLSX.IWorkSheetCell,
+    //         columnName:string,
+    //         columnIndex:number,
+    //         rowIndex:number,
+    //         errorMessages: Array<string>): any {
+    //     let stringToParse: string;
+    //     if (cell.w === undefined ||
+    //         cell.w == "") {
+    //         // The formatted text is empty
+    //         stringToParse = cell.v;
+    //     }
+    //     else
+    //         stringToParse = cell.w;
 
-        let validDate = moment(stringToParse, this.DEFAULT_FORMATS);
-        if (!validDate.isValid() || 
-            validDate.year() > 2030){
-            let tempMessage = this.format(this.MSG_INVALID_DATE, stringToParse, columnName, columnIndex, rowIndex + 1)
-            errorMessages.push(tempMessage);
-            return moment(this.DEFAULT_DATE);
-        }       
-        else
-            return validDate;
-    }
+    //     let validDate = moment(stringToParse, this.DEFAULT_FORMATS);
+    //     if (!validDate.isValid() || 
+    //         validDate.year() > 2030){
+    //         let tempMessage = this.format(this.MSG_INVALID_DATE, stringToParse, columnName, columnIndex, rowIndex + 1)
+    //         errorMessages.push(tempMessage);
+    //         return moment(this.DEFAULT_DATE);
+    //     }       
+    //     else
+    //         return validDate;
+    // }
 
-    private static parseCell2(stringToParse: string,
+    private static parseCell(stringToParse: string,
             columnName:string,
             columnIndex:number,
             rowIndex:number,

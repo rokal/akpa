@@ -1,7 +1,7 @@
 import { CycleTime } from "./cycleTime";
 import { CycleTimeBuilder } from "./cycleTimeBuilder";
 import { DateRange } from "./dateRange"
-import { ExcelImportResult } from "./io/excelImportResult";
+import { ExcelImportResult } from "./excelImportResult";
 import { ForecastDate} from "./forecastDate";
 import { ForecastDateBuilder } from "./forecastDateBuilder";
 import { ForecastItems} from "./forecastItems";

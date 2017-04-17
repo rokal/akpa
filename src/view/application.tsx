@@ -7,7 +7,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { CycleTime } from "../model/cycleTime";
-import { ExcelImportResult } from "../model/io/excelImportResult";
+import { ExcelImportResult } from "../model/excelImportResult";
 import { ForecastDate } from "../model/forecastDate";
 import { ForecastItems } from "../model/forecastItems";
 import { SimulationConfig} from "../model/simulationConfig";

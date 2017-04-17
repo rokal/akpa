@@ -57,11 +57,11 @@ export class HistoricalThroughputs {
                 key = currentDate.format(this.KEY_FORMAT);
                 
                 if (this.elements.has(key)){
-                    console.log("PUSHING: " + this.elements.get(key));
+                    //console.log("PUSHING: " + this.elements.get(key));
                     throughputs.push(this.elements.get(key));
                     }
                 else{
-                    console.log("PUSHING: 0");
+                    //console.log("PUSHING: 0");
                     throughputs.push(0);
                 }
             }

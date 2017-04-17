@@ -1,4 +1,4 @@
-import {DateRange} from "../dateRange";
+import {DateRange} from "./dateRange";
 
 export class ExcelImportResult{
 

@@ -1,5 +1,5 @@
 import {DateValidator} from "./dateValidator";
-import {ExcelImportResult} from "./io/ExcelImportResult";
+import {ExcelImportResult} from "./ExcelImportResult";
 
 export class DataModel {
 
@@ -42,7 +42,7 @@ export class DataModel {
         for (let i = 1; i < this.jsonModel.length; i++){
             dataItem = this.jsonModel[i];
             
-            result = DateValidator.process2(startColumnName, 
+            result = DateValidator.process(startColumnName, 
                                             dataItem.Items[start],
                                             endColumnName,
                                             dataItem.Items[end],
