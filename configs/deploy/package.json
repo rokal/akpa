@@ -1,0 +1,19 @@
+{
+  "name": "akpa-server",
+  "version": "1.0.0",
+  "description": "The server for the AKPA project",
+  "main": "",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-formidable": "^1.0.0",
+    "xlsx": "^0.9.11"
+ },
+  "devDependencies": {},
+  "scripts": {
+    "start": "~/dist/server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Louis-Philippe Carignan",
+  "license": "ISC"
+}
