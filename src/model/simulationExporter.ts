@@ -1,5 +1,5 @@
-import { SimulationConfig } from "./simulationConfig";
-import { SimulationResult } from "./simulationResult";
+import { SimulationConfig } from "./simulation/simulationConfig";
+import { SimulationResult } from "./simulation/simulationResult";
 
 export class SimulationExporter {
 

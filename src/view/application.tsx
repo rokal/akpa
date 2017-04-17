@@ -8,11 +8,11 @@ import * as ReactDOM from "react-dom";
 
 import { CycleTime } from "../model/cycleTime";
 import { ExcelImportResult } from "../model/excelImportResult";
-import { ForecastDate } from "../model/forecastDate";
-import { ForecastItems } from "../model/forecastItems";
-import { SimulationConfig} from "../model/simulationConfig";
-import { SimulationController } from "../model/simulationController";
-import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
+import { ForecastDate } from "../model/forecast/forecastDate";
+import { ForecastItems } from "../model/forecast/forecastItems";
+import { SimulationConfig} from "../model/simulation/simulationConfig";
+import { SimulationController } from "../model/simulation/simulationController";
+import { ThroughputFrequency } from "../model/simulation/throughputFrequencyEnum";
 import { ProjectEvent, ExistingProjectEvent, NewProjectEvent} from "./projectEvents";
 
 import { CycleTimeChart} from "./cycleTimeChart";

@@ -11,50 +11,6 @@ export class DateValidator {
     private constructor(){        
     }
 
-    // static process(startColumnName: string,
-    //     startColumnIndex: number,
-    //     startCell: XLSX.IWorkSheetCell | undefined,
-    //     endColumnName: string,
-    //     endColumnIndex: number,
-    //     endCell: XLSX.IWorkSheetCell | undefined,
-    //     rowIndex: number): ExcelImportResult {
-
-    //     let errorMessages = new Array<string>(0);
-    //     let startDate = moment();
-    //     let endDate = moment();
-    //     let tempMessage: string;
-    //     let isBothCellsAreNotEmpty = true;
-
-    //     if (startCell === undefined) {
-    //         startDate = moment(this.DEFAULT_DATE);
-    //         tempMessage = this.format(this.MSG_CELL_UNDEFINED, startColumnName, startColumnIndex, rowIndex + 1);
-    //         errorMessages.push(tempMessage);
-    //         isBothCellsAreNotEmpty = false;
-    //     }
-    //     else
-    //         startDate = this.parseCell(startCell, startColumnName, startColumnIndex, rowIndex, errorMessages);
-
-    //     if (endCell === undefined) {
-    //         endDate = moment(this.DEFAULT_DATE);
-    //         tempMessage = this.format(this.MSG_CELL_UNDEFINED, endColumnName, endColumnIndex, rowIndex + 1);
-    //         errorMessages.push(tempMessage);
-    //         isBothCellsAreNotEmpty = false;
-    //     }
-    //     else
-    //         endDate = this.parseCell(endCell, endColumnName, endColumnIndex, rowIndex, errorMessages)        
-
-    //     if (isBothCellsAreNotEmpty &&
-    //         startDate > endDate) {
-    //         tempMessage = this.format(this.MSG_START_GREATER_END, startDate.toISOString(), endDate.toISOString(), rowIndex + 1);
-    //         errorMessages.push(tempMessage);
-    //     }
-
-    //     return new ExcelImportResult(startDate.toDate(),
-    //                                  endDate.toDate(),
-    //                                  rowIndex,
-    //                                  errorMessages);
-    // }
-
     static process(startColumnName: string,
         startCell: string | undefined,
         endColumnName: string,
@@ -124,31 +80,6 @@ export class DateValidator {
     }
 
     private static DEFAULT_FORMATS = DateValidator.buildFormats();
-
-    // private static parseCell(cell: XLSX.IWorkSheetCell,
-    //         columnName:string,
-    //         columnIndex:number,
-    //         rowIndex:number,
-    //         errorMessages: Array<string>): any {
-    //     let stringToParse: string;
-    //     if (cell.w === undefined ||
-    //         cell.w == "") {
-    //         // The formatted text is empty
-    //         stringToParse = cell.v;
-    //     }
-    //     else
-    //         stringToParse = cell.w;
-
-    //     let validDate = moment(stringToParse, this.DEFAULT_FORMATS);
-    //     if (!validDate.isValid() || 
-    //         validDate.year() > 2030){
-    //         let tempMessage = this.format(this.MSG_INVALID_DATE, stringToParse, columnName, columnIndex, rowIndex + 1)
-    //         errorMessages.push(tempMessage);
-    //         return moment(this.DEFAULT_DATE);
-    //     }       
-    //     else
-    //         return validDate;
-    // }
 
     private static parseCell(stringToParse: string,
             columnName:string,

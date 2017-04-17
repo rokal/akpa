@@ -1,4 +1,4 @@
-﻿import { Forecast } from "./forecast";
+﻿import { Forecast } from "../forecast/forecast";
 import { SimulationConfig } from "./simulationConfig";
 import { SimulationResult } from "./simulationResult";
 import { ThroughputFrequency } from "./throughputFrequencyEnum";
