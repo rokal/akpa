@@ -49,21 +49,15 @@ export class HistoricalThroughputs {
 
         let throughputs = new Array(0);
         if (this.minDate.isBefore(this.maxDate)){
-            console.log("inside");
             let key: string;
             let currentDate = this.minDate;
-            console.log("Start: " + currentDate.format(this.KEY_FORMAT));
             for (let i = 0; currentDate.isBefore(this.maxDate); i++, currentDate.add(1, "days")){
                 key = currentDate.format(this.KEY_FORMAT);
                 
-                if (this.elements.has(key)){
-                    //console.log("PUSHING: " + this.elements.get(key));
+                if (this.elements.has(key))
                     throughputs.push(this.elements.get(key));
-                    }
-                else{
-                    //console.log("PUSHING: 0");
+                else
                     throughputs.push(0);
-                }
             }
         }
         else if (this.Count == 1)

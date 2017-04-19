@@ -4,11 +4,11 @@
 import * as React from "react";
 import {create} from "react-test-renderer";
 
-import {Forecast} from "../src/model/forecast";
-import {ForecastItems} from "../src/model/forecastItems";
-import {Percentile} from "../src/model/percentile";
-import {SimulationConfig} from "../src/model/simulationConfig";
-import {ThroughputFrequency} from "../src/model/throughputFrequencyEnum";
+import {Forecast} from "../src/model/forecast/forecast";
+import {ForecastItems} from "../src/model/forecast/forecastItems";
+import {Percentile} from "../src/model/forecast/percentile";
+import {SimulationConfig} from "../src/model/simulation/simulationConfig";
+import {ThroughputFrequency} from "../src/model/simulation/throughputFrequencyEnum";
 import {ResultsDisplay} from "../src/view/resultsDisplay";
 
 describe("ResultsDisplay test suite", () => {

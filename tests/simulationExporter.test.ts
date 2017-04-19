@@ -1,11 +1,10 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
-import { ForecastDateBuilder } from "../src/model/forecastDateBuilder";
-import { SimulationConfig } from "../src/model/simulationConfig";
-import { SimulationDate } from "../src/model/simulationDate";
-import { ThroughputFrequency } from "../src/model/throughputFrequencyEnum";
-import { SimulationImporter } from "../src/model/io/simulationImporter";
-import { SimulationExporter } from "../src/model/io/simulationExporter";
+//import { ForecastDateBuilder } from "../src/model/forecastDateBuilder";
+import { SimulationConfig } from "../src/model/simulation/simulationConfig";
+import { SimulationDate } from "../src/model/simulation/simulationDate";
+import { ThroughputFrequency } from "../src/model/simulation/throughputFrequencyEnum";
+import { SimulationExporter } from "../src/model/simulationExporter";
 
 describe("SimulationExporter test suite", () => {
 
@@ -24,26 +23,6 @@ describe("SimulationExporter test suite", () => {
 
         simulation = new SimulationDate(simulationConfig);
         simulation.execute();
-    });
-
-    test("Test export() in normal case", () => {
-
-        let content;
-
-        content = SimulationExporter.export(simulationConfig, simulation.SimulationResults);
-        expect(content).not.toBeNull();
-        expect(content.startsWith("data:attachment/json")).toBeTruthy();
-
-        // Strip the first part (plus the comma) to only get the JSON
-        let json = content.substring("data:attachment/json".length + 1);
-        try
-        {
-            let objects = SimulationImporter.import(json);
-        }
-        catch (ex)
-        {
-            console.error(ex);
-        }
     });
 
     it("Test createFilename()", () => {

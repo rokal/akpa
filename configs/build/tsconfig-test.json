@@ -23,8 +23,7 @@
     ],
     "include":[
         "../../src/client/*.ts",        
-    	"../../src/model/*.ts",
-        "../../src/model/io/*.ts",
+    	"../../src/model/**/*.ts",
         "../../src/server/*.ts",
         "../../src/view/*.ts",
         "../../src/*.ts",

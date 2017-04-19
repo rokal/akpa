@@ -1,7 +1,7 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
-import { SimulationConfig } from "../src/model/simulationConfig";
-import { ThroughputFrequency } from "../src/model/throughputFrequencyEnum";
+import { SimulationConfig } from "../src/model/simulation/simulationConfig";
+import { ThroughputFrequency } from "../src/model/simulation/throughputFrequencyEnum";
 
 describe("SimulationConfig test suite", () => {
 

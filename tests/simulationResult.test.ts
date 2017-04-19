@@ -1,6 +1,6 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
-import { SimulationResult } from "../src/model/simulationResult";
+import { SimulationResult } from "../src/model/simulation/simulationResult";
 
 describe("SimulationResult test suite", () => {
 

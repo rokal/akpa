@@ -1,6 +1,6 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
-import {Percentile} from "../src/model/percentile";
+import {Percentile} from "../src/model/forecast/percentile";
 
 describe("Percentile test suite", () => {
 

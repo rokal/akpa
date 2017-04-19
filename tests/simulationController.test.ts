@@ -1,8 +1,7 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
-import {ExcelImportResult} from "../src/model/io/excelImportResult";
-import {SimulationController} from "../src/model/simulationController";
-
+import {ExcelImportResult} from "../src/model/excelImportResult";
+import {SimulationController} from "../src/model/simulation/simulationController";
 
 describe("SimulationController test suite", () => {
 

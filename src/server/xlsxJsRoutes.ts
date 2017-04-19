@@ -1,12 +1,14 @@
 /// <reference path="../../node_modules/@types/express/index.d.ts" />
 /// <reference path="../../node_modules/@types/node/index.d.ts" />
+/// <reference path="../../node_modules/@types/winston/index.d.ts" />
 
 import { Router, Request, Response, NextFunction } from "express";
 import * as fs from "fs";
 
+import {Logger} from "./logger";
 import { FileUploadInfo } from "./fileUploadInfo";
 import { XlsxConverter } from "./xlsxConverter";
-import { log } from "util";
+import * as winston from "winston";
 
 export class XlsxJsRoutes {
 
@@ -22,10 +24,8 @@ export class XlsxJsRoutes {
     }
 
     public getAll(req: Request, res: Response, next: NextFunction): void {
-        console.log("getAll!");
-        res.json({
-            message: 'getAllGAZOU'
-        });
+        winston.debug("getAll");
+        res.json({message: "getAll"});
     }
 
     public decodeExcelFile(req: any, res: Response, next: NextFunction): void {
@@ -33,17 +33,20 @@ export class XlsxJsRoutes {
         let xlsFile = req.files[FileUploadInfo.FIELD_FILE];
         if (xlsFile) {            
             let converter = new XlsxConverter();
-            console.log("Got File: " + xlsFile.path);
-            let t = converter.getJson(xlsFile.path);
-            res.send(t).end();
-            console.log("File sent");
+
+            winston.debug("Got File: %s", xlsFile.path);            
+            let json = converter.getJson(xlsFile.path);
+            res.send(json).end();            
+            winston.debug("File %s sent back to %s", xlsFile.path, req.connection.remoteAddress);
+            
             fs.unlink(xlsFile.path, function(err: NodeJS.ErrnoException){
                 if (err)
-                    console.log(err.message);
+                    winston.error(err.message);
             });
-            console.log("File deleted");
+            winston.debug("File %s deleted", xlsFile.path);
         }
         else {
+            winston.debug("No field %s in request", FileUploadInfo.FIELD_FILE);
         }
 
         return;
