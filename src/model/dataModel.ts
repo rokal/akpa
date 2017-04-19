@@ -1,5 +1,5 @@
 import {DateValidator} from "./dateValidator";
-import {ExcelImportResult} from "./ExcelImportResult";
+import {ExcelImportResult} from "./excelImportResult";
 
 export class DataModel {
 
