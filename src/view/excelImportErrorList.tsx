@@ -3,7 +3,7 @@
 
 import * as React from "react";
 
-import {ExcelImportResult} from "../model/io/excelImportResult";
+import {ExcelImportResult} from "../model/excelImportResult";
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import Subheader from "material-ui/Subheader"

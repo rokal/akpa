@@ -1,7 +1,7 @@
 ﻿import {Simulation} from "./simulation";
 import {SimulationConfig} from "./simulationConfig";
 import {ThroughputFrequency} from "./throughputFrequencyEnum";
-import {Utilities} from "../utilities";
+import {Utilities} from "../../utilities";
 
 export class SimulationDate extends Simulation{
 

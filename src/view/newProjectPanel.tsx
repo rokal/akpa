@@ -5,8 +5,8 @@
 import * as React from "react";
 
 import { ProjectEvent, NewProjectEvent } from "./projectEvents";
-import { SimulationConfig } from "../model/simulationConfig";
-import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
+import { SimulationConfig } from "../model/simulation/simulationConfig";
+import { ThroughputFrequency } from "../model/simulation/throughputFrequencyEnum";
 import { Utilities } from "../utilities";
 
 import DatePicker from "material-ui/DatePicker";

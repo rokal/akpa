@@ -1,6 +1,6 @@
 import { Forecast } from "./forecast";
 import { Percentile } from "./percentile";
-import { SimulationResult } from "./simulationResult";
+import { SimulationResult } from "../simulation/simulationResult";
 
 export abstract class ForecastBuilder {
 

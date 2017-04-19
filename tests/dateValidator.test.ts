@@ -7,27 +7,22 @@ import * as XLSX from "xlsx";
 describe("DateValidator test suite", () => {
 
     let startColumnName = "Start column";
-    let startColumnIndex = 0;
     let endColumnName = "End column";
-    let endColumnIndex = 5;
     let rowIndex = 2;
 
-    let defaultEmptyCell: XLSX.IWorkSheetCell = {t: "", v: ""};
-    let startCellInvalid:XLSX.IWorkSheetCell = {t:"", v:"45067", w:""};
-    let startCellValid:XLSX.IWorkSheetCell = {t:"", v:"", w:"01/15/2014"};
-    let endCellValid:XLSX.IWorkSheetCell = {t:"", v:"", w:"Jan 30 2017"};    
+    let defaultEmptyCell = "";
+    let startCellValid = "01/15/2014";
+    let startCellInvalid = "gsdfgfsfsg";
+    let endCellValid = "Jan 30 2017";    
 
-    let startCellValid_Format_Vacanti:XLSX.IWorkSheetCell = {t:"", v:"", w:"01/13/2014"};
-    let endCellValid_Format_Vacanti:XLSX.IWorkSheetCell = {t:"", v:"", w:"Feb 05 2017"};
-
+    let startCellValid_Format_Vacanti = "Mar 13 2017";
+    let endCellValid_Format_Vacanti = "Mar 27 2017";
 
     test("Undefined start cell test", () => {
         
         let actualResult = DateValidator.process(startColumnName,
-                                          startColumnIndex,
-                                          undefined,
+                                          defaultEmptyCell,
                                           endColumnName,
-                                          endColumnIndex,
                                           endCellValid,
                                           rowIndex);
 
@@ -40,10 +35,8 @@ describe("DateValidator test suite", () => {
     test("Test with Actionable Agile format", () => {
         
         let actualResult = DateValidator.process(startColumnName,
-                                          startColumnIndex,
                                           startCellValid_Format_Vacanti,
                                           endColumnName,
-                                          endColumnIndex,
                                           endCellValid_Format_Vacanti,
                                           rowIndex);
 
@@ -56,11 +49,9 @@ describe("DateValidator test suite", () => {
     test("Undefined end cell test", () => {
         
         let actualResult = DateValidator.process(startColumnName,
-                                          startColumnIndex,
                                           startCellValid,
                                           endColumnName,
-                                          endColumnIndex,
-                                          undefined,
+                                          defaultEmptyCell,
                                           rowIndex);
 
         expect(actualResult.Range.StartDate).not.toEqual(DateValidator.DEFAULT_DATE);
@@ -72,10 +63,8 @@ describe("DateValidator test suite", () => {
     test("Start greater than end test", () => {
 
         let actualResult = DateValidator.process(startColumnName,
-                                          startColumnIndex,
                                           endCellValid,
                                           endColumnName,
-                                          endColumnIndex,
                                           startCellValid,
                                           rowIndex);
         
@@ -88,10 +77,8 @@ describe("DateValidator test suite", () => {
     test("Invalid start cell test", () => {
 
         let actualResult = DateValidator.process(startColumnName,
-                                          startColumnIndex,
                                           startCellInvalid,
                                           endColumnName,
-                                          endColumnIndex,
                                           endCellValid,
                                           rowIndex);
         

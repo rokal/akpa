@@ -1,17 +1,18 @@
 ﻿/// <reference path="../../typings/react/react.d.ts" />
 /// <reference path="../../typings/react-dom/react-dom.d.ts" />
+/// <reference path="../../typings/modules/react-tap-event-plugin/index.d.ts" />
 /// <reference path="../../node_modules/@types/google.analytics/index.d.ts" />
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { CycleTime } from "../model/cycleTime";
-import { ExcelImportResult } from "../model/io/excelImportResult";
-import { ForecastDate } from "../model/forecastDate";
-import { ForecastItems } from "../model/forecastItems";
-import { SimulationConfig} from "../model/simulationConfig";
-import { SimulationController } from "../model/simulationController";
-import { ThroughputFrequency } from "../model/throughputFrequencyEnum";
+import { ExcelImportResult } from "../model/excelImportResult";
+import { ForecastDate } from "../model/forecast/forecastDate";
+import { ForecastItems } from "../model/forecast/forecastItems";
+import { SimulationConfig} from "../model/simulation/simulationConfig";
+import { SimulationController } from "../model/simulation/simulationController";
+import { ThroughputFrequency } from "../model/simulation/throughputFrequencyEnum";
 import { ProjectEvent, ExistingProjectEvent, NewProjectEvent} from "./projectEvents";
 
 import { CycleTimeChart} from "./cycleTimeChart";

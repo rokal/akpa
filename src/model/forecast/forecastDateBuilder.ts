@@ -1,7 +1,7 @@
 import { ForecastBuilder } from "./forecastBuilder";
 import { ForecastDate } from "./forecastDate";
 import { Percentile } from "./percentile";
-import { SimulationResult } from "./simulationResult";
+import { SimulationResult } from "../simulation/simulationResult";
 
 export class ForecastDateBuilder extends ForecastBuilder {
 

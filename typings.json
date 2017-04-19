@@ -6,10 +6,16 @@
     "react-easy-chart": "registry:dt/react-easy-chart#0.1.12+20170123203653"
   },
   "devDependencies": {
+    "connect-livereload": "registry:dt/connect-livereload#0.5.3+20160428045346",
     "react-test-renderer": "registry:dt/react-test-renderer#15.4.0+20170123203653"
   },
   "dependencies": {
+    "body-parser": "registry:npm/body-parser#1.15.2+20161116154925",
+    "express-formidable": "registry:dt/express-formidable#1.0.0+20161116192001",
+    "formidable": "registry:dt/formidable#1.0.16+20160510010627",
+    "multer": "registry:dt/multer#0.0.0+20170119150739",
     "react-tap-event-plugin": "registry:dt/react-tap-event-plugin#0.0.0+20160726072212",
+    "request": "registry:npm/request#2.69.0+20160428223725",
     "xlsx": "registry:dt/xlsx#0.0.0+20161122230850"
   },
   "globalDevDependencies": {

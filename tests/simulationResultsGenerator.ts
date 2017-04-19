@@ -1,4 +1,4 @@
-import {SimulationResult} from "../src/model/simulationResult";
+import {SimulationResult} from "../src/model/simulation/simulationResult";
 
 export class SimulationResultsGenerator {
 

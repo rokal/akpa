@@ -3,11 +3,11 @@
 
 import * as React from "react";
 
-import { Forecast } from "../model/forecast";
-import { ForecastDate } from "../model/forecastDate";
-import { ForecastItems } from "../model/forecastItems";
-import { Percentile } from "../model/percentile";
-import { SimulationConfig } from "../model/simulationConfig";
+import { Forecast } from "../model/forecast/forecast";
+import { ForecastDate } from "../model/forecast/forecastDate";
+import { ForecastItems } from "../model/forecast/forecastItems";
+import { Percentile } from "../model/forecast/percentile";
+import { SimulationConfig } from "../model/simulation/simulationConfig";
 
 import Slider from "material-ui/Slider";
 import * as moment from "moment";

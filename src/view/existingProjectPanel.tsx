@@ -3,8 +3,9 @@
 
 import * as React from "react";
 
-import { ExcelImporter } from "../model/io/excelImporter";
-import { ExcelImportResult } from "../model/io/excelImportResult";
+import { ClientRequest } from "../client/ClientRequest";
+import { DataModel } from "../model/dataModel";
+import { ExcelImportResult } from "../model/excelImportResult";
 import { ProjectEvent, ExistingProjectEvent } from "./projectEvents";
 
 import FlatButton from "material-ui/FlatButton";
@@ -29,10 +30,10 @@ export interface ExistingProjectPanelState {
 
 export class ExistingProjectPanel extends React.Component<ExistingProjectPanelProps, ExistingProjectPanelState>{
 
+    private clientRequest:ClientRequest;
     private excelBlob: File;
     private excelHtmlInput: any;
-    private static excelFilename: string;
-    private excelImporter: ExcelImporter;
+    private dataModel: DataModel;
 
     private jsonBlob: File;
     private jsonHtmlInput: any
@@ -60,11 +61,18 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
                     label="Select an Excel file"
                     containerElement="label"
                 >
+                {/* This form is important because we have to send the Xlsx 
+                    file to a NodeJs route on the server. With XlsxRoutes and
+                    XlsxConverter, they will convert the Xlsx into JSON.
+                */}
+                <form id="existingForm">                    
                     <input
                         type="file"
+                        name="xlsFile"                                            
                         onChange={this.handleExcelFileChange.bind(this)}
                         style={this.styles.input}
                     />
+                </form>
                 </RaisedButton>
                 <TextField
                     id="fileDataUploadTextField"
@@ -118,20 +126,21 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
 
         this.state.startColumn = this.state.endColumn = "";
         this.state.excelFilename = this.excelBlob.name;
-        ExistingProjectPanel.excelFilename = this.excelBlob.name;
 
         // Instanciate and configure the FileReader object
         let fileReader = new FileReader();
-        fileReader.onload = (e: any) => {
-            this.excelImporter = new ExcelImporter(ExistingProjectPanel.excelFilename);
-            e.target.columns = this.excelImporter.readHeaders(e.target.result);
-        }
+
         fileReader.onloadend = (eventFileReader: any) => {
-            console.log(`File ${ExistingProjectPanel.excelFilename} loaded successfully with ${eventFileReader.loaded} bytes`);
-            this.callbackExcelFileChange(eventInput, eventFileReader.target.columns);
+            console.log(`${new Date().toLocaleTimeString()}: File ${this.excelBlob.name} loaded successfully with ${eventFileReader.loaded} bytes`);
+
+            this.clientRequest.launch(this.excelBlob.name, (dm:DataModel) => {                               
+                this.callbackExcelFileChange(eventInput, dm.getTitles());                
+                this.dataModel = dm;
+            });
+            
         }
-        fileReader.onloadstart = (e: any) => { console.log(`File ${ExistingProjectPanel.excelFilename} being loaded`); }
-        fileReader.onerror = (e: any) => { console.log(`File ${ExistingProjectPanel.excelFilename} failed: Error ${e}`); };
+        fileReader.onloadstart = (e: any) => { console.log(`${new Date().toLocaleTimeString()}: File ${this.excelBlob.name} being loaded`); }
+        fileReader.onerror = (e: any) => { console.log(`${new Date().toLocaleTimeString()}: File ${this.excelBlob.name} failed: Error ${e}`); };
 
         fileReader.readAsBinaryString(this.excelBlob);
 
@@ -187,9 +196,7 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
     }
 
     private handleBtnCreateForecast(): void {
-        let importResults = this.excelImporter.readCompleteFile(
-            this.state.startColumn,
-            this.state.endColumn);
+        let importResults = this.dataModel.createResults(this.state.startColumn, this.state.endColumn);
 
         if (this.props.cbHandleConfiguration != undefined)
             this.props.cbHandleConfiguration(new ExistingProjectEvent(importResults));
@@ -228,6 +235,7 @@ export class ExistingProjectPanel extends React.Component<ExistingProjectPanelPr
     }
 
     private setInitialState(): void {
+        this.clientRequest = new ClientRequest();
         this.state = {
             stepIndex: 0,
             excelFilename: "",

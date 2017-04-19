@@ -11,7 +11,10 @@
     "pretest": "gulp compile-test",
     "jest": "node ./packages/jest-cli/bin/jest.js",
     "test": "jest",
-    "start": "node server.js"
+    "preclient": "gulp webpack",
+    "client": "gulp webserver",
+    "preserver": "gulp compile-server",
+    "server": "node ./dist/server/server.js"
   },
   "jest": {
     "collectCoverage": true,
@@ -31,13 +34,20 @@
     "testRegex": "/tests/JsOutput/tests/.*\\.test\\.jsx?$"
   },
   "dependencies": {
+    "@types/express": "^4.0.35",
     "@types/google.analytics": "0.0.29",
     "@types/react": "^0.14.55",
     "@types/react-dom": "^0.14.19",
+    "@types/winston": "^2.3.0",
+    "body-parser": "^1.17.1",
     "chart-library": "^1.1.0",
-    "express": "^4.14.0",
+    "express": "^4.15.2",
+    "express-formidable": "^1.0.0",
+    "formidable": "^1.1.1",
+    "multer": "^1.3.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "winston": "^2.3.1",
     "xlsx": "^0.8.2"
   },
   "devDependencies": {
@@ -46,6 +56,7 @@
     "babel-jest": "^18.0.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
+    "connect-livereload": "^0.6.0",
     "d3": "^3.5.17",
     "d3-array": "^0.8.1",
     "d3-shape": "^0.7.1",

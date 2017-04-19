@@ -2,11 +2,7 @@ var gulp = require("gulp");
 var ts = require("gulp-typescript");
 var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");
-
-
-const sourceMapOptions = {
-        sourceRoot: "../"
-    };
+var server = require('gulp-express');
 
 gulp.task("webpack", function() {
 
@@ -30,11 +26,11 @@ gulp.task("compile", function() {
         .pipe(babel({
             presets:["es2015"]        
         }))
-        .pipe(sourcemaps.write(".", sourceMapOptions)) // Now the sourcemaps are added to the .js file
+        .pipe(sourcemaps.write(".", {sourceRoot: "../"})) // Now the sourcemaps are added to the .js file
         .pipe(gulp.dest("dist"))
 });
 
-// Compile Typescript project
+// Compile Typescript project with tests
 gulp.task("compile-test", function() {
     
     var tsTestProject = ts.createProject("./configs/build/tsconfig-test.json");
@@ -49,12 +45,48 @@ gulp.task("compile-test", function() {
         .pipe(gulp.dest("tests/JsOutput"))
 });
 
+// Compile server side project
+gulp.task("compile-server", function() {
+    
+    var tsServerProject = ts.createProject("./configs/build/tsconfig-server.json");
+    var tsResult = tsServerProject
+        .src()
+        .pipe(sourcemaps.init())     // This means sourcemaps will be generated        
+        .pipe(tsServerProject());
+
+    return tsResult   
+        .js
+        .pipe(sourcemaps.mapSources(function(sourcePath, file){
+            // Gulp SourceMap is stupid. It appends extra '../' on each .ts file  
+            // that we put in the .js.map. The 'substring(6)' removes these extra
+            // characters until we find a logic behind this behaviour.
+            return sourcePath.substring(6);  
+        }))
+        .pipe(sourcemaps.write(".")) 
+        .pipe(gulp.dest("dist/server/"))
+});
+
+
 gulp.task("clean", function(){
     var del = require("del");
     return del([
         "dist/**/*",
         "tests/JsOutput/**/*",
   ]);
+});
+
+gulp.task("server", function() {
+
+    // Start the server
+    server.run(['./dist/server/server.js']);
+
+    // Watch for file change and restart the server
+    gulp.watch([
+        "./src/server/**"], ["compile-server"]);
+
+    // curl -F xlsFile=@"./tests/data/Analytics-data.xls" http://54.227.206.200:80/api/v1/xlsxjs
+    // curl -F xlsFile=@"./tests/data/Analytics-data.xls" http://localhost:3030/api/v1/xlsxjs
+    // curl -F xlsFile=@"./tests/data/Excel_2007_Xlsx_TestSheet.xlsx" http://localhost:3030/api/v1/xlsxjs    
 });
 
 // Start the webserver

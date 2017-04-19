@@ -1,8 +1,7 @@
 /// <reference path="../../typings/globals/moment/index.d.ts" />
 
 import { DateRange } from "./dateRange";
-import {ExcelImportResult} from "./io/excelImportResult";
-import * as XLSX from "xlsx";
+import {ExcelImportResult} from "./excelImportResult";
 import * as moment from "moment";
 
 export class DateValidator {
@@ -13,11 +12,9 @@ export class DateValidator {
     }
 
     static process(startColumnName: string,
-        startColumnIndex: number,
-        startCell: XLSX.IWorkSheetCell | undefined,
+        startCell: string | undefined,
         endColumnName: string,
-        endColumnIndex: number,
-        endCell: XLSX.IWorkSheetCell | undefined,
+        endCell: string | undefined,
         rowIndex: number): ExcelImportResult {
 
         let errorMessages = new Array<string>(0);
@@ -28,21 +25,21 @@ export class DateValidator {
 
         if (startCell === undefined) {
             startDate = moment(this.DEFAULT_DATE);
-            tempMessage = this.format(this.MSG_CELL_UNDEFINED, startColumnName, startColumnIndex, rowIndex + 1);
+            tempMessage = this.format(this.MSG_CELL_UNDEFINED, startColumnName, rowIndex + 1);
             errorMessages.push(tempMessage);
             isBothCellsAreNotEmpty = false;
         }
         else
-            startDate = this.parseCell(startCell, startColumnName, startColumnIndex, rowIndex, errorMessages);
+            startDate = this.parseCell(startCell, startColumnName, -1, rowIndex, errorMessages);
 
         if (endCell === undefined) {
             endDate = moment(this.DEFAULT_DATE);
-            tempMessage = this.format(this.MSG_CELL_UNDEFINED, endColumnName, endColumnIndex, rowIndex + 1);
+            tempMessage = this.format(this.MSG_CELL_UNDEFINED, endColumnName, rowIndex + 1);
             errorMessages.push(tempMessage);
             isBothCellsAreNotEmpty = false;
         }
         else
-            endDate = this.parseCell(endCell, endColumnName, endColumnIndex, rowIndex, errorMessages)        
+            endDate = this.parseCell(endCell, endColumnName, -1, rowIndex, errorMessages)        
 
         if (isBothCellsAreNotEmpty &&
             startDate > endDate) {
@@ -84,19 +81,11 @@ export class DateValidator {
 
     private static DEFAULT_FORMATS = DateValidator.buildFormats();
 
-    private static parseCell(cell: XLSX.IWorkSheetCell,
+    private static parseCell(stringToParse: string,
             columnName:string,
             columnIndex:number,
             rowIndex:number,
             errorMessages: Array<string>): any {
-        let stringToParse: string;
-        if (cell.w === undefined ||
-            cell.w == "") {
-            // The formatted text is empty
-            stringToParse = cell.v;
-        }
-        else
-            stringToParse = cell.w;
 
         let validDate = moment(stringToParse, this.DEFAULT_FORMATS);
         if (!validDate.isValid() || 

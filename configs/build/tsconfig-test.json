@@ -7,24 +7,28 @@
         "sourceMap": true,
         "outDir": "./tests/JsOutput",
         "sourceRoot": "./src",
-        "baseUrl": "./src",
-        "strictNullChecks": true,
+        "baseUrl": "./src",        
         "jsx":"preserve",
         "pretty":true,
         "traceResolution": false,
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "allowJs": false
+        "allowJs": false,
+        "strictNullChecks": true,
+        "typeRoots" : ["../../node_modules/@types"]
     },
     "exclude":[
         "../../node_modules"
     ],
     "include":[
-      	"../../src/**/*.ts",
-        "../../src/**/*.tsx",
-        "../../tests/**/*.ts",
-        "../../tests/**/*.tsx",
-    	"../../typings/*.d.ts"      
+        "../../src/client/*.ts",        
+    	"../../src/model/**/*.ts",
+        "../../src/server/*.ts",
+        "../../src/view/*.ts",
+        "../../src/*.ts",
+        "../../src/*.tsx",
+        "../../tests/*.ts",        
+        "../../tests/*.tsx"
     ]
 }

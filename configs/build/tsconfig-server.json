@@ -7,23 +7,17 @@
         "removeComments": false,
         "sourceMap": true,
         "sourceRoot": "./src",
-        "mapRoot":"./dist",
+        "mapRoot":"./dist/server",        
         "baseUrl": "./src",        
-        "outDir": "./dist/",        
+        "outDir": "./dist/server",        
         "traceResolution": true,
         "strictNullChecks": true,
-        "typeRoots" : ["./typings"]       
+        "typeRoots" : ["../../node_modules/@types"]                  
     },
     "exclude":[
-        "../../node_modules"
+        "../../node_modules"   
     ],
     "include":[
-    	"../../src/client/*.ts",
-        "../../src/model/*.ts",
-        "../../src/model/io/*.ts",
-        "../../src/shared/**.ts",
-        "../../src/view/*.ts",        
-        "../../src/*.ts",
-        "../../src/*.tsx"
+        "../../src/server/**/*.ts"
     ]
 }
