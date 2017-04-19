@@ -1,7 +1,7 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
 import {DataModel} from "../src/model/dataModel";
-import {XlsxConverter} from "../src/server/XlsxConverter";
+import {XlsxConverter} from "../src/server/xlsxConverter";
 
 describe("DataModel test suite", () => {
 
