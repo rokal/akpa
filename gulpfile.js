@@ -41,6 +41,13 @@ gulp.task("compile-test", function() {
 
     return tsResult   
         .js
+        .pipe(sourcemaps.mapSources(function(sourcePath, file){
+            // Gulp SourceMap is stupid. It appends extra '../' on each .ts file  
+            // that we put in the .js.map. The 'substring(3)' removes these extra
+            // characters until we find a logic behind this behaviour.
+            return sourcePath.substring(3);  
+        }))
+
         .pipe(sourcemaps.write(".")) // Now the sourcemaps are added to the .js file
         .pipe(gulp.dest("tests/JsOutput"))
 });

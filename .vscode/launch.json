@@ -49,7 +49,7 @@
             "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
             "stopOnEntry": false,
             "args": [
-                "./tests/JsOutput/tests/subscriptionsRoutes.test.js",
+                "./tests/JsOutput/tests/database.test.js",
                 "--runInBand",
                 "--no-cache",
                 "-c", 

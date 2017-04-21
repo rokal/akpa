@@ -4,13 +4,13 @@
 
 import { Router, Request, Response, NextFunction } from "express";
 
+import {Database} from "./db";
+import {Customer} from "./db";
 import { Logger } from "./logger";
 import { FileUploadInfo } from "./fileUploadInfo";
 import * as winston from "winston";
 
 export class SubscriptionsRoutes {
-
-    private stripe = require('stripe')(SubscriptionsRoutes.TEST_PUBLIC_KEY);
 
     constructor() {
         this.router = Router();
@@ -25,13 +25,23 @@ export class SubscriptionsRoutes {
 
     public subscribeNewCustomer(req: Request, res: Response, next: NextFunction): void {
 
-        var customer = this.stripe.customers.create({
-            firstName: "Louis-Philippe",
-            email: "lpcarignan@gmail.com"
-        }, function (err, customer) {
-            // asynchronously called
-        });
-
+        let stripe = require("stripe")("sk_test_Mz5UQzJ17FCUtyjOIbYrgKNU");
+        let customer = stripe.customers.create({
+            email: "lpcarignan@gmail.com",
+            metadata:{
+                firstname:"Louis-Philippe",
+                lastname:"Carignan"
+            }},
+            (err:any, customer:any) => {
+                console.log(err);
+                let db = new Database();
+                db.saveCustomer(new Customer(customer.metadata.firstname,
+                                             customer.metadata.lastname,
+                                             customer.email,
+                                             customer.id));                
+            });
+        
+        winston.debug("Ended call");
     }
 
     public getCustomer(req: Request, res: Response, next: NextFunction): void {
@@ -46,5 +56,6 @@ export class SubscriptionsRoutes {
     private static TEST_SECRET_KEY = "sk_test_Mz5UQzJ17FCUtyjOIbYrgKNU";
     private static TEST_PUBLIC_KEY = "pk_test_6WGRz8Q65ruC4EOhAVOmw5NW";
 
-
+// Stripe API Node references 
+// https://stripe.com/docs/api#customer_object
 }
