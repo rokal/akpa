@@ -17,8 +17,8 @@ export class XlsxJsRoutes {
     }
 
     public init(): Router {
-        this.router.get('/', this.getAll);
-        this.router.post('/', this.decodeExcelFile);
+        this.router.get("/", this.getAll);
+        this.router.post("/", this.decodeExcelFile);
 
         return this.router;
     }
