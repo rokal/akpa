@@ -11,6 +11,7 @@ import * as winston from "winston";
 import * as path from "path";
 
 import { Logger } from "./logger";
+import { SubscriptionsRoutes } from "./subscriptionsRoutes"
 import { XlsxJsRoutes } from "./xlsxJsRoutes"
 import { RequestHandler, Request, Response, NextFunction } from "express";
 
@@ -70,6 +71,7 @@ export class Server {
 
         this.app.use("/", router);
         this.app.use(XlsxJsRoutes.RouteName, new XlsxJsRoutes().init());
+        this.app.use(SubscriptionsRoutes.RouteName, new SubscriptionsRoutes().init());
     }
 
     private api(): void {

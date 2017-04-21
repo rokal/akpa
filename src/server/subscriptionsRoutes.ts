@@ -2,7 +2,6 @@
 /// <reference path="../../node_modules/@types/stripe/index.d.ts" />
 /// <reference path="../../node_modules/@types/winston/index.d.ts" />
 
-import {Stripe} from "stripe";
 import { Router, Request, Response, NextFunction } from "express";
 
 import { Logger } from "./logger";
@@ -10,6 +9,8 @@ import { FileUploadInfo } from "./fileUploadInfo";
 import * as winston from "winston";
 
 export class SubscriptionsRoutes {
+
+    private stripe = require('stripe')(SubscriptionsRoutes.TEST_PUBLIC_KEY);
 
     constructor() {
         this.router = Router();
@@ -24,11 +25,9 @@ export class SubscriptionsRoutes {
 
     public subscribeNewCustomer(req: Request, res: Response, next: NextFunction): void {
 
-
-        var stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
-
-        var customer = stripe.customers.create({
-            email: "jenny.rosen@example.com",
+        var customer = this.stripe.customers.create({
+            firstName: "Louis-Philippe",
+            email: "lpcarignan@gmail.com"
         }, function (err, customer) {
             // asynchronously called
         });
