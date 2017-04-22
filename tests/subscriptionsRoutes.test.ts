@@ -7,24 +7,24 @@ import { SubscriptionsRoutes } from "../src/server/subscriptionsRoutes";
 
 describe("SubscriptionsRoutes test suite", () => {
 
-    var app:any;
+    // var app:any;
 
-    beforeEach(() => {
-        app = mockExpress(); // notice there's no "new"
+    // beforeEach(() => {
+    //     app = mockExpress(); // notice there's no "new"
 
-    })
+    // })
 
-    it("Create customer", () => {
+    // it("Create customer", () => {
 
-        var req = app.makeRequest({ 'host': 'http://www.google.com' });
-        var res = app.makeResponse(function(err:any) {
-	        app.done(); // this is the callback used by mocha to indicate test completion
-        });
+    //     var req = app.makeRequest({ 'host': 'http://www.google.com' });
+    //     var res = app.makeResponse(function(err:any) {
+	//         app.done(); // this is the callback used by mocha to indicate test completion
+    //     });
 
-        let route = new SubscriptionsRoutes();
-        app.use(SubscriptionsRoutes.RouteName, new SubscriptionsRoutes().init());
+    //     let route = new SubscriptionsRoutes();
+    //     app.use(SubscriptionsRoutes.RouteName, new SubscriptionsRoutes().init());
 
-        app.invoke("post", SubscriptionsRoutes.RouteName + "/", req, res);
-    })
+    //     app.invoke("post", SubscriptionsRoutes.RouteName + "/", req, res);
+    // })
 
 })

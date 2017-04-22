@@ -10,6 +10,7 @@ const ExpressFormidable = require("express-formidable");
 import * as winston from "winston";
 import * as path from "path";
 
+import { Database} from "./db";
 import { Logger } from "./logger";
 import { SubscriptionsRoutes } from "./subscriptionsRoutes"
 import { XlsxJsRoutes } from "./xlsxJsRoutes"
@@ -18,6 +19,8 @@ import { RequestHandler, Request, Response, NextFunction } from "express";
 export class Server {
 
     private app: express.Application;
+
+    private database:Database;
 
     constructor() {
 
@@ -54,6 +57,7 @@ export class Server {
             multiples: false
         }));
 
+        this.database = new Database();
 
         winston.debug("ExpressJs server configured");
         winston.debug("   Uploads folder: %s", uploadDir);
@@ -71,7 +75,7 @@ export class Server {
 
         this.app.use("/", router);
         this.app.use(XlsxJsRoutes.RouteName, new XlsxJsRoutes().init());
-        this.app.use(SubscriptionsRoutes.RouteName, new SubscriptionsRoutes().init());
+        this.app.use(SubscriptionsRoutes.RouteName, new SubscriptionsRoutes(this.database).init());
     }
 
     private api(): void {

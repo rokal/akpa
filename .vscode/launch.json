@@ -15,6 +15,9 @@
             "console": "internalConsole",
             "sourceMaps": true,
             "stopOnEntry": false, 
+            "env": {
+                "ENV": "development"
+            },
             //"trace" : "all",          
             "outFiles": ["${workspaceRoot}/dist/server/**/*"]
         },
