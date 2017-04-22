@@ -2,14 +2,14 @@ var gulp = require("gulp");
 var ts = require("gulp-typescript");
 var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");
-var server = require('gulp-express');
+var server = require("gulp-express");
 
 gulp.task("webpack", function() {
 
     var webpack = require("gulp-webpack");
-    var result = gulp.src('src/**/*.*')
-        .pipe(webpack( require('./configs/deploy/webpack.config.js') ))
-        .pipe(gulp.dest('./dist'));
+    var result = gulp.src("src/**/*.*")
+        .pipe(webpack( require("./configs/deploy/webpack.config.js") ))
+        .pipe(gulp.dest("./dist/static"));
 });
 
 // Compile Typescript project
@@ -85,7 +85,7 @@ gulp.task("clean", function(){
 gulp.task("server", function() {
 
     // Start the server
-    server.run(['./dist/server/server.js']);
+    server.run(["./dist/server/server.js"]);
 
     // Watch for file change and restart the server
     gulp.watch([
@@ -108,7 +108,7 @@ gulp.task("webserver", function() {
 
 // Watch src files and what tasks to use on file changes
 gulp.task("watch", function() {
-    gulp.watch(["src/**.ts", "src/**.tsx"], ['compile']);
+    gulp.watch(["src/**.ts", "src/**.tsx"], ["compile"]);
 });
 
 gulp.task("default", ["compile", "compile-test"]);

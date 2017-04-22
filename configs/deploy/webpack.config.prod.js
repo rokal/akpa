@@ -19,7 +19,7 @@ module.exports = {
     entry: "./main.tsx",
     output: {
         filename: "akpa.js",
-        path: path.join(process.cwd(), "dist"),
+        path: path.join(process.cwd(), "dist/static"),
         publicPath: "static",
         devtoolModuleFilenameTemplate: function (info) {
             if (info.resourcePath.match(".ts"+"$")==".ts" ||

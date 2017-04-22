@@ -4,9 +4,7 @@
 
 import { Router, Request, Response, NextFunction } from "express";
 
-import {Database} from "./db";
-import {Customer} from "./db";
-import { Logger } from "./logger";
+import {Database, Customer} from "./database";
 import { FileUploadInfo } from "./fileUploadInfo";
 import * as winston from "winston";
 

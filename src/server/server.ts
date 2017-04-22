@@ -10,10 +10,11 @@ const ExpressFormidable = require("express-formidable");
 import * as winston from "winston";
 import * as path from "path";
 
-import { Database} from "./db";
+import { Database} from "./database";
 import { Logger } from "./logger";
 import { SubscriptionsRoutes } from "./subscriptionsRoutes"
 import { XlsxJsRoutes } from "./xlsxJsRoutes"
+import {LoginRoutes} from "./loginRoutes";
 import { RequestHandler, Request, Response, NextFunction } from "express";
 
 export class Server {
@@ -21,6 +22,9 @@ export class Server {
     private app: express.Application;
 
     private database:Database;
+
+    private uploadDir:string;
+    private staticDir:string;
 
     constructor() {
 
@@ -45,37 +49,30 @@ export class Server {
     }
 
     private config(): void {
-
-        let uploadDir = path.join(__dirname, "uploads");
+        this.uploadDir = path.join(__dirname, "uploads");
+        this.staticDir = path.join(__dirname, "../static")
 
         this.app.use(this.middleCORSFunction);
 
+        this.app.use('/static', express.static(this.staticDir))        
         this.app.use(bodyParser.json({ limit: '500mb' }));
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(ExpressFormidable({
-            uploadDir: uploadDir,
+            uploadDir: this.uploadDir,
             multiples: false
         }));
 
         this.database = new Database();
 
         winston.debug("ExpressJs server configured");
-        winston.debug("   Uploads folder: %s", uploadDir);
+        winston.debug("   Uploads folder.: %s", this.uploadDir);
+        winston.debug("   Static folder..: %s", this.staticDir);    
     }
 
     private routes(): void {
-        let router = express.Router();
-
-        // placeholder route handler
-        router.get('/', (req, res, next) => {
-            res.json({
-                message: 'Hello World!'
-            });
-        });
-
-        this.app.use("/", router);
-        this.app.use(XlsxJsRoutes.RouteName, new XlsxJsRoutes().init());
+        this.app.use(LoginRoutes.RouteName, new LoginRoutes(this.database, this.staticDir).init());        
         this.app.use(SubscriptionsRoutes.RouteName, new SubscriptionsRoutes(this.database).init());
+        this.app.use(XlsxJsRoutes.RouteName, new XlsxJsRoutes().init());
     }
 
     private api(): void {

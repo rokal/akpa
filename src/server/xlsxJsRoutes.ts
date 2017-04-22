@@ -5,7 +5,6 @@
 import { Router, Request, Response, NextFunction } from "express";
 import * as fs from "fs";
 
-import {Logger} from "./logger";
 import { FileUploadInfo } from "./fileUploadInfo";
 import { XlsxConverter } from "./xlsxConverter";
 import * as winston from "winston";
