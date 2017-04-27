@@ -4,15 +4,20 @@
 
 import { Router, Request, Response, NextFunction } from "express";
 import * as fs from "fs";
+import * as winston from "winston";
 
 import { FileUploadInfo } from "./fileUploadInfo";
 import { XlsxConverter } from "./xlsxConverter";
-import * as winston from "winston";
 
 export class XlsxJsRoutes {
 
-    constructor() {
+
+
+    constructor(uploadDir:string) {
         this.router = Router();
+
+        if (!fs.existsSync(uploadDir))
+            fs.mkdirSync(uploadDir, 777);
     }
 
     public init(): Router {

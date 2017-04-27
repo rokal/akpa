@@ -6,8 +6,8 @@ export class ClientRequest {
     private serverAddress:string
 
     constructor() {
-        this.serverAddress = "http://54.227.206.200:80" + FileUploadInfo.ROUTE_XLSJS;
-        //this.serverAddress = "http://localhost:3030" + FileUploadInfo.ROUTE_XLSJS;
+        //this.serverAddress = "http://54.227.206.200:80" + FileUploadInfo.ROUTE_XLSJS;
+        this.serverAddress = "http://localhost:3030" + FileUploadInfo.ROUTE_XLSJS;
     }
 
     public launch(filename: string, callback:(dm:DataModel) => void): void {

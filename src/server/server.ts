@@ -72,7 +72,7 @@ export class Server {
     private routes(): void {
         this.app.use(LoginRoutes.RouteName, new LoginRoutes(this.database, this.staticDir).init());        
         this.app.use(SubscriptionsRoutes.RouteName, new SubscriptionsRoutes(this.database, this.staticDir).init());
-        this.app.use(XlsxJsRoutes.RouteName, new XlsxJsRoutes().init());
+        this.app.use(XlsxJsRoutes.RouteName, new XlsxJsRoutes(this.uploadDir).init());
     }
 
     private api(): void {
