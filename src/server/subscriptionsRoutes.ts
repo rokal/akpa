@@ -1,4 +1,5 @@
 /// <reference path="../../node_modules/@types/express/index.d.ts" />
+/// <reference path="../../node_modules/@types/node/index.d.ts" />
 /// <reference path="../../node_modules/@types/stripe/index.d.ts" />
 /// <reference path="../../node_modules/@types/winston/index.d.ts" />
 
@@ -6,15 +7,19 @@ import { Router, Request, Response, NextFunction } from "express";
 
 import {Database, Customer} from "./database";
 import { FileUploadInfo } from "./fileUploadInfo";
+import * as path from "path";
 import * as winston from "winston";
 
 export class SubscriptionsRoutes {
 
     private database:Database;
 
-    constructor(database:Database) {
+    private staticDir:string;
+
+    constructor(database:Database, staticDir:string) {
         this.router = Router();
         this.database = database;
+        this.staticDir = staticDir;
     }
 
     public init(): Router {
@@ -36,18 +41,16 @@ export class SubscriptionsRoutes {
                 lastname: req.fields.lastname
             }},
             (err:any, customer:any) => {
-                let facadeObject:any;
                 if (err){
                     winston.error("Error on stripe.customers.create", err)
-                    facadeObject = SubscriptionsRoutes.ERROR_CODE;
+                    res.send({"customer":SubscriptionsRoutes.ERROR_CODE});
+                    res.end();
                 }else{
                     let cust = new Customer(customer.metadata.firstname, customer.metadata.lastname, customer.email, customer.id);                
                     this.database.saveCustomer(cust);                
-                    facadeObject = cust;
-                }
-                
-                res.send({"customer":facadeObject});
-                res.end();
+                    res.sendFile(path.join(this.staticDir, "index.html"));
+                }                
+
                 winston.debug("%s:%s - End call", req.method, req.originalUrl);                
             });
     }

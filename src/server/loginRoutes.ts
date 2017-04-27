@@ -4,6 +4,7 @@
 
 import { Router, Request, Response, NextFunction } from "express";
 import * as path from "path";
+import * as fs from "fs";
 
 import {Database} from "./database";
 import * as winston from "winston";
@@ -29,19 +30,23 @@ export class LoginRoutes {
 
         winston.debug("%s:%s - Start call", req.method, req.originalUrl);
 
-        let customer = this.database.getCustomer(req.params.subscriptionId);
+        let customer = this.database.getCustomer(req.params.id);
         if (customer.email){
-            res.sendFile(path.join(this.staticDir, "index.html"));
+            let filename = path.join(this.staticDir, "index.html");
+            res.set('content-type','text/html');
+            res.location("/static");
+            res.send(fs.readFileSync(filename,'utf8'));
+            res.end();             
         }   
         else{
             res.sendFile(path.join(this.staticDir, "subscription.html"));
         }
-        
+
         winston.debug("%s:%s - End call", req.method, req.originalUrl);
     }
 
     static get RouteName(): string {
-        return "/";
+        return "/login";
     }
     router: Router;
 }

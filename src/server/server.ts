@@ -55,8 +55,8 @@ export class Server {
         this.app.use(this.middleCORSFunction);
 
         this.app.use('/static', express.static(this.staticDir))        
-        this.app.use(bodyParser.json({ limit: '500mb' }));
-        this.app.use(bodyParser.urlencoded({ extended: true }));
+        //this.app.use(bodyParser.json({ limit: '500mb' }));
+        //this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(ExpressFormidable({
             uploadDir: this.uploadDir,
             multiples: false
@@ -71,12 +71,11 @@ export class Server {
 
     private routes(): void {
         this.app.use(LoginRoutes.RouteName, new LoginRoutes(this.database, this.staticDir).init());        
-        this.app.use(SubscriptionsRoutes.RouteName, new SubscriptionsRoutes(this.database).init());
+        this.app.use(SubscriptionsRoutes.RouteName, new SubscriptionsRoutes(this.database, this.staticDir).init());
         this.app.use(XlsxJsRoutes.RouteName, new XlsxJsRoutes().init());
     }
 
     private api(): void {
-
     }
 
     private middleCORSFunction(req: Request, res: Response, next: NextFunction): any {

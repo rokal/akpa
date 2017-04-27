@@ -1,7 +1,7 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
 
-import {Customer} from "../src/server/db";
-import {Database} from "../src/server/db";
+import {Customer} from "../src/server/database";
+import {Database} from "../src/server/database";
 
 describe("Database test suite", () => {
 
