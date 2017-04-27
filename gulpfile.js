@@ -2,14 +2,14 @@ var gulp = require("gulp");
 var ts = require("gulp-typescript");
 var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");
-var server = require('gulp-express');
+var server = require("gulp-express");
 
 gulp.task("webpack", function() {
 
     var webpack = require("gulp-webpack");
-    var result = gulp.src('src/**/*.*')
-        .pipe(webpack( require('./configs/deploy/webpack.config.js') ))
-        .pipe(gulp.dest('./dist'));
+    var result = gulp.src("src/**/*.*")
+        .pipe(webpack( require("./configs/deploy/webpack.config.js") ))
+        .pipe(gulp.dest("./dist/static"));
 });
 
 // Compile Typescript project
@@ -41,6 +41,13 @@ gulp.task("compile-test", function() {
 
     return tsResult   
         .js
+        .pipe(sourcemaps.mapSources(function(sourcePath, file){
+            // Gulp SourceMap is stupid. It appends extra '../' on each .ts file  
+            // that we put in the .js.map. The 'substring(3)' removes these extra
+            // characters until we find a logic behind this behaviour.
+            return sourcePath.substring(3);  
+        }))
+
         .pipe(sourcemaps.write(".")) // Now the sourcemaps are added to the .js file
         .pipe(gulp.dest("tests/JsOutput"))
 });
@@ -78,15 +85,11 @@ gulp.task("clean", function(){
 gulp.task("server", function() {
 
     // Start the server
-    server.run(['./dist/server/server.js']);
+    server.run(["./dist/server/server.js"]);
 
     // Watch for file change and restart the server
     gulp.watch([
-        "./src/server/**"], ["compile-server"]);
-
-    // curl -F xlsFile=@"./tests/data/Analytics-data.xls" http://54.227.206.200:80/api/v1/xlsxjs
-    // curl -F xlsFile=@"./tests/data/Analytics-data.xls" http://localhost:3030/api/v1/xlsxjs
-    // curl -F xlsFile=@"./tests/data/Excel_2007_Xlsx_TestSheet.xlsx" http://localhost:3030/api/v1/xlsxjs    
+        "./src/server/**"], ["compile-server"]);   
 });
 
 // Start the webserver
@@ -105,7 +108,7 @@ gulp.task("webserver", function() {
 
 // Watch src files and what tasks to use on file changes
 gulp.task("watch", function() {
-    gulp.watch(["src/**.ts", "src/**.tsx"], ['compile']);
+    gulp.watch(["src/**.ts", "src/**.tsx"], ["compile"]);
 });
 
 gulp.task("default", ["compile", "compile-test"]);

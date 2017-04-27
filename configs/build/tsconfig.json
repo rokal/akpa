@@ -7,12 +7,12 @@
         "removeComments": false,
         "sourceMap": true,
         "sourceRoot": "./src",
-        "mapRoot":"./dist",
+        "mapRoot":"./dist/static",
         "baseUrl": "./src",        
-        "outDir": "./dist/",        
+        "outDir": "./dist/static",        
         "traceResolution": true,
         "strictNullChecks": true,
-        "typeRoots" : ["./typings"]       
+        "typeRoots" : ["./typings"]
     },
     "exclude":[
         "../../node_modules"

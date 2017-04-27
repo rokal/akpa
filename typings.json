@@ -1,6 +1,7 @@
 {
   "globalDependencies": {
     "jest": "registry:dt/jest#18.1.0+20170131225342",
+    "lokijs": "registry:dt/lokijs#1.2.5+20161128184045",
     "material-ui": "registry:dt/material-ui#0.16.0+20170204022542",
     "moment": "registry:dt/moment#2.11.1+20161010105546",
     "react-easy-chart": "registry:dt/react-easy-chart#0.1.12+20170123203653"

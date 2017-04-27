@@ -1,0 +1,69 @@
+<div class="container" id="contact">
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <section>
+
+                {{ .Content }}
+
+                <div class="heading">
+                    <h3>Subscription form</h3>
+                </div>
+
+                <div id="contact-message"></div>
+
+                <form class="contact-form" method="post" action="http://127.0.0.1:3030/api/v1/subscriptions">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstname">Your Name</label>
+                                <input type="text" class="form-control" name="firstname" id="firstname" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="text" class="form-control" name="email" id="email" required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" class="btn btn-template-main"><i class="fa fa-envelope-o"></i> Subscribe</button>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </form>
+
+            </section>
+
+        </div>
+
+        <div class="col-md-4">
+
+            {{ if isset .Site.Params "address" }}
+            <section>
+
+                <h3 class="text-uppercase">Address</h3>
+
+                {{ .Site.Params.address | safeHTML }}
+
+            </section>
+
+            {{ end }}
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+
+{{ if isset .Site.Params "latitude" }}
+  {{ if isset .Site.Params "longitude" }}
+    <div class="hidden">
+      <input id="gmap-lat" value="{{ .Site.Params.latitude }}" />
+      <input id="gmap-lng" value="{{ .Site.Params.longitude }}" />
+    </div>
+    <div id="map" />
+  {{ end }}
+{{ end }}
