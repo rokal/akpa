@@ -1,4 +1,4 @@
-/// <reference path="../../typings/react/react.d.ts" />
+/// <reference path="../../node_modules/@types/react/index.d.ts" />
 /// <reference path="../../typings/globals/material-ui/index.d.ts" />
 /// <reference path="../../typings/globals/moment/index.d.ts" />
 

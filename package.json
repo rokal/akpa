@@ -86,7 +86,7 @@
     "requirejs": "^2.3.2",
     "source-map-loader": "^0.1.6",
     "ts-jest": "^18.0.1",
-    "typescript": "^2.1.5"
+    "typescript": "^2.3.0"
   },
   "author": "Louis-Philippe Carignan",
   "license": "ISC"
