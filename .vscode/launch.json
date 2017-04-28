@@ -50,9 +50,9 @@
             "request": "launch",
             "name": "Debug Jest Tests",            
             "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
-            "stopOnEntry": false,
+            "stopOnEntry": true,
             "args": [
-                "./tests/JsOutput/tests/database.test.js",
+                "./tests/JsOutput/tests/datamodel.test.js",
                 "--runInBand",
                 "--no-cache",
                 "-c", 

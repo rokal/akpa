@@ -9,12 +9,23 @@
             "taskName": "webpack",
             "args": [],
             "isBuildCommand": true,
-            "isWatching": false,
+            "isBackground": false,
             "problemMatcher": [
                 "$lessCompile",
                 "$tsc",
                 "$jshint"
             ]
-        }
+        },
+{
+            "taskName": "compile-test",
+            "args": [],
+            "isBuildCommand": true,
+            "isBackground": false,
+            "problemMatcher": [
+                "$lessCompile",
+                "$tsc",
+                "$jshint"
+            ]
+        }        
     ]
 }
