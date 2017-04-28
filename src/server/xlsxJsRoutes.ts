@@ -66,3 +66,4 @@ export class XlsxJsRoutes {
 // curl -F xlsFile=@"./tests/data/Analytics-data.xls" http://54.227.206.200:80/api/v1/xlsxjs
 // curl -F xlsFile=@"./tests/data/Analytics-data.xls" http://localhost:3030/api/v1/xlsxjs
 // curl -F xlsFile=@"./tests/data/Excel_2007_Xlsx_TestSheet.xlsx" http://localhost:3030/api/v1/xlsxjs 
+// curl http://localhost:3030/api/v1/xlsxjs
