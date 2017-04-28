@@ -25,7 +25,7 @@ export class DateValidator {
 
         if (startCell === undefined) {
             startDate = moment(this.DEFAULT_DATE);
-            tempMessage = this.format(this.MSG_CELL_UNDEFINED, startColumnName, rowIndex + 1);
+            tempMessage = this.format(this.MSG_CELL_UNDEFINED, rowIndex + 1, startColumnName);
             errorMessages.push(tempMessage);
             isBothCellsAreNotEmpty = false;
         }
@@ -34,7 +34,7 @@ export class DateValidator {
 
         if (endCell === undefined) {
             endDate = moment(this.DEFAULT_DATE);
-            tempMessage = this.format(this.MSG_CELL_UNDEFINED, endColumnName, rowIndex + 1);
+            tempMessage = this.format(this.MSG_CELL_UNDEFINED, rowIndex + 1, endColumnName);
             errorMessages.push(tempMessage);
             isBothCellsAreNotEmpty = false;
         }
@@ -53,7 +53,7 @@ export class DateValidator {
                                      errorMessages);
     }
 
-    private static MSG_CELL_UNDEFINED = "Row {2}: Cell in column {0}[Index:{1}] is empty";
+    private static MSG_CELL_UNDEFINED = "Row {0}: Cell in column {1} is empty";
     private static MSG_INVALID_DATE = "Row {3}: Value is invalid [{0}] at column {1}[Index{2}]"
     private static MSG_START_GREATER_END = "Row {2}: Start date[{0}] greater than end date[{1}]";
     private static UNFORMATTED_FORMATS = ["MM{0}DD{0}YYYY", 

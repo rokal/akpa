@@ -9,7 +9,7 @@ describe("DataModel test suite", () => {
 
     it ("Get column titles", () => {
 
-        let jsonObject = new XlsxConverter().getJson("./tests/data/Analytics-data.xls");
+        let jsonObject = new XlsxConverter().getJson("./tests/Xlsx/data/Analytics-data.xls");
         let str = JSON.stringify(jsonObject);
 
         dataModel = new DataModel(str);

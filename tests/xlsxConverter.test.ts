@@ -11,7 +11,7 @@ describe("XlsxConverter test suite", () => {
 
     it("Convert Xls file to JSON", () => {
         
-        let json = xlsxConverter.getJson("./tests/data/Analytics-data.xls"); 
+        let json = xlsxConverter.getJson("./tests/data/Xlsx/Analytics-data.xls"); 
 
         expect(json).not.toBeNull();
         expect(json.length).not.toEqual(0);
@@ -19,7 +19,7 @@ describe("XlsxConverter test suite", () => {
 
     it("Convert Xlsx file to JSON", () => {
         
-        let json = xlsxConverter.getJson("./tests/data/Excel_2007_Xlsx_TestSheet.xlsx"); 
+        let json = xlsxConverter.getJson("./tests/data/Xlsx/Excel_2007_Xlsx_TestSheet.xlsx"); 
 
         expect(json).not.toBeNull();
         expect(json.length).not.toEqual(0);
