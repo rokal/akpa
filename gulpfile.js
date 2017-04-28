@@ -77,7 +77,9 @@ gulp.task("compile-server", function() {
 gulp.task("clean", function(){
     var del = require("del");
     return del([
-        "dist/**/*",
+        "dist/server/**/*.js",
+        "dist/server/**/*.js.map",
+        "dist/server/uploads/**",
         "tests/JsOutput/**/*",
   ]);
 });

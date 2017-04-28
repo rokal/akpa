@@ -1,8 +1,6 @@
 /// <reference path="../typings/globals/jest/index.d.ts" />
-/// <reference path="../typings/modules/xlsx/index.d.ts" />
 
 import {DateValidator} from "../src/model/dateValidator";
-import * as XLSX from "xlsx"; 
 
 describe("DateValidator test suite", () => {
 
